@@ -24,13 +24,36 @@
     <updated>2023-03-02T05:15:48.232Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
+    <summary type="html">1. 行列式
+行列式的定义：n*n个数字排成n行n列，叫做n阶行列式。
+
+行列式的项数：
+
+ 1. 2阶行列式有2项
+ 2. 3阶行列式有6项
+ 3. 4阶行列式有24项
+
+1.1 余子式与代数余子式
+余子式：关于一个k阶子式的余子式，是A去掉了这个k阶子式所在的行与列之后得到的（n－k）×（n－k）矩阵的行列式。
+
+代数余子式：元素aₒₑi的代数余子式与该元素本身没什么关系，只与该元素的位置有关。
+
+行列式按行展开
+
+ * 行列式的值D = 任意一行（列）元素*自己的代数余子式之和
+
+
+
+
+异乘变零定理
+
+ * 某行元素与另一行元素的代数余子式乘积之和=0
+
+
+
+
+拉普拉斯定理（k阶子式）
+</summary>
     
     
     
@@ -47,13 +70,22 @@
     <updated>2023-03-01T12:17:42.950Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
+    <summary type="html">@[toc]
+
+三种寻路算法
+ * 深度寻路算法：不一定能找到最佳路径，但是寻路快速，只能走直线。
+ * 广度寻路算法：一定能找到最短路径，但是开销大，时间慢，只能走直线。
+ * A星寻路算法（常用）：一定能找到最短路径，可以走直线和斜线，而且开销较小，常用于大型地图的寻路
+
+A星寻路算法
+A星寻路算法思想
+引入： 狼吃羊模型。
+
+狼捕猎羊：如果抓到了就加100分；如果狼不动，每分钟减2分；如果狼抓捕时会跑，跑步每分钟减5分；
+
+​ 狼会饿 ，饿的时候每分钟减10分。 有一个积分的概念在这里面。结果会发现狼会站在原地不动。
+
+​ 因为狼直到，抓住羊很困难，跑步时会扣分，饿时会扣分，不动时也会扣</summary>
     
     
     
@@ -70,13 +102,7 @@
     <updated>2023-03-01T09:18:24.996Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
+    <summary type="html">我的个人博客</summary>
     
     
     
@@ -91,13 +117,23 @@
     <updated>2023-03-01T06:28:31.135Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
+    <summary type="html">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+
+Quick Start
+Create a new post
+1
+
+
+$ hexo new &quot;My New Post&quot;
+
+
+More info: Writing
+
+Run server
+1
+
+
+$ hexo s</summary>
     
     
     
