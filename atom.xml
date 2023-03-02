@@ -6,7 +6,7 @@
   <link href="https://luumod.github.io/atom.xml" rel="self"/>
   
   <link href="https://luumod.github.io/"/>
-  <updated>2023-03-02T10:45:04.366Z</updated>
+  <updated>2023-03-02T14:55:53.735Z</updated>
   <id>https://luumod.github.io/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo与github搭建个人博客</title>
+    <link href="https://luumod.github.io/2023/03/02/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://luumod.github.io/2023/03/02/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
+    <published>2023-03-02T14:39:20.000Z</published>
+    <updated>2023-03-02T14:55:53.735Z</updated>
+    
+    
+    <summary type="html">0.前置内容
+ 1. git 的下载： 官网下载较慢，这边推荐阿里镜像下载：
+
+阿里镜像下载 git
+
+往下滑选择接近当前日期的最新版本 2.39.2 windows
+
+
+
+选择 2.39.2 -64 的exe下载，大概有 50Mb大小
+
+
+
+下载好后，直接一直点下一步即可。如果你了解过git，则可以按照自己的习惯下载，这不重要。
+
+ 1. Nodejs下载
+
+直接百度搜索 Nodejs，Nodejs下载 
+
+选择 18.14.2 的 LTS版本下载
+
+
+
+1. hexo
+hexo是什么？
+
+ * 正如hexo的首页所显示的，它是一款非常快速，简介，高效的博客框架平台，我们可以利用hexo快速</summary>
+    
+    
+    
+    
+    <category term="实用技术" scheme="https://luumod.github.io/tags/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>线性代数知识点总结</title>
