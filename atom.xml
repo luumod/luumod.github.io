@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>HugeYlh</title>
   
-  <subtitle>hugeylh</subtitle>
+  <subtitle>奔赴山海，保持热爱</subtitle>
   <link href="https://luumod.github.io/atom.xml" rel="self"/>
   
   <link href="https://luumod.github.io/"/>
@@ -40,7 +40,7 @@
 
 行列式按行展开
 
- * 行列式的值D = 任意一行（列）元素*自己的代数余子式之和
+ * 行列式的值D = 任意一行（列）元素自己的*代数余子式之和
 
 
 
@@ -114,7 +114,7 @@ A星寻路算法思想
     <link href="https://luumod.github.io/2023/03/01/hello-world/"/>
     <id>https://luumod.github.io/2023/03/01/hello-world/</id>
     <published>2023-03-01T06:30:47.716Z</published>
-    <updated>2023-03-01T06:28:31.135Z</updated>
+    <updated>2023-03-02T10:13:47.145Z</updated>
     
     
     <summary type="html">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
