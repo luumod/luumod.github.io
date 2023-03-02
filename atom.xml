@@ -6,7 +6,7 @@
   <link href="https://luumod.github.io/atom.xml" rel="self"/>
   
   <link href="https://luumod.github.io/"/>
-  <updated>2023-03-02T15:47:54.060Z</updated>
+  <updated>2023-03-02T15:51:28.128Z</updated>
   <id>https://luumod.github.io/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="https://luumod.github.io/2023/03/02/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>https://luumod.github.io/2023/03/02/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
     <published>2023-03-02T14:39:20.000Z</published>
-    <updated>2023-03-02T15:47:54.060Z</updated>
+    <updated>2023-03-02T15:51:28.128Z</updated>
     
     
-    <summary type="html">0.前置内容
+    <summary type="html">0. 前置内容
  1. git 的下载： 官网下载较慢，这边推荐阿里镜像下载：
 
 阿里镜像下载 git
@@ -50,7 +50,7 @@
 2. hexo创建个人博客
 hexo是什么？
 
- * 正如hexo的首页所显示的，它是一款非常快速，简介，高效的博客框架平台，我们可以利用</summary>
+ * 正如hexo的首页所显示的，它是一款非常快速，简介，高效的博客框架平台，我们可以利</summary>
     
     
     

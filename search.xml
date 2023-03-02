@@ -105,7 +105,7 @@
   <entry>
     <title>hexo与github搭建个人博客</title>
     <url>/2023/03/02/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="0-前置内容"><a href="#0-前置内容" class="headerlink" title="0.前置内容"></a>0.前置内容</h1><ol>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="0-前置内容"><a href="#0-前置内容" class="headerlink" title="0. 前置内容"></a>0. 前置内容</h1><ol>
 <li><strong>git 的下载</strong>： 官网下载较慢，这边推荐阿里镜像下载：</li>
 </ol>
 <p><a href="https://registry.npmmirror.com/binary.html?path=git-for-windows/">阿里镜像下载 git</a></p>
@@ -213,6 +213,13 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 <p>其中 <code>hexo clean</code>清除了你之前生成的东西，也可以不加。<br><code>hexo generate</code> 顾名思义，生成静态文章，可以用 <code>hexo g</code>缩写<br><code>hexo deploy</code> 部署文章，可以用<code>hexo d</code>缩写</p>
 <p><strong>如果是在离线端即 localhost:4000端测试你的博客，则只需要 hexo  g + hexo s 即可，无需 hexo d</strong></p>
+<ol>
+<li>输入完成后会出现一堆内容，不用管他<strong>，只要最后内容如下所示，</strong>就表示成功了！</li>
+</ol>
+<p><img src="C:\Users\woshishuaige\AppData\Roaming\Typora\typora-user-images\image-20230302234912902.png" alt="image-20230302234912902"></p>
+<p>然后你就可以在</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">username.github.io  # https://username.github.io</span><br></pre></td></tr></table></figure>
+<p><strong>访问到你的博客了，其中username是你GitHub用户名，这个网站不是离线的，其他人都可以访问到！！！</strong></p>
 ]]></content>
       <tags>
         <tag>实用技术</tag>
