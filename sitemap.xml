@@ -137,13 +137,6 @@
 
   
   <url>
-    <loc>https://luumod.github.io/tags/git/</loc>
-    <lastmod>2023-03-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://luumod.github.io/tags/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%AF%BB%E8%B7%AF/</loc>
     <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -151,7 +144,7 @@
   </url>
   
   <url>
-    <loc>https://luumod.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</loc>
+    <loc>https://luumod.github.io/tags/git/</loc>
     <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -159,6 +152,13 @@
   
   <url>
     <loc>https://luumod.github.io/tags/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2023-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://luumod.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</loc>
     <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
