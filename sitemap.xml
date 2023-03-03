@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/</loc>
+    
+    <lastmod>2023-03-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/</loc>
+    
+    <lastmod>2023-03-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://luumod.github.io/2023/03/02/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     
     <lastmod>2023-03-03</lastmod>
@@ -117,6 +135,13 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>https://luumod.github.io/tags/git/</loc>
+    <lastmod>2023-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
   <url>
     <loc>https://luumod.github.io/tags/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%AF%BB%E8%B7%AF/</loc>

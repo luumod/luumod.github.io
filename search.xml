@@ -15,6 +15,360 @@
 ]]></content>
   </entry>
   <entry>
+    <title>git学习(2)</title>
+    <url>/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-创建-git仓库"><a href="#1-创建-git仓库" class="headerlink" title="1 创建 git仓库"></a>1 创建 git仓库</h1><h2 id="1-1-从现有工作目录中初始化新仓库"><a href="#1-1-从现有工作目录中初始化新仓库" class="headerlink" title="1.1 从现有工作目录中初始化新仓库"></a>1.1 从现有工作目录中初始化新仓库</h2><p>需要到你需要用git管理的项目中输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>便会创建一个空的git项目，<strong>并且当前目录下会出现一个名为 .git 的目录</strong>， Git 需要的数据和资源都存放在这个目录中，不过我们目前只是初始化所有的文件与目录</p>
+<ol>
+<li>告诉 git在这个目录中有几个文件需要版本控制。我使用了几个cpp的文件</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add *.cpp</span><br></pre></td></tr></table></figure>
+<p>还可以：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add README</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;initial project version&#x27;</span><br></pre></td></tr></table></figure>
+<p>你已经得到了一个实际维护着若干文件的 Git 仓库。</p>
+<h2 id="1-2-从现有仓库克隆"><a href="#1-2-从现有仓库克隆" class="headerlink" title="1.2 从现有仓库克隆"></a>1.2 从现有仓库克隆</h2><p>克隆某个开源项目的git仓库，可以使用 git clone 命令</p>
+<p>例如克隆一份Ruby语言的 Git 代码仓库 ticgit可以使用下面的命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com:schacon/ticgit.git</span><br></pre></td></tr></table></figure>
+<p>这表示在当前文件夹下新建一个ticgit，其中包含一个  .git 的文件夹，<strong>用于保存下载下来的所有版本记录</strong>，然后从中取出最新版本的文件拷贝。</p>
+<p><strong>修改克隆的名字</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com:schacon/ticgit.git myticgit</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<p><img src="https://great.wzznft.com/i/2023/03/03/w5knrj.png" alt=""></p>
+<p>在克隆的时候，我们可以选择不同的<strong>数据传输协议</strong>，在我们的例子中选择的是 <strong>ssh传输协议</strong>，你还可以有<code>https://</code>开头或者<code>user@server:/path.git</code>传输协议</p>
+<p><img src="https://tudingtu.cn/i/2023/03/03/w69pwj.png" alt=""></p>
+<h1 id="2-记录仓库更新"><a href="#2-记录仓库更新" class="headerlink" title="2. 记录仓库更新"></a>2. 记录仓库更新</h1><p>当我们创建了git存储库后，我们便可以在<strong>工作目录</strong>对这写文件进行更新。</p>
+<p>在工作目录中的文件无非有两种状态：</p>
+<ol>
+<li>已跟踪：已跟踪的文件是指本来就被纳入版本控制管理的文件，<strong>在上次快照中有它们的记录</strong>，工作一段时间后，它们的状态可能是<strong>未更新，已修改或者已放入暂存区</strong>。<strong>在克隆获取库后，工作目录的所有文件都是已跟踪的。</strong></li>
+<li>未跟踪：其他所有的文件都是未跟踪的，即他们既没有快照，也没有放入暂存区。在修改后 git才会把他们表示为已修改的，然后放到暂存区准备提交更新。</li>
+</ol>
+<h2 id="2-1-查看跟踪状态"><a href="#2-1-查看跟踪状态" class="headerlink" title="2.1 查看跟踪状态"></a>2.1 查看跟踪状态</h2><p>输入下面的命令来查看当前工作目录的文件<strong>处于什么状态</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p>出现的情况：</p>
+<ol>
+<li>当前工作目录很干净，所有<strong>已跟踪</strong>文件在上次提交后都未被更改过。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working directory clean</span><br></pre></td></tr></table></figure>
+<ol>
+<li>现在让我们修改一下，比如添加一个文件（<strong>注意：需要在git克隆的仓库内执行</strong>）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim README</span><br></pre></td></tr></table></figure>
+<p>然后随便输入一些内容保存退出。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p>会出现：<strong>Untracked files ，即未跟踪状态</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        README</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
+<p><strong>表示我们的README 处于Untracked files即未跟踪状态</strong></p>
+<blockquote>
+<p>未跟踪的文件意味着Git在之前的快照（提交）中没有这些文件；Git 不会自动将之纳入跟踪范围，除非你明明白白地告诉它“我需要跟踪该文件”，因而不用担心把临时文件什么的也归入版本管理。</p>
+</blockquote>
+<h2 id="2-2-跟踪新文件"><a href="#2-2-跟踪新文件" class="headerlink" title="2.2 跟踪新文件"></a>2.2 跟踪新文件</h2><p>跟踪我们上面新建的 README文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add README</span><br></pre></td></tr></table></figure>
+<p>当我们再次 <code>git status</code>，会发现它处于：</p>
+<p><strong>Changes to be committed，即未提交状态，它这时已经被跟踪了，但是没有提交。</strong>即处于<code>暂存状态</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   README</span><br></pre></td></tr></table></figure>
+<p>其实 <code>git add</code> 的作用就是<strong>将一个文件放入暂存区域中，并且把所有未跟踪的文件或者目录变为已跟踪状态。</strong></p>
+<blockquote>
+<p>这是个多功能命令，根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等这是个多功能命令，根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等</p>
+</blockquote>
+<h2 id="2-3-暂存已修改的文件"><a href="#2-3-暂存已修改的文件" class="headerlink" title="2.3 暂存已修改的文件"></a>2.3 暂存已修改的文件</h2><p>我们修改一个<strong>已经存在于历史版本的文件</strong>：README.mkd</p>
+<p>忽略上面的内容，我们会看到这样的状态：<strong>Changes not staged for commit</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">        modified:   README.mkd</span><br></pre></td></tr></table></figure>
+<p> 表示已经跟踪的文件发生了修改，但是还没有放在暂存区里。</p>
+<p>要暂存这次更新，则需要执行<code>git add</code>（看上节关于git add的讲解）命令。</p>
+<p>现在我们运行此命令把 README.mkd放到<strong>暂存区</strong>中：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add README.mkd</span><br></pre></td></tr></table></figure>
+<p>再次status其状态得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   README</span><br><span class="line">        modified:   README.mkd</span><br></pre></td></tr></table></figure>
+<p>两个文件都被放在<strong>暂存区</strong>了，提交后便会被更新到仓库中</p>
+<hr>
+<p>注意：如果此时你又想<strong>修改一个已经被放在暂存区的文件</strong>，则修改后会发现，出现了两个相同的文件，<strong>一个已跟踪并且放在暂存区，而另一个已跟踪未在暂存区。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   README</span><br><span class="line">        modified:   README.mkd</span><br><span class="line"></span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">        modified:   README.mkd</span><br></pre></td></tr></table></figure>
+<p>这是因为 git只会暂存 执行<code>git add</code>后的文件，因此此时需要重新 输入此命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add README.mkd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   README</span><br><span class="line">        modified:   README.mkd</span><br></pre></td></tr></table></figure>
+<h2 id="2-4-忽略某些文件"><a href="#2-4-忽略某些文件" class="headerlink" title="2.4 忽略某些文件"></a>2.4 忽略某些文件</h2><p>我们不想让某些文件被纳入git的管理，即他们<strong>根本不用出现在未跟踪状态下</strong></p>
+<p>我们创建或者修改一下 .gitignore 文件即可</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim .gitignore</span><br></pre></td></tr></table></figure>
+<p>修改后，查看文件如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cat .gitignore</span><br><span class="line">*.gem</span><br><span class="line">*.swp</span><br><span class="line">*.[oa]</span><br><span class="line">*~</span><br><span class="line">*.log</span><br><span class="line">*.tmp</span><br><span class="line">*.pid</span><br><span class="line">rdoc/</span><br><span class="line">pkg/</span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>*.gem</code> <code>*.swp</code> <code>*.[oa]</code> 表示我们要忽略以 gem  swp  o a 等后缀的文件</li>
+<li><code>~</code> 表示 一些文件的副本，或者其他文件</li>
+<li><code>rdoc/</code> 表示的是一个 <strong>文件夹</strong>，因为它的末尾是  /</li>
+</ol>
+<p>要养成一开始就设置好 <code>.gitignore</code> 文件的习惯，以免将来误提交这类无用的文件。（可以对一些模式<strong>取反</strong>，表示的就是忽略他们之外的文件或者目录）</p>
+<h2 id="2-5-查看已暂存或者未暂存的更新"><a href="#2-5-查看已暂存或者未暂存的更新" class="headerlink" title="2.5 查看已暂存或者未暂存的更新"></a>2.5 查看已暂存或者未暂存的更新</h2><p>查看<strong>具体修改了什么地方</strong>，可以使用下面的命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+<p>运行如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">diff --git a/README b/README</span><br><span class="line">index e31a6eb..0a7d6e9 100644</span><br><span class="line">--- a/README</span><br><span class="line">+++ b/README</span><br><span class="line">@@ -1,3 +1,4 @@</span><br><span class="line"> 你好!6</span><br><span class="line"> 6666</span><br><span class="line"> hjhhhh</span><br><span class="line">+我修改了一行</span><br></pre></td></tr></table></figure>
+<p>前面的 + 号表示我们<strong>添改</strong>了这一行的内容，- 号则表示我们<strong>删改</strong>了一行信息</p>
+<p><strong>此命令比较的是工作目录中当前文件和暂存区域快照之间的差异，也就是修改了之后还没有暂存起来的变化</strong></p>
+<hr>
+<p>查看已经暂存的文件与上次提交的文件的差异：</p>
+<p>首先把README先 放入暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add README</span><br></pre></td></tr></table></figure>
+<p>运行如下命令：即可查看</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git diff --cached</span><br></pre></td></tr></table></figure>
+<p>简单总结：</p>
+<ol>
+<li><code>git diff</code>：查看某个文件还<strong>没有被暂存起来的改动</strong>，其实就是显示你当前修改了什么内容，与在暂存区的内容做比较。<strong>暂存前后的变化</strong></li>
+<li><code>git diff --cached</code>：查看某个文件<strong>已经被暂存和上一次提交时的文件的内容差异</strong>。<strong>已经暂存的变化</strong></li>
+</ol>
+<h2 id="2-6-提交更新"><a href="#2-6-提交更新" class="headerlink" title="2.6 提交更新"></a>2.6 提交更新</h2><p>首先检查有没有修改了但是没有被暂存的，因为<strong>提交只会提交暂存区的</strong></p>
+<p>检查：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add xxx # 如果还存在未暂存的目标</span><br></pre></td></tr></table></figure>
+<p>检查完成后，输入<strong>提交命令：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></table></figure>
+<p><strong>这时就会出现一个文本编辑器，并且输入本次提交的说明</strong></p>
+<p>我的出现了 vscode，可以按照下列的命令进行修改默认哪个编辑器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global core.editor xxxxx</span><br></pre></td></tr></table></figure>
+<p>默认的提交信息包括最后一次<code>git status</code>显示的信息</p>
+<blockquote>
+<p>如果觉得这还不够，可以用 <code>-v</code> 选项将修改差异的每一行都包含到注释中来。</p>
+</blockquote>
+<p>退出编辑器时，Git 会丢掉注释行，<strong>将说明内容和本次更新提交到仓库。</strong></p>
+<p>在空行输入提交信息：保存后退出</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">learning git use  </span><br></pre></td></tr></table></figure>
+<p>接着就会提示你提交成功！并且显示当前是在哪个分支（master）提交的，本次提交的完整 <strong>SHA-1 校验和</strong>是什么（<code>582f005</code>），以及在本次提交中，有<strong>多少文件修订过</strong>，<strong>多少行添改和删改过</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[master 582f005] learning git use</span><br><span class="line"> 3 files changed, 10 insertions(+), 1 deletion(-)</span><br><span class="line"> create mode 100644 README</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>提交时记录的是放在暂存区域的快照，任何还未暂存的仍然保持已修改状态，可以在下次提交时纳入版本管理。每一次运行提交操作，都是对你项目作一次快照，以后可以回到这个状态，或者进行比较。</p>
+</blockquote>
+<p>使用 <code>-m</code> 快速添加提交信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m 我要学习</span><br><span class="line"> </span><br><span class="line">[master f949baa] 我要学习</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure>
+<h2 id="2-7-跳过暂存"><a href="#2-7-跳过暂存" class="headerlink" title="2.7 跳过暂存"></a>2.7 跳过暂存</h2><p>使用下面的命令可以将修改的文件无需放入暂存区，即无需使用<code>git add</code>的命令，可以<strong>直接 提交</strong>。</p>
+<p>修改了一个文件之后，执行下面的语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure>
+<p>即在commit的时候添加一个  <code>-a</code>  2.</p>
+<p>实现快速修改提交：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -a -m 跳过暂存</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[master 042500c] 跳过暂存</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure>
+<h2 id="2-8-移除文件"><a href="#2-8-移除文件" class="headerlink" title="2.8 移除文件"></a>2.8 移除文件</h2><p>从 Git 中移除某个不想要的文件，即从<strong>已经暂存的区域移除某个文件</strong>。</p>
+<p><strong>输入以下命令，来删除暂存区的文件，并且直接把它从工作目录中删除，连未跟踪区域都别留下。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm xxx</span><br></pre></td></tr></table></figure>
+<p>相当于直接删除这个文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        deleted:    README</span><br></pre></td></tr></table></figure>
+<p>如果要删除一个<strong>已经放在暂存区</strong>的文件，则必须<strong>强制删除</strong>，输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm -f xxx </span><br></pre></td></tr></table></figure>
+<p>只从暂存区删除，<strong>即删除跟踪，但是不删除其本身</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm --cached xxx</span><br></pre></td></tr></table></figure>
+<p>此命令删除所有 <code>log/</code> 目录下扩展名为 <code>.log</code> 的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm log/\*.log</span><br></pre></td></tr></table></figure>
+<p>删除当前目录及其子目录中所有 <code>~</code> 结尾的文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm \*~</span><br></pre></td></tr></table></figure>
+<h2 id="2-9-移动文件"><a href="#2-9-移动文件" class="headerlink" title="2.9 移动文件"></a>2.9 移动文件</h2><p>我们想要把一个文件README.txt 改为 README ，可以使用下面的命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git mv README.txt README </span><br></pre></td></tr></table></figure>
+<p><code>mv</code> 表示 把文件从README.txt 改为 README</p>
+<p>实际上执行了三条语句是等价的：<strong>注意README.txt一定是在暂存区域内</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mv README.txt README</span><br><span class="line">git rm README.txt</span><br><span class="line">git add README</span><br></pre></td></tr></table></figure>
+<ol>
+<li>mv命令把README.txt 改为 README，但是此时<strong>README.txt仍在暂存区</strong>，并且<strong>README在未暂存区</strong></li>
+<li><strong>删除暂存区的README.txt</strong></li>
+<li><strong>把README放入暂存区</strong></li>
+</ol>
+<p>实际上 <code>git mv file_from file_to</code> 便可以表示这一过程，无需写三条</p>
+<h1 id="3-查看提交历史"><a href="#3-查看提交历史" class="headerlink" title="3. 查看提交历史"></a>3. 查看提交历史</h1><p>演示: 首先运行命令获取项目库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git://github.com/schacon/simplegit-progit.git</span><br></pre></td></tr></table></figure>
+<p>在此项目中运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+<p>会出现以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">commit ca82a6dff817ec66f44342007202690a93763949 (HEAD -&gt; master, origin/master, origin/HEAD)</span><br><span class="line">Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line">Date:   Mon Mar 17 21:52:11 2008 -0700</span><br><span class="line"></span><br><span class="line">    changed the verison number</span><br><span class="line"></span><br><span class="line">commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7</span><br><span class="line">Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line">Date:   Sat Mar 15 16:40:33 2008 -0700</span><br><span class="line"></span><br><span class="line">    removed unnecessary test code</span><br><span class="line"></span><br><span class="line">commit a11bef06a3f659402fe7563abf99ad00de2209e6</span><br><span class="line">Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line">Date:   Sat Mar 15 10:31:28 2008 -0700</span><br><span class="line"></span><br><span class="line">    first commit</span><br></pre></td></tr></table></figure>
+<p><code>git log</code> 会按<strong>提交时间</strong>列出所有的更新，<strong>最近的更新排在最上面</strong></p>
+<p>每次更新都有一个 SHA-1 校验和，作者姓名电子邮箱，提交时间与<strong>提交说明</strong></p>
+<hr>
+<p>使用 <code>-p</code> 显示每次提交的内容差异 <code>-2</code>只显示最近两次：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log -p -2</span><br></pre></td></tr></table></figure>
+<hr>
+<p>使用<code>--word-diff</code>获取<strong>单词层面</strong>的变化</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log -p --word-diff</span><br></pre></td></tr></table></figure>
+<hr>
+<p>使用<code>-stat</code> 显示简要的<strong>增改行数统计</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log --stat</span><br></pre></td></tr></table></figure>
+<p>每个提交都列出了修改过的文件，以及其中添加和移除的行数，并在最后列出所有增减行数小计。</p>
+<hr>
+<p><code>--pretty</code> 可以指定使用完全不同于默认格式的方式展示提交历史</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log --pretty=xxx</span><br></pre></td></tr></table></figure>
+<p>xxx可以为：oneline，short，full，fuller</p>
+<p><code>format</code> 定制显示的格式，相当于debug</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log --pretty=format:&quot;%h - %an, %ar : %s&quot;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">选项	 说明</span><br><span class="line">%H	提交对象（commit）的完整哈希字串</span><br><span class="line">%h	提交对象的简短哈希字串</span><br><span class="line">%T	树对象（tree）的完整哈希字串</span><br><span class="line">%t	树对象的简短哈希字串</span><br><span class="line">%P	父对象（parent）的完整哈希字串</span><br><span class="line">%p	父对象的简短哈希字串</span><br><span class="line">%an	作者（author）的名字</span><br><span class="line">%ae	作者的电子邮件地址</span><br><span class="line">%ad	作者修订日期（可以用 -date= 选项定制格式）</span><br><span class="line">%ar	作者修订日期，按多久以前的方式显示</span><br><span class="line">%cn	提交者(committer)的名字</span><br><span class="line">%ce	提交者的电子邮件地址</span><br><span class="line">%cd	提交日期</span><br><span class="line">%cr	提交日期，按多久以前的方式显示</span><br><span class="line">%s	提交说明</span><br></pre></td></tr></table></figure>
+</blockquote>
+<hr>
+<p><code>log</code> 的后面参数的其他选择</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">选项	说明</span><br><span class="line">-p	按补丁格式显示每个更新之间的差异。</span><br><span class="line">--word-diff	按 word diff 格式显示差异。</span><br><span class="line">--stat	显示每次更新的文件修改统计信息。</span><br><span class="line">--shortstat	只显示 --stat 中最后的行数修改添加移除统计。</span><br><span class="line">--name-only	仅在提交信息后显示已修改的文件清单。</span><br><span class="line">--name-status	显示新增、修改、删除的文件清单。</span><br><span class="line">--abbrev-commit	仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。</span><br><span class="line">--relative-date	使用较短的相对时间显示（比如，“2 weeks ago”）。</span><br><span class="line">--graph	显示 ASCII 图形表示的分支合并历史。</span><br><span class="line">--pretty	使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。</span><br><span class="line">--oneline	`--pretty=oneline --abbrev-commit` 的简化用法</span><br></pre></td></tr></table></figure>
+</blockquote>
+<hr>
+<p><code>--since 和 --until</code> 对<strong>时间作出限制</strong></p>
+<p>显示最近两周的提交：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log --since=2.weeks</span><br></pre></td></tr></table></figure>
+<p>其他选择:</p>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">选项	说明</span><br><span class="line">-(n)	仅显示最近的 n 条提交</span><br><span class="line">--since, --after	仅显示指定时间之后的提交。</span><br><span class="line">--until, --before	仅显示指定时间之前的提交。</span><br><span class="line">--author	仅显示指定作者相关的提交。</span><br><span class="line">--committer	仅显示指定提交者相关的提交。</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="4-撤销操作"><a href="#4-撤销操作" class="headerlink" title="4. 撤销操作"></a>4. 撤销操作</h1><h2 id="4-1-修改最后一次操作"><a href="#4-1-修改最后一次操作" class="headerlink" title="4.1 修改最后一次操作"></a>4.1 修改最后一次操作</h2><p>如果在提交后，发现提交信息写错了，或者漏掉几个文件没有加，则可以这样修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+<hr>
+<p>如果还没有暂存文件就提交了，则可以这样操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit # 提交了</span><br><span class="line">git add file</span><br><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+<p>上面的三条命令最终只是产生一个提交，第二个提交命令修正了第一个的提交内容。</p>
+<h2 id="4-2-取消暂存中的文件"><a href="#4-2-取消暂存中的文件" class="headerlink" title="4.2 取消暂存中的文件"></a>4.2 取消暂存中的文件</h2><p>我们有多个文件还未暂存，但是我们<strong>不小心一次性全部放入暂存了</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<p>但是我们想一个一个放，不能一次性放入，因此我们使用这两条命令（git status显示的内容有说明）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git reset HEAD file</span><br></pre></td></tr></table></figure>
+<p>HEAD表示上一个版本 HEAD^ HEAD^^  …. </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git store --staged file</span><br></pre></td></tr></table></figure>
+<h2 id="4-3-取消对文件的修改"><a href="#4-3-取消对文件的修改" class="headerlink" title="4.3 取消对文件的修改"></a>4.3 取消对文件的修改</h2><p>我们<strong>不想对这个文件进行修改了</strong>，让他回到一开始的状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout -- benchmarks.rb</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>你可能已经意识到了，这条命令有些危险，所有对文件的修改都没有了，因为我们刚刚把之前版本的文件复制过来重写了此文件。所以在用这条命令前，请务必确定真的不再需要保留刚才的修改。如果只是想回退版本，同时保留刚才的修改以便将来继续工作，可以用下章介绍的 stashing 和分支来处理，应该会更好些。</p>
+</blockquote>
+<h1 id="5-远程管理仓库"><a href="#5-远程管理仓库" class="headerlink" title="5. 远程管理仓库"></a>5. 远程管理仓库</h1><p> 管理远程仓库的工作，包括<strong>添加远程库</strong>，<strong>移除废弃的远程库</strong>，<strong>管理各式远程库分支</strong>，<strong>定义是否跟踪这些分支</strong></p>
+<h2 id="5-1-查看当前远程库"><a href="#5-1-查看当前远程库" class="headerlink" title="5.1 查看当前远程库"></a>5.1 查看当前远程库</h2><p>查看当前配置有哪些远程库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
+<p>注意：<strong>默认存在一个 origin的远程库</strong>，Git 默认使用这个名字来标识你所克隆的原始仓库。</p>
+<p>显示原始仓库的<strong>克隆地址</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote --v</span><br></pre></td></tr></table></figure>
+<p>如果有多个远程仓库，此命令将全部列出。</p>
+<h2 id="5-2-添加远程仓库"><a href="#5-2-添加远程仓库" class="headerlink" title="5.2 添加远程仓库"></a>5.2 添加远程仓库</h2><p>要添加一个新的远程仓库，可以指定一个简单的名字，以便将来引用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote add pb  git://github.com/paulboone/ticgit.git</span><br></pre></td></tr></table></figure>
+<p>添加了一个 远程仓库  名称为 pb</p>
+<p><strong>pb代表的就是远程仓库的地址</strong></p>
+<p>抓取仓库地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch pb</span><br></pre></td></tr></table></figure>
+<p>Paul 的主干分支（master）已经完全可以在本地访问了，对应的名字是 <code>pb/master</code>，你可以将它合并到自己的某个分支，或者切换到这个分支，看看有些什么有趣的更新。</p>
+<h2 id="5-3-从远程仓库抓取数据"><a href="#5-3-从远程仓库抓取数据" class="headerlink" title="5.3 从远程仓库抓取数据"></a>5.3 从远程仓库抓取数据</h2><p>使用下面的命令从<strong>远程仓库抓取数据到本地</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch &lt;remote-name&gt;</span><br></pre></td></tr></table></figure>
+<p>此命令从<strong>远程仓库中拉取所有你本地仓库中还没有的数据</strong>。</p>
+<hr>
+<p>抓取从你上次克隆这个仓库以来，别人上传到此仓库中的所有更新：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch origin</span><br></pre></td></tr></table></figure>
+<p>有一点很重要，需要记住，<strong>fetch 命令只是将远端的数据拉到本地仓库，并不自动合并到当前工作分支</strong>，只有当你确实准备好了，才能手工合并。</p>
+<h2 id="5-4-推送数据到远程仓库"><a href="#5-4-推送数据到远程仓库" class="headerlink" title="5.4 推送数据到远程仓库"></a>5.4 推送数据到远程仓库</h2><p>项目进行到一个阶段，要同别人分享目前的成果，可以将本地仓库中的数据推送到远程仓库。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br></pre></td></tr></table></figure>
+<p>把本地的branch分支推送到远程 remote 服务器上</p>
+<h2 id="5-5-查看远程仓库信息"><a href="#5-5-查看远程仓库信息" class="headerlink" title="5.5 查看远程仓库信息"></a>5.5 查看远程仓库信息</h2><p>命令:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote show [remote-name]</span><br></pre></td></tr></table></figure>
+<p>查看某个远程仓库的信息</p>
+<p>它友善地告诉你如果是在 <strong>master 分支</strong>，就可以用 <code>git pull</code> 命令抓取数据合并到本地。</p>
+<p>另外还列出了所有<strong>处于跟踪状态中的远端分支</strong>。</p>
+<h2 id="5-6-远程仓库的删除与重命名"><a href="#5-6-远程仓库的删除与重命名" class="headerlink" title="5.6 远程仓库的删除与重命名"></a>5.6 远程仓库的删除与重命名</h2><p>修改某个远程仓库在本地的名称</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote rename pb pbnewname</span><br></pre></td></tr></table></figure>
+<p>对远程仓库的重命名，也会使对应的分支名称发生变化。</p>
+<p>删除对应的远程仓库：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote rm pbname</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git学习(1)</title>
+    <url>/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><ol>
+<li>本地版本控制系统</li>
+<li>集中化的版本控制系统</li>
+<li>分布式版本控制系统</li>
+</ol>
+<h1 id="git基础"><a href="#git基础" class="headerlink" title="git基础"></a>git基础</h1><p>git与其他版本控制系统的区别是：<strong>git只保存文件数据的整体是否发生变化。</strong> 而大多数其他系统则只关心文件内容的<strong>具体差异</strong></p>
+<p>换句话说：<strong>git保存每次更新时的文件快照</strong></p>
+<p>Git 更像是个小型的文件系统，但它同时还提供了许多以此为基础的超强工具，而不只是一个简单的 VCS。</p>
+<p>git的所有操作都是对本地文件的资源操作，因此不需要联网。 <strong>Git 在本地磁盘上就保存着所有当前项目的历史更新，所以处理起来速度飞快。</strong></p>
+<p>git每次只需要从本地数据库读取内容，在任何时候都可以随时读取，再查看历史版本的时候，git会在保存的<strong>历史快照中</strong>查询，而不需要请求远程服务器或者把查询老版本的文件。</p>
+<p>git可以在没有网络的时候<strong>随时提交更新到本地</strong>，等到有网络的时候再<strong>上传远程仓库</strong>。</p>
+<p>git具有内容完整性的功能：<strong>在保存到 Git 之前，所有数据都要进行内容的校验和计算，并将此结果作为数据的唯一标识和索引。</strong>任何文件如果在传输时发生损坏，git都能察觉。</p>
+<p>git使用 SHA-1 算法计算数据的校验和，这实际上是一个<strong>哈希值</strong>，git通过将文件转换为哈希值来工作，并依靠它作为git的索引。</p>
+<hr>
+<h2 id="git文件的三种形式"><a href="#git文件的三种形式" class="headerlink" title="git文件的三种形式"></a>git文件的三种形式</h2><ol>
+<li>已提交：文件已经被安全的保存在本地数据库中</li>
+<li>已修改：已经修改了文件，但是还没有保存提交</li>
+<li>已暂存：把已修改的文件放在下次提交要保存的清单中</li>
+</ol>
+<p>git管理项目的三个区域：</p>
+<ol>
+<li>git的工作目录：项目中取出<strong>某个版本的所有文件和目录</strong>，用以开始后续工作。</li>
+<li>暂存区域：暂存区域只不过是个简单的文件，一般都放在 Git 目录中。</li>
+<li>本地仓库：Git或者 .git 目录：是保存元数据和对象数据库的地方，实际上克隆仓库的时候就是克隆这里面的数据</li>
+</ol>
+<hr>
+<p>Git的工作流程：</p>
+<ol>
+<li>在<strong>工作目录</strong>中修改某些文件。</li>
+<li>修改完成后的文件进行<strong>快照</strong>存放在<strong>暂存区域</strong>中</li>
+<li>把暂存区域中的文件的快照提交更新到<strong>Git目录</strong>中。</li>
+</ol>
+<p>三种状态：</p>
+<ol>
+<li>已提交状态</li>
+<li>已暂存状态</li>
+<li>已修改状态</li>
+</ol>
+<h1 id="git的安装"><a href="#git的安装" class="headerlink" title="git的安装"></a>git的安装</h1><h2 id="源代码安装"><a href="#源代码安装" class="headerlink" title="源代码安装"></a>源代码安装</h2><ol>
+<li>如果有 yum，则输入以下命令：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install curl-devel expat-devel gettext-devel \</span><br><span class="line">  openssl-devel zlib-devel</span><br></pre></td></tr></table></figure>
+<ol>
+<li>如果有apt-get，则输入以下命令：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \</span><br><span class="line">  libz-dev libssl-dev</span><br></pre></td></tr></table></figure>
+<p>之后，从下面的 Git 官方站点下载最新版本源代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://git-scm.com/download</span><br></pre></td></tr></table></figure>
+<p>然后编译并安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ tar -zxf git-1.7.2.2.tar.gz</span><br><span class="line">$ cd git-1.7.2.2</span><br><span class="line">$ make prefix=/usr/local all</span><br><span class="line">$ sudo make prefix=/usr/local install</span><br></pre></td></tr></table></figure>
+<p>现在已经可以用 <code>git</code> 命令了，用 <code>git</code> 把 Git 项目仓库克隆到本地，以便日后随时更新：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git clone git://git.kernel.org/pub/scm/git/git.git</span><br></pre></td></tr></table></figure>
+<h2 id="linux安装"><a href="#linux安装" class="headerlink" title="linux安装"></a>linux安装</h2><ol>
+<li>具有yum的时候，通过yum安装</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install git-core</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Ubuntu 具有 apt-get的时候，通过apt-get安装</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install git</span><br></pre></td></tr></table></figure>
+<h2 id="window安装"><a href="#window安装" class="headerlink" title="window安装"></a>window安装</h2><ol>
+<li>通过GitHub的开源项目安装 下载exe，并且运行</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://msysgit.github.com/</span><br></pre></td></tr></table></figure>
+<ol>
+<li>上一种方法国内下载慢，可以使用阿里镜像安装</li>
+</ol>
+<p><a href="https://registry.npmmirror.com/binary.html?path=git-for-windows/">阿里镜像下载 git</a></p>
+<h1 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h1><p>git config工具，实际上是 git-config命令，使用这个命令来配置或者读取相应的工作环境变量。而正是由这些环境变量，决定了 Git 在各个环节的具体工作方式和行为。这些变量可以存放在以下三个不同的地方：</p>
+<ol>
+<li><code>/etc/gitconfig</code>：系统中所有用户都使用的配置，git config时使用 —system。</li>
+<li><code>~/.gitconfig</code>：用户工作目录下的配置文件只适用于此用户git config时使用 —global。</li>
+<li><code>.git/config</code>：当前项目的配置文件，只针对于当前项目。</li>
+</ol>
+<p>每一个级别的配置都会覆盖上层相同的配置，因此<code>.git/config</code>会覆盖<code>/etc/gitconfig</code>中的同名变量。</p>
+<p><code>.gitconfig</code>的路径：默认在C盘的user的文件夹下。</p>
+<h2 id="修改用户信息"><a href="#修改用户信息" class="headerlink" title="修改用户信息"></a>修改用户信息</h2><p>git在提交更新的时候需要知道是谁提交了，因此需要配置个人信息</p>
+<p>输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;用户名&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.email 电子邮箱</span><br></pre></td></tr></table></figure>
+<p>使用—global配置的.gitconfig的文件路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;C:\Users\username\.gitconfig&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>我们配置的是用户主目录的那个，因此所有的项目默认使用这个配置。</strong></p>
+<p>如果要在<strong>某个特定的项目中</strong>使用其他用户或者电脑，则需要去掉 —global ，重新配置信息即可。</p>
+<h2 id="文本编辑器"><a href="#文本编辑器" class="headerlink" title="文本编辑器"></a>文本编辑器</h2><p>默认的git输入信息使用的文编编辑器</p>
+<p>我这里使用vscode，你也可以使用Emacs  或者 vim</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global core.editor vscode</span><br></pre></td></tr></table></figure>
+<h2 id="差异比较工具"><a href="#差异比较工具" class="headerlink" title="差异比较工具"></a>差异比较工具</h2><p>在解决合并冲突时使用哪种差异分析工具。比如要改用 vimdiff 的话：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global merge.tool vimdiff</span><br></pre></td></tr></table></figure>
+<h2 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h2><p>输入命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+<h2 id="使用帮助命令"><a href="#使用帮助命令" class="headerlink" title="使用帮助命令"></a>使用帮助命令</h2><p>想要知道某个命令如何使用： </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config &lt;xxx&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo与github搭建个人博客</title>
     <url>/2023/03/02/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="0-前置内容"><a href="#0-前置内容" class="headerlink" title="0. 前置内容"></a>0. 前置内容</h1><ol>

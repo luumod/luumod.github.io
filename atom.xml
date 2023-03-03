@@ -6,7 +6,7 @@
   <link href="https://luumod.github.io/atom.xml" rel="self"/>
   
   <link href="https://luumod.github.io/"/>
-  <updated>2023-03-03T07:53:22.935Z</updated>
+  <updated>2023-03-03T14:48:04.740Z</updated>
   <id>https://luumod.github.io/</id>
   
   <author>
@@ -15,6 +15,88 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git学习(2)</title>
+    <link href="https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/"/>
+    <id>https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/</id>
+    <published>2023-03-03T09:56:02.000Z</published>
+    <updated>2023-03-03T14:48:04.740Z</updated>
+    
+    
+    <summary type="html">1 创建 git仓库
+1.1 从现有工作目录中初始化新仓库
+需要到你需要用git管理的项目中输入以下命令：
+
+1
+
+
+git init
+
+
+便会创建一个空的git项目，并且当前目录下会出现一个名为 .git 的目录， Git 需要的数据和资源都存放在这个目录中，不过我们目前只是初始化所有的文件与目录
+
+ 1. 告诉 git在这个目录中有几个文件需要版本控制。我使用了几个cpp的文件
+
+1
+
+
+git add *.cpp
+
+
+还可以：
+
+1
+
+
+git add README
+
+
+1
+
+
+git commit -m &#39;initial project version&#39;
+
+
+你已经得到了一个实际维护着</summary>
+    
+    
+    
+    
+    <category term="git" scheme="https://luumod.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git学习(1)</title>
+    <link href="https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/"/>
+    <id>https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/</id>
+    <published>2023-03-03T08:51:24.000Z</published>
+    <updated>2023-03-03T09:54:55.187Z</updated>
+    
+    
+    <summary type="html">版本控制
+ 1. 本地版本控制系统
+ 2. 集中化的版本控制系统
+ 3. 分布式版本控制系统
+
+git基础
+git与其他版本控制系统的区别是：git只保存文件数据的整体是否发生变化。 而大多数其他系统则只关心文件内容的具体差异
+
+换句话说：git保存每次更新时的文件快照
+
+Git 更像是个小型的文件系统，但它同时还提供了许多以此为基础的超强工具，而不只是一个简单的 VCS。
+
+git的所有操作都是对本地文件的资源操作，因此不需要联网。 Git 在本地磁盘上就保存着所有当前项目的历史更新，所以处理起来速度飞快。
+
+git每次只需要从本地数据库读取内容，在任何时候都可以随时读取，再查看历史版本的时</summary>
+    
+    
+    
+    
+    <category term="git" scheme="https://luumod.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo与github搭建个人博客</title>
