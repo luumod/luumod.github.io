@@ -15,7 +15,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title>git学习(2)</title>
+    <title>git学习（2） - 基本命令操作总结</title>
     <url>/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-创建-git仓库"><a href="#1-创建-git仓库" class="headerlink" title="1 创建 git仓库"></a>1 创建 git仓库</h1><h2 id="1-1-从现有工作目录中初始化新仓库"><a href="#1-1-从现有工作目录中初始化新仓库" class="headerlink" title="1.1 从现有工作目录中初始化新仓库"></a>1.1 从现有工作目录中初始化新仓库</h2><p>需要到你需要用git管理的项目中输入以下命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
@@ -268,7 +268,7 @@
       </tags>
   </entry>
   <entry>
-    <title>git学习(1)</title>
+    <title>git学习（1） - git的安装与配置</title>
     <url>/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><ol>
 <li>本地版本控制系统</li>
@@ -1291,10 +1291,5 @@
       <tags>
         <tag>搜索与寻路</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>第一篇文章</title>
-    <url>/2023/03/01/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="我的个人博客"><a href="#我的个人博客" class="headerlink" title="我的个人博客"></a>我的个人博客</h1>]]></content>
   </entry>
 </search>

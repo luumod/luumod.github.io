@@ -6,7 +6,7 @@
   <link href="https://luumod.github.io/atom.xml" rel="self"/>
   
   <link href="https://luumod.github.io/"/>
-  <updated>2023-03-03T14:48:33.868Z</updated>
+  <updated>2023-03-03T15:23:16.658Z</updated>
   <id>https://luumod.github.io/</id>
   
   <author>
@@ -17,48 +17,14 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>git学习(2)</title>
+    <title>git学习（2） - 基本命令操作总结</title>
     <link href="https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/"/>
     <id>https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/</id>
     <published>2023-03-03T09:56:02.000Z</published>
-    <updated>2023-03-03T14:48:33.868Z</updated>
+    <updated>2023-03-03T15:23:16.658Z</updated>
     
     
-    <summary type="html">1 创建 git仓库
-1.1 从现有工作目录中初始化新仓库
-需要到你需要用git管理的项目中输入以下命令：
-
-1
-
-
-git init
-
-
-便会创建一个空的git项目，并且当前目录下会出现一个名为 .git 的目录， Git 需要的数据和资源都存放在这个目录中，不过我们目前只是初始化所有的文件与目录
-
- 1. 告诉 git在这个目录中有几个文件需要版本控制。我使用了几个cpp的文件
-
-1
-
-
-git add *.cpp
-
-
-还可以：
-
-1
-
-
-git add README
-
-
-1
-
-
-git commit -m &#39;initial project version&#39;
-
-
-你已经得到了一个实际维护着</summary>
+    <summary type="html">本文主要讲解了git的常用基本操作,如创建仓库,更新提交仓库,撤销,创建远程仓库等等</summary>
     
     
     
@@ -68,28 +34,14 @@ git commit -m &#39;initial project version&#39;
   </entry>
   
   <entry>
-    <title>git学习(1)</title>
+    <title>git学习（1） - git的安装与配置</title>
     <link href="https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/"/>
     <id>https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/</id>
     <published>2023-03-03T08:51:24.000Z</published>
-    <updated>2023-03-03T14:48:33.866Z</updated>
+    <updated>2023-03-03T15:23:32.932Z</updated>
     
     
-    <summary type="html">版本控制
- 1. 本地版本控制系统
- 2. 集中化的版本控制系统
- 3. 分布式版本控制系统
-
-git基础
-git与其他版本控制系统的区别是：git只保存文件数据的整体是否发生变化。 而大多数其他系统则只关心文件内容的具体差异
-
-换句话说：git保存每次更新时的文件快照
-
-Git 更像是个小型的文件系统，但它同时还提供了许多以此为基础的超强工具，而不只是一个简单的 VCS。
-
-git的所有操作都是对本地文件的资源操作，因此不需要联网。 Git 在本地磁盘上就保存着所有当前项目的历史更新，所以处理起来速度飞快。
-
-git每次只需要从本地数据库读取内容，在任何时候都可以随时读取，再查看历史版本的时</summary>
+    <summary type="html">本文主要讲解了git的安装，配置基本工作</summary>
     
     
     
@@ -103,36 +55,10 @@ git每次只需要从本地数据库读取内容，在任何时候都可以随�
     <link href="https://luumod.github.io/2023/03/02/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>https://luumod.github.io/2023/03/02/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
     <published>2023-03-02T14:39:20.000Z</published>
-    <updated>2023-03-03T07:53:22.935Z</updated>
+    <updated>2023-03-03T15:12:48.712Z</updated>
     
     
-    <summary type="html">0. 前置内容
- 1. git 的下载： 官网下载较慢，这边推荐阿里镜像下载：
-
-阿里镜像下载 git
-
-往下滑选择接近当前日期的最新版本 2.39.2 windows
-
-
-
-选择 2.39.2 -64 的exe下载，大概有 50Mb大小
-
-
-
-下载好后，直接一直点下一步即可。如果你了解过git，则可以按照自己的习惯下载，这不重要。
-
- 1. Nodejs下载
-
-直接百度搜索 Nodejs，Nodejs下载 
-
-选择 18.14.2 的 LTS版本下载
-
-
-
-1. hexo创建个人博客
-hexo是什么？
-
- * 正如hexo的首页所显示的，它是一款非常快速，简介，高效的博客框架平台，我们可以利</summary>
+    <summary type="html">使用hexo部署GitHub创建个人博客及后期维护全过程（持续更新）</summary>
     
     
     
@@ -146,39 +72,10 @@ hexo是什么？
     <link href="https://luumod.github.io/2023/03/02/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
     <id>https://luumod.github.io/2023/03/02/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</id>
     <published>2023-03-02T05:13:12.000Z</published>
-    <updated>2023-03-02T10:45:04.366Z</updated>
+    <updated>2023-03-03T15:17:41.707Z</updated>
     
     
-    <summary type="html">1. 行列式
-行列式的定义：n*n个数字排成n行n列，叫做n阶行列式。
-
-行列式的项数：
-
- 1. 2阶行列式有2项
- 2. 3阶行列式有6项
- 3. 4阶行列式有24项
-
-1.1 余子式与代数余子式
-余子式：关于一个k阶子式的余子式，是A去掉了这个k阶子式所在的行与列之后得到的（n－k）×（n－k）矩阵的行列式。
-
-代数余子式：元素aₒₑi的代数余子式与该元素本身没什么关系，只与该元素的位置有关。
-
-行列式按行展开
-
- * 行列式的值D = 任意一行（列）元素自己的*代数余子式之和
-
-
-
-
-异乘变零定理
-
- * 某行元素与另一行元素的代数余子式乘积之和=0
-
-
-
-
-拉普拉斯定理（k阶子式）
-</summary>
+    <summary type="html">线性代数知识点总结（持续更新）</summary>
     
     
     
@@ -192,25 +89,10 @@ hexo是什么？
     <link href="https://luumod.github.io/2023/03/01/A%E6%98%9F%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
     <id>https://luumod.github.io/2023/03/01/A%E6%98%9F%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</id>
     <published>2023-03-01T12:16:57.000Z</published>
-    <updated>2023-03-02T10:45:04.361Z</updated>
+    <updated>2023-03-03T15:18:17.583Z</updated>
     
     
-    <summary type="html">@[toc]
-
-三种寻路算法
- * 深度寻路算法：不一定能找到最佳路径，但是寻路快速，只能走直线。
- * 广度寻路算法：一定能找到最短路径，但是开销大，时间慢，只能走直线。
- * A星寻路算法（常用）：一定能找到最短路径，可以走直线和斜线，而且开销较小，常用于大型地图的寻路
-
-A星寻路算法
-A星寻路算法思想
-引入： 狼吃羊模型。
-
-狼捕猎羊：如果抓到了就加100分；如果狼不动，每分钟减2分；如果狼抓捕时会跑，跑步每分钟减5分；
-
-​ 狼会饿 ，饿的时候每分钟减10分。 有一个积分的概念在这里面。结果会发现狼会站在原地不动。
-
-​ 因为狼直到，抓住羊很困难，跑步时会扣分，饿时会扣分，不动时也会扣</summary>
+    <summary type="html">A星寻路算法详解（完整配图演示 + cpp实现完整代码）</summary>
     
     
     
@@ -220,45 +102,14 @@ A星寻路算法思想
   </entry>
   
   <entry>
-    <title>第一篇文章</title>
-    <link href="https://luumod.github.io/2023/03/01/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
-    <id>https://luumod.github.io/2023/03/01/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</id>
-    <published>2023-03-01T06:35:55.000Z</published>
-    <updated>2023-03-02T10:45:04.364Z</updated>
-    
-    
-    <summary type="html">我的个人博客</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
     <link href="https://luumod.github.io/2023/03/01/hello-world/"/>
     <id>https://luumod.github.io/2023/03/01/hello-world/</id>
     <published>2023-03-01T06:30:47.716Z</published>
-    <updated>2023-03-02T10:45:04.363Z</updated>
+    <updated>2023-03-03T15:18:40.730Z</updated>
     
     
-    <summary type="html">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-
-Quick Start
-Create a new post
-1
-
-
-$ hexo new &quot;My New Post&quot;
-
-
-More info: Writing
-
-Run server
-1
-
-
-$ hexo s</summary>
+    <summary type="html">Hello World！This is my first Blog</summary>
     
     
     
