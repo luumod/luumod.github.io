@@ -70,7 +70,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g </span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s </span><br></pre></td></tr></table></figure>
 <p>完成后会显示如下内容，则说明<strong>配置成功</strong>!</p>
-<p><img src="C:\Users\woshishuaige\AppData\Roaming\Typora\typora-user-images\image-20230302232027120.png" alt="image-20230302232027120"></p>
+<p><img src="https://great.wzznft.com/i/2023/03/03/piaj7x.png" alt=""></p>
 <p>在  git 中输入 Ctrl+C 即可关闭hexo s的内容。</p>
 <p>打开浏览器，在浏览器输入 <strong>localhost:4000</strong> 即可进入你的<strong>初始默认博客</strong></p>
 <p>它长这样：</p>
