@@ -220,6 +220,9 @@
 <hr>
 <p><strong>一旦分支中的提交对象发布到公共仓库，就千万不要对该分支进行衍合操作。</strong></p>
 ]]></content>
+      <categories>
+        <category>实用技术</category>
+      </categories>
       <tags>
         <tag>git</tag>
       </tags>
@@ -535,6 +538,9 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global alias.visual &#x27;!gitk&#x27;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git visual </span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>实用技术</category>
+      </categories>
       <tags>
         <tag>git</tag>
       </tags>
@@ -636,6 +642,9 @@
 <h2 id="使用帮助命令"><a href="#使用帮助命令" class="headerlink" title="使用帮助命令"></a>使用帮助命令</h2><p>想要知道某个命令如何使用： </p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config &lt;xxx&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>实用技术</category>
+      </categories>
       <tags>
         <tag>git</tag>
       </tags>
@@ -1477,6 +1486,9 @@
 <p><strong>实对阵矩阵A正定的充要条件是 A的各阶顺序子式都大于0</strong></p>
 <hr>
 <h1 id="待完善"><a href="#待完善" class="headerlink" title="待完善 ~~~"></a>待完善 ~~~</h1>]]></content>
+      <categories>
+        <category>数学</category>
+      </categories>
       <tags>
         <tag>线性代数</tag>
       </tags>
@@ -1560,6 +1572,9 @@
 <p>终点row，col（6，5）<br><img src="https://img-blog.csdnimg.cn/ea18d5c7ee2e41eb820e65e6fd5e172f.png" alt="在这里插入图片描述"></p>
 <hr>
 ]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
       <tags>
         <tag>搜索与寻路</tag>
       </tags>

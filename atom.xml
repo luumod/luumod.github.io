@@ -6,7 +6,7 @@
   <link href="https://luumod.github.io/atom.xml" rel="self"/>
   
   <link href="https://luumod.github.io/"/>
-  <updated>2023-03-04T10:41:45.683Z</updated>
+  <updated>2023-03-04T13:21:05.579Z</updated>
   <id>https://luumod.github.io/</id>
   
   <author>
@@ -21,12 +21,14 @@
     <link href="https://luumod.github.io/2023/03/04/git%E5%AD%A6%E4%B9%A0-3/"/>
     <id>https://luumod.github.io/2023/03/04/git%E5%AD%A6%E4%B9%A0-3/</id>
     <published>2023-03-04T06:14:43.000Z</published>
-    <updated>2023-03-04T10:41:45.683Z</updated>
+    <updated>2023-03-04T13:21:05.579Z</updated>
     
     
     <summary type="html">本文主要讲解了git分支的概念，如何新建分支，合并分支，删除分支，管理分支，分支开发的流程和远程分支及分支衍和等操作</summary>
     
     
+    
+    <category term="实用技术" scheme="https://luumod.github.io/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
     
     
     <category term="git" scheme="https://luumod.github.io/tags/git/"/>
@@ -38,12 +40,14 @@
     <link href="https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/"/>
     <id>https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/</id>
     <published>2023-03-03T09:56:02.000Z</published>
-    <updated>2023-03-04T06:41:16.690Z</updated>
+    <updated>2023-03-04T13:20:54.239Z</updated>
     
     
     <summary type="html">本文主要讲解了git的常用基本操作,如创建仓库,更新提交仓库,撤销,创建远程仓库等等</summary>
     
     
+    
+    <category term="实用技术" scheme="https://luumod.github.io/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
     
     
     <category term="git" scheme="https://luumod.github.io/tags/git/"/>
@@ -55,12 +59,14 @@
     <link href="https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/"/>
     <id>https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/</id>
     <published>2023-03-03T08:51:24.000Z</published>
-    <updated>2023-03-03T15:23:32.932Z</updated>
+    <updated>2023-03-04T13:19:55.239Z</updated>
     
     
     <summary type="html">本文主要讲解了git的安装，配置基本工作</summary>
     
     
+    
+    <category term="实用技术" scheme="https://luumod.github.io/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
     
     
     <category term="git" scheme="https://luumod.github.io/tags/git/"/>
@@ -89,12 +95,14 @@
     <link href="https://luumod.github.io/2023/03/02/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
     <id>https://luumod.github.io/2023/03/02/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</id>
     <published>2023-03-02T05:13:12.000Z</published>
-    <updated>2023-03-03T15:17:41.707Z</updated>
+    <updated>2023-03-04T13:21:45.709Z</updated>
     
     
     <summary type="html">线性代数知识点总结（持续更新）</summary>
     
     
+    
+    <category term="数学" scheme="https://luumod.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
     
     
     <category term="线性代数" scheme="https://luumod.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
@@ -106,12 +114,14 @@
     <link href="https://luumod.github.io/2023/03/01/A%E6%98%9F%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
     <id>https://luumod.github.io/2023/03/01/A%E6%98%9F%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</id>
     <published>2023-03-01T12:16:57.000Z</published>
-    <updated>2023-03-03T15:18:17.583Z</updated>
+    <updated>2023-03-04T13:21:20.533Z</updated>
     
     
     <summary type="html">A星寻路算法详解（完整配图演示 + cpp实现完整代码）</summary>
     
     
+    
+    <category term="数据结构与算法" scheme="https://luumod.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
     
     
     <category term="搜索与寻路" scheme="https://luumod.github.io/tags/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%AF%BB%E8%B7%AF/"/>
