@@ -3,11 +3,11 @@
   <title>HugeYlh</title>
   
   <subtitle>奔赴山海，保持热爱</subtitle>
-  <link href="https://luumod.github.io/atom.xml" rel="self"/>
+  <link href="https://helloylh.com/atom.xml" rel="self"/>
   
-  <link href="https://luumod.github.io/"/>
+  <link href="https://helloylh.com/"/>
   <updated>2023-03-04T13:21:05.579Z</updated>
-  <id>https://luumod.github.io/</id>
+  <id>https://helloylh.com/</id>
   
   <author>
     <name>ylh</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>git学习（3）- Git分支的操作管理与工作流程</title>
-    <link href="https://luumod.github.io/2023/03/04/git%E5%AD%A6%E4%B9%A0-3/"/>
-    <id>https://luumod.github.io/2023/03/04/git%E5%AD%A6%E4%B9%A0-3/</id>
+    <link href="https://helloylh.com/2023/03/04/git%E5%AD%A6%E4%B9%A0-3/"/>
+    <id>https://helloylh.com/2023/03/04/git%E5%AD%A6%E4%B9%A0-3/</id>
     <published>2023-03-04T06:14:43.000Z</published>
     <updated>2023-03-04T13:21:05.579Z</updated>
     
@@ -28,17 +28,17 @@
     
     
     
-    <category term="实用技术" scheme="https://luumod.github.io/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
+    <category term="实用技术" scheme="https://helloylh.com/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="git" scheme="https://luumod.github.io/tags/git/"/>
+    <category term="git" scheme="https://helloylh.com/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>git学习（2） - 基本命令操作总结</title>
-    <link href="https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/"/>
-    <id>https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/</id>
+    <link href="https://helloylh.com/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/"/>
+    <id>https://helloylh.com/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/</id>
     <published>2023-03-03T09:56:02.000Z</published>
     <updated>2023-03-04T13:20:54.239Z</updated>
     
@@ -47,17 +47,17 @@
     
     
     
-    <category term="实用技术" scheme="https://luumod.github.io/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
+    <category term="实用技术" scheme="https://helloylh.com/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="git" scheme="https://luumod.github.io/tags/git/"/>
+    <category term="git" scheme="https://helloylh.com/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>git学习（1） - git的安装与配置</title>
-    <link href="https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/"/>
-    <id>https://luumod.github.io/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/</id>
+    <link href="https://helloylh.com/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/"/>
+    <id>https://helloylh.com/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/</id>
     <published>2023-03-03T08:51:24.000Z</published>
     <updated>2023-03-04T13:19:55.239Z</updated>
     
@@ -66,17 +66,17 @@
     
     
     
-    <category term="实用技术" scheme="https://luumod.github.io/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
+    <category term="实用技术" scheme="https://helloylh.com/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="git" scheme="https://luumod.github.io/tags/git/"/>
+    <category term="git" scheme="https://helloylh.com/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>hexo与github搭建个人博客</title>
-    <link href="https://luumod.github.io/2023/03/02/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://luumod.github.io/2023/03/02/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
+    <link href="https://helloylh.com/2023/03/02/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://helloylh.com/2023/03/02/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
     <published>2023-03-02T14:39:20.000Z</published>
     <updated>2023-03-03T15:12:48.712Z</updated>
     
@@ -86,14 +86,14 @@
     
     
     
-    <category term="实用技术" scheme="https://luumod.github.io/tags/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
+    <category term="实用技术" scheme="https://helloylh.com/tags/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
   <entry>
     <title>线性代数知识点总结</title>
-    <link href="https://luumod.github.io/2023/03/02/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
-    <id>https://luumod.github.io/2023/03/02/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</id>
+    <link href="https://helloylh.com/2023/03/02/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
+    <id>https://helloylh.com/2023/03/02/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</id>
     <published>2023-03-02T05:13:12.000Z</published>
     <updated>2023-03-04T13:21:45.709Z</updated>
     
@@ -102,17 +102,17 @@
     
     
     
-    <category term="数学" scheme="https://luumod.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    <category term="数学" scheme="https://helloylh.com/categories/%E6%95%B0%E5%AD%A6/"/>
     
     
-    <category term="线性代数" scheme="https://luumod.github.io/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    <category term="线性代数" scheme="https://helloylh.com/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
     
   </entry>
   
   <entry>
     <title>A星寻路算法详解</title>
-    <link href="https://luumod.github.io/2023/03/01/A%E6%98%9F%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://luumod.github.io/2023/03/01/A%E6%98%9F%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</id>
+    <link href="https://helloylh.com/2023/03/01/A%E6%98%9F%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://helloylh.com/2023/03/01/A%E6%98%9F%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</id>
     <published>2023-03-01T12:16:57.000Z</published>
     <updated>2023-03-04T13:21:20.533Z</updated>
     
@@ -121,17 +121,17 @@
     
     
     
-    <category term="数据结构与算法" scheme="https://luumod.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    <category term="数据结构与算法" scheme="https://helloylh.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="搜索与寻路" scheme="https://luumod.github.io/tags/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%AF%BB%E8%B7%AF/"/>
+    <category term="搜索与寻路" scheme="https://helloylh.com/tags/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%AF%BB%E8%B7%AF/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://luumod.github.io/2023/03/01/hello-world/"/>
-    <id>https://luumod.github.io/2023/03/01/hello-world/</id>
+    <link href="https://helloylh.com/2023/03/01/hello-world/"/>
+    <id>https://helloylh.com/2023/03/01/hello-world/</id>
     <published>2023-03-01T06:30:47.716Z</published>
     <updated>2023-03-04T12:09:55.016Z</updated>
     
