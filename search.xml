@@ -1,187 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>git学习（1） - git的安装与配置</title>
-    <url>/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><ol>
-<li>本地版本控制系统</li>
-<li>集中化的版本控制系统</li>
-<li>分布式版本控制系统</li>
+    <title>Hello World</title>
+    <url>/2023/03/01/hello-world/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>git学习（3）- Git分支的操作管理与工作流程</title>
+    <url>/2023/03/04/git%E5%AD%A6%E4%B9%A0-3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>文章首发于：<a href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
+<h1 id="1-Git分支的概念"><a href="#1-Git分支的概念" class="headerlink" title="1. Git分支的概念"></a>1. Git分支的概念</h1><p>在Git提交的时候，会保存一个<strong>指向文件快照的指针</strong>，包含本次提交的作者等相关信息。</p>
+<p>同时也包含多个指向文件内容快照的父指针。</p>
+<p>我们首先创建三个文件，然后执行如下操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;my first project&#x27;</span><br></pre></td></tr></table></figure>
+<p>暂存操作会对每一个文件计算<strong>校验和</strong>（即第一章中提到的 SHA-1 哈希字串），然后把当前版本的<strong>文件快照保存到 Git 仓库中</strong>（Git 使用 blob 类型的对象存储这些快照）</p>
+<p>此时Git仓库中的五个对象:</p>
+<ol>
+<li>三个 blob 类型的对象</li>
+<li>一个记录着目录树内容及其中各个文件对应 blob 对象索引的 tree 对象；</li>
+<li>以及一个包含指向 tree 对象（根目录）的索引和其他提交信息元数据的 <strong>commit 对象</strong>。</li>
 </ol>
-<h1 id="git基础"><a href="#git基础" class="headerlink" title="git基础"></a>git基础</h1><p>git与其他版本控制系统的区别是：<strong>git只保存文件数据的整体是否发生变化。</strong> 而大多数其他系统则只关心文件内容的<strong>具体差异</strong></p>
-<p>换句话说：<strong>git保存每次更新时的文件快照</strong></p>
-<p>Git 更像是个小型的文件系统，但它同时还提供了许多以此为基础的超强工具，而不只是一个简单的 VCS。</p>
-<p>git的所有操作都是对本地文件的资源操作，因此不需要联网。 <strong>Git 在本地磁盘上就保存着所有当前项目的历史更新，所以处理起来速度飞快。</strong></p>
-<p>git每次只需要从本地数据库读取内容，在任何时候都可以随时读取，再查看历史版本的时候，git会在保存的<strong>历史快照中</strong>查询，而不需要请求远程服务器或者把查询老版本的文件。</p>
-<p>git可以在没有网络的时候<strong>随时提交更新到本地</strong>，等到有网络的时候再<strong>上传远程仓库</strong>。</p>
-<p>git具有内容完整性的功能：<strong>在保存到 Git 之前，所有数据都要进行内容的校验和计算，并将此结果作为数据的唯一标识和索引。</strong>任何文件如果在传输时发生损坏，git都能察觉。</p>
-<p>git使用 SHA-1 算法计算数据的校验和，这实际上是一个<strong>哈希值</strong>，git通过将文件转换为哈希值来工作，并依靠它作为git的索引。</p>
+<p><strong>Git 的分支 本质上就是指向一个commit对象的可变指针</strong></p>
+<p>Git使用master作为分支的<strong>默认名字</strong>，并且<strong>master始终指向你最后一次提交的对象</strong>，他会自己更新</p>
 <hr>
-<h2 id="git文件的三种形式"><a href="#git文件的三种形式" class="headerlink" title="git文件的三种形式"></a>git文件的三种形式</h2><ol>
-<li>已提交：文件已经被安全的保存在本地数据库中</li>
-<li>已修改：已经修改了文件，但是还没有保存提交</li>
-<li>已暂存：把已修改的文件放在下次提交要保存的清单中</li>
-</ol>
-<p>git管理项目的三个区域：</p>
-<ol>
-<li>git的工作目录：项目中取出<strong>某个版本的所有文件和目录</strong>，用以开始后续工作。</li>
-<li>暂存区域：暂存区域只不过是个简单的文件，一般都放在 Git 目录中。</li>
-<li>本地仓库：Git或者 .git 目录：是保存元数据和对象数据库的地方，实际上克隆仓库的时候就是克隆这里面的数据</li>
-</ol>
+<p>使用Git创建一个新的分支：叫做testing</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch testing</span><br></pre></td></tr></table></figure>
+<p><strong>则testing 会和 master一样，一起指向 最后一次提交的commit对象，testing 不会覆盖 master</strong></p>
+<p>Git如何知道你在哪个分支上工作的呢？</p>
+<ul>
+<li>Git有一个HEAD指针：<strong>指向你正在工作中的本地分支的指针</strong></li>
+</ul>
+<p>运行<code>git branch</code> 之后我们仅仅是创建了一个分支，但是<strong>实际工作分支仍然是默认的master，即我们的HEAD指针指向master</strong>，<strong>我们可以使用下面的命令切换分支</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout testing</span><br></pre></td></tr></table></figure>
+<p><strong>这样我们的HEAD指针就指向了 testing分支</strong></p>
 <hr>
-<p>Git的工作流程：</p>
+<p>此时我们<strong>再次提交</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;second pro&#x27;</span><br></pre></td></tr></table></figure>
+<p><strong>此时我们的工作分支testing 和HEAD指针会指向我们最新的这次提交，而master分支指向的是之前的提交。</strong></p>
+<p>即我们的每次提交只会改变当前工作分支与 HEAD指针，其他分支保存的仍是之前的历史版本</p>
+<p>如果此时我们输入命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+<p>则我们现在的工作目录是master分支，HEAD指针也指向master。</p>
+<p><strong>这就是实现了在历史版本中切换的目的！也就是说，现在开始所做的改动，将始于本项目中一个较老的版本。它的主要作用是将 testing 分支里作出的修改暂时取消，这样你就可以向另一个方向进行开发。</strong></p>
+<hr>
+<p>此时我们在master分支中进行提交：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;three pro&#x27;</span><br></pre></td></tr></table></figure>
+<p>就会产生如下效果：</p>
+<p>我们的这次提交 与 上一次的 second pro 处于同一层中，即在树结构中他们的父节点都是之前master和HEAD所在的位置，即之前的节点拥有了两个父节点</p>
+<blockquote>
+<p>由于 Git 中的分支实际上仅是一个包含所指对象校验和（40 个字符长度 SHA-1 字串）的文件，所以创建和销毁一个分支就变得非常廉价。</p>
+</blockquote>
+<p><strong>Git 在每次提交时都记录了祖先信息</strong></p>
+<h1 id="2-分支的新建与合并"><a href="#2-分支的新建与合并" class="headerlink" title="2. 分支的新建与合并"></a>2. 分支的新建与合并</h1><h2 id="2-1-新建与切换分支"><a href="#2-1-新建与切换分支" class="headerlink" title="2.1 新建与切换分支"></a>2.1 新建与切换分支</h2><p>首先我们已经有了几次的提交信息</p>
+<p><img src="https://tudingtu.cn/i/2023/03/04/6xm60on.png" alt=""></p>
+<p><strong>现在我们接到了一个需求：我们需要实现一个新的功能，则我们需要创建一个新的分支</strong></p>
+<p>新建一个分支并且切换到该分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout -b iss53</span><br></pre></td></tr></table></figure>
+<p>相当于执行下面的命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch iss53</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout iss53</span><br></pre></td></tr></table></figure>
+<p><strong>相当于 master 和 iss53 两个指针同时指向了最新的一次提交，并且当前HEAD指针指向 iss53 分支</strong></p>
+<p><img src="https://tudingtu.cn/i/2023/03/04/ozoq8b.png" alt=""></p>
+<p>然后我们开始实现这个功能：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim xxxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;new question&#x27;</span><br></pre></td></tr></table></figure>
+<p><strong>此时我们正在完成 iss53 分支的功能扩展</strong>，则此时分支如下所示：</p>
+<p><img src="https://tudingtu.cn/i/2023/03/04/p0yxd5.png" alt=""></p>
+<hr>
+<p>此时我们突然接到了一个紧急电话（<strong>注意：iss53 功能并没有完成，但是这个严重错误的优先级非常高</strong>）！！！ 我们的原来的<strong>某个分支版本上出现了一个严重错误，需要紧急修改</strong></p>
+<p>假设其在master分支上（当前仍在iss53分支）则我们需要切换到 master 分支上。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+<p><strong>然后我们需要创建一个分支来解决这个严重错误。</strong>我们新建并切换</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout -b hotfix</span><br></pre></td></tr></table></figure>
+<p>然后我们解决这个严重错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;solve error&#x27;</span><br></pre></td></tr></table></figure>
+<p>我们便解决了这个问题，并且提交了，此时的分支如下所示：</p>
+<p><img src="https://tudingtu.cn/i/2023/03/04/p3y6g6.png" alt=""></p>
+<p>注意：此时我们HEAD工作目录指向的是 hotfix（即解决了这个重大错误的分支）</p>
+<p>我们需要合并到原始的master分支中：</p>
+<p>要合并我们需要首先回到master中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-合并分支"><a href="#2-2-合并分支" class="headerlink" title="2.2 合并分支"></a>2.2 合并分支</h2><p>关于<strong>合并</strong>我们使用<code>git merge</code>命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge hotfix</span><br></pre></td></tr></table></figure>
+<p>注意：此时我们执行的是 <strong>Fast—forword合并</strong>，即<strong>如果分支的直接父节点是原来的需要合并到的版本，则会直接把master移动到hotfix分支上</strong></p>
+<p>如下图所示：</p>
+<p><img src="https://tudingtu.cn/i/2023/03/04/p6efhh.png" alt=""></p>
+<h2 id="2-3-删除分支"><a href="#2-3-删除分支" class="headerlink" title="2.3 删除分支"></a>2.3 删除分支</h2><p>既然我们已经解决了 这个严重错误，并且我们也完成合并了，那<strong>么这个 hotfix显然没用了，直接删除这个分支即可：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch -d hotfix</span><br></pre></td></tr></table></figure>
+<p>则我们继续回到 iss53 来完成这一功能（<strong>之前说了，iss53并没有完成，只是 hotfix的优先级高</strong>）</p>
+<p>则切换分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout iss53</span><br></pre></td></tr></table></figure>
+<p>经过一顿操作后，我们终于完成 iss53 的功能扩展，并且提交</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;终于完成！&#x27;</span><br></pre></td></tr></table></figure>
+<p>则此时分支图如下所示：</p>
+<p><img src="https://tudingtu.cn/i/2023/03/04/p9esz9.png" alt=""></p>
+<p><strong>则最终我们再把这个 扩展 功能与我们的master进行合并：</strong></p>
+<p>首先切换到master</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge iss53</span><br></pre></td></tr></table></figure>
+<p>合并后，分支图如下所示：</p>
+<p><img src="https://tudingtu.cn/i/2023/03/04/payozr.png" alt=""></p>
+<p>注意我们的此次合并不同于刚才的严重错误 的合并，刚才<strong>master是 解决严重父亲的直接父节点，因此合并就是父节点移动到孩子节点。</strong></p>
+<p><strong>但是此次合并的是同一祖先节点的不同兄弟节点，因此我们 采用两个分支与它们的最近公共祖先 三者一起进行合并</strong>，最终合并为 C6，并且master指向它。然后删除 iss53 分支即可</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch -d iss53</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="3-管理分支"><a href="#3-管理分支" class="headerlink" title="3. 管理分支"></a>3. 管理分支</h1><ol>
+<li>列出当前所有分支：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch </span><br></pre></td></tr></table></figure>
+<p>其中带星号的表示的是当前<strong>工作分支</strong></p>
 <ol>
-<li>在<strong>工作目录</strong>中修改某些文件。</li>
-<li>修改完成后的文件进行<strong>快照</strong>存放在<strong>暂存区域</strong>中</li>
-<li>把暂存区域中的文件的快照提交更新到<strong>Git目录</strong>中。</li>
+<li>查看各个分支的<strong>最后一个提交对象的信息</strong>：</li>
 </ol>
-<p>三种状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch -v</span><br></pre></td></tr></table></figure>
+<p>显示如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  iss53   93b412c fix javascript issue</span><br><span class="line">* master  7a98805 Merge branch &#x27;iss53&#x27;</span><br><span class="line">  testing 782fd34 add scott to the author list in the readmes</span><br></pre></td></tr></table></figure>
 <ol>
-<li>已提交状态</li>
-<li>已暂存状态</li>
-<li>已修改状态</li>
+<li>显示<strong>已经与当前分支合并</strong>的分支：<strong>也就是说哪些分支是当前分支的直接上游。</strong></li>
 </ol>
-<h1 id="git的安装"><a href="#git的安装" class="headerlink" title="git的安装"></a>git的安装</h1><h2 id="源代码安装"><a href="#源代码安装" class="headerlink" title="源代码安装"></a>源代码安装</h2><ol>
-<li>如果有 yum，则输入以下命令：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install curl-devel expat-devel gettext-devel \</span><br><span class="line">  openssl-devel zlib-devel</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch --merged</span><br></pre></td></tr></table></figure>
+<p>​    未合并的分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch --no-merged</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>如果我们把已经与当前分支合并的分支，如 iss53（功能如上节所示），则 在<code>--merge</code> 时会显示，则我们可以轻松的删除它： <code>git branch -d</code></p>
+</li>
+<li><p>如果我们的 <code>--no-merged</code> 时有任何分支，如testing，则我们<strong>无法删除它</strong>。</p>
+<ul>
+<li><strong>因为 Git 判断 iss53已经与master合并了，则master 已经包含了iss53的所有功能，则删除也无妨；testing尚未与 master合并，如果贸然删除可能会丢失数据，因此 Git 在删除 testing 此时会报错。</strong></li>
+<li>强制删除： <code>-D</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="4-分支开发的工作流程"><a href="#4-分支开发的工作流程" class="headerlink" title="4. 分支开发的工作流程"></a>4. 分支开发的工作流程</h1><h2 id="4-1-长期分支"><a href="#4-1-长期分支" class="headerlink" title="4.1 长期分支"></a>4.1 长期分支</h2><p>即把master分支 放在一个<strong>比较稳定的即将发布的版本中</strong>，然后如果添加什么功能，则直接创建新的分支，这些新的分支是master的<strong>平行分支</strong>，即是master分支的平行的孩子们。</p>
+<p>如果要合并分支，则可以随时 把这些功能分支合并到 master 分支中，<strong>即master指向的对象直接指向当前 这个功能的分支上，类似于上面的 解决重大错误的 分支的合并的合并策略。</strong></p>
+<p>如下图所示：</p>
+<p><img src="https://great.wzznft.com/i/2023/03/04/qik47c.png" alt=""></p>
+<p>你可以用这招<strong>维护不同层次的稳定性</strong>。</p>
+<blockquote>
+<p>某些大项目还会有个 <code>proposed</code>（建议）或 <code>pu</code>（proposed updates，建议更新）分支，它包含着那些可能还没有成熟到进入 <code>next</code> 或 <code>master</code> 的内容。这么做的目的是拥有不同层次的稳定性：当这些分支进入到更稳定的水平时，再把它们合并到更高层分支中去。再次说明下，使用多个长期分支的做法并非必需，不过一般来说，对于特大型项目或特复杂的项目，这么做确实更容易管理。</p>
+</blockquote>
+<h2 id="4-2-特性分支"><a href="#4-2-特性分支" class="headerlink" title="4.2 特性分支"></a>4.2 特性分支</h2><p>一个特性分支是指<strong>一个短期的，用来实现单一特性或与其相关工作的分支</strong>。</p>
+<p>在Git 中创建分支是非常轻松的，因此特性分支使用非常普遍</p>
+<p><strong>特性分支的流程：</strong></p>
 <ol>
-<li>如果有apt-get，则输入以下命令：</li>
+<li>工作目录在<code>master</code>中，干到C1的时候，突然出现了一个问题，则转到<code>iss91</code>解决这个问题</li>
+<li>在 <code>iss91</code> 中 干到C6的时候，发现 貌似有更好的办法 <code>iss91v2</code> 可以解决这个问题，则在合适的位置 C4进行另一个方法分支的解决</li>
+<li>做到 C8的时候，突然没思路了，则先写会的，即先把<code>master</code>中其他的完成，转移到<code>master</code>完成到 C10之后， <code>iss91v2</code> 突然有思路了，则继续回到完成C11，之后提交 <code>iss91v2</code></li>
+<li>但是此时又冒出个奇妙的想法，因此 <code>dumbidea</code>在master中测试一下，做个实验。</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \</span><br><span class="line">  libz-dev libssl-dev</span><br></pre></td></tr></table></figure>
-<p>之后，从下面的 Git 官方站点下载最新版本源代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://git-scm.com/download</span><br></pre></td></tr></table></figure>
-<p>然后编译并安装：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ tar -zxf git-1.7.2.2.tar.gz</span><br><span class="line">$ cd git-1.7.2.2</span><br><span class="line">$ make prefix=/usr/local all</span><br><span class="line">$ sudo make prefix=/usr/local install</span><br></pre></td></tr></table></figure>
-<p>现在已经可以用 <code>git</code> 命令了，用 <code>git</code> 把 Git 项目仓库克隆到本地，以便日后随时更新：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git clone git://git.kernel.org/pub/scm/git/git.git</span><br></pre></td></tr></table></figure>
-<h2 id="linux安装"><a href="#linux安装" class="headerlink" title="linux安装"></a>linux安装</h2><ol>
-<li>具有yum的时候，通过yum安装</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install git-core</span><br></pre></td></tr></table></figure>
+<p><img src="https://tudingtu.cn/i/2023/03/04/7duaea2.png" alt=""></p>
+<p>最后我们便得到了合并后的分支：</p>
 <ol>
-<li>Ubuntu 具有 apt-get的时候，通过apt-get安装</li>
+<li><code>dumabidea</code> 它出色的完成了功能，可以作为master的下一个版本</li>
+<li>使用<code>iss91v2</code>然后抛弃了<code>iss91</code>版本</li>
+<li>最后两个分支合。</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install git</span><br></pre></td></tr></table></figure>
-<h2 id="window安装"><a href="#window安装" class="headerlink" title="window安装"></a>window安装</h2><ol>
-<li>通过GitHub的开源项目安装 下载exe，并且运行</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://msysgit.github.com/</span><br></pre></td></tr></table></figure>
+<p><img src="https://great.wzznft.com/i/2023/03/04/qpnjzg.png" alt=""></p>
+<h1 id="5-远程分支"><a href="#5-远程分支" class="headerlink" title="5. 远程分支"></a>5. 远程分支</h1><p>如果你有一个本地分支 需要和别人分享， <code>git push (远程仓库名) (分支名)</code> 来推送到远程仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>Git 自动把 <code>master</code> 分支名扩展为 <code>refs/heads/master:refs/heads/master</code></p>
+<p><strong>即取出我在本地的master分支，推送到远程仓库的master分支上去。</strong></p>
+<p>运行下面实现相同的功能：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin master:master</span><br></pre></td></tr></table></figure>
+<p><strong>你可以把本地分支推送到某个命名不同的远程分支</strong>：</p>
+<p>若想把远程分支叫作 <code>ylh</code>，可以用 <code>git push origin master:ylh</code> 来推送数据。</p>
+<p>其他人想要再次从服务器上获取数据时，他们将得到一个新的远程分支 <code>origin/master</code>，并指向服务器上 <code>master</code> 所指向的版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch master</span><br></pre></td></tr></table></figure>
+<p><strong>如果要把该远程分支的内容合并到当前分支</strong>，可以运行 <code>git merge origin/master</code>。如果想要一份自己的 <code>master</code> 来开发，<strong>可以在远程分支的基础上分化出一个新的分支来：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout -b master2 origin/master</span><br></pre></td></tr></table></figure>
+<p>这会切换到新建的 <code>master2</code> 本地分支，其内容同远程分支 <code>origin/master</code> 一致，这样你就可以在里面继续开发了。</p>
+<p><strong>删除远程分支</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin :master</span><br></pre></td></tr></table></figure>
+<p>记住我们不久前见过的 <code>git push [远程名] [本地分支]:[远程分支]</code> 语法，如果省略 <code>[本地分支]</code>，那就等于是在说“在这里提取空白然后把它变成<code>[远程分支]</code>”。</p>
+<h1 id="6-分支衍和"><a href="#6-分支衍和" class="headerlink" title="6. 分支衍和"></a>6. 分支衍和</h1><p>一个分支中的修改整合到另一个分支中有两种方法：</p>
 <ol>
-<li>上一种方法国内下载慢，可以使用阿里镜像安装</li>
+<li>merge：合并</li>
+<li>rebase：衍和</li>
 </ol>
-<p><a href="https://registry.npmmirror.com/binary.html?path=git-for-windows/">阿里镜像下载 git</a></p>
-<h1 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h1><p>git config工具，实际上是 git-config命令，使用这个命令来配置或者读取相应的工作环境变量。而正是由这些环境变量，决定了 Git 在各个环节的具体工作方式和行为。这些变量可以存放在以下三个不同的地方：</p>
+<p><strong>最容易的整合方式： merge命令。</strong></p>
+<hr>
+<p>什么是<strong>衍和</strong>？</p>
+<p>在<code>merge</code> 的时候，我们会把<strong>两个对象快照和他们的最近公共最先 三者进行一次合并</strong>。</p>
+<p>而现在我们可以把<strong>其中一个对象快照里的变化在另一个对象中重新再打一遍</strong>。在 Git 里，这种操作叫做<em>衍合（rebase）</em>。有了 <code>rebase</code> 命令，就可以把在一个分支里提交的改变移到另一个分支里重放一遍。</p>
 <ol>
-<li><code>/etc/gitconfig</code>：系统中所有用户都使用的配置，git config时使用 —system。</li>
-<li><code>~/.gitconfig</code>：用户工作目录下的配置文件只适用于此用户git config时使用 —global。</li>
-<li><code>.git/config</code>：当前项目的配置文件，只针对于当前项目。</li>
+<li>首先<strong>在C3的exp</strong>中执行下面的命令：</li>
 </ol>
-<p>每一个级别的配置都会覆盖上层相同的配置，因此<code>.git/config</code>会覆盖<code>/etc/gitconfig</code>中的同名变量。</p>
-<p><code>.gitconfig</code>的路径：默认在C盘的user的文件夹下。</p>
-<h2 id="修改用户信息"><a href="#修改用户信息" class="headerlink" title="修改用户信息"></a>修改用户信息</h2><p>git在提交更新的时候需要知道是谁提交了，因此需要配置个人信息</p>
-<p>输入以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;用户名&quot;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.email 电子邮箱</span><br></pre></td></tr></table></figure>
-<p>使用—global配置的.gitconfig的文件路径：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;C:\Users\username\.gitconfig&quot;</span><br></pre></td></tr></table></figure>
-<p><strong>我们配置的是用户主目录的那个，因此所有的项目默认使用这个配置。</strong></p>
-<p>如果要在<strong>某个特定的项目中</strong>使用其他用户或者电脑，则需要去掉 —global ，重新配置信息即可。</p>
-<h2 id="文本编辑器"><a href="#文本编辑器" class="headerlink" title="文本编辑器"></a>文本编辑器</h2><p>默认的git输入信息使用的文编编辑器</p>
-<p>我这里使用vscode，你也可以使用Emacs  或者 vim</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global core.editor vscode</span><br></pre></td></tr></table></figure>
-<h2 id="差异比较工具"><a href="#差异比较工具" class="headerlink" title="差异比较工具"></a>差异比较工具</h2><p>在解决合并冲突时使用哪种差异分析工具。比如要改用 vimdiff 的话：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global merge.tool vimdiff</span><br></pre></td></tr></table></figure>
-<h2 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h2><p>输入命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
-<h2 id="使用帮助命令"><a href="#使用帮助命令" class="headerlink" title="使用帮助命令"></a>使用帮助命令</h2><p>想要知道某个命令如何使用： </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config &lt;xxx&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rebase master</span><br></pre></td></tr></table></figure>
+<p>它的原理是回到两个分支最近的共同祖先，根据当前分支（也就是要进行衍合的分支 <code>experiment</code>）后续的历次提交对象（这里只有一个 C3），生成一系列文件补丁，然后以基底分支（也就是主干分支 <code>master</code>）最后一个提交对象（C4）为新的出发点，逐个应用之前准备好的补丁文件，最后会生成一个新的合并提交对象（C3’），从而改写 <code>experiment</code> 的提交历史，使它成为 <code>master</code> 分支的直接下游，如图 3-29 所示：</p>
+<p><strong>总结：C3的exp 现在 衍和到了 C3’ 的位置</strong></p>
+<p><img src="https://great.wzznft.com/i/2023/03/04/svqd3m.png" alt=""></p>
+<ol>
+<li>然后再执行一次 <strong>平行合并</strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge exp</span><br></pre></td></tr></table></figure>
+<p>就形成了如下的分支图：</p>
+<p><img src="https://tudingtu.cn/i/2023/03/04/sxhqzq.png" alt=""></p>
+<p>虽然最后与 <code>merge</code>整合得到的结果没有任何区别，但衍合能产生一个<strong>更为整洁</strong>的提交历史。</p>
+<hr>
+<p><strong>衍和的复杂版本：</strong></p>
+<p>把<code>server</code>的分支包含进来，在<code>master</code>上进行一次衍和操作：<code>git rebase [主分支] [特性分支]</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rebase master server</span><br></pre></td></tr></table></figure>
+<p>使用 <code>--onto</code>：取出client分支，找出client与server的最近<strong>公共祖先</strong>，然后此LCA在 <code>master</code>上做一次<strong>衍和操作</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rebase --onto master server client</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>一旦分支中的提交对象发布到公共仓库，就千万不要对该分支进行衍合操作。</strong></p>
 ]]></content>
       <tags>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>A星寻路算法详解</title>
-    <url>/2023/03/01/A%E6%98%9F%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>@[toc]</p>
-<h2 id="三种寻路算法"><a href="#三种寻路算法" class="headerlink" title="三种寻路算法"></a>三种寻路算法</h2><ul>
-<li><a href="https://blog.csdn.net/jj6666djdbbd/article/details/126205770">深度寻路算法：不一定能找到最佳路径，但是寻路快速，只能走直线。</a></li>
-<li><a href="https://blog.csdn.net/jj6666djdbbd/article/details/126265199">广度寻路算法：一定能找到最短路径，但是开销大，时间慢，只能走直线。</a></li>
-<li><strong>A星寻路算法</strong>（常用）：一定能找到最短路径，可以走直线和斜线，而且开销较小，常用于大型地图的寻路</li>
-</ul>
-<h1 id="A星寻路算法"><a href="#A星寻路算法" class="headerlink" title="A星寻路算法"></a>A星寻路算法</h1><h2 id="A星寻路算法思想"><a href="#A星寻路算法思想" class="headerlink" title="A星寻路算法思想"></a>A星寻路算法思想</h2><blockquote>
-<p>引入： 狼吃羊模型。</p>
-<p>狼捕猎羊：如果抓到了就加100分；如果狼不动，每分钟减2分；如果狼抓捕时会跑，跑步每分钟减5分；</p>
-<p>​     狼会饿 ，饿的时候每分钟减10分。 有一个积分的概念在这里面。结果会发现<strong>狼会站在原地不动</strong>。</p>
-<p>​    因为狼直到，抓住羊很困难，跑步时会扣分，饿时会扣分，不动时也会扣分。但是人工智能狼计算出了站着不动时扣分的代价最低，而干其他事代价都高，因此狼会自动选择代价最低的方式，一动不动</p>
-<p>​    之后又加了设定：原地不动每分钟也扣分，而且是线性扣分。结果你会发现<strong>狼从一开始就会自杀</strong>。</p>
-<p>同理，<strong>自杀是代价最小的选择</strong>（即分数最高，如果你干其他的事，则可能会负分，所以狼会选择自杀）。</p>
-</blockquote>
-<p>A星寻路算法也引入了这一概念，即通过<strong>计算和量化行走的各个方向的代价</strong>，来<strong>选择最优路径</strong></p>
-<ul>
-<li><strong><em>公式： f = g + h</em></strong></li>
-<li>f： 设定其为<strong>最终评估代价</strong></li>
-<li>g：当前点走到下一点的<strong>付出的代价</strong></li>
-<li>h：当前点到终点的<strong>预期代价</strong></li>
-<li>通过比较各条路线的最终代价，选择<strong>最小代价</strong>，即为合适的路径，也为<strong>最短路径</strong>。</li>
-</ul>
-<h2 id="A星寻路准备"><a href="#A星寻路准备" class="headerlink" title="A星寻路准备"></a>A星寻路准备</h2><p>地图行列数，方向枚举，地图，辅助地图的设计等在此不描述，具体请看之前我写的前两种寻路算法的博客。<br><a href="https://blog.csdn.net/jj6666djdbbd/article/details/126265199?spm=1001.2014.3001.5502">广度寻路算法</a><br><a href="https://blog.csdn.net/jj6666djdbbd/article/details/126205770?spm=1001.2014.3001.5502">深度寻路算法</a></p>
-<ul>
-<li><strong>记录坐标点的类型</strong>，GetH和GetF函数即为计算各种代价的函数，稍后会介绍。一个重载用来比较当前点是否到达终点</li>
-</ul>
-<blockquote>
-<p>h表示当前点到终点的预期代价，因此我们每次移动一步，都需要求出 h，而h的计算我们可以直接通过数格子来获得，即水平，竖直个有几个格子，这便是<strong>预期的代价</strong><br>g表示走到每一点的代价，因此每走一个方向，记录这个方向的代价， 最后选择代价最小的方向即可，g可以通过遍历八个方向来记录<br>f =g + h</p>
-</blockquote>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//点类型</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Mypoint</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> row;</span><br><span class="line">	<span class="type">int</span> col;</span><br><span class="line">	<span class="type">int</span> f, g, h;</span><br><span class="line">	<span class="type">bool</span> <span class="keyword">operator</span>==(<span class="type">const</span> Mypoint&amp; pos)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">return</span> (pos.row == row &amp;&amp; pos.col == col);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">GetH</span><span class="params">(<span class="type">const</span> Mypoint&amp; Begpos, <span class="type">const</span> Mypoint&amp; Endpos)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> x = <span class="built_in">abs</span>(Begpos.col - Endpos.col);<span class="comment">//计算水平差距</span></span><br><span class="line">		<span class="type">int</span> y = <span class="built_in">abs</span>(Begpos.row - Endpos.row);<span class="comment">//计算垂直差距</span></span><br><span class="line">		h = x + y;<span class="comment">//计算总的差距</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">GetF</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		f = g + h;<span class="comment">//计算f</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>存储位置节点的树结构</strong>，含有构造函数用来构建树节点，<strong>vector数组</strong>存储多个节点：因为一个父亲会有多个孩子的情况。</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//树结构存储节点</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TreeNode</span></span><br><span class="line">&#123;</span><br><span class="line">	Mypoint pos;<span class="comment">//当前点坐标</span></span><br><span class="line">	TreeNode* pParent;<span class="comment">//当前点的父节点</span></span><br><span class="line">	vector&lt;TreeNode*&gt; pChild;	<span class="comment">//存储当前点的所有孩子节点</span></span><br><span class="line">	<span class="comment">//构造函数</span></span><br><span class="line">	<span class="built_in">TreeNode</span>(<span class="type">const</span> Mypoint&amp; pos)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>-&gt;pos = pos;</span><br><span class="line">		pParent = <span class="literal">nullptr</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>判断是否能走的函数</strong>，用于判断地图某个点是否能走，即不为墙，没越界，没走过，则能走。</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//判断某个点能否走</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">CanWalk</span><span class="params">(<span class="type">int</span> map[ROW][COL], <span class="type">bool</span> vis[ROW][COL], <span class="type">const</span> Mypoint&amp; pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//如果越界，不能走</span></span><br><span class="line">	<span class="keyword">if</span> (pos.row &lt; <span class="number">0</span> || pos.col &lt; <span class="number">0</span> || pos.row &gt;= ROW || pos.col &gt;= COL)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//如果是墙，不能走</span></span><br><span class="line">	<span class="keyword">if</span> (map[pos.row][pos.col])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//如果已经走过，不能走</span></span><br><span class="line">	<span class="keyword">if</span> (vis[pos.row][pos.col])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;<span class="comment">//否则能走</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>数据的准备</strong></li>
-</ul>
-<ol>
-<li>起点与终点的坐标</li>
-<li>树根节点，用于保存寻路的<strong>树结构</strong></li>
-<li>buff数组来记录每一个孩子节点，<strong>用来确定下一步该走的点</strong></li>
-<li>vis标记数组，不能重复走</li>
-<li>当前点与试探点</li>
-</ol>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//地图，1表示墙，0表示路径</span></span><br><span class="line">	<span class="type">int</span> map[ROW][COL] =</span><br><span class="line">	&#123;</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//起始点和终点</span></span><br><span class="line">	Mypoint Begpos = &#123; <span class="number">1</span>,<span class="number">1</span> &#125;;</span><br><span class="line">	Mypoint Endpos = &#123; <span class="number">6</span>,<span class="number">5</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//标记有没有走过</span></span><br><span class="line">	<span class="type">bool</span> vis[ROW][COL] = &#123; <span class="literal">false</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//创建树根，即根节点</span></span><br><span class="line">	TreeNode* pRoot = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(Begpos);</span><br><span class="line"></span><br><span class="line">	vector&lt;TreeNode*&gt; buff;	<span class="comment">//存储孩子节点的数组</span></span><br><span class="line"></span><br><span class="line">	TreeNode* pCurrent = pRoot;	<span class="comment">//记录当前点</span></span><br><span class="line">	TreeNode* pTemp = <span class="literal">nullptr</span>;	<span class="comment">//试探节点,用于试探下一个位置的点</span></span><br><span class="line"></span><br><span class="line">	<span class="type">bool</span> isFindEnd = <span class="literal">false</span>;<span class="comment">//终点标记</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="A星寻路过程（图例）"><a href="#A星寻路过程（图例）" class="headerlink" title="A星寻路过程（图例）"></a>A星寻路过程（图例）</h2><p>假定<strong>直着走的代价为10，斜着走的代价为14</strong></p>
-<ul>
-<li><p>首先计算起点位置周围八个方向<strong>付出代价</strong>（蓝色），此代价为<strong>付出的代价 g</strong>。<br><img src="https://img-blog.csdnimg.cn/15215e45fdd948fda712c731eb17c42f.png" alt="在这里插入图片描述"></p>
-</li>
-<li><p>然后再计算<strong>起点到终点的代价</strong>（如何计算：数格子即可，某个点到终点的格子数，只能行列，不能斜着），此代价为<strong>预期代价h</strong>，可以发现 <strong>最终代价=付出+预期</strong>，可以得到一个<strong>最小的代价点</strong>，即<strong>右下角的斜着的点</strong>。</p>
-<p><strong>这个点即是我们下一步要走的点</strong>。<strong>依次类推，在下个点上，再次计算周围代价最小的点，然后再次移动</strong></p>
-</li>
-</ul>
-<hr>
-<p>upd： 2023. 2.22 新增一个图<br><img src="https://img-blog.csdnimg.cn/a88609b83bba49f49c4a55de372be256.png" alt="在这里插入图片描述"></p>
-<hr>
-<ul>
-<li><p>注意：标记起始点和每个移动到的点为<strong>已经走过点</strong>，即下一次不会重复移动到这个点。</p>
-</li>
-<li><p>在移动到的点处（代价最小点），继续遍历八个方向，除了<strong>墙壁</strong>和<strong>已经走过点</strong>，继续计算最终代价，<strong>找到最终代价小的点，移动。</strong><br><img src="https://img-blog.csdnimg.cn/29dbe25e620e46679e0b2e965afed765.png" alt="在这里插入图片描述"></p>
-</li>
-</ul>
-<ul>
-<li>注意：如果你移动到了一个死胡同，则必须回退，<strong>如何回退</strong>?<br>我们事先准备了<strong>一个容器vector</strong>名字叫做 buff ，来<strong>存储我们每次遍历的方向的节点</strong>，即我们把每一个方向都创建一个节点，然后<strong>节点入树</strong>，<strong>节点再入容器</strong>，当我们走到死胡同时，<strong>通过找到容器内的最小元素</strong>（即是代价最小点，但是这个点是死胡同），<strong>然后把他删除</strong>，则 ==<strong>再次找一个代价最小点</strong>，<strong>然后移动到它那里去</strong>== 。<br><strong>如果地图没有终点，则可以想到，容器会一直删除，然后为空，此时则退出，没有终点。</strong></li>
-</ul>
-<hr>
-<h2 id="A星寻路代码（完整）"><a href="#A星寻路代码（完整）" class="headerlink" title="A星寻路代码（完整）"></a>A星寻路代码（完整）</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> ROW = <span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> COL = <span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> ZXDJ = <span class="number">10</span>;	<span class="comment">//直线代价</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> XXDJ = <span class="number">14</span>;	<span class="comment">//斜线代价</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Dir</span> &#123; p_up, p_down, p_left, p_right, p_lup, p_ldown, p_rup, p_rdown &#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Mypoint</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> row;</span><br><span class="line">	<span class="type">int</span> col;</span><br><span class="line">	<span class="type">int</span> f, g, h;</span><br><span class="line">	<span class="type">bool</span> <span class="keyword">operator</span>==(<span class="type">const</span> Mypoint&amp; pos)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">return</span> (pos.row == row &amp;&amp; pos.col == col);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">GetH</span><span class="params">(<span class="type">const</span> Mypoint&amp; Begpos, <span class="type">const</span> Mypoint&amp; Endpos)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> x = <span class="built_in">abs</span>(Begpos.col - Endpos.col);<span class="comment">//计算水平差距</span></span><br><span class="line">		<span class="type">int</span> y = <span class="built_in">abs</span>(Begpos.row - Endpos.row);<span class="comment">//计算垂直差距</span></span><br><span class="line">		h = x + y;<span class="comment">//计算总的差距</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">GetF</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		f = g + h;<span class="comment">//计算f</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//树结构存储节点</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TreeNode</span></span><br><span class="line">&#123;</span><br><span class="line">	Mypoint pos;<span class="comment">//当前点坐标</span></span><br><span class="line">	TreeNode* pParent;<span class="comment">//当前点的父节点</span></span><br><span class="line">	vector&lt;TreeNode*&gt; pChild;	<span class="comment">//存储当前点的所有孩子节点</span></span><br><span class="line">	<span class="comment">//构造函数</span></span><br><span class="line">	<span class="built_in">TreeNode</span>(<span class="type">const</span> Mypoint&amp; pos)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>-&gt;pos = pos;</span><br><span class="line">		pParent = <span class="literal">nullptr</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断某个点能否走</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">CanWalk</span><span class="params">(<span class="type">int</span> map[ROW][COL], <span class="type">bool</span> vis[ROW][COL], <span class="type">const</span> Mypoint&amp; pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//如果越界，不能走</span></span><br><span class="line">	<span class="keyword">if</span> (pos.row &lt; <span class="number">0</span> || pos.col &lt; <span class="number">0</span> || pos.row &gt;= ROW || pos.col &gt;= COL)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//如果是墙，不能走</span></span><br><span class="line">	<span class="keyword">if</span> (map[pos.row][pos.col])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//如果已经走过，不能走</span></span><br><span class="line">	<span class="keyword">if</span> (vis[pos.row][pos.col])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;<span class="comment">//否则能走</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//地图，1表示墙，0表示路径</span></span><br><span class="line">	<span class="type">int</span> map[ROW][COL] =</span><br><span class="line">	&#123;</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//起始点和终点</span></span><br><span class="line">	Mypoint Begpos = &#123; <span class="number">1</span>,<span class="number">1</span> &#125;;</span><br><span class="line">	Mypoint Endpos = &#123; <span class="number">6</span>,<span class="number">5</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//标记有没有走过</span></span><br><span class="line">	<span class="type">bool</span> vis[ROW][COL] = &#123; <span class="literal">false</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//创建树根，即根节点</span></span><br><span class="line">	TreeNode* pRoot = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(Begpos);</span><br><span class="line"></span><br><span class="line">	vector&lt;TreeNode*&gt; buff;	<span class="comment">//存储孩子节点的数组</span></span><br><span class="line"></span><br><span class="line">	TreeNode* pCurrent = pRoot;	<span class="comment">//记录当前点</span></span><br><span class="line">	TreeNode* pTemp = <span class="literal">nullptr</span>;	<span class="comment">//试探节点,用于试探下一个位置的点</span></span><br><span class="line"></span><br><span class="line">	<span class="type">bool</span> isFindEnd = <span class="literal">false</span>;<span class="comment">//终点标记</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//开始寻路</span></span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//1. 某个点八个方向依次遍历 计算g代价</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//确定试探点的属性</span></span><br><span class="line">			pTemp = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(pCurrent-&gt;pos);</span><br><span class="line">			<span class="comment">//八个方向进行试探！</span></span><br><span class="line">			<span class="keyword">switch</span> (i)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="comment">//直线代价</span></span><br><span class="line">			<span class="keyword">case</span> p_up:<span class="comment">//上</span></span><br><span class="line">				pTemp-&gt;pos.row--;</span><br><span class="line">				pTemp-&gt;pos.g += ZXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> p_down:<span class="comment">//下</span></span><br><span class="line">				pTemp-&gt;pos.row++;</span><br><span class="line">				pTemp-&gt;pos.g += ZXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> p_left:<span class="comment">//左</span></span><br><span class="line">				pTemp-&gt;pos.col--;</span><br><span class="line">				pTemp-&gt;pos.g += ZXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> p_right:<span class="comment">//右</span></span><br><span class="line">				pTemp-&gt;pos.col++;</span><br><span class="line">				pTemp-&gt;pos.g += ZXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">				<span class="comment">//斜线代价</span></span><br><span class="line">			<span class="keyword">case</span> p_lup:<span class="comment">//左上</span></span><br><span class="line">				pTemp-&gt;pos.row--;</span><br><span class="line">				pTemp-&gt;pos.col--;</span><br><span class="line">				pTemp-&gt;pos.g += XXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> p_ldown:<span class="comment">//左下</span></span><br><span class="line">				pTemp-&gt;pos.row++;</span><br><span class="line">				pTemp-&gt;pos.col--;</span><br><span class="line">				pTemp-&gt;pos.g += XXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> p_rup:<span class="comment">//右上</span></span><br><span class="line">				pTemp-&gt;pos.row--;</span><br><span class="line">				pTemp-&gt;pos.col++;</span><br><span class="line">				pTemp-&gt;pos.g += XXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> p_rdown:<span class="comment">//右下</span></span><br><span class="line">				pTemp-&gt;pos.row++;</span><br><span class="line">				pTemp-&gt;pos.col++;</span><br><span class="line">				pTemp-&gt;pos.g += XXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//判断他们能不能走，能走的计算h及f 入树  存储在buff数组</span></span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">CanWalk</span>(map, vis, pTemp-&gt;pos))</span><br><span class="line">			&#123;	<span class="comment">//能走</span></span><br><span class="line">				<span class="comment">//计算代价</span></span><br><span class="line">				pTemp-&gt;pos.<span class="built_in">GetH</span>(Begpos, Endpos);<span class="comment">//计算h代价</span></span><br><span class="line">				pTemp-&gt;pos.<span class="built_in">GetF</span>();<span class="comment">//得到最后的f代价，f=g+h </span></span><br><span class="line">				<span class="comment">//把能走的这个点存入树中</span></span><br><span class="line">				pCurrent-&gt;pChild.<span class="built_in">push_back</span>(pTemp);<span class="comment">//pTemp表示的就是下一个能走的点</span></span><br><span class="line">				pTemp-&gt;pParent = pCurrent;<span class="comment">//父子关系确定</span></span><br><span class="line">				<span class="comment">//存入数组</span></span><br><span class="line">				buff.<span class="built_in">push_back</span>(pTemp);</span><br><span class="line">				<span class="comment">//标记这个点走过</span></span><br><span class="line">				vis[pTemp-&gt;pos.row][pTemp-&gt;pos.col] = <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="comment">//不能走则删除pTemp，继续遍历下一个方向的点</span></span><br><span class="line">				<span class="keyword">delete</span> pTemp;</span><br><span class="line">				pTemp = <span class="literal">nullptr</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		遍历完八个方向后，找到最小代价点，并且移动，然后删除</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">		<span class="keyword">auto</span> itMin =  <span class="built_in">min_element</span>(buff.<span class="built_in">begin</span>(), buff.<span class="built_in">end</span>(), [&amp;](TreeNode* p1, TreeNode* p2)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">return</span> p1-&gt;pos.f &lt; p2-&gt;pos.f;</span><br><span class="line">			&#125;);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//当前点移动到这个最小代价点</span></span><br><span class="line">		pCurrent = *itMin;</span><br><span class="line">		<span class="comment">//删除最小代价节点</span></span><br><span class="line">		buff.<span class="built_in">erase</span>(itMin);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//有没有到达终点</span></span><br><span class="line">		<span class="keyword">if</span> (pCurrent-&gt;pos == Endpos)</span><br><span class="line">		&#123;</span><br><span class="line">			isFindEnd = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//没有终点，自然一直删除节点，则buff为空</span></span><br><span class="line">		<span class="keyword">if</span> (buff.<span class="built_in">size</span>() == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (isFindEnd)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;找到终点了!\n&quot;</span>;</span><br><span class="line">		<span class="keyword">while</span> (pCurrent)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;(&quot;</span> &lt;&lt; pCurrent-&gt;pos.row &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; pCurrent-&gt;pos.col &lt;&lt; <span class="string">&quot;)&quot;</span>;</span><br><span class="line">			pCurrent = pCurrent-&gt;pParent;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;没有找到终点!\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>终点row，col（7，7）：<br><img src="https://img-blog.csdnimg.cn/2f6b0a76593c489ea4ea769344cd20fa.png" alt="在这里插入图片描述"></p>
-<p>终点row，col（6，5）<br><img src="https://img-blog.csdnimg.cn/ea18d5c7ee2e41eb820e65e6fd5e172f.png" alt="在这里插入图片描述"></p>
-<hr>
-]]></content>
-      <tags>
-        <tag>搜索与寻路</tag>
       </tags>
   </entry>
   <entry>
@@ -500,227 +540,104 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/03/01/hello-world/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>git学习（3）- Git分支的操作管理与工作流程</title>
-    <url>/2023/03/04/git%E5%AD%A6%E4%B9%A0-3/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>文章首发于：<a href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
-<h1 id="1-Git分支的概念"><a href="#1-Git分支的概念" class="headerlink" title="1. Git分支的概念"></a>1. Git分支的概念</h1><p>在Git提交的时候，会保存一个<strong>指向文件快照的指针</strong>，包含本次提交的作者等相关信息。</p>
-<p>同时也包含多个指向文件内容快照的父指针。</p>
-<p>我们首先创建三个文件，然后执行如下操作：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;my first project&#x27;</span><br></pre></td></tr></table></figure>
-<p>暂存操作会对每一个文件计算<strong>校验和</strong>（即第一章中提到的 SHA-1 哈希字串），然后把当前版本的<strong>文件快照保存到 Git 仓库中</strong>（Git 使用 blob 类型的对象存储这些快照）</p>
-<p>此时Git仓库中的五个对象:</p>
-<ol>
-<li>三个 blob 类型的对象</li>
-<li>一个记录着目录树内容及其中各个文件对应 blob 对象索引的 tree 对象；</li>
-<li>以及一个包含指向 tree 对象（根目录）的索引和其他提交信息元数据的 <strong>commit 对象</strong>。</li>
+    <title>git学习（1） - git的安装与配置</title>
+    <url>/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h1><ol>
+<li>本地版本控制系统</li>
+<li>集中化的版本控制系统</li>
+<li>分布式版本控制系统</li>
 </ol>
-<p><strong>Git 的分支 本质上就是指向一个commit对象的可变指针</strong></p>
-<p>Git使用master作为分支的<strong>默认名字</strong>，并且<strong>master始终指向你最后一次提交的对象</strong>，他会自己更新</p>
+<h1 id="git基础"><a href="#git基础" class="headerlink" title="git基础"></a>git基础</h1><p>git与其他版本控制系统的区别是：<strong>git只保存文件数据的整体是否发生变化。</strong> 而大多数其他系统则只关心文件内容的<strong>具体差异</strong></p>
+<p>换句话说：<strong>git保存每次更新时的文件快照</strong></p>
+<p>Git 更像是个小型的文件系统，但它同时还提供了许多以此为基础的超强工具，而不只是一个简单的 VCS。</p>
+<p>git的所有操作都是对本地文件的资源操作，因此不需要联网。 <strong>Git 在本地磁盘上就保存着所有当前项目的历史更新，所以处理起来速度飞快。</strong></p>
+<p>git每次只需要从本地数据库读取内容，在任何时候都可以随时读取，再查看历史版本的时候，git会在保存的<strong>历史快照中</strong>查询，而不需要请求远程服务器或者把查询老版本的文件。</p>
+<p>git可以在没有网络的时候<strong>随时提交更新到本地</strong>，等到有网络的时候再<strong>上传远程仓库</strong>。</p>
+<p>git具有内容完整性的功能：<strong>在保存到 Git 之前，所有数据都要进行内容的校验和计算，并将此结果作为数据的唯一标识和索引。</strong>任何文件如果在传输时发生损坏，git都能察觉。</p>
+<p>git使用 SHA-1 算法计算数据的校验和，这实际上是一个<strong>哈希值</strong>，git通过将文件转换为哈希值来工作，并依靠它作为git的索引。</p>
 <hr>
-<p>使用Git创建一个新的分支：叫做testing</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch testing</span><br></pre></td></tr></table></figure>
-<p><strong>则testing 会和 master一样，一起指向 最后一次提交的commit对象，testing 不会覆盖 master</strong></p>
-<p>Git如何知道你在哪个分支上工作的呢？</p>
-<ul>
-<li>Git有一个HEAD指针：<strong>指向你正在工作中的本地分支的指针</strong></li>
-</ul>
-<p>运行<code>git branch</code> 之后我们仅仅是创建了一个分支，但是<strong>实际工作分支仍然是默认的master，即我们的HEAD指针指向master</strong>，<strong>我们可以使用下面的命令切换分支</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout testing</span><br></pre></td></tr></table></figure>
-<p><strong>这样我们的HEAD指针就指向了 testing分支</strong></p>
-<hr>
-<p>此时我们<strong>再次提交</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;second pro&#x27;</span><br></pre></td></tr></table></figure>
-<p><strong>此时我们的工作分支testing 和HEAD指针会指向我们最新的这次提交，而master分支指向的是之前的提交。</strong></p>
-<p>即我们的每次提交只会改变当前工作分支与 HEAD指针，其他分支保存的仍是之前的历史版本</p>
-<p>如果此时我们输入命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
-<p>则我们现在的工作目录是master分支，HEAD指针也指向master。</p>
-<p><strong>这就是实现了在历史版本中切换的目的！也就是说，现在开始所做的改动，将始于本项目中一个较老的版本。它的主要作用是将 testing 分支里作出的修改暂时取消，这样你就可以向另一个方向进行开发。</strong></p>
-<hr>
-<p>此时我们在master分支中进行提交：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;three pro&#x27;</span><br></pre></td></tr></table></figure>
-<p>就会产生如下效果：</p>
-<p>我们的这次提交 与 上一次的 second pro 处于同一层中，即在树结构中他们的父节点都是之前master和HEAD所在的位置，即之前的节点拥有了两个父节点</p>
-<blockquote>
-<p>由于 Git 中的分支实际上仅是一个包含所指对象校验和（40 个字符长度 SHA-1 字串）的文件，所以创建和销毁一个分支就变得非常廉价。</p>
-</blockquote>
-<p><strong>Git 在每次提交时都记录了祖先信息</strong></p>
-<h1 id="2-分支的新建与合并"><a href="#2-分支的新建与合并" class="headerlink" title="2. 分支的新建与合并"></a>2. 分支的新建与合并</h1><h2 id="2-1-新建与切换分支"><a href="#2-1-新建与切换分支" class="headerlink" title="2.1 新建与切换分支"></a>2.1 新建与切换分支</h2><p>首先我们已经有了几次的提交信息</p>
-<p><img src="https://tudingtu.cn/i/2023/03/04/6xm60on.png" alt=""></p>
-<p><strong>现在我们接到了一个需求：我们需要实现一个新的功能，则我们需要创建一个新的分支</strong></p>
-<p>新建一个分支并且切换到该分支：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout -b iss53</span><br></pre></td></tr></table></figure>
-<p>相当于执行下面的命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch iss53</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout iss53</span><br></pre></td></tr></table></figure>
-<p><strong>相当于 master 和 iss53 两个指针同时指向了最新的一次提交，并且当前HEAD指针指向 iss53 分支</strong></p>
-<p><img src="https://tudingtu.cn/i/2023/03/04/ozoq8b.png" alt=""></p>
-<p>然后我们开始实现这个功能：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim xxxx</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;new question&#x27;</span><br></pre></td></tr></table></figure>
-<p><strong>此时我们正在完成 iss53 分支的功能扩展</strong>，则此时分支如下所示：</p>
-<p><img src="https://tudingtu.cn/i/2023/03/04/p0yxd5.png" alt=""></p>
-<hr>
-<p>此时我们突然接到了一个紧急电话（<strong>注意：iss53 功能并没有完成，但是这个严重错误的优先级非常高</strong>）！！！ 我们的原来的<strong>某个分支版本上出现了一个严重错误，需要紧急修改</strong></p>
-<p>假设其在master分支上（当前仍在iss53分支）则我们需要切换到 master 分支上。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
-<p><strong>然后我们需要创建一个分支来解决这个严重错误。</strong>我们新建并切换</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout -b hotfix</span><br></pre></td></tr></table></figure>
-<p>然后我们解决这个严重错误：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim xxx</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add xxx</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;solve error&#x27;</span><br></pre></td></tr></table></figure>
-<p>我们便解决了这个问题，并且提交了，此时的分支如下所示：</p>
-<p><img src="https://tudingtu.cn/i/2023/03/04/p3y6g6.png" alt=""></p>
-<p>注意：此时我们HEAD工作目录指向的是 hotfix（即解决了这个重大错误的分支）</p>
-<p>我们需要合并到原始的master分支中：</p>
-<p>要合并我们需要首先回到master中</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
-<h2 id="2-2-合并分支"><a href="#2-2-合并分支" class="headerlink" title="2.2 合并分支"></a>2.2 合并分支</h2><p>关于<strong>合并</strong>我们使用<code>git merge</code>命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge hotfix</span><br></pre></td></tr></table></figure>
-<p>注意：此时我们执行的是 <strong>Fast—forword合并</strong>，即<strong>如果分支的直接父节点是原来的需要合并到的版本，则会直接把master移动到hotfix分支上</strong></p>
-<p>如下图所示：</p>
-<p><img src="https://tudingtu.cn/i/2023/03/04/p6efhh.png" alt=""></p>
-<h2 id="2-3-删除分支"><a href="#2-3-删除分支" class="headerlink" title="2.3 删除分支"></a>2.3 删除分支</h2><p>既然我们已经解决了 这个严重错误，并且我们也完成合并了，那<strong>么这个 hotfix显然没用了，直接删除这个分支即可：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch -d hotfix</span><br></pre></td></tr></table></figure>
-<p>则我们继续回到 iss53 来完成这一功能（<strong>之前说了，iss53并没有完成，只是 hotfix的优先级高</strong>）</p>
-<p>则切换分支：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout iss53</span><br></pre></td></tr></table></figure>
-<p>经过一顿操作后，我们终于完成 iss53 的功能扩展，并且提交</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim ...</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &#x27;终于完成！&#x27;</span><br></pre></td></tr></table></figure>
-<p>则此时分支图如下所示：</p>
-<p><img src="https://tudingtu.cn/i/2023/03/04/p9esz9.png" alt=""></p>
-<p><strong>则最终我们再把这个 扩展 功能与我们的master进行合并：</strong></p>
-<p>首先切换到master</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge iss53</span><br></pre></td></tr></table></figure>
-<p>合并后，分支图如下所示：</p>
-<p><img src="https://tudingtu.cn/i/2023/03/04/payozr.png" alt=""></p>
-<p>注意我们的此次合并不同于刚才的严重错误 的合并，刚才<strong>master是 解决严重父亲的直接父节点，因此合并就是父节点移动到孩子节点。</strong></p>
-<p><strong>但是此次合并的是同一祖先节点的不同兄弟节点，因此我们 采用两个分支与它们的最近公共祖先 三者一起进行合并</strong>，最终合并为 C6，并且master指向它。然后删除 iss53 分支即可</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch -d iss53</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="3-管理分支"><a href="#3-管理分支" class="headerlink" title="3. 管理分支"></a>3. 管理分支</h1><ol>
-<li>列出当前所有分支：</li>
+<h2 id="git文件的三种形式"><a href="#git文件的三种形式" class="headerlink" title="git文件的三种形式"></a>git文件的三种形式</h2><ol>
+<li>已提交：文件已经被安全的保存在本地数据库中</li>
+<li>已修改：已经修改了文件，但是还没有保存提交</li>
+<li>已暂存：把已修改的文件放在下次提交要保存的清单中</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch </span><br></pre></td></tr></table></figure>
-<p>其中带星号的表示的是当前<strong>工作分支</strong></p>
+<p>git管理项目的三个区域：</p>
 <ol>
-<li>查看各个分支的<strong>最后一个提交对象的信息</strong>：</li>
+<li>git的工作目录：项目中取出<strong>某个版本的所有文件和目录</strong>，用以开始后续工作。</li>
+<li>暂存区域：暂存区域只不过是个简单的文件，一般都放在 Git 目录中。</li>
+<li>本地仓库：Git或者 .git 目录：是保存元数据和对象数据库的地方，实际上克隆仓库的时候就是克隆这里面的数据</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch -v</span><br></pre></td></tr></table></figure>
-<p>显示如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  iss53   93b412c fix javascript issue</span><br><span class="line">* master  7a98805 Merge branch &#x27;iss53&#x27;</span><br><span class="line">  testing 782fd34 add scott to the author list in the readmes</span><br></pre></td></tr></table></figure>
-<ol>
-<li>显示<strong>已经与当前分支合并</strong>的分支：<strong>也就是说哪些分支是当前分支的直接上游。</strong></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch --merged</span><br></pre></td></tr></table></figure>
-<p>​    未合并的分支：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch --no-merged</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>如果我们把已经与当前分支合并的分支，如 iss53（功能如上节所示），则 在<code>--merge</code> 时会显示，则我们可以轻松的删除它： <code>git branch -d</code></p>
-</li>
-<li><p>如果我们的 <code>--no-merged</code> 时有任何分支，如testing，则我们<strong>无法删除它</strong>。</p>
-<ul>
-<li><strong>因为 Git 判断 iss53已经与master合并了，则master 已经包含了iss53的所有功能，则删除也无妨；testing尚未与 master合并，如果贸然删除可能会丢失数据，因此 Git 在删除 testing 此时会报错。</strong></li>
-<li>强制删除： <code>-D</code></li>
-</ul>
-</li>
-</ul>
-<h1 id="4-分支开发的工作流程"><a href="#4-分支开发的工作流程" class="headerlink" title="4. 分支开发的工作流程"></a>4. 分支开发的工作流程</h1><h2 id="4-1-长期分支"><a href="#4-1-长期分支" class="headerlink" title="4.1 长期分支"></a>4.1 长期分支</h2><p>即把master分支 放在一个<strong>比较稳定的即将发布的版本中</strong>，然后如果添加什么功能，则直接创建新的分支，这些新的分支是master的<strong>平行分支</strong>，即是master分支的平行的孩子们。</p>
-<p>如果要合并分支，则可以随时 把这些功能分支合并到 master 分支中，<strong>即master指向的对象直接指向当前 这个功能的分支上，类似于上面的 解决重大错误的 分支的合并的合并策略。</strong></p>
-<p>如下图所示：</p>
-<p><img src="https://great.wzznft.com/i/2023/03/04/qik47c.png" alt=""></p>
-<p>你可以用这招<strong>维护不同层次的稳定性</strong>。</p>
-<blockquote>
-<p>某些大项目还会有个 <code>proposed</code>（建议）或 <code>pu</code>（proposed updates，建议更新）分支，它包含着那些可能还没有成熟到进入 <code>next</code> 或 <code>master</code> 的内容。这么做的目的是拥有不同层次的稳定性：当这些分支进入到更稳定的水平时，再把它们合并到更高层分支中去。再次说明下，使用多个长期分支的做法并非必需，不过一般来说，对于特大型项目或特复杂的项目，这么做确实更容易管理。</p>
-</blockquote>
-<h2 id="4-2-特性分支"><a href="#4-2-特性分支" class="headerlink" title="4.2 特性分支"></a>4.2 特性分支</h2><p>一个特性分支是指<strong>一个短期的，用来实现单一特性或与其相关工作的分支</strong>。</p>
-<p>在Git 中创建分支是非常轻松的，因此特性分支使用非常普遍</p>
-<p><strong>特性分支的流程：</strong></p>
-<ol>
-<li>工作目录在<code>master</code>中，干到C1的时候，突然出现了一个问题，则转到<code>iss91</code>解决这个问题</li>
-<li>在 <code>iss91</code> 中 干到C6的时候，发现 貌似有更好的办法 <code>iss91v2</code> 可以解决这个问题，则在合适的位置 C4进行另一个方法分支的解决</li>
-<li>做到 C8的时候，突然没思路了，则先写会的，即先把<code>master</code>中其他的完成，转移到<code>master</code>完成到 C10之后， <code>iss91v2</code> 突然有思路了，则继续回到完成C11，之后提交 <code>iss91v2</code></li>
-<li>但是此时又冒出个奇妙的想法，因此 <code>dumbidea</code>在master中测试一下，做个实验。</li>
-</ol>
-<p><img src="https://tudingtu.cn/i/2023/03/04/7duaea2.png" alt=""></p>
-<p>最后我们便得到了合并后的分支：</p>
-<ol>
-<li><code>dumabidea</code> 它出色的完成了功能，可以作为master的下一个版本</li>
-<li>使用<code>iss91v2</code>然后抛弃了<code>iss91</code>版本</li>
-<li>最后两个分支合。</li>
-</ol>
-<p><img src="https://great.wzznft.com/i/2023/03/04/qpnjzg.png" alt=""></p>
-<h1 id="5-远程分支"><a href="#5-远程分支" class="headerlink" title="5. 远程分支"></a>5. 远程分支</h1><p>如果你有一个本地分支 需要和别人分享， <code>git push (远程仓库名) (分支名)</code> 来推送到远程仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-<p>Git 自动把 <code>master</code> 分支名扩展为 <code>refs/heads/master:refs/heads/master</code></p>
-<p><strong>即取出我在本地的master分支，推送到远程仓库的master分支上去。</strong></p>
-<p>运行下面实现相同的功能：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin master:master</span><br></pre></td></tr></table></figure>
-<p><strong>你可以把本地分支推送到某个命名不同的远程分支</strong>：</p>
-<p>若想把远程分支叫作 <code>ylh</code>，可以用 <code>git push origin master:ylh</code> 来推送数据。</p>
-<p>其他人想要再次从服务器上获取数据时，他们将得到一个新的远程分支 <code>origin/master</code>，并指向服务器上 <code>master</code> 所指向的版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch master</span><br></pre></td></tr></table></figure>
-<p><strong>如果要把该远程分支的内容合并到当前分支</strong>，可以运行 <code>git merge origin/master</code>。如果想要一份自己的 <code>master</code> 来开发，<strong>可以在远程分支的基础上分化出一个新的分支来：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout -b master2 origin/master</span><br></pre></td></tr></table></figure>
-<p>这会切换到新建的 <code>master2</code> 本地分支，其内容同远程分支 <code>origin/master</code> 一致，这样你就可以在里面继续开发了。</p>
-<p><strong>删除远程分支</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin :master</span><br></pre></td></tr></table></figure>
-<p>记住我们不久前见过的 <code>git push [远程名] [本地分支]:[远程分支]</code> 语法，如果省略 <code>[本地分支]</code>，那就等于是在说“在这里提取空白然后把它变成<code>[远程分支]</code>”。</p>
-<h1 id="6-分支衍和"><a href="#6-分支衍和" class="headerlink" title="6. 分支衍和"></a>6. 分支衍和</h1><p>一个分支中的修改整合到另一个分支中有两种方法：</p>
-<ol>
-<li>merge：合并</li>
-<li>rebase：衍和</li>
-</ol>
-<p><strong>最容易的整合方式： merge命令。</strong></p>
 <hr>
-<p>什么是<strong>衍和</strong>？</p>
-<p>在<code>merge</code> 的时候，我们会把<strong>两个对象快照和他们的最近公共最先 三者进行一次合并</strong>。</p>
-<p>而现在我们可以把<strong>其中一个对象快照里的变化在另一个对象中重新再打一遍</strong>。在 Git 里，这种操作叫做<em>衍合（rebase）</em>。有了 <code>rebase</code> 命令，就可以把在一个分支里提交的改变移到另一个分支里重放一遍。</p>
+<p>Git的工作流程：</p>
 <ol>
-<li>首先<strong>在C3的exp</strong>中执行下面的命令：</li>
+<li>在<strong>工作目录</strong>中修改某些文件。</li>
+<li>修改完成后的文件进行<strong>快照</strong>存放在<strong>暂存区域</strong>中</li>
+<li>把暂存区域中的文件的快照提交更新到<strong>Git目录</strong>中。</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rebase master</span><br></pre></td></tr></table></figure>
-<p>它的原理是回到两个分支最近的共同祖先，根据当前分支（也就是要进行衍合的分支 <code>experiment</code>）后续的历次提交对象（这里只有一个 C3），生成一系列文件补丁，然后以基底分支（也就是主干分支 <code>master</code>）最后一个提交对象（C4）为新的出发点，逐个应用之前准备好的补丁文件，最后会生成一个新的合并提交对象（C3’），从而改写 <code>experiment</code> 的提交历史，使它成为 <code>master</code> 分支的直接下游，如图 3-29 所示：</p>
-<p><strong>总结：C3的exp 现在 衍和到了 C3’ 的位置</strong></p>
-<p><img src="https://great.wzznft.com/i/2023/03/04/svqd3m.png" alt=""></p>
+<p>三种状态：</p>
 <ol>
-<li>然后再执行一次 <strong>平行合并</strong></li>
+<li>已提交状态</li>
+<li>已暂存状态</li>
+<li>已修改状态</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge exp</span><br></pre></td></tr></table></figure>
-<p>就形成了如下的分支图：</p>
-<p><img src="https://tudingtu.cn/i/2023/03/04/sxhqzq.png" alt=""></p>
-<p>虽然最后与 <code>merge</code>整合得到的结果没有任何区别，但衍合能产生一个<strong>更为整洁</strong>的提交历史。</p>
-<hr>
-<p><strong>衍和的复杂版本：</strong></p>
-<p>把<code>server</code>的分支包含进来，在<code>master</code>上进行一次衍和操作：<code>git rebase [主分支] [特性分支]</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rebase master server</span><br></pre></td></tr></table></figure>
-<p>使用 <code>--onto</code>：取出client分支，找出client与server的最近<strong>公共祖先</strong>，然后此LCA在 <code>master</code>上做一次<strong>衍和操作</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rebase --onto master server client</span><br></pre></td></tr></table></figure>
-<hr>
-<p><strong>一旦分支中的提交对象发布到公共仓库，就千万不要对该分支进行衍合操作。</strong></p>
+<h1 id="git的安装"><a href="#git的安装" class="headerlink" title="git的安装"></a>git的安装</h1><h2 id="源代码安装"><a href="#源代码安装" class="headerlink" title="源代码安装"></a>源代码安装</h2><ol>
+<li>如果有 yum，则输入以下命令：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install curl-devel expat-devel gettext-devel \</span><br><span class="line">  openssl-devel zlib-devel</span><br></pre></td></tr></table></figure>
+<ol>
+<li>如果有apt-get，则输入以下命令：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \</span><br><span class="line">  libz-dev libssl-dev</span><br></pre></td></tr></table></figure>
+<p>之后，从下面的 Git 官方站点下载最新版本源代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://git-scm.com/download</span><br></pre></td></tr></table></figure>
+<p>然后编译并安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ tar -zxf git-1.7.2.2.tar.gz</span><br><span class="line">$ cd git-1.7.2.2</span><br><span class="line">$ make prefix=/usr/local all</span><br><span class="line">$ sudo make prefix=/usr/local install</span><br></pre></td></tr></table></figure>
+<p>现在已经可以用 <code>git</code> 命令了，用 <code>git</code> 把 Git 项目仓库克隆到本地，以便日后随时更新：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git clone git://git.kernel.org/pub/scm/git/git.git</span><br></pre></td></tr></table></figure>
+<h2 id="linux安装"><a href="#linux安装" class="headerlink" title="linux安装"></a>linux安装</h2><ol>
+<li>具有yum的时候，通过yum安装</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install git-core</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Ubuntu 具有 apt-get的时候，通过apt-get安装</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install git</span><br></pre></td></tr></table></figure>
+<h2 id="window安装"><a href="#window安装" class="headerlink" title="window安装"></a>window安装</h2><ol>
+<li>通过GitHub的开源项目安装 下载exe，并且运行</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://msysgit.github.com/</span><br></pre></td></tr></table></figure>
+<ol>
+<li>上一种方法国内下载慢，可以使用阿里镜像安装</li>
+</ol>
+<p><a href="https://registry.npmmirror.com/binary.html?path=git-for-windows/">阿里镜像下载 git</a></p>
+<h1 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h1><p>git config工具，实际上是 git-config命令，使用这个命令来配置或者读取相应的工作环境变量。而正是由这些环境变量，决定了 Git 在各个环节的具体工作方式和行为。这些变量可以存放在以下三个不同的地方：</p>
+<ol>
+<li><code>/etc/gitconfig</code>：系统中所有用户都使用的配置，git config时使用 —system。</li>
+<li><code>~/.gitconfig</code>：用户工作目录下的配置文件只适用于此用户git config时使用 —global。</li>
+<li><code>.git/config</code>：当前项目的配置文件，只针对于当前项目。</li>
+</ol>
+<p>每一个级别的配置都会覆盖上层相同的配置，因此<code>.git/config</code>会覆盖<code>/etc/gitconfig</code>中的同名变量。</p>
+<p><code>.gitconfig</code>的路径：默认在C盘的user的文件夹下。</p>
+<h2 id="修改用户信息"><a href="#修改用户信息" class="headerlink" title="修改用户信息"></a>修改用户信息</h2><p>git在提交更新的时候需要知道是谁提交了，因此需要配置个人信息</p>
+<p>输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;用户名&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.email 电子邮箱</span><br></pre></td></tr></table></figure>
+<p>使用—global配置的.gitconfig的文件路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;C:\Users\username\.gitconfig&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>我们配置的是用户主目录的那个，因此所有的项目默认使用这个配置。</strong></p>
+<p>如果要在<strong>某个特定的项目中</strong>使用其他用户或者电脑，则需要去掉 —global ，重新配置信息即可。</p>
+<h2 id="文本编辑器"><a href="#文本编辑器" class="headerlink" title="文本编辑器"></a>文本编辑器</h2><p>默认的git输入信息使用的文编编辑器</p>
+<p>我这里使用vscode，你也可以使用Emacs  或者 vim</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global core.editor vscode</span><br></pre></td></tr></table></figure>
+<h2 id="差异比较工具"><a href="#差异比较工具" class="headerlink" title="差异比较工具"></a>差异比较工具</h2><p>在解决合并冲突时使用哪种差异分析工具。比如要改用 vimdiff 的话：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global merge.tool vimdiff</span><br></pre></td></tr></table></figure>
+<h2 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h2><p>输入命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+<h2 id="使用帮助命令"><a href="#使用帮助命令" class="headerlink" title="使用帮助命令"></a>使用帮助命令</h2><p>想要知道某个命令如何使用： </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config &lt;xxx&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>实用技术</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -1562,6 +1479,89 @@
 <h1 id="待完善"><a href="#待完善" class="headerlink" title="待完善 ~~~"></a>待完善 ~~~</h1>]]></content>
       <tags>
         <tag>线性代数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>A星寻路算法详解</title>
+    <url>/2023/03/01/A%E6%98%9F%E5%AF%BB%E8%B7%AF%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>@[toc]</p>
+<h2 id="三种寻路算法"><a href="#三种寻路算法" class="headerlink" title="三种寻路算法"></a>三种寻路算法</h2><ul>
+<li><a href="https://blog.csdn.net/jj6666djdbbd/article/details/126205770">深度寻路算法：不一定能找到最佳路径，但是寻路快速，只能走直线。</a></li>
+<li><a href="https://blog.csdn.net/jj6666djdbbd/article/details/126265199">广度寻路算法：一定能找到最短路径，但是开销大，时间慢，只能走直线。</a></li>
+<li><strong>A星寻路算法</strong>（常用）：一定能找到最短路径，可以走直线和斜线，而且开销较小，常用于大型地图的寻路</li>
+</ul>
+<h1 id="A星寻路算法"><a href="#A星寻路算法" class="headerlink" title="A星寻路算法"></a>A星寻路算法</h1><h2 id="A星寻路算法思想"><a href="#A星寻路算法思想" class="headerlink" title="A星寻路算法思想"></a>A星寻路算法思想</h2><blockquote>
+<p>引入： 狼吃羊模型。</p>
+<p>狼捕猎羊：如果抓到了就加100分；如果狼不动，每分钟减2分；如果狼抓捕时会跑，跑步每分钟减5分；</p>
+<p>​     狼会饿 ，饿的时候每分钟减10分。 有一个积分的概念在这里面。结果会发现<strong>狼会站在原地不动</strong>。</p>
+<p>​    因为狼直到，抓住羊很困难，跑步时会扣分，饿时会扣分，不动时也会扣分。但是人工智能狼计算出了站着不动时扣分的代价最低，而干其他事代价都高，因此狼会自动选择代价最低的方式，一动不动</p>
+<p>​    之后又加了设定：原地不动每分钟也扣分，而且是线性扣分。结果你会发现<strong>狼从一开始就会自杀</strong>。</p>
+<p>同理，<strong>自杀是代价最小的选择</strong>（即分数最高，如果你干其他的事，则可能会负分，所以狼会选择自杀）。</p>
+</blockquote>
+<p>A星寻路算法也引入了这一概念，即通过<strong>计算和量化行走的各个方向的代价</strong>，来<strong>选择最优路径</strong></p>
+<ul>
+<li><strong><em>公式： f = g + h</em></strong></li>
+<li>f： 设定其为<strong>最终评估代价</strong></li>
+<li>g：当前点走到下一点的<strong>付出的代价</strong></li>
+<li>h：当前点到终点的<strong>预期代价</strong></li>
+<li>通过比较各条路线的最终代价，选择<strong>最小代价</strong>，即为合适的路径，也为<strong>最短路径</strong>。</li>
+</ul>
+<h2 id="A星寻路准备"><a href="#A星寻路准备" class="headerlink" title="A星寻路准备"></a>A星寻路准备</h2><p>地图行列数，方向枚举，地图，辅助地图的设计等在此不描述，具体请看之前我写的前两种寻路算法的博客。<br><a href="https://blog.csdn.net/jj6666djdbbd/article/details/126265199?spm=1001.2014.3001.5502">广度寻路算法</a><br><a href="https://blog.csdn.net/jj6666djdbbd/article/details/126205770?spm=1001.2014.3001.5502">深度寻路算法</a></p>
+<ul>
+<li><strong>记录坐标点的类型</strong>，GetH和GetF函数即为计算各种代价的函数，稍后会介绍。一个重载用来比较当前点是否到达终点</li>
+</ul>
+<blockquote>
+<p>h表示当前点到终点的预期代价，因此我们每次移动一步，都需要求出 h，而h的计算我们可以直接通过数格子来获得，即水平，竖直个有几个格子，这便是<strong>预期的代价</strong><br>g表示走到每一点的代价，因此每走一个方向，记录这个方向的代价， 最后选择代价最小的方向即可，g可以通过遍历八个方向来记录<br>f =g + h</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//点类型</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Mypoint</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> row;</span><br><span class="line">	<span class="type">int</span> col;</span><br><span class="line">	<span class="type">int</span> f, g, h;</span><br><span class="line">	<span class="type">bool</span> <span class="keyword">operator</span>==(<span class="type">const</span> Mypoint&amp; pos)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">return</span> (pos.row == row &amp;&amp; pos.col == col);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">GetH</span><span class="params">(<span class="type">const</span> Mypoint&amp; Begpos, <span class="type">const</span> Mypoint&amp; Endpos)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> x = <span class="built_in">abs</span>(Begpos.col - Endpos.col);<span class="comment">//计算水平差距</span></span><br><span class="line">		<span class="type">int</span> y = <span class="built_in">abs</span>(Begpos.row - Endpos.row);<span class="comment">//计算垂直差距</span></span><br><span class="line">		h = x + y;<span class="comment">//计算总的差距</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">GetF</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		f = g + h;<span class="comment">//计算f</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>存储位置节点的树结构</strong>，含有构造函数用来构建树节点，<strong>vector数组</strong>存储多个节点：因为一个父亲会有多个孩子的情况。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//树结构存储节点</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TreeNode</span></span><br><span class="line">&#123;</span><br><span class="line">	Mypoint pos;<span class="comment">//当前点坐标</span></span><br><span class="line">	TreeNode* pParent;<span class="comment">//当前点的父节点</span></span><br><span class="line">	vector&lt;TreeNode*&gt; pChild;	<span class="comment">//存储当前点的所有孩子节点</span></span><br><span class="line">	<span class="comment">//构造函数</span></span><br><span class="line">	<span class="built_in">TreeNode</span>(<span class="type">const</span> Mypoint&amp; pos)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>-&gt;pos = pos;</span><br><span class="line">		pParent = <span class="literal">nullptr</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>判断是否能走的函数</strong>，用于判断地图某个点是否能走，即不为墙，没越界，没走过，则能走。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//判断某个点能否走</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">CanWalk</span><span class="params">(<span class="type">int</span> map[ROW][COL], <span class="type">bool</span> vis[ROW][COL], <span class="type">const</span> Mypoint&amp; pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//如果越界，不能走</span></span><br><span class="line">	<span class="keyword">if</span> (pos.row &lt; <span class="number">0</span> || pos.col &lt; <span class="number">0</span> || pos.row &gt;= ROW || pos.col &gt;= COL)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//如果是墙，不能走</span></span><br><span class="line">	<span class="keyword">if</span> (map[pos.row][pos.col])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//如果已经走过，不能走</span></span><br><span class="line">	<span class="keyword">if</span> (vis[pos.row][pos.col])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;<span class="comment">//否则能走</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>数据的准备</strong></li>
+</ul>
+<ol>
+<li>起点与终点的坐标</li>
+<li>树根节点，用于保存寻路的<strong>树结构</strong></li>
+<li>buff数组来记录每一个孩子节点，<strong>用来确定下一步该走的点</strong></li>
+<li>vis标记数组，不能重复走</li>
+<li>当前点与试探点</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//地图，1表示墙，0表示路径</span></span><br><span class="line">	<span class="type">int</span> map[ROW][COL] =</span><br><span class="line">	&#123;</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//起始点和终点</span></span><br><span class="line">	Mypoint Begpos = &#123; <span class="number">1</span>,<span class="number">1</span> &#125;;</span><br><span class="line">	Mypoint Endpos = &#123; <span class="number">6</span>,<span class="number">5</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//标记有没有走过</span></span><br><span class="line">	<span class="type">bool</span> vis[ROW][COL] = &#123; <span class="literal">false</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//创建树根，即根节点</span></span><br><span class="line">	TreeNode* pRoot = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(Begpos);</span><br><span class="line"></span><br><span class="line">	vector&lt;TreeNode*&gt; buff;	<span class="comment">//存储孩子节点的数组</span></span><br><span class="line"></span><br><span class="line">	TreeNode* pCurrent = pRoot;	<span class="comment">//记录当前点</span></span><br><span class="line">	TreeNode* pTemp = <span class="literal">nullptr</span>;	<span class="comment">//试探节点,用于试探下一个位置的点</span></span><br><span class="line"></span><br><span class="line">	<span class="type">bool</span> isFindEnd = <span class="literal">false</span>;<span class="comment">//终点标记</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="A星寻路过程（图例）"><a href="#A星寻路过程（图例）" class="headerlink" title="A星寻路过程（图例）"></a>A星寻路过程（图例）</h2><p>假定<strong>直着走的代价为10，斜着走的代价为14</strong></p>
+<ul>
+<li><p>首先计算起点位置周围八个方向<strong>付出代价</strong>（蓝色），此代价为<strong>付出的代价 g</strong>。<br><img src="https://img-blog.csdnimg.cn/15215e45fdd948fda712c731eb17c42f.png" alt="在这里插入图片描述"></p>
+</li>
+<li><p>然后再计算<strong>起点到终点的代价</strong>（如何计算：数格子即可，某个点到终点的格子数，只能行列，不能斜着），此代价为<strong>预期代价h</strong>，可以发现 <strong>最终代价=付出+预期</strong>，可以得到一个<strong>最小的代价点</strong>，即<strong>右下角的斜着的点</strong>。</p>
+<p><strong>这个点即是我们下一步要走的点</strong>。<strong>依次类推，在下个点上，再次计算周围代价最小的点，然后再次移动</strong></p>
+</li>
+</ul>
+<hr>
+<p>upd： 2023. 2.22 新增一个图<br><img src="https://img-blog.csdnimg.cn/a88609b83bba49f49c4a55de372be256.png" alt="在这里插入图片描述"></p>
+<hr>
+<ul>
+<li><p>注意：标记起始点和每个移动到的点为<strong>已经走过点</strong>，即下一次不会重复移动到这个点。</p>
+</li>
+<li><p>在移动到的点处（代价最小点），继续遍历八个方向，除了<strong>墙壁</strong>和<strong>已经走过点</strong>，继续计算最终代价，<strong>找到最终代价小的点，移动。</strong><br><img src="https://img-blog.csdnimg.cn/29dbe25e620e46679e0b2e965afed765.png" alt="在这里插入图片描述"></p>
+</li>
+</ul>
+<ul>
+<li>注意：如果你移动到了一个死胡同，则必须回退，<strong>如何回退</strong>?<br>我们事先准备了<strong>一个容器vector</strong>名字叫做 buff ，来<strong>存储我们每次遍历的方向的节点</strong>，即我们把每一个方向都创建一个节点，然后<strong>节点入树</strong>，<strong>节点再入容器</strong>，当我们走到死胡同时，<strong>通过找到容器内的最小元素</strong>（即是代价最小点，但是这个点是死胡同），<strong>然后把他删除</strong>，则 ==<strong>再次找一个代价最小点</strong>，<strong>然后移动到它那里去</strong>== 。<br><strong>如果地图没有终点，则可以想到，容器会一直删除，然后为空，此时则退出，没有终点。</strong></li>
+</ul>
+<hr>
+<h2 id="A星寻路代码（完整）"><a href="#A星寻路代码（完整）" class="headerlink" title="A星寻路代码（完整）"></a>A星寻路代码（完整）</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> ROW = <span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> COL = <span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> ZXDJ = <span class="number">10</span>;	<span class="comment">//直线代价</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> XXDJ = <span class="number">14</span>;	<span class="comment">//斜线代价</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Dir</span> &#123; p_up, p_down, p_left, p_right, p_lup, p_ldown, p_rup, p_rdown &#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Mypoint</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> row;</span><br><span class="line">	<span class="type">int</span> col;</span><br><span class="line">	<span class="type">int</span> f, g, h;</span><br><span class="line">	<span class="type">bool</span> <span class="keyword">operator</span>==(<span class="type">const</span> Mypoint&amp; pos)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">return</span> (pos.row == row &amp;&amp; pos.col == col);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">GetH</span><span class="params">(<span class="type">const</span> Mypoint&amp; Begpos, <span class="type">const</span> Mypoint&amp; Endpos)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> x = <span class="built_in">abs</span>(Begpos.col - Endpos.col);<span class="comment">//计算水平差距</span></span><br><span class="line">		<span class="type">int</span> y = <span class="built_in">abs</span>(Begpos.row - Endpos.row);<span class="comment">//计算垂直差距</span></span><br><span class="line">		h = x + y;<span class="comment">//计算总的差距</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">GetF</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		f = g + h;<span class="comment">//计算f</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//树结构存储节点</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TreeNode</span></span><br><span class="line">&#123;</span><br><span class="line">	Mypoint pos;<span class="comment">//当前点坐标</span></span><br><span class="line">	TreeNode* pParent;<span class="comment">//当前点的父节点</span></span><br><span class="line">	vector&lt;TreeNode*&gt; pChild;	<span class="comment">//存储当前点的所有孩子节点</span></span><br><span class="line">	<span class="comment">//构造函数</span></span><br><span class="line">	<span class="built_in">TreeNode</span>(<span class="type">const</span> Mypoint&amp; pos)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>-&gt;pos = pos;</span><br><span class="line">		pParent = <span class="literal">nullptr</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断某个点能否走</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">CanWalk</span><span class="params">(<span class="type">int</span> map[ROW][COL], <span class="type">bool</span> vis[ROW][COL], <span class="type">const</span> Mypoint&amp; pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//如果越界，不能走</span></span><br><span class="line">	<span class="keyword">if</span> (pos.row &lt; <span class="number">0</span> || pos.col &lt; <span class="number">0</span> || pos.row &gt;= ROW || pos.col &gt;= COL)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//如果是墙，不能走</span></span><br><span class="line">	<span class="keyword">if</span> (map[pos.row][pos.col])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//如果已经走过，不能走</span></span><br><span class="line">	<span class="keyword">if</span> (vis[pos.row][pos.col])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;<span class="comment">//否则能走</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//地图，1表示墙，0表示路径</span></span><br><span class="line">	<span class="type">int</span> map[ROW][COL] =</span><br><span class="line">	&#123;</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">		&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//起始点和终点</span></span><br><span class="line">	Mypoint Begpos = &#123; <span class="number">1</span>,<span class="number">1</span> &#125;;</span><br><span class="line">	Mypoint Endpos = &#123; <span class="number">6</span>,<span class="number">5</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//标记有没有走过</span></span><br><span class="line">	<span class="type">bool</span> vis[ROW][COL] = &#123; <span class="literal">false</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//创建树根，即根节点</span></span><br><span class="line">	TreeNode* pRoot = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(Begpos);</span><br><span class="line"></span><br><span class="line">	vector&lt;TreeNode*&gt; buff;	<span class="comment">//存储孩子节点的数组</span></span><br><span class="line"></span><br><span class="line">	TreeNode* pCurrent = pRoot;	<span class="comment">//记录当前点</span></span><br><span class="line">	TreeNode* pTemp = <span class="literal">nullptr</span>;	<span class="comment">//试探节点,用于试探下一个位置的点</span></span><br><span class="line"></span><br><span class="line">	<span class="type">bool</span> isFindEnd = <span class="literal">false</span>;<span class="comment">//终点标记</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//开始寻路</span></span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//1. 某个点八个方向依次遍历 计算g代价</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//确定试探点的属性</span></span><br><span class="line">			pTemp = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(pCurrent-&gt;pos);</span><br><span class="line">			<span class="comment">//八个方向进行试探！</span></span><br><span class="line">			<span class="keyword">switch</span> (i)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="comment">//直线代价</span></span><br><span class="line">			<span class="keyword">case</span> p_up:<span class="comment">//上</span></span><br><span class="line">				pTemp-&gt;pos.row--;</span><br><span class="line">				pTemp-&gt;pos.g += ZXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> p_down:<span class="comment">//下</span></span><br><span class="line">				pTemp-&gt;pos.row++;</span><br><span class="line">				pTemp-&gt;pos.g += ZXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> p_left:<span class="comment">//左</span></span><br><span class="line">				pTemp-&gt;pos.col--;</span><br><span class="line">				pTemp-&gt;pos.g += ZXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> p_right:<span class="comment">//右</span></span><br><span class="line">				pTemp-&gt;pos.col++;</span><br><span class="line">				pTemp-&gt;pos.g += ZXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">				<span class="comment">//斜线代价</span></span><br><span class="line">			<span class="keyword">case</span> p_lup:<span class="comment">//左上</span></span><br><span class="line">				pTemp-&gt;pos.row--;</span><br><span class="line">				pTemp-&gt;pos.col--;</span><br><span class="line">				pTemp-&gt;pos.g += XXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> p_ldown:<span class="comment">//左下</span></span><br><span class="line">				pTemp-&gt;pos.row++;</span><br><span class="line">				pTemp-&gt;pos.col--;</span><br><span class="line">				pTemp-&gt;pos.g += XXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> p_rup:<span class="comment">//右上</span></span><br><span class="line">				pTemp-&gt;pos.row--;</span><br><span class="line">				pTemp-&gt;pos.col++;</span><br><span class="line">				pTemp-&gt;pos.g += XXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> p_rdown:<span class="comment">//右下</span></span><br><span class="line">				pTemp-&gt;pos.row++;</span><br><span class="line">				pTemp-&gt;pos.col++;</span><br><span class="line">				pTemp-&gt;pos.g += XXDJ;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//判断他们能不能走，能走的计算h及f 入树  存储在buff数组</span></span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">CanWalk</span>(map, vis, pTemp-&gt;pos))</span><br><span class="line">			&#123;	<span class="comment">//能走</span></span><br><span class="line">				<span class="comment">//计算代价</span></span><br><span class="line">				pTemp-&gt;pos.<span class="built_in">GetH</span>(Begpos, Endpos);<span class="comment">//计算h代价</span></span><br><span class="line">				pTemp-&gt;pos.<span class="built_in">GetF</span>();<span class="comment">//得到最后的f代价，f=g+h </span></span><br><span class="line">				<span class="comment">//把能走的这个点存入树中</span></span><br><span class="line">				pCurrent-&gt;pChild.<span class="built_in">push_back</span>(pTemp);<span class="comment">//pTemp表示的就是下一个能走的点</span></span><br><span class="line">				pTemp-&gt;pParent = pCurrent;<span class="comment">//父子关系确定</span></span><br><span class="line">				<span class="comment">//存入数组</span></span><br><span class="line">				buff.<span class="built_in">push_back</span>(pTemp);</span><br><span class="line">				<span class="comment">//标记这个点走过</span></span><br><span class="line">				vis[pTemp-&gt;pos.row][pTemp-&gt;pos.col] = <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="comment">//不能走则删除pTemp，继续遍历下一个方向的点</span></span><br><span class="line">				<span class="keyword">delete</span> pTemp;</span><br><span class="line">				pTemp = <span class="literal">nullptr</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		遍历完八个方向后，找到最小代价点，并且移动，然后删除</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">		<span class="keyword">auto</span> itMin =  <span class="built_in">min_element</span>(buff.<span class="built_in">begin</span>(), buff.<span class="built_in">end</span>(), [&amp;](TreeNode* p1, TreeNode* p2)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">return</span> p1-&gt;pos.f &lt; p2-&gt;pos.f;</span><br><span class="line">			&#125;);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//当前点移动到这个最小代价点</span></span><br><span class="line">		pCurrent = *itMin;</span><br><span class="line">		<span class="comment">//删除最小代价节点</span></span><br><span class="line">		buff.<span class="built_in">erase</span>(itMin);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//有没有到达终点</span></span><br><span class="line">		<span class="keyword">if</span> (pCurrent-&gt;pos == Endpos)</span><br><span class="line">		&#123;</span><br><span class="line">			isFindEnd = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//没有终点，自然一直删除节点，则buff为空</span></span><br><span class="line">		<span class="keyword">if</span> (buff.<span class="built_in">size</span>() == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (isFindEnd)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;找到终点了!\n&quot;</span>;</span><br><span class="line">		<span class="keyword">while</span> (pCurrent)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;(&quot;</span> &lt;&lt; pCurrent-&gt;pos.row &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; pCurrent-&gt;pos.col &lt;&lt; <span class="string">&quot;)&quot;</span>;</span><br><span class="line">			pCurrent = pCurrent-&gt;pParent;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;没有找到终点!\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>终点row，col（7，7）：<br><img src="https://img-blog.csdnimg.cn/2f6b0a76593c489ea4ea769344cd20fa.png" alt="在这里插入图片描述"></p>
+<p>终点row，col（6，5）<br><img src="https://img-blog.csdnimg.cn/ea18d5c7ee2e41eb820e65e6fd5e172f.png" alt="在这里插入图片描述"></p>
+<hr>
+]]></content>
+      <tags>
+        <tag>搜索与寻路</tag>
       </tags>
   </entry>
 </search>

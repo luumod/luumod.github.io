@@ -15,6 +15,16 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+    <script>
+      (function(){
+          if(''){
+              if (prompt('请输入文章密码') !== ''){
+                  alert('密码错误');
+                  history.back();
+              }
+          }
+      })();
+  </script>
   <link rel="stylesheet" href="/lib/pace/pace-theme-mac-osx.min.css">
   <script src="/lib/pace/pace.min.js"></script>
 
@@ -975,8 +985,29 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/luumod" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luumod" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1173012900@qq.com" title="E-Mail → mailto:1173012900@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/jj6666djdbbd?type=blog" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;jj6666djdbbd?type&#x3D;blog" rel="noopener" target="_blank">CSDN</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.luogu.com.cn/user/914079" title="https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;user&#x2F;914079" rel="noopener" target="_blank">Luogu</a>
+        </li>
+    </ul>
+  </div>
 
       </div>
 
@@ -1049,7 +1080,13 @@
     </footer>
   </div>
 
+
   
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
