@@ -96,10 +96,10 @@
 <p>现在，所有做过这一步的用户都得把它们的公钥给你或者 Git 服务器的管理员（假设 SSH 服务被设定为使用公钥机制）。他们只需要复制 <code>.pub</code> 文件的内容然后发邮件给管理员。</p>
 ]]></content>
       <categories>
-        <category>分类</category>
+        <category>实用技术</category>
       </categories>
       <tags>
-        <tag>标签</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
