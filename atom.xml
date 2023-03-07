@@ -6,7 +6,7 @@
   <link href="https://helloylh.com/atom.xml" rel="self"/>
   
   <link href="https://helloylh.com/"/>
-  <updated>2023-03-06T15:13:15.628Z</updated>
+  <updated>2023-03-07T14:53:56.307Z</updated>
   <id>https://helloylh.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>STL源码学习（2） - 迭代器概念与traits编程技法</title>
+    <link href="https://helloylh.com/2023/03/07/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A6%82%E5%BF%B5%E4%B8%8Etraits%E7%BC%96%E7%A8%8B%E6%8A%80%E6%B3%95/"/>
+    <id>https://helloylh.com/2023/03/07/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89-%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A6%82%E5%BF%B5%E4%B8%8Etraits%E7%BC%96%E7%A8%8B%E6%8A%80%E6%B3%95/</id>
+    <published>2023-03-07T06:11:54.000Z</published>
+    <updated>2023-03-07T14:53:56.307Z</updated>
+    
+    
+    <summary type="html">本文讲解了STL中迭代器概念，traits编程技巧与方法，五种迭代器类型</summary>
+    
+    
+    
+    <category term="源码剖析" scheme="https://helloylh.com/categories/%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/"/>
+    
+    
+    <category term="STL容器" scheme="https://helloylh.com/tags/STL%E5%AE%B9%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>贪心算法例题与讲解（2）</title>
