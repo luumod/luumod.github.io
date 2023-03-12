@@ -6,7 +6,7 @@
   <link href="https://helloylh.com/atom.xml" rel="self"/>
   
   <link href="https://helloylh.com/"/>
-  <updated>2023-03-10T08:46:37.379Z</updated>
+  <updated>2023-03-12T12:46:17.815Z</updated>
   <id>https://helloylh.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>STL源码学习（4）- list</title>
+    <link href="https://helloylh.com/2023/03/12/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%884%EF%BC%89-%20list/"/>
+    <id>https://helloylh.com/2023/03/12/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%884%EF%BC%89-%20list/</id>
+    <published>2023-03-12T03:41:33.000Z</published>
+    <updated>2023-03-12T12:46:17.815Z</updated>
+    
+    
+    <summary type="html">本文主要剖析了SGI STL源码中的list容器，讲解了list容器的构造，数据类型，迭代器，基本元素操作，其他较复杂操作，例如 list的sort与transform，并且附带实现代码</summary>
+    
+    
+    
+    <category term="STL源码剖析" scheme="https://helloylh.com/categories/STL%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/"/>
+    
+    
+    <category term="STL" scheme="https://helloylh.com/tags/STL/"/>
+    
+  </entry>
   
   <entry>
     <title>STL源码学习（3）- vector</title>
