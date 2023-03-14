@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="_3JRGj020zsk4apxOkqowNm9FPqF9N9S7hMwSJii6_Q">
+  <meta name="msvalidate.01" content="9E9D6F1DCF94B9B8F6D4119BDF696B11">
+  <meta name="baidu-site-verification" content="codeva-wCeADXb2tW">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-mac-osx.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"helloylh.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本文主要讲解了二叉树的一些基础练习题，包括树的深度，高度，最短路径，三种遍历的转换，树结构等，并附带完整代码与详细解释，后序是出二叉树的进阶练习题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二叉树练习（基础 1）">
+<meta property="og:url" content="https://helloylh.com/2023/03/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BB%83%E4%B9%A0%EF%BC%881%EF%BC%89/index.html">
+<meta property="og:site_name" content="HugeYlh">
+<meta property="og:description" content="本文主要讲解了二叉树的一些基础练习题，包括树的深度，高度，最短路径，三种遍历的转换，树结构等，并附带完整代码与详细解释，后序是出二叉树的进阶练习题">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-14T09:56:46.000Z">
+<meta property="article:modified_time" content="2023-03-14T10:00:03.876Z">
+<meta property="article:author" content="ylh">
+<meta property="article:tag" content="二叉树">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://helloylh.com/2023/03/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BB%83%E4%B9%A0%EF%BC%881%EF%BC%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>二叉树练习（基础 1） | HugeYlh</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'G-D6W7BP90D4',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?706b35dfc7a527ae7bcc1ac086b5a00e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="HugeYlh" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">HugeYlh</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">奔赴山海，保持热爱</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://helloylh.com/2023/03/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BB%83%E4%B9%A0%EF%BC%881%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ylh">
+      <meta itemprop="description" content="心有所向，无问东西">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HugeYlh">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          二叉树练习（基础 1）
+        </h1>
+
+        <div class="post-meta">
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-14 17:56:46 / 修改时间：18:00:03" itemprop="dateCreated datePublished" datetime="2023-03-14T17:56:46+08:00">2023-03-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E9%A2%98%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index"><span itemprop="name">刷题训练</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2023/03/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BB%83%E4%B9%A0%EF%BC%881%EF%BC%89/" class="post-meta-item leancloud_visitors" data-flag-title="二叉树练习（基础 1）" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/03/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BB%83%E4%B9%A0%EF%BC%881%EF%BC%89/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/03/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BB%83%E4%B9%A0%EF%BC%881%EF%BC%89/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>14 分钟</span>
+            </span>
+            <div class="post-description">本文主要讲解了二叉树的一些基础练习题，包括树的深度，高度，最短路径，三种遍历的转换，树结构等，并附带完整代码与详细解释，后序是出二叉树的进阶练习题</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>文章首发于：<a href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
+<h1 id="P4715-【深基16-例1】淘汰赛"><a href="#P4715-【深基16-例1】淘汰赛" class="headerlink" title="P4715 【深基16.例1】淘汰赛"></a>P4715 【深基16.例1】淘汰赛</h1><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDQ3MTU=">P4715 【深基16.例1】淘汰赛<i class="fa fa-external-link-alt"></i></span></p>
+<p>根据输入的n便可以得知：<strong>共有 2^n 个节点</strong>。</p>
+<p>我们需要求得亚军是谁，那么我们就是要求第二个是谁。</p>
+<p>冠军是谁？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4 2 3 1 10 5 9 7</span><br></pre></td></tr></table></figure>
+<p>假如把这个序列左右部分<strong>切开</strong>，那么冠军是一定是左边最大，右边最大的最大的那一个。</p>
+<p>这样我们就可以看出一个树的结构：</p>
+<p>依次比较两个节点的值，<strong>求出两个节点的较大者为他们两个的“父节点”</strong></p>
+<p>这样<strong>依次往上</strong>，从<strong>叶子节点到根节点</strong>，最终还剩两个节点，则较小的就是亚军。</p>
+<p>注意我们得到的是<strong>节点的值</strong>，但是我们需要得到这个<strong>节点的编号</strong>，因此使用一个节点体记录<strong>每个节点的编号与值</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> num,val;</span><br><span class="line">&#125;node[N];</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> len=<span class="built_in">pow</span>(<span class="number">2</span>,n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=len;i++)&#123;</span><br><span class="line">        cin&gt;&gt;node[i].val;</span><br><span class="line">        node[i].num=i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (len!=<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span> (len==<span class="number">2</span>)&#123;<span class="comment">//直到最后还剩两个节点</span></span><br><span class="line">            <span class="keyword">if</span> (node[<span class="number">1</span>].val&gt;=node[<span class="number">2</span>].val)&#123;</span><br><span class="line">                ans=node[<span class="number">2</span>].num;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                ans=node[<span class="number">1</span>].num;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;i&lt;=len;i+=<span class="number">2</span>,j++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (node[i].val&gt;=node[i+<span class="number">1</span>].val)&#123;</span><br><span class="line">                node[j]=node[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                node[j]=node[i+<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        len&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="P4913-【深基16-例3】二叉树深度"><a href="#P4913-【深基16-例3】二叉树深度" class="headerlink" title="P4913 【深基16.例3】二叉树深度"></a>P4913 【深基16.例3】二叉树深度</h1><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDQ5MTM=">P4913 【深基16.例3】二叉树深度<i class="fa fa-external-link-alt"></i></span></p>
+<p>直接递归遍历这棵二叉树，同时<strong>统计一个cnt</strong>，每进入一次递归，则cnt+1，最后到达null节点，则ans统计这个时候的 cnt的最大值。</p>
+<p>还有没有另外的做法？</p>
+<blockquote>
+<p> 扩展：求深度也可以使用最短路径来求，例如 使用 floyd算法得到 <strong>根节点到每个节点</strong> 的距离，<strong>规定根节点到与之相邻孩子节点的距离是1</strong>，则如果这个 dp[1] [i] 的值是存在的，则统计 1 -&gt; i的距离的最大值</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> nums[N],ans;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> l,r;</span><br><span class="line">&#125;node[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> i,<span class="type">int</span> cnt)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (node[i].l==<span class="number">0</span> &amp;&amp; node[i].r==<span class="number">0</span>)&#123;</span><br><span class="line">        ans=<span class="built_in">max</span>(ans,cnt);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(node[i].l,cnt+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">dfs</span>(node[i].r,cnt+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;node[i].l&gt;&gt;node[i].r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="P1827-中序与前序，求出后序"><a href="#P1827-中序与前序，求出后序" class="headerlink" title="P1827 中序与前序，求出后序"></a>P1827 中序与前序，求出后序</h1><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDE4Mjc=">P1827 [USACO3.4] 美国血统 American Heritage<i class="fa fa-external-link-alt"></i></span></p>
+<p>前序遍历：<strong>根左右</strong></p>
+<p>中序遍历：<strong>左根右</strong></p>
+<p>如果得到了 <strong>根节点</strong>，则我们就能推出一个<strong>分治的过程</strong>，根节点的左边是左孩子部分，根节点的右边是右孩子部分，其中每个左右孩子部分又可以得到<strong>根节点</strong>，然后重复这一过程：</p>
+<p>这里介绍STL的方法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">find</span>(root);	<span class="comment">//返回root的位置，返回值是 size_t 的值，从0开始，如果在头部找到，则返回0</span></span><br><span class="line"><span class="built_in">erase</span>(xxx);<span class="comment">//删除某一个位置</span></span><br><span class="line"><span class="built_in">substr</span>(beg,len)<span class="comment">//从beg开始，截取len个元素</span></span><br><span class="line"><span class="built_in">substr</span>(beg);	<span class="comment">//只有一个beg位置，则截取beg到end的后面的所有元素</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs1</span><span class="params">(string mid,string pre)</span></span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    前序中序 -&gt; 后序</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">if</span> (mid.<span class="built_in">size</span>()==<span class="number">0</span> || pre.<span class="built_in">size</span>()==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">char</span> root=pre.<span class="built_in">front</span>();<span class="comment">//前序遍历的根节点</span></span><br><span class="line">    pre.<span class="built_in">erase</span>(pre.<span class="built_in">begin</span>());<span class="comment">//删除pre的根节点</span></span><br><span class="line">    <span class="keyword">auto</span> root_it=mid.<span class="built_in">find</span>(root);	<span class="comment">//中序遍历寻找此根节点</span></span><br><span class="line">    <span class="comment">//寻找中序遍历的left部分和right部分</span></span><br><span class="line">    string mid_left=mid.<span class="built_in">substr</span>(<span class="number">0</span>,root_it);</span><br><span class="line">    string mid_right=mid.<span class="built_in">substr</span>(root_it+<span class="number">1</span>);</span><br><span class="line">    <span class="comment">//寻找前序遍历的left部分和right部分</span></span><br><span class="line">    string pre_left=pre.<span class="built_in">substr</span>(<span class="number">0</span>,root_it);</span><br><span class="line">    string pre_right=pre.<span class="built_in">substr</span>(root_it);</span><br><span class="line">    <span class="comment">//后序：左右根形式输出</span></span><br><span class="line">    <span class="built_in">dfs1</span>(mid_left,pre_left);<span class="comment">//左</span></span><br><span class="line">    <span class="built_in">dfs1</span>(mid_right,pre_right);<span class="comment">//右</span></span><br><span class="line">    cout&lt;&lt;root;<span class="comment">//根</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="P1030-中序与后序，求出前序"><a href="#P1030-中序与后序，求出前序" class="headerlink" title="P1030 中序与后序，求出前序"></a>P1030 中序与后序，求出前序</h1><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDEwMzA=">P1030 [NOIP2001 普及组] 求先序排列<i class="fa fa-external-link-alt"></i></span></p>
+<p>后序遍历：<strong>左右根</strong></p>
+<p>中序遍历：<strong>左根右</strong></p>
+<p>只要知道了前序遍历或者后序遍历，再加上中序遍历，就可以推出另一种形式。</p>
+<p><strong>但是请注意：后序遍历和前序遍历是无法得到一个唯一的中序遍历的。</strong></p>
+<p>这里使用STL的方法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs2</span><span class="params">(string mid,string last)</span></span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    后序中序 -&gt; 前序</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">if</span> (mid.<span class="built_in">size</span>()==<span class="number">0</span> || last.<span class="built_in">size</span>()==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">char</span> root=last.<span class="built_in">back</span>();<span class="comment">//后序遍历的根节点</span></span><br><span class="line">    last.<span class="built_in">pop_back</span>();      <span class="comment">//删除last的根节点</span></span><br><span class="line">    <span class="keyword">auto</span> root_it=mid.<span class="built_in">find</span>(root);</span><br><span class="line">    <span class="comment">//中序的left部分和right部分</span></span><br><span class="line">    string center_left=mid.<span class="built_in">substr</span>(<span class="number">0</span>,root_it);</span><br><span class="line">    string center_right=mid.<span class="built_in">substr</span>(root_it+<span class="number">1</span>);</span><br><span class="line">    <span class="comment">//后序的left部分和right部分</span></span><br><span class="line">    string last_left=last.<span class="built_in">substr</span>(<span class="number">0</span>,root_it);</span><br><span class="line">    string last_right=last.<span class="built_in">substr</span>(root_it);</span><br><span class="line">    <span class="comment">//前序形式输出：根左右</span></span><br><span class="line">    cout&lt;&lt;root;<span class="comment">//根</span></span><br><span class="line">    <span class="built_in">dfs2</span>(center_left,last_left);<span class="comment">//左</span></span><br><span class="line">    <span class="built_in">dfs2</span>(center_right,last_right);<span class="comment">//右</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="P1229-前序和后序，求出所有中序的次数"><a href="#P1229-前序和后序，求出所有中序的次数" class="headerlink" title="P1229 前序和后序，求出所有中序的次数"></a>P1229 前序和后序，求出所有中序的次数</h1><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDEyMjk=">P1229 遍历问题<i class="fa fa-external-link-alt"></i></span></p>
+<p>前面我们说过：<strong>由前序遍历和后序遍历无法确定一个唯一的中序遍历</strong></p>
+<p>这道题就是让我们求中序遍历的所有可能的数量</p>
+<p>假如<strong>一个节点A只有一个孩子节点B</strong>，则思考一下：<strong>无论B是A的左孩子还是右孩子，它的前序遍历和后序遍历都是一致的。</strong></p>
+<p>因此如果要找到不同的中序遍历的情况，则一定是存在上述的情况。</p>
+<p><strong>A的孩子节点B只存在一个，这样就能确定两种情况；</strong></p>
+<p><strong>如果A也是它的父亲节点 X 的唯一的孩子，那么A的左右改变又可以确定两种情况，加上A自己的，一共有四种情况。</strong> </p>
+<ul>
+<li>一颗树存在两个单孩子节点，则这棵树就具有四种中序，即<strong>具有 2^ n个 中序的情况，n表示单孩子节点的个数</strong></li>
+</ul>
+<p>如何确定一个<strong>单孩子节点</strong>？</p>
+<p>前序遍历：ABC</p>
+<p>后序遍历：CBA</p>
+<p>假设它是一个<strong>一条直线，左斜的形状</strong></p>
+<ul>
+<li>则A的孩子节点B在前序中呈：AB，在后序中呈：BA</li>
+<li>则B的孩子节点C在前序中呈：BC，在后序中呈：CB</li>
+</ul>
+<p>则仅需判断在<strong>中序遍历中A的后继是B</strong>，如果在<strong>后序遍历中A的前驱是B</strong>，则说明为一个情况，n++</p>
+<p>最后 2^n即为中序的所有次数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> nums[N];</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	string q,h;</span><br><span class="line">    cin&gt;&gt;q&gt;&gt;h;</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;q.<span class="built_in">length</span>();i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>;j&lt;h.<span class="built_in">length</span>();j++)&#123;</span><br><span class="line">            <span class="comment">//q[i]==h[j] &amp;&amp; q[i+1]==h[j-1] </span></span><br><span class="line">            <span class="keyword">if</span> (i+<span class="number">1</span>&lt;q.<span class="built_in">length</span>() &amp;&amp; j<span class="number">-1</span>&gt;=<span class="number">0</span> &amp;&amp; q[i]==h[j] &amp;&amp; q[i+<span class="number">1</span>]==h[j<span class="number">-1</span>])&#123;</span><br><span class="line">                ++ans;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;(<span class="number">1</span>&lt;&lt;ans);</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="P1364-医院设置"><a href="#P1364-医院设置" class="headerlink" title="P1364 医院设置"></a>P1364 医院设置</h1><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDEzNjQ=">P1364 医院设置<i class="fa fa-external-link-alt"></i></span></p>
+<p>这道题的是一个典型的求段路径问题。</p>
+<p>要使得在一个节点处建立医院，使得其他节点到这个节点的最短路径最小，不就是求最短路径？</p>
+<p>每两个节点的距离是1，因此<strong>求出这个最短距离后再乘以节点本身的值然后相加即可</strong></p>
+<p>最短路径的求法： floyd算法，dijkstra算法，spfa算法；</p>
+<p>这里附上floyd算法：floyd使用三重循环，<strong>求得任何两个点的最短路径</strong>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">5e2</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> nums[N],dp[N][N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">floyd</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">1</span>;k&lt;=n;k++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">                dp[i][j]=<span class="built_in">min</span>(dp[i][j],dp[i][k]+dp[k][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">    <span class="built_in">memset</span>(dp,<span class="number">0x3f</span>,<span class="built_in">sizeof</span>(dp));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> b,c;</span><br><span class="line">        cin&gt;&gt;nums[i]&gt;&gt;b&gt;&gt;c;</span><br><span class="line">        <span class="comment">//两点之间距离的初始化</span></span><br><span class="line">        dp[i][b]=dp[i][c]=dp[b][i]=dp[c][i]=<span class="number">1</span>;</span><br><span class="line">        dp[b][b]=dp[i][i]=dp[c][c]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//计算两点之间的最短路径</span></span><br><span class="line">    <span class="built_in">floyd</span>();</span><br><span class="line">    <span class="type">int</span> ans=INF;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="type">int</span> ones=<span class="number">0</span>;</span><br><span class="line">        <span class="comment">//以顶点 i 为起点，到某一点的最小距离和</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            ones+=dp[i][j]*nums[j];</span><br><span class="line">        &#125;</span><br><span class="line">        ans=<span class="built_in">min</span>(ans,ones);</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h1 id="P1305-新二叉树"><a href="#P1305-新二叉树" class="headerlink" title="* P1305 新二叉树"></a>* P1305 新二叉树</h1><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDEzMDU=">P1305 新二叉树<i class="fa fa-external-link-alt"></i></span></p>
+<p>这道题的关键是选择合适的数据结构<strong>来存储这棵树</strong>，输出树的<strong>前序遍历很简单</strong></p>
+<p>如果选择<strong>合适的数据结构</strong>？</p>
+<ul>
+<li>由于树的节点不会有重复的，n&lt;=26，则我们使用ASCII码来表示下标，因为<strong>ASCII码也是唯一</strong>的 ，而且很小，我们可以<strong>借助ASCII码当作数组的下标来轻松访问其相应的左右孩子节点</strong>，使用结构体存储left与right孩子，pair也行。</li>
+</ul>
+<h2 id="1-Ascii码用作数组的下标"><a href="#1-Ascii码用作数组的下标" class="headerlink" title="1. Ascii码用作数组的下标"></a>1. Ascii码用作数组的下标</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> nums[N];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Tree</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> left,right;</span><br><span class="line">&#125;tree[N];</span><br><span class="line"><span class="type">char</span> cur,root;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">char</span> i)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i==<span class="string">&#x27;*&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;i;</span><br><span class="line">    <span class="built_in">dfs</span>(tree[i].left);</span><br><span class="line">    <span class="built_in">dfs</span>(tree[i].right);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">    string in;</span><br><span class="line">    <span class="comment">//便于在dfs时确定root的位置</span></span><br><span class="line">    cin&gt;&gt;root;</span><br><span class="line">    cin&gt;&gt;tree[root].left&gt;&gt;tree[root].right;</span><br><span class="line">    <span class="comment">//正常遍历</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;cur;</span><br><span class="line">        cin&gt;&gt;tree[cur].left&gt;&gt;tree[cur].right;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(root);</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="2-寻找根节点"><a href="#2-寻找根节点" class="headerlink" title="2. 寻找根节点"></a>2. 寻找根节点</h2><p>方法二：</p>
+<ul>
+<li>使用一个 <strong>n维3列</strong>的<strong>char数组</strong>来表示这棵树，[0]表示根节点的字符，[1] [2]分别表示左右孩子；我们便可以每次dfs的时候，<strong>直接寻找每一层的所有节点，如果这个节点的父亲为当前的root，则进入此节点的递归。</strong></li>
+</ul>
+<p>为什么遍历每一层寻找父亲节点等于root的节点就是当前需要dfs的节点？</p>
+<ul>
+<li>因为是<strong>前序遍历</strong>，<strong>根在前，所有当前层的所有节点都是一个根</strong>，即从根开始dfs</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> nums[N];</span><br><span class="line"><span class="type">char</span> arr[<span class="number">50</span>][<span class="number">3</span>];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">char</span> root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root==<span class="string">&#x27;*&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;root;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (arr[i][<span class="number">0</span>]==root)&#123;</span><br><span class="line">            <span class="built_in">dfs</span>(arr[i][<span class="number">1</span>]);</span><br><span class="line">            <span class="built_in">dfs</span>(arr[i][<span class="number">2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">    string in;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;arr[i][<span class="number">0</span>]&gt;&gt;arr[i][<span class="number">1</span>]&gt;&gt;arr[i][<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs</span>(arr[<span class="number">1</span>][<span class="number">0</span>]);</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="P3884-求二叉树深度，宽度，uv距离"><a href="#P3884-求二叉树深度，宽度，uv距离" class="headerlink" title="* P3884 求二叉树深度，宽度，uv距离"></a>* P3884 求二叉树深度，宽度，uv距离</h1><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDM4ODQ=">P3884 [JLOI2009]二叉树问题<i class="fa fa-external-link-alt"></i></span></p>
+<p><strong>深度如何求？</strong></p>
+<ul>
+<li>dfs遍历树，然后记录一个cnt，更新最大深度 deep_max？可以，<strong>但是没有必要</strong></li>
+</ul>
+<p><strong>宽度如何求？</strong></p>
+<ul>
+<li>使用bfs层序遍历，维护一个queue，然后记录每一层的queue的元素数量（left入，right入），queue存储的就是每一层的元素个数就是宽度，然后不断的循环，直到queue为0，则遍历完成，kuan_max每次取得 queue.size()与它的最大值? <strong>没有必要</strong></li>
+</ul>
+<p><strong>两个节点之间的距离？</strong></p>
+<ul>
+<li>最短路径，三种随便选择一个即可，我选择 <strong>floyd</strong></li>
+</ul>
+<p><strong>如果我们知道了 这个最短距离不就知道了 宽度与深度了吗</strong>，那我们就没有必要写两个算法求了。</p>
+<p>深度如何知道？</p>
+<ul>
+<li>根节点 1 到任意一点的<strong>最短距离的长度的最大值</strong>，就是<strong>深度的最大值</strong>（两个节点之间dis=1）</li>
+</ul>
+<p>宽度如何知道？</p>
+<ul>
+<li>根节点到 两个点 i j 的最短距离都是 n，则这 i j 属于同一层，<strong>属于同一层的最短距离一定相同</strong>，记录每一层的最短距离相同的元素的数量即可。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e2</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> nums[N],dp[N][N];</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">    <span class="type">int</span> a,b;</span><br><span class="line">    <span class="built_in">memset</span>(dp,<span class="number">0x3f</span>,<span class="built_in">sizeof</span>(dp));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        dp[a][b]=<span class="number">1</span>; <span class="comment">//父亲到孩子的距离是1</span></span><br><span class="line">        dp[b][a]=<span class="number">2</span>; <span class="comment">//孩子到父亲的距离是2</span></span><br><span class="line">        dp[a][a]=dp[b][b]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">1</span>;k&lt;=n;k++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">                dp[i][j]=<span class="built_in">min</span>(dp[i][j],dp[i][k]+dp[k][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> deep=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//深度</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        deep=<span class="built_in">max</span>(deep,dp[<span class="number">1</span>][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//宽度</span></span><br><span class="line">    <span class="type">int</span> kuan[N]&#123;&#125;;</span><br><span class="line">    <span class="type">int</span> kuan_dis=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        ++kuan[dp[<span class="number">1</span>][i]];<span class="comment">//每一层到根节点的距离都是一样的</span></span><br><span class="line">        kuan_dis=<span class="built_in">max</span>(kuan_dis,kuan[dp[<span class="number">1</span>][i]]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> u,v;</span><br><span class="line">    cin&gt;&gt;u&gt;&gt;v;</span><br><span class="line">    cout&lt;&lt;deep+<span class="number">1</span>&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;kuan_dis&lt;&lt;endl;</span><br><span class="line">    <span class="comment">//uv之间的距离</span></span><br><span class="line">    cout&lt;&lt;dp[u][v]&lt;&lt;endl; </span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="ylh 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/zhifubao.jpg" alt="ylh 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/me.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag"><i class="fa fa-tag"></i> 二叉树</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/03/12/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%884%EF%BC%89-%20list/" rel="prev" title="STL源码学习（4）- list">
+      <i class="fa fa-chevron-left"></i> STL源码学习（4）- list
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#P4715-%E3%80%90%E6%B7%B1%E5%9F%BA16-%E4%BE%8B1%E3%80%91%E6%B7%98%E6%B1%B0%E8%B5%9B"><span class="nav-number">1.</span> <span class="nav-text">P4715 【深基16.例1】淘汰赛</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P4913-%E3%80%90%E6%B7%B1%E5%9F%BA16-%E4%BE%8B3%E3%80%91%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6"><span class="nav-number">2.</span> <span class="nav-text">P4913 【深基16.例3】二叉树深度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P1827-%E4%B8%AD%E5%BA%8F%E4%B8%8E%E5%89%8D%E5%BA%8F%EF%BC%8C%E6%B1%82%E5%87%BA%E5%90%8E%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">P1827 中序与前序，求出后序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P1030-%E4%B8%AD%E5%BA%8F%E4%B8%8E%E5%90%8E%E5%BA%8F%EF%BC%8C%E6%B1%82%E5%87%BA%E5%89%8D%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">P1030 中序与后序，求出前序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P1229-%E5%89%8D%E5%BA%8F%E5%92%8C%E5%90%8E%E5%BA%8F%EF%BC%8C%E6%B1%82%E5%87%BA%E6%89%80%E6%9C%89%E4%B8%AD%E5%BA%8F%E7%9A%84%E6%AC%A1%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">P1229 前序和后序，求出所有中序的次数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P1364-%E5%8C%BB%E9%99%A2%E8%AE%BE%E7%BD%AE"><span class="nav-number">6.</span> <span class="nav-text">P1364 医院设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P1305-%E6%96%B0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">7.</span> <span class="nav-text">* P1305 新二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Ascii%E7%A0%81%E7%94%A8%E4%BD%9C%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8B%E6%A0%87"><span class="nav-number">7.1.</span> <span class="nav-text">1. Ascii码用作数组的下标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AF%BB%E6%89%BE%E6%A0%B9%E8%8A%82%E7%82%B9"><span class="nav-number">7.2.</span> <span class="nav-text">2. 寻找根节点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P3884-%E6%B1%82%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%EF%BC%8C%E5%AE%BD%E5%BA%A6%EF%BC%8Cuv%E8%B7%9D%E7%A6%BB"><span class="nav-number">8.</span> <span class="nav-text">* P3884 求二叉树深度，宽度，uv距离</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ylh"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ylh</p>
+  <div class="site-description" itemprop="description">心有所向，无问东西</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2x1dW1vZA==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luumod"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOjExNzMwMTI5MDBAcXEuY29t" title="E-Mail → mailto:1173012900@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pqNjY2NmRqZGJiZD90eXBlPWJsb2c=" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;jj6666djdbbd?type&#x3D;blog">CSDN</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3VzZXIvOTE0MDc5" title="https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;user&#x2F;914079">Luogu</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ylh</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">119k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:36</span>
+</div>
+  <div class="powered-by">
+    <!--由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9waXNjZXMudGhlbWUtbmV4dC5vcmc=">NexT.Pisces</span> 强力驱动 -->
+  </div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共51.5k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://helloylh.com/2023/03/14/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BB%83%E4%B9%A0%EF%BC%881%EF%BC%89/',]
+      });
+      });
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : '0O4opVqvli9kFej8pkOutR5k-gzGzoHsz',
+      appKey     : 'tiwXzzY2nCzf2u5aPUdfMpa6',
+      placeholder: "Just go go",
+      avatar     : '/source/images/mm.jpg',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
