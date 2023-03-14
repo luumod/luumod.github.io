@@ -32,17 +32,17 @@
 <meta property="og:site_name" content="HugeYlh">
 <meta property="og:description" content="本文通过剖析STL vector的源码，主要讲述了vector容器的实现原理与技术手段">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tudingtu.cn/i/2023/03/09/nrwlhj.png">
+<meta property="og:image" content="http://img.helloylh.com/S1FEH~%29OSC1MDJH0%29DJ%5BZQV.png">
 <meta property="og:image" content="https://great.wzznft.com/i/2023/03/09/p9etyy.png">
-<meta property="og:image" content="https://yimitool.com/i/2023/03/10/pr0wsd.png">
-<meta property="og:image" content="https://yimitool.com/i/2023/03/10/7dd797g.png">
-<meta property="og:image" content="https://yimitool.com/i/2023/03/10/qm5olb.png">
+<meta property="og:image" content="http://img.helloylh.com/202303142125892.png">
+<meta property="og:image" content="http://img.helloylh.com/202303142125894.png">
+<meta property="og:image" content="http://img.helloylh.com/202303142125895.png">
 <meta property="article:published_time" content="2023-03-10T04:13:16.000Z">
-<meta property="article:modified_time" content="2023-03-10T08:46:37.379Z">
+<meta property="article:modified_time" content="2023-03-14T13:28:15.558Z">
 <meta property="article:author" content="ylh">
 <meta property="article:tag" content="STL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tudingtu.cn/i/2023/03/09/nrwlhj.png">
+<meta name="twitter:image" content="http://img.helloylh.com/S1FEH~%29OSC1MDJH0%29DJ%5BZQV.png">
 
 <link rel="canonical" href="https://helloylh.com/2023/03/10/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%883%EF%BC%89-%20vector/">
 
@@ -266,10 +266,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-03-10 12:13:16 / 修改时间：16:46:37" itemprop="dateCreated datePublished" datetime="2023-03-10T12:13:16+08:00">2023-03-10</time>
+              <time title="创建时间：2023-03-10 12:13:16" itemprop="dateCreated datePublished" datetime="2023-03-10T12:13:16+08:00">2023-03-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-14 21:28:15" itemprop="dateModified" datetime="2023-03-14T21:28:15+08:00">2023-03-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -355,7 +361,7 @@
 <p>注意front和back取得的是 <strong>值</strong>，并且值以引用的方式返回的效率相对较优。</p>
 <p>重载的[] 运算符取得是第 [i] 个位置的值，并且也是以<strong>引用</strong>的形式返回。</p>
 <p>关于vector的内存配置的原理：</p>
-<p><img src="https://tudingtu.cn/i/2023/03/09/nrwlhj.png" alt=""></p>
+<p><img src="http://img.helloylh.com/S1FEH~%29OSC1MDJH0%29DJ%5BZQV.png" alt=""></p>
 <h1 id="3-vetor的空间配置器"><a href="#3-vetor的空间配置器" class="headerlink" title="3. vetor的空间配置器"></a>3. vetor的空间配置器</h1><p>SGI STL容器中默认使用的空间配置器说<strong>第二级空间配置器</strong>：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//malloc_alloc 为第一级空间配置器</span></span><br><span class="line"><span class="keyword">typedef</span> __malloc_alloc_template&lt;<span class="number">0</span>&gt; malloc_alloc;</span><br><span class="line"><span class="comment">//alloc默认为多线程第二级空间配置器</span></span><br><span class="line"><span class="keyword">typedef</span> __default_alloc_template&lt;__NODE_ALLOCATOR_THREADS, <span class="number">0</span>&gt; alloc;</span><br></pre></td></tr></table></figure>
 <p>可以看到在vector的头部我们具有：</p>
@@ -436,14 +442,14 @@
 <li>然后把<strong>蓝色区域往后拷贝</strong>，使用 copy_backward 反向拷贝到 old_finish</li>
 <li>最后在<strong>position位置拷贝进新的x元素</strong>，使用 fill填充即可</li>
 </ol>
-<p><img src="https://yimitool.com/i/2023/03/10/pr0wsd.png" alt=""></p>
+<p><img src="http://img.helloylh.com/202303142125892.png" alt=""></p>
 <p><strong>无需扩容的情况：但是到finish为止，现有的元素的数量（elem_after）小于 插入的元素数量 n</strong></p>
 <ol>
 <li>直接把<strong>n 大于elem_after之后的部分</strong>拷贝到 finish之后，使用 uninitialized_fll_n</li>
 <li>把<strong>position到finish之间原有的元素全部拷贝到finish之后</strong>，为图中蓝色区域，使用 uninitialized_copy</li>
 <li>最后把剩余的n的一部分填充至 position到finish之间，使用 fill填充</li>
 </ol>
-<p><img src="https://yimitool.com/i/2023/03/10/7dd797g.png" alt=""></p>
+<p><img src="http://img.helloylh.com/202303142125894.png" alt=""></p>
 <p><strong>需要扩容的情况：</strong></p>
 <ol>
 <li>剩余备用的元素无法存放进全部的 n 个元素，<strong>因此需要重新分配空间，并且销毁原空间。</strong></li>
@@ -457,7 +463,7 @@
 <li>再把原来的空间全部销毁，调用全局的<strong>destory</strong>，然后再调用第二级空间配置器的<strong>deallocate</strong>（销毁的顺序是<strong>先destroy然后再析构</strong>）</li>
 <li>最后调整新的 start finish end_storage</li>
 </ol>
-<p><img src="https://yimitool.com/i/2023/03/10/qm5olb.png" alt=""></p>
+<p><img src="http://img.helloylh.com/202303142125895.png" alt=""></p>
 <p>注意：insert的过程中如果出现了内存不足的情况，就执行 <strong>commit or rallback</strong>的规则：</p>
 <p><strong>如果失败则try抛出异常，执行 destroy与 deallocate 销毁全部已成功的元素的空间及对象</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>, <span class="keyword">class</span> <span class="title class_">Alloc</span>&gt;</span><br><span class="line"><span class="type">void</span> vector&lt;T, Alloc&gt;::<span class="built_in">insert</span>(iterator position, size_type n, <span class="type">const</span> T&amp; x) &#123;</span><br><span class="line">  <span class="keyword">if</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">size_type</span>(end_of_storage - finish) &gt;= n) &#123;<span class="comment">//剩余的空间足够容纳n个</span></span><br><span class="line">      T x_copy = x;<span class="comment">//需要赋予的值</span></span><br><span class="line">      <span class="type">const</span> size_type elems_after = finish - position;</span><br><span class="line">      iterator old_finish = finish;</span><br><span class="line">      <span class="keyword">if</span> (elems_after &gt; n) &#123;<span class="comment">//插入点之后的现有元素个数大于要插入的个数n</span></span><br><span class="line">        <span class="built_in">uninitialized_copy</span>(finish - n, finish, finish);<span class="comment">//[finish-n,finish]往后移动</span></span><br><span class="line">        finish += n;<span class="comment">//新的finish位置</span></span><br><span class="line">        <span class="built_in">copy_backward</span>(position, old_finish - n, old_finish);<span class="comment">//从后往前copy[position,old_finish-n]的元素</span></span><br><span class="line">        <span class="built_in">fill</span>(position, position + n, x_copy);<span class="comment">//[position,position+n]插入新的元素</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> &#123;<span class="comment">//插入点之后的现有元素个数小于等于要插入的个数n</span></span><br><span class="line">        <span class="built_in">uninitialized_fill_n</span>(finish, n - elems_after, x_copy);<span class="comment">//先把插入位置大于finish的部分元素全部插入</span></span><br><span class="line">        finish += n - elems_after;<span class="comment">//调整finish为插入部分新元素后的位置</span></span><br><span class="line">        <span class="built_in">uninitialized_copy</span>(position, old_finish, finish);<span class="comment">//把原来的[position,old_finish]的全部元素移动到新的finish的后面</span></span><br><span class="line">        finish += elems_after;<span class="comment">//再次调整finish位置</span></span><br><span class="line">        <span class="built_in">fill</span>(position, old_finish, x_copy);<span class="comment">//把[position,old_finish]赋值为新的元素</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;<span class="comment">//如果说备用空间小于要插入的元素所占用的空间</span></span><br><span class="line">      <span class="type">const</span> size_type old_size = <span class="built_in">size</span>();        </span><br><span class="line">      <span class="type">const</span> size_type len = old_size + <span class="built_in">max</span>(old_size, n);<span class="comment">//获取总的需要的长度空间单元</span></span><br><span class="line">      <span class="comment">//分配空间</span></span><br><span class="line">      iterator new_start = data_allocator::<span class="built_in">allocate</span>(len);<span class="comment">//新的start</span></span><br><span class="line">      iterator new_finish = new_start;<span class="comment">//新的finish</span></span><br><span class="line">      __STL_TRY &#123;</span><br><span class="line">        new_finish = <span class="built_in">uninitialized_copy</span>(start, position, new_start);</span><br><span class="line">        new_finish = <span class="built_in">uninitialized_fill_n</span>(new_finish, n, x);</span><br><span class="line">        new_finish = <span class="built_in">uninitialized_copy</span>(position, finish, new_finish);</span><br><span class="line">      &#125;</span><br><span class="line"><span class="meta">#         <span class="keyword">ifdef</span>  __STL_USE_EXCEPTIONS </span></span><br><span class="line">      <span class="built_in">catch</span>(...) &#123;</span><br><span class="line">        <span class="built_in">destroy</span>(new_start, new_finish);</span><br><span class="line">        data_allocator::<span class="built_in">deallocate</span>(new_start, len);</span><br><span class="line">        <span class="keyword">throw</span>;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="meta">#         <span class="keyword">endif</span> <span class="comment">/* __STL_USE_EXCEPTIONS */</span></span></span><br><span class="line">      <span class="comment">//销毁原始空间</span></span><br><span class="line">      <span class="built_in">destroy</span>(start, finish);</span><br><span class="line">      <span class="built_in">vector_deallocate</span>();</span><br><span class="line">      <span class="comment">//确定新的 start finish  end_of_storeage</span></span><br><span class="line">      start = new_start;</span><br><span class="line">      finish = new_finish;</span><br><span class="line">      end_of_storage = new_start + len;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
