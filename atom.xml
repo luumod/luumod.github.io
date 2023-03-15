@@ -6,7 +6,7 @@
   <link href="https://helloylh.com/atom.xml" rel="self"/>
   
   <link href="https://helloylh.com/"/>
-  <updated>2023-03-14T10:00:34.345Z</updated>
+  <updated>2023-03-15T13:42:53.982Z</updated>
   <id>https://helloylh.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python-NumPy学习（1）</title>
+    <link href="https://helloylh.com/2023/03/15/Python-NumPy%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/"/>
+    <id>https://helloylh.com/2023/03/15/Python-NumPy%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/</id>
+    <published>2023-03-15T05:31:14.000Z</published>
+    <updated>2023-03-15T13:42:53.982Z</updated>
+    
+    
+    <summary type="html">本文主要讲解了Python - NumPy的ndarray中的数组的操作，包括数组的创建，访问，改变形状等函数及功能</summary>
+    
+    
+    
+    <category term="Python数据分析" scheme="https://helloylh.com/categories/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+    
+    <category term="NumPy" scheme="https://helloylh.com/tags/NumPy/"/>
+    
+  </entry>
   
   <entry>
     <title>二叉树练习（基础 1）</title>
