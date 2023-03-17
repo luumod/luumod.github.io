@@ -6,7 +6,7 @@
   <link href="https://helloylh.com/atom.xml" rel="self"/>
   
   <link href="https://helloylh.com/"/>
-  <updated>2023-03-16T15:36:14.485Z</updated>
+  <updated>2023-03-17T09:44:52.457Z</updated>
   <id>https://helloylh.com/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title></title>
+    <link href="https://helloylh.com/2023/03/17/Python%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89-NumPy%E7%9F%A9%E9%98%B5%E4%B8%8E%E9%80%9A%E7%94%A8%E5%87%BD%E6%95%B0/"/>
+    <id>https://helloylh.com/2023/03/17/Python%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89-NumPy%E7%9F%A9%E9%98%B5%E4%B8%8E%E9%80%9A%E7%94%A8%E5%87%BD%E6%95%B0/</id>
+    <published>2023-03-17T04:55:39.000Z</published>
+    <updated>2023-03-17T09:44:52.457Z</updated>
+    
+    
+    <summary type="html">本文主要讲解了NumPy矩阵的创建与ufunc操作函数，包括排序，去重，等基本函数</summary>
+    
+    
+    
+    <category term="Python数据分析" scheme="https://helloylh.com/categories/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+    
+    <category term="NumPy" scheme="https://helloylh.com/tags/NumPy/"/>
+    
+  </entry>
+  
+  <entry>
     <title>并查集及其扩展</title>
     <link href="https://helloylh.com/2023/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/"/>
     <id>https://helloylh.com/2023/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/</id>
     <published>2023-03-16T14:41:15.000Z</published>
-    <updated>2023-03-16T15:36:14.485Z</updated>
+    <updated>2023-03-16T15:36:45.521Z</updated>
     
     
     <summary type="html">本文主要讲解了并查集的相关应用，以及并查集的扩展（种类并查集，带权并查集等等）并且附带题目联系及完整代码</summary>
@@ -37,8 +56,8 @@
   
   <entry>
     <title>Python-NumPy学习（1）</title>
-    <link href="https://helloylh.com/2023/03/15/Python-NumPy%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/"/>
-    <id>https://helloylh.com/2023/03/15/Python-NumPy%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89/</id>
+    <link href="https://helloylh.com/2023/03/15/Python%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89-NumPy%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/"/>
+    <id>https://helloylh.com/2023/03/15/Python%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89-NumPy%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/</id>
     <published>2023-03-15T05:31:14.000Z</published>
     <updated>2023-03-15T13:43:13.331Z</updated>
     
