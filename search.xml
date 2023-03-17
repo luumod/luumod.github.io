@@ -15,8 +15,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2023/03/17/Python%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89-NumPy%E7%9F%A9%E9%98%B5%E4%B8%8E%E9%80%9A%E7%94%A8%E5%87%BD%E6%95%B0/</url>
+    <title>Python学习（2） - NumPy矩阵与通用函数</title>
+    <url>/2023/03/17/Python%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89-NumPy%E7%9F%A9%E9%98%B5%E4%B8%8E%E9%80%9A%E7%94%A8%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>文章首发于：<a href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
 <h1 id="1-NumPy矩阵"><a href="#1-NumPy矩阵" class="headerlink" title="1. NumPy矩阵"></a>1. NumPy矩阵</h1><h2 id="1-1-mat函数"><a href="#1-1-mat函数" class="headerlink" title="1.1 mat函数"></a>1.1 mat函数</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">mat=asmatrix</span><br><span class="line">asmatrix(data, dtype=<span class="literal">None</span>):</span><br></pre></td></tr></table></figure>
 <p>data：表示输入的<strong>数组</strong>或者<strong>字符串</strong>，使用‘，’分割列，使用‘；’分割行</p>
@@ -241,8 +241,8 @@
       </tags>
   </entry>
   <entry>
-    <title>Python-NumPy学习（1）</title>
-    <url>/2023/03/15/Python%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89-NumPy%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/</url>
+    <title>Python学习（1）-NumPy数组操作</title>
+    <url>/2023/03/15/Python%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89-NumPy%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>文章首发于：<a href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
 <h1 id="1-ndarray数组对象"><a href="#1-ndarray数组对象" class="headerlink" title="1. ndarray数组对象"></a>1. ndarray数组对象</h1><h2 id="1-1-数组的属性"><a href="#1-1-数组的属性" class="headerlink" title="1.1 数组的属性"></a>1.1 数组的属性</h2><p>数组属性反应了数组本身具有的<strong>固定信息</strong>：</p>
 <ol>
