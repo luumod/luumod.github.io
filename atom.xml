@@ -6,7 +6,7 @@
   <link href="https://helloylh.com/atom.xml" rel="self"/>
   
   <link href="https://helloylh.com/"/>
-  <updated>2023-03-18T14:01:11.782Z</updated>
+  <updated>2023-03-20T13:52:50.164Z</updated>
   <id>https://helloylh.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CMake学习（1）- 基本操作与命令</title>
+    <link href="https://helloylh.com/2023/03/20/CMake%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E4%B8%8E%E5%91%BD%E4%BB%A4/"/>
+    <id>https://helloylh.com/2023/03/20/CMake%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E4%B8%8E%E5%91%BD%E4%BB%A4/</id>
+    <published>2023-03-20T09:24:43.000Z</published>
+    <updated>2023-03-20T13:52:50.164Z</updated>
+    
+    
+    <summary type="html">本文主要是对CMake学习的总结。包含基本操作与第一个简单的CMake程序及指令详解</summary>
+    
+    
+    
+    <category term="实用技术" scheme="https://helloylh.com/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="CMake" scheme="https://helloylh.com/tags/CMake/"/>
+    
+  </entry>
   
   <entry>
     <title>树状数组解决逆序对问题</title>
