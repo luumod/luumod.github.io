@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="_3JRGj020zsk4apxOkqowNm9FPqF9N9S7hMwSJii6_Q">
+  <meta name="msvalidate.01" content="9E9D6F1DCF94B9B8F6D4119BDF696B11">
+  <meta name="baidu-site-verification" content="codeva-wCeADXb2tW">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-mac-osx.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"helloylh.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="蓝桥杯算法复习：数组的差分，差分算法例题与讲解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="差分算法">
+<meta property="og:url" content="https://helloylh.com/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="HugeYlh">
+<meta property="og:description" content="蓝桥杯算法复习：数组的差分，差分算法例题与讲解。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-23T14:39:45.000Z">
+<meta property="article:modified_time" content="2023-03-23T15:32:46.683Z">
+<meta property="article:author" content="ylh">
+<meta property="article:tag" content="差分">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://helloylh.com/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>差分算法 | HugeYlh</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'G-D6W7BP90D4',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?706b35dfc7a527ae7bcc1ac086b5a00e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="HugeYlh" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">HugeYlh</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">奔赴山海，保持热爱</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://helloylh.com/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ylh">
+      <meta itemprop="description" content="心有所向，无问东西">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HugeYlh">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          差分算法
+        </h1>
+
+        <div class="post-meta">
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-23 22:39:45 / 修改时间：23:32:46" itemprop="dateCreated datePublished" datetime="2023-03-23T22:39:45+08:00">2023-03-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">算法题解</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/" class="post-meta-item leancloud_visitors" data-flag-title="差分算法" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+            <div class="post-description">蓝桥杯算法复习：数组的差分，差分算法例题与讲解。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>文章首发于：<a href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
+<h2 id="差分介绍"><a href="#差分介绍" class="headerlink" title="差分介绍"></a>差分介绍</h2><p>差分是一种常见的算法，用于<strong>快速修改数组中某一段区间的值</strong>。</p>
+<p>差分的思想就是预处理出数组的差分数组，<strong>然后修改区间时，只需要修改两个位置的值</strong>，即可快速完成区间修改。最后再通过差分数组求出原数组。 差分数组 $d<em>i$ 表示原数组中相邻两个元素之间的差值，即 $d_i=a_i-a</em>{i-1}$，其中 $a<em>i$ 表示原数组中第 $i$ 个元素的值。则对于区间 $[l,r]$ 的加上 $k$ 的操作，可以表示为： $$d_l=d_l+k,\quad d</em>{r+1}=d<em>{r+1}-k<script type="math/tex">这样就完成了区间加 $k$ 的操作。最后只需要用差分数组求出原数组即可。</script>a_i=\sum</em>{j=1}^{i} d_j$$</p>
+<h2 id="差分应用"><a href="#差分应用" class="headerlink" title="差分应用"></a>差分应用</h2><h3 id="区间加"><a href="#区间加" class="headerlink" title="区间加"></a>区间加</h3><p>以区间加为例，设 $a<em>i$ 表示原数组中第 $i$ 个元素的值，$d_i$ 表示差分数组中第 $i$ 个元素的值，则对于区间 $[l,r]$ 的加上 $k$ 的操作，可以表示为： $$d_l=d_l+k,\quad d</em>{r+1}=d<em>{r+1}-k<script type="math/tex">最后只需要用差分数组求出原数组即可：</script>a_i=\sum</em>{j=1}^{i} d_j$$ 以下是区间加的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt; a; <span class="comment">// 原数组</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">d</span><span class="params">(a.size(), <span class="number">0</span>)</span></span>; <span class="comment">// 差分数组</span></span><br><span class="line"><span class="comment">// 区间加 k</span></span><br><span class="line"><span class="type">int</span> l = <span class="number">2</span>, r = <span class="number">5</span>, k = <span class="number">3</span>;</span><br><span class="line">d[l] += k;</span><br><span class="line">d[r+<span class="number">1</span>] -= k;</span><br><span class="line"><span class="comment">// 求出原数组</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; a.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">    d[i] += d[i<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="区间求和"><a href="#区间求和" class="headerlink" title="区间求和"></a>区间求和</h3><p>另一种常见的操作是区间求和。设 $a<em>i$ 表示原数组中第 $i$ 个元素的值，$d_i$ 表示差分数组中第 $i$ 个元素的值，则对于区间 $[l,r]$ 的求和操作，可以表示为： $$\sum</em>{i=l}^{r} a<em>i = \sum</em>{i=l}^{r} (\sum<em>{j=1}^{i} d_j) = \sum</em>{j=1}^{r} d<em>j - \sum</em>{j=1}^{l-1} d_j$$ 这样就能用差分数组快速求出区间和了。 以下是区间求和的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cppCopy codevector&lt;<span class="type">int</span>&gt; a; <span class="comment">// 原数组</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">d</span><span class="params">(a.size(), <span class="number">0</span>)</span></span>; <span class="comment">// 差分数组</span></span><br><span class="line"><span class="comment">// 区间加 k</span></span><br><span class="line"><span class="type">int</span> l = <span class="number">2</span>, r = <span class="number">5</span>, k = <span class="number">3</span>;</span><br><span class="line">d[l] += k;</span><br><span class="line">d[r+<span class="number">1</span>] -= k;</span><br><span class="line"><span class="comment">// 求出原数组</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; a.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">    d[i] += d[i<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 区间求和</span></span><br><span class="line">l = <span class="number">3</span>, r = <span class="number">7</span>;</span><br><span class="line"><span class="type">int</span> ans = d[r] - d[l<span class="number">-1</span>];</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>差分是一种常见的算法，用于快速修改数组中某一段区间的值。差分的思想就是预处理出数组的差分数组，然后修改区间时，只需要修改两个位置的值，即可快速完成区间修改。最后再通过差分数组求出原数组。差分算法在区间加、区间求和等问题中都有广泛的应用。</p>
+<hr>
+<h1 id="3729-改变数组元素"><a href="#3729-改变数组元素" class="headerlink" title="3729. 改变数组元素"></a>3729. 改变数组元素</h1><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS9hY3Rpdml0eS9jb250ZW50L3Byb2JsZW0vY29udGVudC84MDIyLw==">3729. 改变数组元素<i class="fa fa-external-link-alt"></i></span></p>
+<p>题目要求：初始给你一个<strong>全为0的序列</strong>，给你一组数据，其中每一个数组a[i]=n表示对自 i 开始的的前面n个元素全都都变为1，已经是1的不予理会，求得操作完成后的数列的值。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">0 3 0 0 1 3</span><br></pre></td></tr></table></figure>
+<p>操作后：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 1 0 1 1 1</span><br></pre></td></tr></table></figure>
+<hr>
+<p>对于【2】位置，它的值为3，意味着自位置 2开始，前3个元素全部都变为1，则：</p>
+<p>差分数组：[0]=1，[3]=-1。</p>
+<p>我们根据差分数组转换为原数组：1到3的元素就是 1 1 0，这样我们就成功的利用差分数组改变了原数组的值。</p>
+<p>因此对于每一个位置的值，我们对差分进行操作，<strong>b[l]+=1，b[r]-=1</strong>，最后利用差分数组转换为原数组。</p>
+<p>注意几个地方：</p>
+<ol>
+<li>如果根据所给的值得到对差分数组操作的 <strong>l 与r</strong>？ 假设我们的值为x，则左端点为 i-x+1，右端点为 i</li>
+<li>x必须取 i 和 x 的最小者，原因是即使 x大于i，则 i-x会得到一个负值，我们使得x=i，那么这样的话就是默认左端点为1开始</li>
+<li>只需对差分数组进行操作：b[l]+=1，b[r]-=1</li>
+<li>根据差分数组反推出原数组</li>
+<li>我们只需要得到每一个位置的值是0还是1即可，对于原数组我们根据其值进行<strong>两次 ！！的操作</strong>，这个操作可以使得 <strong>0值仍然是0值，任意非零值都是1</strong></li>
+<li>注意清空差分数组的元素值。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> nums[N],b[N];</span><br><span class="line"><span class="type">int</span> t,n;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    <span class="keyword">while</span> (t--)&#123;</span><br><span class="line">        cin&gt;&gt;n;</span><br><span class="line">        <span class="built_in">memset</span>(b,<span class="number">0</span>,(n+<span class="number">1</span>)*<span class="number">4</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="type">int</span> x;</span><br><span class="line">            cin&gt;&gt;x;</span><br><span class="line">            x=<span class="built_in">min</span>(x,i);</span><br><span class="line">            <span class="type">int</span> l=i-x+<span class="number">1</span>,r=i;</span><br><span class="line">            b[l]+=<span class="number">1</span>;</span><br><span class="line">            b[r+<span class="number">1</span>]-=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            b[i]+=b[i<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            cout&lt;&lt;!!b[i]&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="100-增减序列"><a href="#100-增减序列" class="headerlink" title="100. 增减序列"></a>100. 增减序列</h1><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS9wcm9ibGVtL2NvbnRlbnQvMTAyLw==">100. 增减序列 - AcWing题库<i class="fa fa-external-link-alt"></i></span></p>
+<p>题目要求：每次对某个区间进行操作可以选择整体加1，或者整体减1，使得<strong>整个数列的值全部相等</strong>，求得最少操作次数与最少操作次数对应的整个数列值的不同方案。</p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1 1 2 2</span><br></pre></td></tr></table></figure>
+<p>操作后得：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 1 1 1</span><br><span class="line">2 2 2 2</span><br><span class="line">-----</span><br><span class="line">0 0 0 0  //非最少操作次数，因此不计</span><br></pre></td></tr></table></figure>
+<p>最少操作次数为2，即我们把 1到2的1整体加1，即可得到全部为2；把3到4的2整体减1，可以得到全部为1，这两种操作的<strong>最少操作次数都是1次，对应的方案数有两种</strong></p>
+<hr>
+<p>如果我们要想把全部的数列的值都变为唯一的值，则它对应的差分数组的值一定是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num 0 0 0 0...</span><br></pre></td></tr></table></figure>
+<p>即b[1]=num，往后每一个 b的值都为0，这样我们就得到了一个全部值都相同的原数组。</p>
+<p>因此我们该如何构造一个这样的差分数组呢？</p>
+<ol>
+<li>只有首元素不为零</li>
+<li>差分数组中 2到n的全部元素都为0</li>
+</ol>
+<p>可以发现：</p>
+<ul>
+<li><p>最少操作次数：把差分数组变为上面的情况的最少操作次数</p>
+</li>
+<li><p>对应的方案数：因此就是求 b[1] 有多少种方案，就是数列中不同的值的种类</p>
+</li>
+</ul>
+<hr>
+<p>则在区间【2，n】中：</p>
+<p>由于差分数组中值有正有负，因此我们根据贪心的思路：</p>
+<p>每次选择两个符号不同的数值，一个加1，一个减1，这样就能用<strong>最少的次数将正负两个符号不同的数字相消</strong></p>
+<p>我们规定<strong>pos为差分数组中所有正数的和，neg为所有负数的绝对值的和</strong>。</p>
+<p>则<strong>min(pos,neg)</strong>就是<strong>正数与负数进行相消的方案数</strong>，然后使得数列中所有的值都是<strong>相同符号</strong>：</p>
+<blockquote>
+<p> 假设差分数组为：</p>
+<p>2 5 -2 3 -1</p>
+<p>pos=8，neg=3，则我们经过 min(8,3)=3，即经过了三次操作使得所有的负数都消失：</p>
+<p>2 3 0 2 0  (两个负数一个加2，一个加1，对应其他位置一个减2，一个减1)</p>
+</blockquote>
+<p>然后我们得到了全部都是符号相同的序列，下一步我们就是把【2，n】中所有的符号相同的数相消，使得数列中只留下【1】位置的值，则对于【2，n】中的数字可以有两种方案进行相消：</p>
+<ul>
+<li>与【1】位置的值进行相消，此时会改变【1】的值</li>
+<li>与【n+1】位置的值进行相消，此时不会改变【1】的值，【n+1】位置的值无意义。</li>
+</ul>
+<p>因此我们再经过 |pos-neg|次操作使得所有的【2，n】位置的元素全部变为0，<strong>对于最少操作次数，选择两种方案都是一样的</strong>，因此最少操作次数为：<strong>min(pos,neg)+abs(pos-neg)</strong></p>
+<p>如果要统计对应的最少操作次数的方案数：则一定是 <strong>|pos-neg|+1</strong>。</p>
+<p>上面相同符号进行相消配对的时候，选择 |pos-neg| 个与[1]匹配，则[1]改变，可以造成|pos-neg|个[1]的不同情况；另外选择[n+1]，则[1]不变，可以造成1种[1]的情况。<br>因此最终的组合数就是 |pos-neg|+1</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> nums[N];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=n;i&gt;<span class="number">1</span>;i--)&#123;</span><br><span class="line">        nums[i]-=nums[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> pos=<span class="number">0</span>,neg=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[i]&gt;<span class="number">0</span>) pos+=nums[i];</span><br><span class="line">        <span class="keyword">else</span> neg-=nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">min</span>(pos,neg)+<span class="built_in">abs</span>(pos-neg)&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">abs</span>(pos-neg)+<span class="number">1</span>&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="ylh 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/zhifubao.jpg" alt="ylh 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/me.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%AE%E5%88%86/" rel="tag"><i class="fa fa-tag"></i> 差分</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/03/23/%E4%B8%80%E7%BB%B4%E4%B8%8E%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C/" rel="prev" title="一维与二维前缀和">
+      <i class="fa fa-chevron-left"></i> 一维与二维前缀和
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">差分介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E5%BA%94%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">差分应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%BA%E9%97%B4%E5%8A%A0"><span class="nav-number">2.1.</span> <span class="nav-text">区间加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%BA%E9%97%B4%E6%B1%82%E5%92%8C"><span class="nav-number">2.2.</span> <span class="nav-text">区间求和</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3729-%E6%94%B9%E5%8F%98%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0"><span class="nav-number"></span> <span class="nav-text">3729. 改变数组元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#100-%E5%A2%9E%E5%87%8F%E5%BA%8F%E5%88%97"><span class="nav-number"></span> <span class="nav-text">100. 增减序列</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ylh"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ylh</p>
+  <div class="site-description" itemprop="description">心有所向，无问东西</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2x1dW1vZA==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luumod"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOjExNzMwMTI5MDBAcXEuY29t" title="E-Mail → mailto:1173012900@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pqNjY2NmRqZGJiZD90eXBlPWJsb2c=" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;jj6666djdbbd?type&#x3D;blog">CSDN</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3VzZXIvOTE0MDc5" title="https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;user&#x2F;914079">Luogu</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ylh</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">152k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:37</span>
+</div>
+  <div class="powered-by">
+    <!--由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9waXNjZXMudGhlbWUtbmV4dC5vcmc=">NexT.Pisces</span> 强力驱动 -->
+  </div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共66.8k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://helloylh.com/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/',]
+      });
+      });
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : '0O4opVqvli9kFej8pkOutR5k-gzGzoHsz',
+      appKey     : 'tiwXzzY2nCzf2u5aPUdfMpa6',
+      placeholder: "Just go go",
+      avatar     : '/source/images/mm.jpg',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
