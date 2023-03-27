@@ -3780,4 +3780,220 @@
         <tag>递推与递归</tag>
       </tags>
   </entry>
+  <entry>
+    <title>单调队列（例题详解+模板cpp）</title>
+    <url>/2023/03/27/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>文章首发于：<a href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
+<p>有一类问题需要<strong>维护一段区间内的最大值或最小值</strong>，例如<code>滑动窗口</code>、<code>区间最值</code>等问题。一般情况下，我们可以使用线段树、ST表等数据结构来解决这类问题，但是这些数据结构的实现较为复杂，需要一定的时间和精力来学习和掌握。而单调队列则是一个简单而高效的数据结构，可以用来解决这类问题。</p>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>单调队列是一种<strong>存储数据的队列</strong>，其中元素的顺序是<strong>单调递增或单调递减</strong>的。在算法竞赛中，我们一般使用两个单调队列，一个维护单调递增序列，另一个维护单调递减序列。</p>
+<p>单调队列是一个<strong>双端队列</strong>。</p>
+<p>单调队列的应用： </p>
+<h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><p>滑动窗口是一类问题，需要在一个长度为n的序列中，找到所有<strong>长度为k的连续子序列中的最大值或最小值</strong>。使用单调队列可以在O(n)的时间复杂度内解决该问题。</p>
+<p> 具体做法如下： </p>
+<ol>
+<li>首先，将前k个元素插入单调队列中，并记录队列的最大值或最小值。 </li>
+<li>然后，从第k+1个元素开始，每次将一个新的元素插入单调队列中。</li>
+<li>插入时，先将队列中所有<strong>小于等于该元素的队尾元素出队</strong>，保证队列中的元素<strong>单调递减。</strong></li>
+<li>然后，将该元素插入队尾，并记录队列的最大值或最小值。</li>
+<li>最后，将长度为k的子序列的最大值或最小值输出即可。</li>
+</ol>
+<h2 id="区间最值"><a href="#区间最值" class="headerlink" title="区间最值"></a>区间最值</h2><p>需要在一个长度为n的序列中，找到所有<strong>长度为k的子序列中的最大值或最小值</strong>。使用单调队列可以在O(n)的时间复杂度内解决该问题。</p>
+<p>其实现方法与上面类似，但是需要注意：</p>
+<ul>
+<li>区间最值问题是在<strong>不限制子序列连续性</strong>的情况下，找到子序列中的最大值或最小值。</li>
+<li>而滑动窗口问题则是在<strong>限制子序列必须连续</strong>的情况下，找到所有长度为k的子序列中的最大值或最小值。</li>
+</ul>
+<hr>
+<h1 id="154-滑动窗口"><a href="#154-滑动窗口" class="headerlink" title="154. 滑动窗口"></a>154. 滑动窗口</h1><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS9wcm9ibGVtL2NvbnRlbnQvMTU2Lw==">154. 滑动窗口 - AcWing题库<i class="fa fa-external-link-alt"></i></span></p>
+<p>题目要求：给你一段长度为n的序列，并且给你一个k，使得你维护一个长度为k的子序列，并且找到整个序列中全部长度为k的子序列的<strong>所有</strong>的最小值与最大值。</p>
+<p>示例：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="number">8</span> <span class="number">3</span></span><br><span class="line"><span class="number">1</span> <span class="number">3</span> <span class="number">-1</span> <span class="number">-3</span> <span class="number">5</span> <span class="number">3</span> <span class="number">6</span> <span class="number">7</span></span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">min: -1 -3 -3 -3 3 3</span><br><span class="line">max:  3  3  5  5  6  7  </span><br></pre></td></tr></table></figure>
+<hr>
+<p>如果我们在使用两重for循环，如下所示：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">	<span class="type">int</span> num=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> j=i-k+<span class="number">1</span>;j&lt;=i;j++)&#123;</span><br><span class="line">		num=<span class="built_in">max</span>(num,nums[j]);</span><br><span class="line">	&#125;</span><br><span class="line">	ans=<span class="built_in">max</span>(ans,num);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样每次都重复枚举新的i的位置，并且找到其对应窗口的最大值与最小值，则时间复杂度为O（nk）。我们可以使用单调队列使得时间复杂度降低为O（nlogn）：</p>
+<p>单调队列的过程如下：<strong>以维护滑动窗口内的最大值为例</strong></p>
+<p>head：单调队列头 ；tail：单调队列尾</p>
+<p>q：单调队列存储数组，nums：原数组</p>
+<p>k=3</p>
+<p><strong>注意我们的单调队列存储的是元素nums[i]的下标i</strong></p>
+<p>首先head与tail初始化为0（下标1表示起始元素）</p>
+<ol>
+<li>i=1，元素 1 ：此时队列为空，直接插入单调队列的尾部，tail++，此时 <code>head=0，tail=1，q： 1</code></li>
+<li>i=2，元素 3 ：此时队列非空，可以注意到队尾元素 1 小于3，因为我们的单调队列维护<strong>最大值</strong>，所以会删除队尾元素，一直到待插入元素小于队尾元素才行，或者队列为空，tail—，然后我们找到了合适的位置，则元素 3 插入到单调队列的尾部，++tail；由于我们<strong>先出再入</strong>，此时 <code>head=0，tail=1，q：2</code></li>
+<li>i=3，元素 -1：此时队列非空，并且待插入元素小于队尾元素，直接插入到尾部，tail++，并且此时枚举到的元素下标为 i= 3 ，<strong>此时正好是第一个长度为k的窗口</strong>，因此 head++。此时<code>head=1，tail=2，q：2 -1</code>。<strong>输出队头元素</strong>：nums[q[head]]=nums[q[1]]=nums[2]=<strong>3</strong></li>
+<li><p>i=4，元素 -3：此时队列非空，并且待插入元素小于队尾元素，直接插入到尾部，tail++，此时<code>head=1，tail=3，q：2 3 4</code>。<strong>输出队头元素</strong>：nums[q[head]]=nums[q[1]]=nums[2]= <strong>3</strong></p>
+</li>
+<li><p>i=5，元素 5 ：此时队列非空，可以注意到队尾元素小于待插入元素，所以队尾元素出队，一直到待插入元素小于队尾元素才行，或者队列为空，此时我们找到了合适的位置，则元素 5 插入到单调队列的尾部；经过了很多次的tail—后，然后++tail，此时 <code>head=1，tail=1，q：5</code>。<strong>输出队头元素</strong>：nums[q[head]]=nums[q[1]]=nums[5]=5</p>
+</li>
+<li><p>i=6，元素 3：此时队列非空，并且待插入元素小于队尾元素，直接插入到尾部，tail++，此时<code>head=1，tail=2，q：5 6</code>。输出队头元素：nums[q[head]]=nums[q[1]]=nums[5]=<strong>5</strong></p>
+</li>
+<li><p>i=7，元素 6 ：此时队列非空，可以注意到队尾元素小于待插入元素，所以队尾元素出队，一直到待插入元素小于队尾元素才行，或者队列为空，此时我们找到了合适的位置，则元素 6 插入到单调队列的尾部；经过了很多次的tail—后，然后++tail，此时 <code>head=1，tail=1，q：7</code>。<strong>输出队头元素</strong>：nums[q[head]]=nums[q[1]]=nums[7]=<strong>6</strong>           </p>
+</li>
+<li><p>i=8，元素 7 ：此时队列非空，可以注意到队尾元素小于待插入元素，所以队尾元素出队，一直到待插入元素小于队尾元素才行，或者队列为空，此时我们找到了合适的位置，则元素 7 插入到单调队列的尾部；经过了很多次的tail—后，然后++tail，此时 <code>head=1，tail=1，q：8</code>。<strong>输出队头元素</strong>：nums[q[head]]=nums[q[1]]=nums[8]=<strong>7</strong></p>
+</li>
+</ol>
+<hr>
+<p>可以注意到几个问题？</p>
+<ul>
+<li><p>我们在单调队列中存储的是原数组的<strong>下标值</strong>，这样便于找到原始数据以及对队列进行操作</p>
+<ul>
+<li>q[head] 表示 <strong>队头元素</strong>，这个<strong>元素是一个下标</strong>，通过<strong>nums[q[head]]</strong>就可以找到队头的真正数据。</li>
+</ul>
+</li>
+<li><p>tail什么时候变我们都知道，但是什么时候<code>head</code>会变？</p>
+<ul>
+<li>当队头元素小于 i-k+1的时候。 <strong>i为窗口右端点时，i-k+1表示左端点</strong>，<strong>队头元素表示的是下标</strong>，也就是说当 <code>队列队头元素小于窗口的左端点时，说明这个窗口已经超过了，不包含队头元素了</code>，因此需要移动head到窗口的新的左端点位置，head++。</li>
+</ul>
+</li>
+<li>什么时候输出区间最大值？<ul>
+<li>当遍历下标 i&gt;k-1的时候。k-1表示窗口的最小保持长度，例如 k=3，k-1=2，因此当 i=3的时候，i&gt;k-1，那么表示<strong>我们正处于第一个窗口的位置（i=3，窗口包括i=1，2，3位置的元素）</strong>，那么我们输出队头元素所代表的元素值。往后每遍历一个i，都需要输出一次队头，因为每次都是一个长度为k的子窗口。</li>
+</ul>
+</li>
+</ul>
+<p>同理使用STL的deque也可以实现，因为deque本身就是一个双端队列。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;deque&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> nums[N];</span><br><span class="line"><span class="type">int</span> n,k;</span><br><span class="line"><span class="type">int</span> q[N];</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    deque&lt;<span class="type">int</span>&gt; deq;</span><br><span class="line">    <span class="comment">//最小值</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="comment">//如果队列头超过了范围，则弹出队列头</span></span><br><span class="line">        <span class="keyword">if</span> (!deq.<span class="built_in">empty</span>() &amp;&amp; deq.<span class="built_in">front</span>()&lt;i-k+<span class="number">1</span>) deq.<span class="built_in">pop_front</span>();</span><br><span class="line">        <span class="comment">//如果待插入元素比队尾元素小，则一直找到不小的或者队列为空时插入</span></span><br><span class="line">        <span class="keyword">while</span> (!deq.<span class="built_in">empty</span>() &amp;&amp; nums[i]&lt;=nums[deq.<span class="built_in">back</span>()]) deq.<span class="built_in">pop_back</span>();</span><br><span class="line">        deq.<span class="built_in">push_back</span>(i);</span><br><span class="line">        <span class="keyword">if</span> (i&gt;k<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%lld &quot;</span>,nums[deq.<span class="built_in">front</span>()]);</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">    <span class="type">int</span> tail=<span class="number">0</span>,head=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//最大值</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="comment">//如果队头元素超过了窗口的范围，则队头出队</span></span><br><span class="line">        <span class="keyword">if</span> (head&lt;=tail &amp;&amp; q[head]&lt;i-k+<span class="number">1</span>) head++;</span><br><span class="line">        <span class="comment">//队列不为空，并且要插入的元素大于等于队列尾元素，则寻找一个不大于等于的位置，这些队尾元素都出队；或者队列为空时插入</span></span><br><span class="line">        <span class="keyword">while</span> (head&lt;=tail &amp;&amp; nums[i]&gt;=nums[q[tail]]) tail--;</span><br><span class="line">        q[++tail]=i;</span><br><span class="line">        <span class="comment">//对每一个窗口输出队头元素</span></span><br><span class="line">        <span class="keyword">if</span> (i&gt;k<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%lld &quot;</span>,nums[q[head]]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="135-最大子序和"><a href="#135-最大子序和" class="headerlink" title="135. 最大子序和"></a>135. 最大子序和</h1><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS9wcm9ibGVtL2NvbnRlbnQvMTM3Lw==">135. 最大子序和 - AcWing题库<i class="fa fa-external-link-alt"></i></span></p>
+<p>题目要求：给你一个序列，在长度不超过m的情况下，找到<strong>所有长度不超过m</strong>的子序列的和的最大值是多少。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">6 4</span><br><span class="line">1 -3 5 1 -2 3</span><br></pre></td></tr></table></figure>
+<p>m=4，可以得到最后四个数字的和最大，并且长度为4，不超过m，满足。</p>
+<hr>
+<p>一看到子序列的区间和我们就可以想到<strong>前缀和</strong>。</p>
+<p>因此这道题目第一个任务就完成了，我们只需要求出前缀和，并且计算在长度不超过m的情况下：</p>
+<ul>
+<li>计算sum[i]-sum[j-1]的最大值</li>
+</ul>
+<p>其中 i为m长度子序列的右端点，j为左端点，因此<strong>sum[i]-sum[j-1]表示的就是这段区间的和</strong>。</p>
+<p>那么现在问题来了，我们如果求得者每个这样的区间的最大值呢，可以使用O（N^2）枚举所有的子区间，然后分别计算他们的最大值，不过这样做显然是超时的。</p>
+<p>观察这个式子：要想使得sum[i]-sum[j-1]最大，因此我们不妨<strong>固定住右端点i</strong>。</p>
+<p>然后在 [i-m+1，i] 的范围内找到一个最小的前缀和使得 <strong>sum[j-1]最小</strong>，这样就可以让 <strong>sum[i]-sum[j-1]最大。</strong></p>
+<p>因此问题就转换为了在 [i-m+1，i]区间内维护一个<strong>区间最小值</strong>，然后每次<code>更新右端点 i 的时候直接计算sum[i]-sum[j-1]即可，其中 j 的位置就是前缀和最小值的位置</code></p>
+<p>因此我们可以使用<strong>单调队列维护滑动窗口最小值</strong>.</p>
+<p>维护最小值：</p>
+<ol>
+<li>入队的操作：如果队列为空，则插入到队列尾；如果队尾元素大于待插入元素，则弹出队尾元素，一直到队尾元素小于待插入元素位置。</li>
+<li>出队的操作：当队头超过了长度为 m 的窗口的范围，即q[head]在i-m+1的左边，head++</li>
+</ol>
+<p>需要注意的点：</p>
+<ul>
+<li>出队的时候我们的head需要指向窗口<strong>左端点的前一个</strong>，因为我们的前缀和的计算是 sum[i]-<strong>sum[j-1]</strong>，j的位置就是左端点的位置。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;climits&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">3e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n,m,nums[N],sum[N];</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;nums[i]);</span><br><span class="line">        sum[i]=sum[i<span class="number">-1</span>]+nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> ans=INT_MIN;</span><br><span class="line">    <span class="type">int</span> head=<span class="number">0</span>,tail=<span class="number">0</span>,q[N];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="comment">//在[i-m+1,i]的范围内找前缀和的最小值，为j，使得 sum[i]-sum[j-1]最大</span></span><br><span class="line">        <span class="keyword">if</span> (head&lt;=tail &amp;&amp; q[head]&lt;i-m)&#123;</span><br><span class="line">            head++;</span><br><span class="line">        &#125;</span><br><span class="line">        ans=<span class="built_in">max</span>(ans,sum[i]-sum[q[head]]); <span class="comment">//每一个sum[i]-当前窗口最小值= MAXval</span></span><br><span class="line">        <span class="keyword">while</span> (head&lt;=tail &amp;&amp; sum[i]&lt;=sum[q[tail]])&#123;</span><br><span class="line">            tail--;</span><br><span class="line">        &#125;</span><br><span class="line">        q[++tail]=i;<span class="comment">//存储的是下标i</span></span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>单调队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Trie字典树（例题详解+模板cpp）</title>
+    <url>/2023/03/27/Trie%E5%AD%97%E5%85%B8%E6%A0%91/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>文章首发于：<a href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
+<h1 id="字典树（Trie树）"><a href="#字典树（Trie树）" class="headerlink" title="字典树（Trie树）"></a>字典树（Trie树）</h1><p>一：概念</p>
+<p>字典树是一种树形结构，用于存储一组<strong>字符串</strong>，支持快速的<strong>字符串查找和前缀匹配</strong>。</p>
+<p>字典树的本质是利用字符串之间的公共前缀，将具有相同前缀的字符串合并在一起，从而实现高效的字符串操作。</p>
+<p>数据结构 字典树是一棵多叉树，每个节点包含若干个指向子节点的指针，每个节点代表一个字符。根节点代表空字符串，每个非根节点代表一个非空前缀。如果某个节点代表的字符串在字典树中存在，则该节点为终止节点；否则，该节点不是终止节点。</p>
+<p> 三：操作</p>
+<p> 字典树支持以下操作： </p>
+<pre><code> 1. **插入操作** 将一个字符串插入字典树中，需要从根节点开始遍历字符串的每个字符，如果当前字符对应的节点存在，则继续向下遍历；否则，新建一个节点，并将其插入到当前节点的子节点中。最后，将字符串的最后一个字符对应的节点标记为终止节点。
+ 2. **查找操作** 查找一个字符串是否在字典树中，需要从根节点开始遍历字符串的每个字符，如果当前字符对应的节点存在，则继续向下遍历；否则，说明该字符串不存在于字典树中。
+ 3. **前缀匹配操作** 在字典树中查找一个字符串的前缀匹配，需要从根节点开始遍历字符串的每个字符，如果当前字符对应的节点存在，则继续向下遍历；否则，说明该字符串的前缀不存在于字典树中
+</code></pre><p>四：应用场景 </p>
+<p>字典树的应用场景非常广泛，包括但不限于以下几个方面： </p>
+<ol>
+<li><p><strong>字符串查找</strong>：在一组字符串中查找指定的字符串是否存在，可以使用字典树来实现。 </p>
+</li>
+<li><p><strong>词频统计</strong>：将一组文本分词，并统计每个词出现的频率，可以使用字典树来实现。</p>
+</li>
+<li><p><strong>自动补全</strong>：在用户输入过程中，根据已输入的前缀，自动补全可能的后缀，可以使用字典树来实现。 </p>
+</li>
+<li><p><strong>模式匹配</strong>：在一组文本中查找某个模式出现的位置，可以使用字典树来实现。</p>
+</li>
+</ol>
+<h1 id="143-最大异或对"><a href="#143-最大异或对" class="headerlink" title="143. 最大异或对"></a>143. 最大异或对</h1><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS9wcm9ibGVtL2NvbnRlbnQvZGVzY3JpcHRpb24vMTQ1Lw==">143. 最大异或对 - AcWing题库<i class="fa fa-external-link-alt"></i></span></p>
+<p>题目要求：给你一些数字，让你找出其中<strong>异或和最大</strong>的一对数字</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">2 4 3 6 5</span><br></pre></td></tr></table></figure>
+<p>其中 2和5 或者 4和3异或和之后为7，都是最大值，因此结果为7.</p>
+<hr>
+<p>如果我们知道一个数字比如 4，则此二进制为 100，则我们尽量需要找 011的，因为只有这样我们的异或和是 111，是一个在这两个数字异或范围内的最大值。</p>
+<p>同理，对于其他的数字也是，我们<strong>只要找到与num每一位二进制数尽量相反的数字即可</strong></p>
+<p>因此对于所有的数字都是如此，最大的数字可以到达 2^31，所以我们在对Trie树进行操作的时候要：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">30</span>;~i;i--)&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中~i表示 i&gt;=0，两者等价</p>
+<p>过程如下：</p>
+<ol>
+<li>对于<strong>每一个数字进行插入</strong>到字典树中。</li>
+<li>对于每一个数字在Trie中<strong>查询</strong>其最大异或值。</li>
+<li>最后输出最大值。</li>
+</ol>
+<p>Trie图如下所示：</p>
+<p><img src="http://img.helloylh.com/202303272240855.png" alt=""></p>
+<p>因此我们插入之后形成的Trie树如上图所示。</p>
+<p>对于查询每一对之间的最大异或值，我们首先要尽量找到<strong>每一位都与当前数字相反的Trie分支</strong>；如果没有与当前数字相反的分支，则我们<strong>只能选择与当前数字相同的分支</strong>。</p>
+<ul>
+<li><p>如何获取当前数字的每一个位数？</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">30</span>;~i;i--)&#123;</span><br><span class="line">	<span class="type">int</span> u=x&gt;&gt;i&amp;<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如何以当前数字的二进制位的数值创建Trie分支?</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!tree[p][u])&#123;</span><br><span class="line">	tree[p][u]=++idx;<span class="comment">//idx就是每一个节点</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查询时如何当前二进制位有没有相同的分支？</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (tree[p][!u])&#123; <span class="comment">//u表示当前的二进制位</span></span><br><span class="line">    <span class="comment">//!u 表示如果存在相反的分支</span></span><br><span class="line">	ans+=<span class="number">1</span>&lt;&lt;i; <span class="comment">// 第i位为1，转换为十进制</span></span><br><span class="line">	p=tree[p][!u];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//!u 表示不存在相反的，则只存在相同的。</span></span><br><span class="line">	p=tree[p][u];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> nums[N];</span><br><span class="line"><span class="type">int</span> tree[N*<span class="number">31</span>][<span class="number">2</span>],idx;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> p=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">30</span>;~i;i--)&#123; <span class="comment">//~i == i&gt;=0</span></span><br><span class="line">        <span class="type">int</span> u=x&gt;&gt;i&amp;<span class="number">1</span>; <span class="comment">//获得二进制中第i位的值</span></span><br><span class="line">        <span class="keyword">if</span> (!tree[p][u])&#123;</span><br><span class="line">            tree[p][u]=++idx;</span><br><span class="line">        &#125;</span><br><span class="line">        p=tree[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> p=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">30</span>;~i;i--)&#123;</span><br><span class="line">        <span class="type">int</span> u=x&gt;&gt;i&amp;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (tree[p][!u])&#123; <span class="comment">//与当前数字不相等的分支是存在的</span></span><br><span class="line">            <span class="comment">//往不同的分支走</span></span><br><span class="line">            ans+=<span class="number">1</span>&lt;&lt;i;</span><br><span class="line">            p=tree[p][!u];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;<span class="comment">//不存在相等的分支</span></span><br><span class="line">            <span class="comment">//往相同的分支走</span></span><br><span class="line">            p=tree[p][u];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;nums[i];</span><br><span class="line">        <span class="built_in">insert</span>(nums[i]);<span class="comment">//插入字典树</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        ans=<span class="built_in">max</span>(ans,<span class="built_in">query</span>(nums[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="3485-最大异或和"><a href="#3485-最大异或和" class="headerlink" title="3485. 最大异或和"></a>3485. 最大异或和</h1><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS9wcm9ibGVtL2NvbnRlbnQvZGVzY3JpcHRpb24vMzQ4OC8=">3485. 最大异或和 - AcWing题库<i class="fa fa-external-link-alt"></i></span></p>
+<hr>
+<p>题目要求：找到序列中<strong>长度不超过m的子序列</strong>的最大异或值和。</p>
+<p>最大异或对与这道题相似，只不过这道题求得是<strong>不超过m的子序列</strong>的最大异或和。</p>
+<p>首先我们需要知道几个性质：</p>
+<ul>
+<li>前缀和不仅可以维护和，还可以维护<strong>异或值的和</strong>。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">sum[i]=sum[i<span class="number">-1</span>]^x</span><br></pre></td></tr></table></figure>
+<p><strong>因此 sum[i]-sum[j-1] 表示 【j，i】范围内的数字的异或和</strong></p>
+<p>因此对于一个长度不超过M的子序列来说，如果<strong>我们固定住右端点 i ，则我们就可以枚举左端点 j。</strong></p>
+<p>通过sum[i]-sum[j-1]，如果sum[i]是固定的，则 j 就可以通过在 [ i-M+1，i ] 中找到最小的异或值的和，即<strong>寻找sum[j-1]的最小值</strong></p>
+<p><strong>再通过sum[i] -sum[j-1]得到长度不超过m的子区间[j,r]的异或和的最大值</strong>。</p>
+<p>因此我们就需要维护一个<strong>窗口</strong>，同时需要完成以下三种操作：</p>
+<ul>
+<li>往区间中插入元素（窗口右端点）。</li>
+<li>往区间中删除元素（窗口左端点的前一个位置）。</li>
+<li><strong>找到与sum[i]异或值最大的数。</strong></li>
+</ul>
+<p><strong>通过query函数便可以找到与 sum[i]异或值和最大的结果。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">ans=<span class="built_in">max</span>(ans,<span class="built_in">query</span>(sum[i])); <span class="comment">//表示查询以i为右端点的异或值的前缀和的 最大值</span></span><br></pre></td></tr></table></figure>
+<p>最后ans就是我们的答案。</p>
+<p>其中我们需要注意由于需要维护一个长度为M的窗口，因此当我们需要在移动的时候删除窗口左端点元素，与添加一个元素到右端点。</p>
+<ul>
+<li>何时删除元素？</li>
+</ul>
+<p>由于 j 属于 [i-M+1,i]中， 因此  <strong>j-1 属于 [i-M，i-1]</strong>中，因为对于前缀和我们需要的是 sum[j-1]。<strong>因此 i - M表示的是长度为M窗口需要求前缀和的最左端位置</strong>，因此窗口往右移动的时候，我们需要删除<strong>最左端位置的前一个位置</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (i-m<span class="number">-1</span>&gt;=<span class="number">0</span>) <span class="built_in">insert</span>(sum[i-m<span class="number">-1</span>],<span class="number">-1</span>); <span class="comment">//-1表示删除</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>何时插入元素？</li>
+</ul>
+<p>枚举新的右端点 i ，直接插入即可：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">insert</span>(sum[i],<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<p>要时刻记住：我们都是对 <code>某个区间异或和的前缀和</code> 进行操作的，而不是原数组，不要搞混了。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n,m,sum[N],tree[N*<span class="number">32</span>][<span class="number">2</span>],idx,cnt[N*<span class="number">32</span>];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> v)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> p=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">30</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="type">int</span> u=x&gt;&gt;i&amp;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (!tree[p][u])&#123;</span><br><span class="line">            tree[p][u]=++idx;</span><br><span class="line">        &#125;</span><br><span class="line">        p=tree[p][u];</span><br><span class="line">        cnt[p]+=v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;<span class="comment">//ans保存的是 x其他数字异或的最大结果</span></span><br><span class="line">    <span class="type">int</span> p=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">30</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="type">int</span> u=x&gt;&gt;i&amp;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (cnt[tree[p][!u]])&#123;<span class="comment">//由于当前寻找的范围不是整个tree，而是当前可异或节点的出现次数</span></span><br><span class="line">            <span class="comment">//相反分支存在：+1</span></span><br><span class="line">            ans=ans*<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">            p=tree[p][!u];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//相同分支：+0</span></span><br><span class="line">            ans=ans*<span class="number">2</span>;</span><br><span class="line">            p=tree[p][u];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin&gt;&gt;sum[i];</span><br><span class="line">        sum[i]=sum[i<span class="number">-1</span>]^sum[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">insert</span>(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (i-m<span class="number">-1</span>&gt;=<span class="number">0</span>) <span class="built_in">insert</span>(sum[i-m<span class="number">-1</span>],<span class="number">-1</span>);</span><br><span class="line">        ans=<span class="built_in">max</span>(ans,<span class="built_in">query</span>(sum[i]));</span><br><span class="line">        <span class="built_in">insert</span>(sum[i],<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Trie树</tag>
+      </tags>
+  </entry>
 </search>
