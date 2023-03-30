@@ -22,7 +22,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"helloylh.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"helloylh.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本文主要剖析了SGI STL的一二级空间配置器，内存基本操作函数">
@@ -247,7 +247,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="ylh">
-      <meta itemprop="description" content="心有所向，无问东西">
+      <meta itemprop="description" content="大二学生一枚，热爱代码与写作，希望我的分享能给大家带来知识的收获。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -287,13 +287,6 @@
             </span>
 
           
-            <span id="/2023/03/07/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89-%E7%A9%BA%E9%97%B4%E9%85%8D%E7%BD%AE%E5%99%A8/" class="post-meta-item leancloud_visitors" data-flag-title="STL源码学习（1）- 空间配置器" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -432,8 +425,8 @@
 <p>几乎所有的SGI STL容器全部使用这个接口：<strong>像是 vector，list等全部使用这个接口来处理空间的配置。</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T,<span class="keyword">typename</span> Alloc=alloc&gt;</span><br><span class="line"><span class="keyword">class</span> vector</span><br><span class="line">&#123;</span><br><span class="line">portected:</span><br><span class="line">	<span class="keyword">typedef</span> simple_alloc&lt;T,Alloc&gt; data_allocator	<span class="comment">//数据空间配置器</span></span><br><span class="line">	...</span><br><span class="line">    <span class="type">void</span> <span class="built_in">deallocate</span>()</span><br><span class="line">    &#123;</span><br><span class="line">        data_allocator::<span class="built_in">deallocate</span>(xxxxx);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>deallocate函数 调用 data_allocator ，从而调用 deallocate函数，实际上就是 simple_alloc 的两个deallocate函数，然后再根据是第一级配置器还是第二级配置器选择哪个版本的 deallocate函数。</p>
-<p><img src="https://tudingtu.cn/i/2023/03/09/rb33pv.png" alt=""></p>
-<p><img src="https://tudingtu.cn/i/2023/03/09/rbpb58.png" alt=""></p>
+<p><img data-src="https://tudingtu.cn/i/2023/03/09/rb33pv.png" alt=""></p>
+<p><img data-src="https://tudingtu.cn/i/2023/03/09/rbpb58.png" alt=""></p>
 <h3 id="1-4-1-第一级空间配置器"><a href="#1-4-1-第一级空间配置器" class="headerlink" title="1.4.1 第一级空间配置器"></a>1.4.1 第一级空间配置器</h3><p>我们从<strong>__malloc_alloc_template</strong>类 中 一层一层的看：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> * <span class="title">oom_malloc</span><span class="params">(<span class="type">size_t</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> *<span class="title">oom_realloc</span><span class="params">(<span class="type">void</span> *, <span class="type">size_t</span>)</span></span>;</span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __STL_STATIC_TEMPLATE_MEMBER_BUG</span></span><br><span class="line">	<span class="function"><span class="type">static</span> <span class="title">void</span> <span class="params">(* __malloc_alloc_oom_handler)</span><span class="params">()</span></span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 <p>oom：out of memmory 表示内存不足。</p>
@@ -652,7 +645,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">destroy</span>(result, cur);<span class="comment">//uninitialized_copy</span></span><br><span class="line"><span class="built_in">destroy</span>(first, cur);<span class="comment">//uninitialized_fill</span></span><br><span class="line"><span class="built_in">destroy</span>(first, cur);<span class="comment">//uninitialized_fill_n</span></span><br></pre></td></tr></table></figure>
 <p>destroy 接受一个范围，然后就是我们上面所讨论的destroy的内容了</p>
 <hr>
-<p><img src="https://great.wzznft.com/i/2023/03/10/jymw4j.png" alt=""></p>
+<p><img data-src="https://great.wzznft.com/i/2023/03/10/jymw4j.png" alt=""></p>
 
     </div>
 
@@ -795,14 +788,14 @@
     <img class="site-author-image" itemprop="image" alt="ylh"
       src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">ylh</p>
-  <div class="site-description" itemprop="description">心有所向，无问东西</div>
+  <div class="site-description" itemprop="description">大二学生一枚，热爱代码与写作，希望我的分享能给大家带来知识的收获。</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -820,11 +813,6 @@
       </div>
   </nav>
 </div>
-  <div class="sidebar-button motion-element">
-    <a onclick="tidioChatApi.open();"><i class="fa fa-comment"></i>
-    Chat
-  </a>
-  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
         <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2x1dW1vZA==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luumod"><i class="fab fa-github-alt fa-fw"></i>GitHub</span>
@@ -906,10 +894,34 @@
     <!--由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动 -->
   </div>
 
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/05/2023 10:00:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+
+
 <div class="theme-info">
   <div class="powered-by"></div>
   <span class="post-count">博客全站共78.3k字</span>
 </div>
+
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -951,6 +963,7 @@
   
   <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -1005,7 +1018,6 @@
 
 
 
-  <script src="//code.tidio.co/oh4fwiy9r0d0fohmchjngkf4dwyxmqil.js"></script>
 
 
 
@@ -1044,11 +1056,11 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : true,
       appId      : '0O4opVqvli9kFej8pkOutR5k-gzGzoHsz',
       appKey     : 'tiwXzzY2nCzf2u5aPUdfMpa6',
-      placeholder: "Just go go",
+      placeholder: "ヾﾉ≧∀≦)o来啊, 快活啊!",
       avatar     : '/source/images/mm.jpg',
       meta       : guest,
       pageSize   : '10' || 10,
-      visitor    : true,
+      visitor    : false,
       lang       : '' || 'zh-cn',
       path       : location.pathname,
       recordIP   : false,

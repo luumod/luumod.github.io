@@ -22,7 +22,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"helloylh.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"helloylh.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本文通过剖析STL vector的源码，主要讲述了vector容器的实现原理与技术手段">
@@ -249,7 +249,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="ylh">
-      <meta itemprop="description" content="心有所向，无问东西">
+      <meta itemprop="description" content="大二学生一枚，热爱代码与写作，希望我的分享能给大家带来知识的收获。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -289,13 +289,6 @@
             </span>
 
           
-            <span id="/2023/03/10/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%883%EF%BC%89-%20vector/" class="post-meta-item leancloud_visitors" data-flag-title="STL源码学习（3）- vector" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -363,7 +356,7 @@
 <p>注意front和back取得的是 <strong>值</strong>，并且值以引用的方式返回的效率相对较优。</p>
 <p>重载的[] 运算符取得是第 [i] 个位置的值，并且也是以<strong>引用</strong>的形式返回。</p>
 <p>关于vector的内存配置的原理：</p>
-<p><img src="http://img.helloylh.com/S1FEH~%29OSC1MDJH0%29DJ%5BZQV.png" alt=""></p>
+<p><img data-src="http://img.helloylh.com/S1FEH~%29OSC1MDJH0%29DJ%5BZQV.png" alt=""></p>
 <h1 id="3-vetor的空间配置器"><a href="#3-vetor的空间配置器" class="headerlink" title="3. vetor的空间配置器"></a>3. vetor的空间配置器</h1><p>SGI STL容器中默认使用的空间配置器说<strong>第二级空间配置器</strong>：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//malloc_alloc 为第一级空间配置器</span></span><br><span class="line"><span class="keyword">typedef</span> __malloc_alloc_template&lt;<span class="number">0</span>&gt; malloc_alloc;</span><br><span class="line"><span class="comment">//alloc默认为多线程第二级空间配置器</span></span><br><span class="line"><span class="keyword">typedef</span> __default_alloc_template&lt;__NODE_ALLOCATOR_THREADS, <span class="number">0</span>&gt; alloc;</span><br></pre></td></tr></table></figure>
 <p>可以看到在vector的头部我们具有：</p>
@@ -414,7 +407,7 @@
 <p>同时std::copy函数（往后会讲解）完成后返回end_pos，代表从此处开始，<strong>往后的元素都是无用的</strong></p>
 <p>直接调用<strong>全局的destroy函数</strong>删除此<strong>end_pos - finish</strong> 的元素即可。</p>
 <p>最后调整finish为操作之后的finish，返回first。</p>
-<p><img src="https://great.wzznft.com/i/2023/03/09/p9etyy.png" alt=""></p>
+<p><img data-src="https://great.wzznft.com/i/2023/03/09/p9etyy.png" alt=""></p>
 <p><strong>erase 一个位置的元素：</strong></p>
 <p>首先要判断删除的元素是不是<strong>最后一个元素</strong>（它的下一个位置是 finish的位置）</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//消除position位置的元素</span></span><br><span class="line"><span class="function">iterator <span class="title">erase</span><span class="params">(iterator position)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (position + <span class="number">1</span> != <span class="built_in">end</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        std::<span class="built_in">copy</span>(position + <span class="number">1</span>, finish, position);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">destroy</span>(finish);<span class="comment">//随便销毁一个元素</span></span><br><span class="line">    finish -= <span class="number">1</span>;<span class="comment">//随便减少1个元素大小</span></span><br><span class="line">    <span class="keyword">return</span> position;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -444,14 +437,14 @@
 <li>然后把<strong>蓝色区域往后拷贝</strong>，使用 copy_backward 反向拷贝到 old_finish</li>
 <li>最后在<strong>position位置拷贝进新的x元素</strong>，使用 fill填充即可</li>
 </ol>
-<p><img src="http://img.helloylh.com/202303142125892.png" alt=""></p>
+<p><img data-src="http://img.helloylh.com/202303142125892.png" alt=""></p>
 <p><strong>无需扩容的情况：但是到finish为止，现有的元素的数量（elem_after）小于 插入的元素数量 n</strong></p>
 <ol>
 <li>直接把<strong>n 大于elem_after之后的部分</strong>拷贝到 finish之后，使用 uninitialized_fll_n</li>
 <li>把<strong>position到finish之间原有的元素全部拷贝到finish之后</strong>，为图中蓝色区域，使用 uninitialized_copy</li>
 <li>最后把剩余的n的一部分填充至 position到finish之间，使用 fill填充</li>
 </ol>
-<p><img src="http://img.helloylh.com/202303142125894.png" alt=""></p>
+<p><img data-src="http://img.helloylh.com/202303142125894.png" alt=""></p>
 <p><strong>需要扩容的情况：</strong></p>
 <ol>
 <li>剩余备用的元素无法存放进全部的 n 个元素，<strong>因此需要重新分配空间，并且销毁原空间。</strong></li>
@@ -465,7 +458,7 @@
 <li>再把原来的空间全部销毁，调用全局的<strong>destory</strong>，然后再调用第二级空间配置器的<strong>deallocate</strong>（销毁的顺序是<strong>先destroy然后再析构</strong>）</li>
 <li>最后调整新的 start finish end_storage</li>
 </ol>
-<p><img src="http://img.helloylh.com/202303142125895.png" alt=""></p>
+<p><img data-src="http://img.helloylh.com/202303142125895.png" alt=""></p>
 <p>注意：insert的过程中如果出现了内存不足的情况，就执行 <strong>commit or rallback</strong>的规则：</p>
 <p><strong>如果失败则try抛出异常，执行 destroy与 deallocate 销毁全部已成功的元素的空间及对象</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>, <span class="keyword">class</span> <span class="title class_">Alloc</span>&gt;</span><br><span class="line"><span class="type">void</span> vector&lt;T, Alloc&gt;::<span class="built_in">insert</span>(iterator position, size_type n, <span class="type">const</span> T&amp; x) &#123;</span><br><span class="line">  <span class="keyword">if</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">size_type</span>(end_of_storage - finish) &gt;= n) &#123;<span class="comment">//剩余的空间足够容纳n个</span></span><br><span class="line">      T x_copy = x;<span class="comment">//需要赋予的值</span></span><br><span class="line">      <span class="type">const</span> size_type elems_after = finish - position;</span><br><span class="line">      iterator old_finish = finish;</span><br><span class="line">      <span class="keyword">if</span> (elems_after &gt; n) &#123;<span class="comment">//插入点之后的现有元素个数大于要插入的个数n</span></span><br><span class="line">        <span class="built_in">uninitialized_copy</span>(finish - n, finish, finish);<span class="comment">//[finish-n,finish]往后移动</span></span><br><span class="line">        finish += n;<span class="comment">//新的finish位置</span></span><br><span class="line">        <span class="built_in">copy_backward</span>(position, old_finish - n, old_finish);<span class="comment">//从后往前copy[position,old_finish-n]的元素</span></span><br><span class="line">        <span class="built_in">fill</span>(position, position + n, x_copy);<span class="comment">//[position,position+n]插入新的元素</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> &#123;<span class="comment">//插入点之后的现有元素个数小于等于要插入的个数n</span></span><br><span class="line">        <span class="built_in">uninitialized_fill_n</span>(finish, n - elems_after, x_copy);<span class="comment">//先把插入位置大于finish的部分元素全部插入</span></span><br><span class="line">        finish += n - elems_after;<span class="comment">//调整finish为插入部分新元素后的位置</span></span><br><span class="line">        <span class="built_in">uninitialized_copy</span>(position, old_finish, finish);<span class="comment">//把原来的[position,old_finish]的全部元素移动到新的finish的后面</span></span><br><span class="line">        finish += elems_after;<span class="comment">//再次调整finish位置</span></span><br><span class="line">        <span class="built_in">fill</span>(position, old_finish, x_copy);<span class="comment">//把[position,old_finish]赋值为新的元素</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;<span class="comment">//如果说备用空间小于要插入的元素所占用的空间</span></span><br><span class="line">      <span class="type">const</span> size_type old_size = <span class="built_in">size</span>();        </span><br><span class="line">      <span class="type">const</span> size_type len = old_size + <span class="built_in">max</span>(old_size, n);<span class="comment">//获取总的需要的长度空间单元</span></span><br><span class="line">      <span class="comment">//分配空间</span></span><br><span class="line">      iterator new_start = data_allocator::<span class="built_in">allocate</span>(len);<span class="comment">//新的start</span></span><br><span class="line">      iterator new_finish = new_start;<span class="comment">//新的finish</span></span><br><span class="line">      __STL_TRY &#123;</span><br><span class="line">        new_finish = <span class="built_in">uninitialized_copy</span>(start, position, new_start);</span><br><span class="line">        new_finish = <span class="built_in">uninitialized_fill_n</span>(new_finish, n, x);</span><br><span class="line">        new_finish = <span class="built_in">uninitialized_copy</span>(position, finish, new_finish);</span><br><span class="line">      &#125;</span><br><span class="line"><span class="meta">#         <span class="keyword">ifdef</span>  __STL_USE_EXCEPTIONS </span></span><br><span class="line">      <span class="built_in">catch</span>(...) &#123;</span><br><span class="line">        <span class="built_in">destroy</span>(new_start, new_finish);</span><br><span class="line">        data_allocator::<span class="built_in">deallocate</span>(new_start, len);</span><br><span class="line">        <span class="keyword">throw</span>;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="meta">#         <span class="keyword">endif</span> <span class="comment">/* __STL_USE_EXCEPTIONS */</span></span></span><br><span class="line">      <span class="comment">//销毁原始空间</span></span><br><span class="line">      <span class="built_in">destroy</span>(start, finish);</span><br><span class="line">      <span class="built_in">vector_deallocate</span>();</span><br><span class="line">      <span class="comment">//确定新的 start finish  end_of_storeage</span></span><br><span class="line">      start = new_start;</span><br><span class="line">      finish = new_finish;</span><br><span class="line">      end_of_storage = new_start + len;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -634,14 +627,14 @@
     <img class="site-author-image" itemprop="image" alt="ylh"
       src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">ylh</p>
-  <div class="site-description" itemprop="description">心有所向，无问东西</div>
+  <div class="site-description" itemprop="description">大二学生一枚，热爱代码与写作，希望我的分享能给大家带来知识的收获。</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -659,11 +652,6 @@
       </div>
   </nav>
 </div>
-  <div class="sidebar-button motion-element">
-    <a onclick="tidioChatApi.open();"><i class="fa fa-comment"></i>
-    Chat
-  </a>
-  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
         <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2x1dW1vZA==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luumod"><i class="fab fa-github-alt fa-fw"></i>GitHub</span>
@@ -745,10 +733,34 @@
     <!--由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9taXN0LnRoZW1lLW5leHQub3Jn">NexT.Mist</span> 强力驱动 -->
   </div>
 
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/05/2023 10:00:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+
+
 <div class="theme-info">
   <div class="powered-by"></div>
   <span class="post-count">博客全站共78.3k字</span>
 </div>
+
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -790,6 +802,7 @@
   
   <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -844,7 +857,6 @@
 
 
 
-  <script src="//code.tidio.co/oh4fwiy9r0d0fohmchjngkf4dwyxmqil.js"></script>
 
 
 
@@ -883,11 +895,11 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       notify     : true,
       appId      : '0O4opVqvli9kFej8pkOutR5k-gzGzoHsz',
       appKey     : 'tiwXzzY2nCzf2u5aPUdfMpa6',
-      placeholder: "Just go go",
+      placeholder: "ヾﾉ≧∀≦)o来啊, 快活啊!",
       avatar     : '/source/images/mm.jpg',
       meta       : guest,
       pageSize   : '10' || 10,
-      visitor    : true,
+      visitor    : false,
       lang       : '' || 'zh-cn',
       path       : location.pathname,
       recordIP   : false,
