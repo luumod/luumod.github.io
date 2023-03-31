@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="zh-CN"><head>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -11,12 +13,12 @@
   <meta name="msvalidate.01" content="9E9D6F1DCF94B9B8F6D4119BDF696B11">
   <meta name="baidu-site-verification" content="codeva-wCeADXb2tW">
 
+<link rel="stylesheet" href="/css/main.css">
 
 
-
-
-  
-  
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-mac-osx.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -119,13 +121,13 @@
 </noscript>
 
 <link rel="alternate" href="/atom.xml" title="HugeYlh" type="application/atom+xml">
-<script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css"></noscript></head>
+</head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
     <div class="headband"></div>
 
-    <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
@@ -208,7 +210,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -246,16 +250,16 @@
     
   
   
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://helloylh.com/2023/03/04/git%E5%AD%A6%E4%B9%A0-3/">
 
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="ylh">
       <meta itemprop="description" content="大二学生一枚，热爱代码与写作，希望我的分享能给大家带来知识的收获。">
     </span>
 
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="HugeYlh">
     </span>
       <header class="post-header">
@@ -280,7 +284,7 @@
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">实用技术</span></a>
                 </span>
             </span>
@@ -318,7 +322,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 ≈</span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
               <span>9 分钟</span>
             </span>
             <div class="post-description">本文主要讲解了git分支的概念，如何新建分支，合并分支，删除分支，管理分支，分支开发的流程和远程分支及分支衍和等操作</div>
@@ -336,8 +340,8 @@
 <h1 id="1-Git分支的概念"><a href="#1-Git分支的概念" class="headerlink" title="1. Git分支的概念"></a>1. Git分支的概念</h1><p>在Git提交的时候，会保存一个<strong>指向文件快照的指针</strong>，包含本次提交的作者等相关信息。</p>
 <p>同时也包含多个指向文件内容快照的父指针。</p>
 <p>我们首先创建三个文件，然后执行如下操作：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 'my first project'</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#x27;my first project&#x27;</span><br></pre></td></tr></table></figure>
 <p>暂存操作会对每一个文件计算<strong>校验和</strong>（即第一章中提到的 SHA-1 哈希字串），然后把当前版本的<strong>文件快照保存到 Git 仓库中</strong>（Git 使用 blob 类型的对象存储这些快照）</p>
 <p>此时Git仓库中的五个对象:</p>
 <ol>
@@ -349,27 +353,27 @@
 <p>Git使用master作为分支的<strong>默认名字</strong>，并且<strong>master始终指向你最后一次提交的对象</strong>，他会自己更新</p>
 <hr>
 <p>使用Git创建一个新的分支：叫做testing</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch testing</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch testing</span><br></pre></td></tr></table></figure>
 <p><strong>则testing 会和 master一样，一起指向 最后一次提交的commit对象，testing 不会覆盖 master</strong></p>
 <p>Git如何知道你在哪个分支上工作的呢？</p>
 <ul>
 <li>Git有一个HEAD指针：<strong>指向你正在工作中的本地分支的指针</strong></li>
 </ul>
 <p>运行<code>git branch</code> 之后我们仅仅是创建了一个分支，但是<strong>实际工作分支仍然是默认的master，即我们的HEAD指针指向master</strong>，<strong>我们可以使用下面的命令切换分支</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout testing</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout testing</span><br></pre></td></tr></table></figure>
 <p><strong>这样我们的HEAD指针就指向了 testing分支</strong></p>
 <hr>
 <p>此时我们<strong>再次提交</strong>：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 'second pro'</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#x27;second pro&#x27;</span><br></pre></td></tr></table></figure>
 <p><strong>此时我们的工作分支testing 和HEAD指针会指向我们最新的这次提交，而master分支指向的是之前的提交。</strong></p>
 <p>即我们的每次提交只会改变当前工作分支与 HEAD指针，其他分支保存的仍是之前的历史版本</p>
 <p>如果此时我们输入命令：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
 <p>则我们现在的工作目录是master分支，HEAD指针也指向master。</p>
 <p><strong>这就是实现了在历史版本中切换的目的！也就是说，现在开始所做的改动，将始于本项目中一个较老的版本。它的主要作用是将 testing 分支里作出的修改暂时取消，这样你就可以向另一个方向进行开发。</strong></p>
 <hr>
 <p>此时我们在master分支中进行提交：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 'three pro'</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#x27;three pro&#x27;</span><br></pre></td></tr></table></figure>
 <p>就会产生如下效果：</p>
 <p>我们的这次提交 与 上一次的 second pro 处于同一层中，即在树结构中他们的父节点都是之前master和HEAD所在的位置，即之前的节点拥有了两个父节点</p>
 <blockquote>
@@ -380,76 +384,76 @@
 <p><img data-src="https://tudingtu.cn/i/2023/03/04/6xm60on.png" alt=""></p>
 <p><strong>现在我们接到了一个需求：我们需要实现一个新的功能，则我们需要创建一个新的分支</strong></p>
 <p>新建一个分支并且切换到该分支：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b iss53</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b iss53</span><br></pre></td></tr></table></figure>
 <p>相当于执行下面的命令：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch iss53</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout iss53</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch iss53</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout iss53</span><br></pre></td></tr></table></figure>
 <p><strong>相当于 master 和 iss53 两个指针同时指向了最新的一次提交，并且当前HEAD指针指向 iss53 分支</strong></p>
 <p><img data-src="https://tudingtu.cn/i/2023/03/04/ozoq8b.png" alt=""></p>
 <p>然后我们开始实现这个功能：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim xxxx</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 'new question'</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim xxxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#x27;new question&#x27;</span><br></pre></td></tr></table></figure>
 <p><strong>此时我们正在完成 iss53 分支的功能扩展</strong>，则此时分支如下所示：</p>
 <p><img data-src="https://tudingtu.cn/i/2023/03/04/p0yxd5.png" alt=""></p>
 <hr>
 <p>此时我们突然接到了一个紧急电话（<strong>注意：iss53 功能并没有完成，但是这个严重错误的优先级非常高</strong>）！！！ 我们的原来的<strong>某个分支版本上出现了一个严重错误，需要紧急修改</strong></p>
 <p>假设其在master分支上（当前仍在iss53分支）则我们需要切换到 master 分支上。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
 <p><strong>然后我们需要创建一个分支来解决这个严重错误。</strong>我们新建并切换</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b hotfix</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b hotfix</span><br></pre></td></tr></table></figure>
 <p>然后我们解决这个严重错误：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim xxx</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add xxx</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 'solve error'</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#x27;solve error&#x27;</span><br></pre></td></tr></table></figure>
 <p>我们便解决了这个问题，并且提交了，此时的分支如下所示：</p>
 <p><img data-src="https://tudingtu.cn/i/2023/03/04/p3y6g6.png" alt=""></p>
 <p>注意：此时我们HEAD工作目录指向的是 hotfix（即解决了这个重大错误的分支）</p>
 <p>我们需要合并到原始的master分支中：</p>
 <p>要合并我们需要首先回到master中</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
 <h2 id="2-2-合并分支"><a href="#2-2-合并分支" class="headerlink" title="2.2 合并分支"></a>2.2 合并分支</h2><p>关于<strong>合并</strong>我们使用<code>git merge</code>命令</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge hotfix</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge hotfix</span><br></pre></td></tr></table></figure>
 <p>注意：此时我们执行的是 <strong>Fast—forword合并</strong>，即<strong>如果分支的直接父节点是原来的需要合并到的版本，则会直接把master移动到hotfix分支上</strong></p>
 <p>如下图所示：</p>
 <p><img data-src="https://tudingtu.cn/i/2023/03/04/p6efhh.png" alt=""></p>
 <h2 id="2-3-删除分支"><a href="#2-3-删除分支" class="headerlink" title="2.3 删除分支"></a>2.3 删除分支</h2><p>既然我们已经解决了 这个严重错误，并且我们也完成合并了，那<strong>么这个 hotfix显然没用了，直接删除这个分支即可：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d hotfix</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d hotfix</span><br></pre></td></tr></table></figure>
 <p>则我们继续回到 iss53 来完成这一功能（<strong>之前说了，iss53并没有完成，只是 hotfix的优先级高</strong>）</p>
 <p>则切换分支：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout iss53</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout iss53</span><br></pre></td></tr></table></figure>
 <p>经过一顿操作后，我们终于完成 iss53 的功能扩展，并且提交</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ...</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m '终于完成！'</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#x27;终于完成！&#x27;</span><br></pre></td></tr></table></figure>
 <p>则此时分支图如下所示：</p>
 <p><img data-src="https://tudingtu.cn/i/2023/03/04/p9esz9.png" alt=""></p>
 <p><strong>则最终我们再把这个 扩展 功能与我们的master进行合并：</strong></p>
 <p>首先切换到master</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge iss53</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge iss53</span><br></pre></td></tr></table></figure>
 <p>合并后，分支图如下所示：</p>
 <p><img data-src="https://tudingtu.cn/i/2023/03/04/payozr.png" alt=""></p>
 <p>注意我们的此次合并不同于刚才的严重错误 的合并，刚才<strong>master是 解决严重父亲的直接父节点，因此合并就是父节点移动到孩子节点。</strong></p>
 <p><strong>但是此次合并的是同一祖先节点的不同兄弟节点，因此我们 采用两个分支与它们的最近公共祖先 三者一起进行合并</strong>，最终合并为 C6，并且master指向它。然后删除 iss53 分支即可</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d iss53</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d iss53</span><br></pre></td></tr></table></figure>
 <hr>
 <h1 id="3-管理分支"><a href="#3-管理分支" class="headerlink" title="3. 管理分支"></a>3. 管理分支</h1><ol>
 <li>列出当前所有分支：</li>
 </ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch </span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch </span><br></pre></td></tr></table></figure>
 <p>其中带星号的表示的是当前<strong>工作分支</strong></p>
 <ol>
 <li>查看各个分支的<strong>最后一个提交对象的信息</strong>：</li>
 </ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -v</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -v</span><br></pre></td></tr></table></figure>
 <p>显示如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  iss53   93b412c fix javascript issue</span><br><span class="line">* master  7a98805 Merge branch 'iss53'</span><br><span class="line">  testing 782fd34 add scott to the author list in the readmes</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  iss53   93b412c fix javascript issue</span><br><span class="line">* master  7a98805 Merge branch &#x27;iss53&#x27;</span><br><span class="line">  testing 782fd34 add scott to the author list in the readmes</span><br></pre></td></tr></table></figure>
 <ol>
 <li>显示<strong>已经与当前分支合并</strong>的分支：<strong>也就是说哪些分支是当前分支的直接上游。</strong></li>
 </ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --merged</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --merged</span><br></pre></td></tr></table></figure>
 <p>​    未合并的分支：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --no-merged</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --no-merged</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>如果我们把已经与当前分支合并的分支，如 iss53（功能如上节所示），则 在<code>--merge</code> 时会显示，则我们可以轻松的删除它： <code>git branch -d</code></p>
 </li>
@@ -486,20 +490,20 @@
 </ol>
 <p><img data-src="https://great.wzznft.com/i/2023/03/04/qpnjzg.png" alt=""></p>
 <h1 id="5-远程分支"><a href="#5-远程分支" class="headerlink" title="5. 远程分支"></a>5. 远程分支</h1><p>如果你有一个本地分支 需要和别人分享， <code>git push (远程仓库名) (分支名)</code> 来推送到远程仓库</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 <p>Git 自动把 <code>master</code> 分支名扩展为 <code>refs/heads/master:refs/heads/master</code></p>
 <p><strong>即取出我在本地的master分支，推送到远程仓库的master分支上去。</strong></p>
 <p>运行下面实现相同的功能：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master:master</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master:master</span><br></pre></td></tr></table></figure>
 <p><strong>你可以把本地分支推送到某个命名不同的远程分支</strong>：</p>
 <p>若想把远程分支叫作 <code>ylh</code>，可以用 <code>git push origin master:ylh</code> 来推送数据。</p>
 <p>其他人想要再次从服务器上获取数据时，他们将得到一个新的远程分支 <code>origin/master</code>，并指向服务器上 <code>master</code> 所指向的版本：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch master</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch master</span><br></pre></td></tr></table></figure>
 <p><strong>如果要把该远程分支的内容合并到当前分支</strong>，可以运行 <code>git merge origin/master</code>。如果想要一份自己的 <code>master</code> 来开发，<strong>可以在远程分支的基础上分化出一个新的分支来：</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b master2 origin/master</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b master2 origin/master</span><br></pre></td></tr></table></figure>
 <p>这会切换到新建的 <code>master2</code> 本地分支，其内容同远程分支 <code>origin/master</code> 一致，这样你就可以在里面继续开发了。</p>
 <p><strong>删除远程分支</strong>：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin :master</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin :master</span><br></pre></td></tr></table></figure>
 <p>记住我们不久前见过的 <code>git push [远程名] [本地分支]:[远程分支]</code> 语法，如果省略 <code>[本地分支]</code>，那就等于是在说“在这里提取空白然后把它变成<code>[远程分支]</code>”。</p>
 <h1 id="6-分支衍和"><a href="#6-分支衍和" class="headerlink" title="6. 分支衍和"></a>6. 分支衍和</h1><p>一个分支中的修改整合到另一个分支中有两种方法：</p>
 <ol>
@@ -514,24 +518,24 @@
 <ol>
 <li>首先<strong>在C3的exp</strong>中执行下面的命令：</li>
 </ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase master</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase master</span><br></pre></td></tr></table></figure>
 <p>它的原理是回到两个分支最近的共同祖先，根据当前分支（也就是要进行衍合的分支 <code>experiment</code>）后续的历次提交对象（这里只有一个 C3），生成一系列文件补丁，然后以基底分支（也就是主干分支 <code>master</code>）最后一个提交对象（C4）为新的出发点，逐个应用之前准备好的补丁文件，最后会生成一个新的合并提交对象（C3’），从而改写 <code>experiment</code> 的提交历史，使它成为 <code>master</code> 分支的直接下游，如图 3-29 所示：</p>
 <p><strong>总结：C3的exp 现在 衍和到了 C3’ 的位置</strong></p>
 <p><img data-src="https://great.wzznft.com/i/2023/03/04/svqd3m.png" alt=""></p>
 <ol>
 <li>然后再执行一次 <strong>平行合并</strong></li>
 </ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge exp</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge exp</span><br></pre></td></tr></table></figure>
 <p>就形成了如下的分支图：</p>
 <p><img data-src="https://tudingtu.cn/i/2023/03/04/sxhqzq.png" alt=""></p>
 <p>虽然最后与 <code>merge</code>整合得到的结果没有任何区别，但衍合能产生一个<strong>更为整洁</strong>的提交历史。</p>
 <hr>
 <p><strong>衍和的复杂版本：</strong></p>
 <p>把<code>server</code>的分支包含进来，在<code>master</code>上进行一次衍和操作：<code>git rebase [主分支] [特性分支]</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase master server</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase master server</span><br></pre></td></tr></table></figure>
 <p>使用 <code>--onto</code>：取出client分支，找出client与server的最近<strong>公共祖先</strong>，然后此LCA在 <code>master</code>上做一次<strong>衍和操作</strong>：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --onto master server client</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --onto master server client</span><br></pre></td></tr></table></figure>
 <hr>
 <p><strong>一旦分支中的提交对象发布到公共仓库，就千万不要对该分支进行衍合操作。</strong></p>
 
@@ -622,7 +626,27 @@
           
     <div class="comments" id="valine-comments"></div>
 
-
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
@@ -652,8 +676,9 @@
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="ylh" src="/images/avatar.jpg">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ylh"
+      src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">ylh</p>
   <div class="site-description" itemprop="description">大二学生一枚，热爱代码与写作，希望我的分享能给大家带来知识的收获。</div>
 </div>
@@ -682,25 +707,25 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2x1dW1vZA==" title="GitHub → https://github.com/luumod"><i class="fa fa-github-alt fa-fw"></i>GitHub</span>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2x1dW1vZA==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luumod"><i class="fa fa-github-alt fa-fw"></i>GitHub</span>
       </span>
       <span class="links-of-author-item">
         <span class="exturl" data-url="bWFpbHRvOjExNzMwMTI5MDBAcXEuY29t" title="E-Mail → mailto:1173012900@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pqNjY2NmRqZGJiZD90eXBlPWJsb2c=" title="CSDN → https://blog.csdn.net/jj6666djdbbd?type=blog"><i class="fa fa-crosshairs fa-fw"></i>CSDN</span>
+        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pqNjY2NmRqZGJiZD90eXBlPWJsb2c=" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;jj6666djdbbd?type&#x3D;blog"><i class="fa fa-crosshairs fa-fw"></i>CSDN</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9xaWFuLXNoaS0yOS01NQ==" title="zhihu → https://www.zhihu.com/people/qian-shi-29-55"><i class="fa fa-birthday-cake fa-fw"></i>zhihu</span>
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9xaWFuLXNoaS0yOS01NQ==" title="zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;qian-shi-29-55"><i class="fa fa-birthday-cake fa-fw"></i>zhihu</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVsbG95bGgv" title="cnblogs → https://www.cnblogs.com/helloylh/"><i class="fa fa-road fa-fw"></i>cnblogs</span>
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVsbG95bGgv" title="cnblogs → https:&#x2F;&#x2F;www.cnblogs.com&#x2F;helloylh&#x2F;"><i class="fa fa-road fa-fw"></i>cnblogs</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vdXNlci8yNDQ3OTI5NTc0NzAyMTg5" title="juejin → https://juejin.cn/user/2447929574702189"><i class="fa fa-subway fa-fw"></i>juejin</span>
+        <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vdXNlci8yNDQ3OTI5NTc0NzAyMTg5" title="juejin → https:&#x2F;&#x2F;juejin.cn&#x2F;user&#x2F;2447929574702189"><i class="fa fa-subway fa-fw"></i>juejin</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9oZWxsb3lsaC8=" title="Instagram → https://www.instagram.com/helloylh/"><i class="fa fa-instagram fa-fw"></i>Instagram</span>
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9oZWxsb3lsaC8=" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;helloylh&#x2F;"><i class="fa fa-instagram fa-fw"></i>Instagram</span>
       </span>
   </div>
 
@@ -711,13 +736,13 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3VzZXIvOTE0MDc5" title="https://www.luogu.com.cn/user/914079">Luogu</span>
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3VzZXIvOTE0MDc5" title="https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;user&#x2F;914079">Luogu</span>
         </li>
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS91c2VyL215c3BhY2UvaW5kZXgvMjAzODEyLw==" title="https://www.acwing.com/user/myspace/index/203812/">ACWing</span>
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS91c2VyL215c3BhY2UvaW5kZXgvMjAzODEyLw==" title="https:&#x2F;&#x2F;www.acwing.com&#x2F;user&#x2F;myspace&#x2F;index&#x2F;203812&#x2F;">ACWing</span>
         </li>
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS5jbi91L3dvc2hpOTk5Lw==" title="https://leetcode.cn/u/woshi999/">leetcode</span>
+          <span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS5jbi91L3dvc2hpOTk5Lw==" title="https:&#x2F;&#x2F;leetcode.cn&#x2F;u&#x2F;woshi999&#x2F;">leetcode</span>
         </li>
     </ul>
   </div>
@@ -740,7 +765,7 @@
 
 <div class="copyright">
   
-  © 
+  &copy; 
   <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -765,7 +790,22 @@
 <!-- 网站运行时间的设置 -->
 <span id="timeDate">载入天数...</span>
 <span id="times">载入时分秒...</span>
-
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/05/2023 10:00:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
 
 
 
@@ -776,7 +816,7 @@
 
         
 <div class="busuanzi-count">
-  <script async="" src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
@@ -813,97 +853,27 @@
   
 
   
-  
-  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
-  
-  
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
 
 
+<script src="/js/schemes/muse.js"></script>
 
 
-
-
-
-
-
-
-
-
-
-
-  
-  
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
-  
-
-
-
-
-
-
-<script src="/bundle.js"></script><script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-;
-
-    var now = new Date();
-    function createtime() {
-        var grt= new Date("03/05/2023 10:00:00"); //此处修改你的建站时间或者网站上线时间
-        now.setTime(now.getTime()+250);
-        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
-        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
-        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
-        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
-    }
-setInterval("createtime()",250);
-;
-
+  <script>
     (function(){
       var canonicalURL, curProtocol;
       //Get the <link> tag
@@ -927,8 +897,33 @@ setInterval("createtime()",250);
 	    if (!canonicalURL) canonicalURL = window.location.href;
 	    //Assign script content. Replace current URL with the canonical URL
       !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
-  ;
+  </script>
 
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
       window.addEventListener('load', () => {
       quicklink({
         timeout : 3000,
@@ -936,8 +931,10 @@ setInterval("createtime()",250);
         ignores : [uri => uri.includes('#'),uri => uri === 'https://helloylh.com/2023/03/04/git%E5%AD%A6%E4%B9%A0-3/',]
       });
       });
-  ;
+  </script>
 
+
+<script>
 NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
   NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
     var GUEST = ['nick', 'mail', 'link'];
@@ -963,4 +960,7 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
     });
   }, window.Valine);
 });
-</script></body></html>
+</script>
+
+</body>
+</html>
