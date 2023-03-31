@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<!DOCTYPE html><html lang="zh-CN"><head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -13,12 +11,12 @@
   <meta name="msvalidate.01" content="9E9D6F1DCF94B9B8F6D4119BDF696B11">
   <meta name="baidu-site-verification" content="codeva-wCeADXb2tW">
 
-<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-mac-osx.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+
+
+  
+  
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -112,13 +110,13 @@
 </noscript>
 
 <link rel="alternate" href="/atom.xml" title="HugeYlh" type="application/atom+xml">
-</head>
+<script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css"></noscript></head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
+<body itemscope="" itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
     <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
@@ -201,9 +199,7 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -241,16 +237,16 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://helloylh.com/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="ylh">
       <meta itemprop="description" content="大二学生一枚，热爱代码与写作，希望我的分享能给大家带来知识的收获。">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="HugeYlh">
     </span>
       <header class="post-header">
@@ -281,7 +277,7 @@
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">实用技术</span></a>
                 </span>
             </span>
@@ -319,7 +315,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                <span class="post-meta-item-text">阅读时长 ≈</span>
               <span>18 分钟</span>
             </span>
             <div class="post-description">本文主要讲解了git的常用基本操作,如创建仓库,更新提交仓库,撤销,创建远程仓库等等</div>
@@ -334,22 +330,22 @@
 
       
         <h1 id="1-创建-git仓库"><a href="#1-创建-git仓库" class="headerlink" title="1 创建 git仓库"></a>1 创建 git仓库</h1><h2 id="1-1-从现有工作目录中初始化新仓库"><a href="#1-1-从现有工作目录中初始化新仓库" class="headerlink" title="1.1 从现有工作目录中初始化新仓库"></a>1.1 从现有工作目录中初始化新仓库</h2><p>需要到你需要用git管理的项目中输入以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></tbody></table></figure>
 <p>便会创建一个空的git项目，<strong>并且当前目录下会出现一个名为 .git 的目录</strong>， Git 需要的数据和资源都存放在这个目录中，不过我们目前只是初始化所有的文件与目录</p>
 <ol>
 <li>告诉 git在这个目录中有几个文件需要版本控制。我使用了几个cpp的文件</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add *.cpp</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add *.cpp</span><br></pre></td></tr></tbody></table></figure>
 <p>还可以：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add README</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#x27;initial project version&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add README</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 'initial project version'</span><br></pre></td></tr></tbody></table></figure>
 <p>你已经得到了一个实际维护着若干文件的 Git 仓库。</p>
 <h2 id="1-2-从现有仓库克隆"><a href="#1-2-从现有仓库克隆" class="headerlink" title="1.2 从现有仓库克隆"></a>1.2 从现有仓库克隆</h2><p>克隆某个开源项目的git仓库，可以使用 git clone 命令</p>
 <p>例如克隆一份Ruby语言的 Git 代码仓库 ticgit可以使用下面的命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:schacon/ticgit.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:schacon/ticgit.git</span><br></pre></td></tr></tbody></table></figure>
 <p>这表示在当前文件夹下新建一个ticgit，其中包含一个  .git 的文件夹，<strong>用于保存下载下来的所有版本记录</strong>，然后从中取出最新版本的文件拷贝。</p>
 <p><strong>修改克隆的名字</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:schacon/ticgit.git myticgit</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:schacon/ticgit.git myticgit</span><br></pre></td></tr></tbody></table></figure>
 <p>结果如下：</p>
 <p><img data-src="https://great.wzznft.com/i/2023/03/03/w5knrj.png" alt=""></p>
 <p>在克隆的时候，我们可以选择不同的<strong>数据传输协议</strong>，在我们的例子中选择的是 <strong>ssh传输协议</strong>，你还可以有<code>https://</code>开头或者<code>user@server:/path.git</code>传输协议</p>
@@ -361,54 +357,54 @@
 <li>未跟踪：其他所有的文件都是未跟踪的，即他们既没有快照，也没有放入暂存区。在修改后 git才会把他们表示为已修改的，然后放到暂存区准备提交更新。</li>
 </ol>
 <h2 id="2-1-查看跟踪状态"><a href="#2-1-查看跟踪状态" class="headerlink" title="2.1 查看跟踪状态"></a>2.1 查看跟踪状态</h2><p>输入下面的命令来查看当前工作目录的文件<strong>处于什么状态</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></tbody></table></figure>
 <p>出现的情况：</p>
 <ol>
 <li>当前工作目录很干净，所有<strong>已跟踪</strong>文件在上次提交后都未被更改过。</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working directory clean</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working directory clean</span><br></pre></td></tr></tbody></table></figure>
 <ol>
 <li>现在让我们修改一下，比如添加一个文件（<strong>注意：需要在git克隆的仓库内执行</strong>）</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim README</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim README</span><br></pre></td></tr></tbody></table></figure>
 <p>然后随便输入一些内容保存退出。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></tbody></table></figure>
 <p>会出现：<strong>Untracked files ，即未跟踪状态</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line">        README</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Untracked files:</span><br><span class="line">  (use "git add &lt;file&gt;..." to include in what will be committed)</span><br><span class="line">        README</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use "git add" to track)</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>表示我们的README 处于Untracked files即未跟踪状态</strong></p>
 <blockquote>
 <p>未跟踪的文件意味着Git在之前的快照（提交）中没有这些文件；Git 不会自动将之纳入跟踪范围，除非你明明白白地告诉它“我需要跟踪该文件”，因而不用担心把临时文件什么的也归入版本管理。</p>
 </blockquote>
 <h2 id="2-2-跟踪新文件"><a href="#2-2-跟踪新文件" class="headerlink" title="2.2 跟踪新文件"></a>2.2 跟踪新文件</h2><p>跟踪我们上面新建的 README文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add README</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add README</span><br></pre></td></tr></tbody></table></figure>
 <p>当我们再次 <code>git status</code>，会发现它处于：</p>
 <p><strong>Changes to be committed，即未提交状态，它这时已经被跟踪了，但是没有提交。</strong>即处于<code>暂存状态</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   README</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use "git restore --staged &lt;file&gt;..." to unstage)</span><br><span class="line">        new file:   README</span><br></pre></td></tr></tbody></table></figure>
 <p>其实 <code>git add</code> 的作用就是<strong>将一个文件放入暂存区域中，并且把所有未跟踪的文件或者目录变为已跟踪状态。</strong></p>
 <blockquote>
 <p>这是个多功能命令，根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等这是个多功能命令，根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等</p>
 </blockquote>
 <h2 id="2-3-暂存已修改的文件"><a href="#2-3-暂存已修改的文件" class="headerlink" title="2.3 暂存已修改的文件"></a>2.3 暂存已修改的文件</h2><p>我们修改一个<strong>已经存在于历史版本的文件</strong>：README.mkd</p>
 <p>忽略上面的内容，我们会看到这样的状态：<strong>Changes not staged for commit</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">        modified:   README.mkd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Changes not staged for commit:</span><br><span class="line">  (use "git add &lt;file&gt;..." to update what will be committed)</span><br><span class="line">  (use "git restore &lt;file&gt;..." to discard changes in working directory)</span><br><span class="line">        modified:   README.mkd</span><br></pre></td></tr></tbody></table></figure>
 <p> 表示已经跟踪的文件发生了修改，但是还没有放在暂存区里。</p>
 <p>要暂存这次更新，则需要执行<code>git add</code>（看上节关于git add的讲解）命令。</p>
 <p>现在我们运行此命令把 README.mkd放到<strong>暂存区</strong>中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add README.mkd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add README.mkd</span><br></pre></td></tr></tbody></table></figure>
 <p>再次status其状态得到：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   README</span><br><span class="line">        modified:   README.mkd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use "git restore --staged &lt;file&gt;..." to unstage)</span><br><span class="line">        new file:   README</span><br><span class="line">        modified:   README.mkd</span><br></pre></td></tr></tbody></table></figure>
 <p>两个文件都被放在<strong>暂存区</strong>了，提交后便会被更新到仓库中</p>
 <hr>
 <p>注意：如果此时你又想<strong>修改一个已经被放在暂存区的文件</strong>，则修改后会发现，出现了两个相同的文件，<strong>一个已跟踪并且放在暂存区，而另一个已跟踪未在暂存区。</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   README</span><br><span class="line">        modified:   README.mkd</span><br><span class="line"></span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">        modified:   README.mkd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use "git restore --staged &lt;file&gt;..." to unstage)</span><br><span class="line">        new file:   README</span><br><span class="line">        modified:   README.mkd</span><br><span class="line"></span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use "git add &lt;file&gt;..." to update what will be committed)</span><br><span class="line">  (use "git restore &lt;file&gt;..." to discard changes in working directory)</span><br><span class="line">        modified:   README.mkd</span><br></pre></td></tr></tbody></table></figure>
 <p>这是因为 git只会暂存 执行<code>git add</code>后的文件，因此此时需要重新 输入此命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add README.mkd</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        new file:   README</span><br><span class="line">        modified:   README.mkd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add README.mkd</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use "git restore --staged &lt;file&gt;..." to unstage)</span><br><span class="line">        new file:   README</span><br><span class="line">        modified:   README.mkd</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="2-4-忽略某些文件"><a href="#2-4-忽略某些文件" class="headerlink" title="2.4 忽略某些文件"></a>2.4 忽略某些文件</h2><p>我们不想让某些文件被纳入git的管理，即他们<strong>根本不用出现在未跟踪状态下</strong></p>
 <p>我们创建或者修改一下 .gitignore 文件即可</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim .gitignore</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim .gitignore</span><br></pre></td></tr></tbody></table></figure>
 <p>修改后，查看文件如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ cat .gitignore</span><br><span class="line">*.gem</span><br><span class="line">*.swp</span><br><span class="line">*.[oa]</span><br><span class="line">*~</span><br><span class="line">*.log</span><br><span class="line">*.tmp</span><br><span class="line">*.pid</span><br><span class="line">rdoc/</span><br><span class="line">pkg/</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ cat .gitignore</span><br><span class="line">*.gem</span><br><span class="line">*.swp</span><br><span class="line">*.[oa]</span><br><span class="line">*~</span><br><span class="line">*.log</span><br><span class="line">*.tmp</span><br><span class="line">*.pid</span><br><span class="line">rdoc/</span><br><span class="line">pkg/</span><br></pre></td></tr></tbody></table></figure>
 <ol>
 <li><code>*.gem</code> <code>*.swp</code> <code>*.[oa]</code> 表示我们要忽略以 gem  swp  o a 等后缀的文件</li>
 <li><code>~</code> 表示 一些文件的副本，或者其他文件</li>
@@ -416,17 +412,17 @@
 </ol>
 <p>要养成一开始就设置好 <code>.gitignore</code> 文件的习惯，以免将来误提交这类无用的文件。（可以对一些模式<strong>取反</strong>，表示的就是忽略他们之外的文件或者目录）</p>
 <h2 id="2-5-查看已暂存或者未暂存的更新"><a href="#2-5-查看已暂存或者未暂存的更新" class="headerlink" title="2.5 查看已暂存或者未暂存的更新"></a>2.5 查看已暂存或者未暂存的更新</h2><p>查看<strong>具体修改了什么地方</strong>，可以使用下面的命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></tbody></table></figure>
 <p>运行如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/README b/README</span><br><span class="line">index e31a6eb..0a7d6e9 100644</span><br><span class="line">--- a/README</span><br><span class="line">+++ b/README</span><br><span class="line">@@ -1,3 +1,4 @@</span><br><span class="line"> 你好!6</span><br><span class="line"> 6666</span><br><span class="line"> hjhhhh</span><br><span class="line">+我修改了一行</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/README b/README</span><br><span class="line">index e31a6eb..0a7d6e9 100644</span><br><span class="line">--- a/README</span><br><span class="line">+++ b/README</span><br><span class="line">@@ -1,3 +1,4 @@</span><br><span class="line"> 你好!6</span><br><span class="line"> 6666</span><br><span class="line"> hjhhhh</span><br><span class="line">+我修改了一行</span><br></pre></td></tr></tbody></table></figure>
 <p>前面的 + 号表示我们<strong>添改</strong>了这一行的内容，- 号则表示我们<strong>删改</strong>了一行信息</p>
 <p><strong>此命令比较的是工作目录中当前文件和暂存区域快照之间的差异，也就是修改了之后还没有暂存起来的变化</strong></p>
 <hr>
 <p>查看已经暂存的文件与上次提交的文件的差异：</p>
 <p>首先把README先 放入暂存区</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add README</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add README</span><br></pre></td></tr></tbody></table></figure>
 <p>运行如下命令：即可查看</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --cached</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --cached</span><br></pre></td></tr></tbody></table></figure>
 <p>简单总结：</p>
 <ol>
 <li><code>git diff</code>：查看某个文件还<strong>没有被暂存起来的改动</strong>，其实就是显示你当前修改了什么内容，与在暂存区的内容做比较。<strong>暂存前后的变化</strong></li>
@@ -434,52 +430,52 @@
 </ol>
 <h2 id="2-6-提交更新"><a href="#2-6-提交更新" class="headerlink" title="2.6 提交更新"></a>2.6 提交更新</h2><p>首先检查有没有修改了但是没有被暂存的，因为<strong>提交只会提交暂存区的</strong></p>
 <p>检查：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add xxx # 如果还存在未暂存的目标</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add xxx # 如果还存在未暂存的目标</span><br></pre></td></tr></tbody></table></figure>
 <p>检查完成后，输入<strong>提交命令：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>这时就会出现一个文本编辑器，并且输入本次提交的说明</strong></p>
 <p>我的出现了 vscode，可以按照下列的命令进行修改默认哪个编辑器：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.editor xxxxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.editor xxxxx</span><br></pre></td></tr></tbody></table></figure>
 <p>默认的提交信息包括最后一次<code>git status</code>显示的信息</p>
 <blockquote>
 <p>如果觉得这还不够，可以用 <code>-v</code> 选项将修改差异的每一行都包含到注释中来。</p>
 </blockquote>
 <p>退出编辑器时，Git 会丢掉注释行，<strong>将说明内容和本次更新提交到仓库。</strong></p>
 <p>在空行输入提交信息：保存后退出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">learning git use  </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">learning git use  </span><br></pre></td></tr></tbody></table></figure>
 <p>接着就会提示你提交成功！并且显示当前是在哪个分支（master）提交的，本次提交的完整 <strong>SHA-1 校验和</strong>是什么（<code>582f005</code>），以及在本次提交中，有<strong>多少文件修订过</strong>，<strong>多少行添改和删改过</strong>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[master 582f005] learning git use</span><br><span class="line"> 3 files changed, 10 insertions(+), 1 deletion(-)</span><br><span class="line"> create mode 100644 README</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[master 582f005] learning git use</span><br><span class="line"> 3 files changed, 10 insertions(+), 1 deletion(-)</span><br><span class="line"> create mode 100644 README</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>提交时记录的是放在暂存区域的快照，任何还未暂存的仍然保持已修改状态，可以在下次提交时纳入版本管理。每一次运行提交操作，都是对你项目作一次快照，以后可以回到这个状态，或者进行比较。</p>
 </blockquote>
 <p>使用 <code>-m</code> 快速添加提交信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 我要学习</span><br><span class="line"> </span><br><span class="line">[master f949baa] 我要学习</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 我要学习</span><br><span class="line"> </span><br><span class="line">[master f949baa] 我要学习</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="2-7-跳过暂存"><a href="#2-7-跳过暂存" class="headerlink" title="2.7 跳过暂存"></a>2.7 跳过暂存</h2><p>使用下面的命令可以将修改的文件无需放入暂存区，即无需使用<code>git add</code>的命令，可以<strong>直接 提交</strong>。</p>
 <p>修改了一个文件之后，执行下面的语句：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></tbody></table></figure>
 <p>即在commit的时候添加一个  <code>-a</code>  2.</p>
 <p>实现快速修改提交：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a -m 跳过暂存</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[master 042500c] 跳过暂存</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a -m 跳过暂存</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[master 042500c] 跳过暂存</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="2-8-移除文件"><a href="#2-8-移除文件" class="headerlink" title="2.8 移除文件"></a>2.8 移除文件</h2><p>从 Git 中移除某个不想要的文件，即从<strong>已经暂存的区域移除某个文件</strong>。</p>
 <p><strong>输入以下命令，来删除暂存区的文件，并且直接把它从工作目录中删除，连未跟踪区域都别留下。</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm xxx</span><br></pre></td></tr></tbody></table></figure>
 <p>相当于直接删除这个文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span><br><span class="line">        deleted:    README</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Changes to be committed:</span><br><span class="line">  (use "git restore --staged &lt;file&gt;..." to unstage)</span><br><span class="line">        deleted:    README</span><br></pre></td></tr></tbody></table></figure>
 <p>如果要删除一个<strong>已经放在暂存区</strong>的文件，则必须<strong>强制删除</strong>，输入以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -f xxx </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -f xxx </span><br></pre></td></tr></tbody></table></figure>
 <p>只从暂存区删除，<strong>即删除跟踪，但是不删除其本身</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached xxx</span><br></pre></td></tr></tbody></table></figure>
 <p>此命令删除所有 <code>log/</code> 目录下扩展名为 <code>.log</code> 的文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm log/\*.log</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm log/\*.log</span><br></pre></td></tr></tbody></table></figure>
 <p>删除当前目录及其子目录中所有 <code>~</code> 结尾的文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm \*~</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm \*~</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="2-9-移动文件"><a href="#2-9-移动文件" class="headerlink" title="2.9 移动文件"></a>2.9 移动文件</h2><p>我们想要把一个文件README.txt 改为 README ，可以使用下面的命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv README.txt README </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv README.txt README </span><br></pre></td></tr></tbody></table></figure>
 <p><code>mv</code> 表示 把文件从README.txt 改为 README</p>
 <p>实际上执行了三条语句是等价的：<strong>注意README.txt一定是在暂存区域内</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv README.txt README</span><br><span class="line">git rm README.txt</span><br><span class="line">git add README</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv README.txt README</span><br><span class="line">git rm README.txt</span><br><span class="line">git add README</span><br></pre></td></tr></tbody></table></figure>
 <ol>
 <li>mv命令把README.txt 改为 README，但是此时<strong>README.txt仍在暂存区</strong>，并且<strong>README在未暂存区</strong></li>
 <li><strong>删除暂存区的README.txt</strong></li>
@@ -487,159 +483,159 @@
 </ol>
 <p>实际上 <code>git mv file_from file_to</code> 便可以表示这一过程，无需写三条</p>
 <h1 id="3-查看提交历史"><a href="#3-查看提交历史" class="headerlink" title="3. 查看提交历史"></a>3. 查看提交历史</h1><p>演示: 首先运行命令获取项目库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git://github.com/schacon/simplegit-progit.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git://github.com/schacon/simplegit-progit.git</span><br></pre></td></tr></tbody></table></figure>
 <p>在此项目中运行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></tbody></table></figure>
 <p>会出现以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">commit ca82a6dff817ec66f44342007202690a93763949 (HEAD -&gt; master, origin/master, origin/HEAD)</span><br><span class="line">Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line">Date:   Mon Mar 17 21:52:11 2008 -0700</span><br><span class="line"></span><br><span class="line">    changed the verison number</span><br><span class="line"></span><br><span class="line">commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7</span><br><span class="line">Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line">Date:   Sat Mar 15 16:40:33 2008 -0700</span><br><span class="line"></span><br><span class="line">    removed unnecessary test code</span><br><span class="line"></span><br><span class="line">commit a11bef06a3f659402fe7563abf99ad00de2209e6</span><br><span class="line">Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line">Date:   Sat Mar 15 10:31:28 2008 -0700</span><br><span class="line"></span><br><span class="line">    first commit</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">commit ca82a6dff817ec66f44342007202690a93763949 (HEAD -&gt; master, origin/master, origin/HEAD)</span><br><span class="line">Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line">Date:   Mon Mar 17 21:52:11 2008 -0700</span><br><span class="line"></span><br><span class="line">    changed the verison number</span><br><span class="line"></span><br><span class="line">commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7</span><br><span class="line">Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line">Date:   Sat Mar 15 16:40:33 2008 -0700</span><br><span class="line"></span><br><span class="line">    removed unnecessary test code</span><br><span class="line"></span><br><span class="line">commit a11bef06a3f659402fe7563abf99ad00de2209e6</span><br><span class="line">Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line">Date:   Sat Mar 15 10:31:28 2008 -0700</span><br><span class="line"></span><br><span class="line">    first commit</span><br></pre></td></tr></tbody></table></figure>
 <p><code>git log</code> 会按<strong>提交时间</strong>列出所有的更新，<strong>最近的更新排在最上面</strong></p>
 <p>每次更新都有一个 SHA-1 校验和，作者姓名电子邮箱，提交时间与<strong>提交说明</strong></p>
 <hr>
 <p>使用 <code>-p</code> 显示每次提交的内容差异 <code>-2</code>只显示最近两次：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -p -2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -p -2</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <p>使用<code>--word-diff</code>获取<strong>单词层面</strong>的变化</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -p --word-diff</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -p --word-diff</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <p>使用<code>-stat</code> 显示简要的<strong>增改行数统计</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --stat</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --stat</span><br></pre></td></tr></tbody></table></figure>
 <p>每个提交都列出了修改过的文件，以及其中添加和移除的行数，并在最后列出所有增减行数小计。</p>
 <hr>
 <p><code>--pretty</code> 可以指定使用完全不同于默认格式的方式展示提交历史</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=xxx</span><br></pre></td></tr></tbody></table></figure>
 <p>xxx可以为：oneline，short，full，fuller</p>
 <p><code>format</code> 定制显示的格式，相当于debug</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=format:&quot;%h - %an, %ar : %s&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=format:"%h - %an, %ar : %s"</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>说明：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">选项	 说明</span><br><span class="line">%H	提交对象（commit）的完整哈希字串</span><br><span class="line">%h	提交对象的简短哈希字串</span><br><span class="line">%T	树对象（tree）的完整哈希字串</span><br><span class="line">%t	树对象的简短哈希字串</span><br><span class="line">%P	父对象（parent）的完整哈希字串</span><br><span class="line">%p	父对象的简短哈希字串</span><br><span class="line">%an	作者（author）的名字</span><br><span class="line">%ae	作者的电子邮件地址</span><br><span class="line">%ad	作者修订日期（可以用 -date= 选项定制格式）</span><br><span class="line">%ar	作者修订日期，按多久以前的方式显示</span><br><span class="line">%cn	提交者(committer)的名字</span><br><span class="line">%ce	提交者的电子邮件地址</span><br><span class="line">%cd	提交日期</span><br><span class="line">%cr	提交日期，按多久以前的方式显示</span><br><span class="line">%s	提交说明</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">选项	 说明</span><br><span class="line">%H	提交对象（commit）的完整哈希字串</span><br><span class="line">%h	提交对象的简短哈希字串</span><br><span class="line">%T	树对象（tree）的完整哈希字串</span><br><span class="line">%t	树对象的简短哈希字串</span><br><span class="line">%P	父对象（parent）的完整哈希字串</span><br><span class="line">%p	父对象的简短哈希字串</span><br><span class="line">%an	作者（author）的名字</span><br><span class="line">%ae	作者的电子邮件地址</span><br><span class="line">%ad	作者修订日期（可以用 -date= 选项定制格式）</span><br><span class="line">%ar	作者修订日期，按多久以前的方式显示</span><br><span class="line">%cn	提交者(committer)的名字</span><br><span class="line">%ce	提交者的电子邮件地址</span><br><span class="line">%cd	提交日期</span><br><span class="line">%cr	提交日期，按多久以前的方式显示</span><br><span class="line">%s	提交说明</span><br></pre></td></tr></tbody></table></figure>
 </blockquote>
 <hr>
 <p><code>log</code> 的后面参数的其他选择</p>
 <blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">选项	说明</span><br><span class="line">-p	按补丁格式显示每个更新之间的差异。</span><br><span class="line">--word-diff	按 word diff 格式显示差异。</span><br><span class="line">--stat	显示每次更新的文件修改统计信息。</span><br><span class="line">--shortstat	只显示 --stat 中最后的行数修改添加移除统计。</span><br><span class="line">--name-only	仅在提交信息后显示已修改的文件清单。</span><br><span class="line">--name-status	显示新增、修改、删除的文件清单。</span><br><span class="line">--abbrev-commit	仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。</span><br><span class="line">--relative-date	使用较短的相对时间显示（比如，“2 weeks ago”）。</span><br><span class="line">--graph	显示 ASCII 图形表示的分支合并历史。</span><br><span class="line">--pretty	使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。</span><br><span class="line">--oneline	`--pretty=oneline --abbrev-commit` 的简化用法</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">选项	说明</span><br><span class="line">-p	按补丁格式显示每个更新之间的差异。</span><br><span class="line">--word-diff	按 word diff 格式显示差异。</span><br><span class="line">--stat	显示每次更新的文件修改统计信息。</span><br><span class="line">--shortstat	只显示 --stat 中最后的行数修改添加移除统计。</span><br><span class="line">--name-only	仅在提交信息后显示已修改的文件清单。</span><br><span class="line">--name-status	显示新增、修改、删除的文件清单。</span><br><span class="line">--abbrev-commit	仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。</span><br><span class="line">--relative-date	使用较短的相对时间显示（比如，“2 weeks ago”）。</span><br><span class="line">--graph	显示 ASCII 图形表示的分支合并历史。</span><br><span class="line">--pretty	使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。</span><br><span class="line">--oneline	`--pretty=oneline --abbrev-commit` 的简化用法</span><br></pre></td></tr></tbody></table></figure>
 </blockquote>
 <hr>
 <p><code>--since 和 --until</code> 对<strong>时间作出限制</strong></p>
 <p>显示最近两周的提交：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --since=2.weeks</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --since=2.weeks</span><br></pre></td></tr></tbody></table></figure>
 <p>其他选择:</p>
 <blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">选项	说明</span><br><span class="line">-(n)	仅显示最近的 n 条提交</span><br><span class="line">--since, --after	仅显示指定时间之后的提交。</span><br><span class="line">--until, --before	仅显示指定时间之前的提交。</span><br><span class="line">--author	仅显示指定作者相关的提交。</span><br><span class="line">--committer	仅显示指定提交者相关的提交。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">选项	说明</span><br><span class="line">-(n)	仅显示最近的 n 条提交</span><br><span class="line">--since, --after	仅显示指定时间之后的提交。</span><br><span class="line">--until, --before	仅显示指定时间之前的提交。</span><br><span class="line">--author	仅显示指定作者相关的提交。</span><br><span class="line">--committer	仅显示指定提交者相关的提交。</span><br></pre></td></tr></tbody></table></figure>
 </blockquote>
 <h1 id="4-撤销操作"><a href="#4-撤销操作" class="headerlink" title="4. 撤销操作"></a>4. 撤销操作</h1><h2 id="4-1-修改最后一次操作"><a href="#4-1-修改最后一次操作" class="headerlink" title="4.1 修改最后一次操作"></a>4.1 修改最后一次操作</h2><p>如果在提交后，发现提交信息写错了，或者漏掉几个文件没有加，则可以这样修改：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <p>如果还没有暂存文件就提交了，则可以这样操作：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git commit # 提交了</span><br><span class="line">git add file</span><br><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git commit # 提交了</span><br><span class="line">git add file</span><br><span class="line">git commit --amend</span><br></pre></td></tr></tbody></table></figure>
 <p>上面的三条命令最终只是产生一个提交，第二个提交命令修正了第一个的提交内容。</p>
 <h2 id="4-2-取消暂存中的文件"><a href="#4-2-取消暂存中的文件" class="headerlink" title="4.2 取消暂存中的文件"></a>4.2 取消暂存中的文件</h2><p>我们有多个文件还未暂存，但是我们<strong>不小心一次性全部放入暂存了</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></tbody></table></figure>
 <p>但是我们想一个一个放，不能一次性放入，因此我们使用这两条命令（git status显示的内容有说明）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD file</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD file</span><br></pre></td></tr></tbody></table></figure>
 <p>HEAD表示上一个版本 HEAD^ HEAD^^  …. </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git store --staged file</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git store --staged file</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="4-3-取消对文件的修改"><a href="#4-3-取消对文件的修改" class="headerlink" title="4.3 取消对文件的修改"></a>4.3 取消对文件的修改</h2><p>我们<strong>不想对这个文件进行修改了</strong>，让他回到一开始的状态：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- benchmarks.rb</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- benchmarks.rb</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>你可能已经意识到了，这条命令有些危险，所有对文件的修改都没有了，因为我们刚刚把之前版本的文件复制过来重写了此文件。所以在用这条命令前，请务必确定真的不再需要保留刚才的修改。如果只是想回退版本，同时保留刚才的修改以便将来继续工作，可以用下章介绍的 stashing 和分支来处理，应该会更好些。</p>
 </blockquote>
 <h1 id="5-远程管理仓库"><a href="#5-远程管理仓库" class="headerlink" title="5. 远程管理仓库"></a>5. 远程管理仓库</h1><p> 管理远程仓库的工作，包括<strong>添加远程库</strong>，<strong>移除废弃的远程库</strong>，<strong>管理各式远程库分支</strong>，<strong>定义是否跟踪这些分支</strong></p>
 <h2 id="5-1-查看当前远程库"><a href="#5-1-查看当前远程库" class="headerlink" title="5.1 查看当前远程库"></a>5.1 查看当前远程库</h2><p>查看当前配置有哪些远程库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></tbody></table></figure>
 <p>注意：<strong>默认存在一个 origin的远程库</strong>，Git 默认使用这个名字来标识你所克隆的原始仓库。</p>
 <p>显示原始仓库的<strong>克隆地址</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote --v</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote --v</span><br></pre></td></tr></tbody></table></figure>
 <p>如果有多个远程仓库，此命令将全部列出。</p>
 <h2 id="5-2-添加远程仓库"><a href="#5-2-添加远程仓库" class="headerlink" title="5.2 添加远程仓库"></a>5.2 添加远程仓库</h2><p>要添加一个新的远程仓库，可以指定一个简单的名字，以便将来引用：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add pb  git://github.com/paulboone/ticgit.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add pb  git://github.com/paulboone/ticgit.git</span><br></pre></td></tr></tbody></table></figure>
 <p>添加了一个 远程仓库  名称为 pb</p>
 <p><strong>pb代表的就是远程仓库的地址</strong></p>
 <p>抓取仓库地址：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch pb</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch pb</span><br></pre></td></tr></tbody></table></figure>
 <p>Paul 的主干分支（master）已经完全可以在本地访问了，对应的名字是 <code>pb/master</code>，你可以将它合并到自己的某个分支，或者切换到这个分支，看看有些什么有趣的更新。</p>
 <h2 id="5-3-从远程仓库抓取数据"><a href="#5-3-从远程仓库抓取数据" class="headerlink" title="5.3 从远程仓库抓取数据"></a>5.3 从远程仓库抓取数据</h2><p>使用下面的命令从<strong>远程仓库抓取数据到本地</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch &lt;remote-name&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch &lt;remote-name&gt;</span><br></pre></td></tr></tbody></table></figure>
 <p>此命令从<strong>远程仓库中拉取所有你本地仓库中还没有的数据</strong>。</p>
 <hr>
 <p>抓取从你上次克隆这个仓库以来，别人上传到此仓库中的所有更新：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin</span><br></pre></td></tr></tbody></table></figure>
 <p>有一点很重要，需要记住，<strong>fetch 命令只是将远端的数据拉到本地仓库，并不自动合并到当前工作分支</strong>，只有当你确实准备好了，才能手工合并。</p>
 <h2 id="5-4-推送数据到远程仓库"><a href="#5-4-推送数据到远程仓库" class="headerlink" title="5.4 推送数据到远程仓库"></a>5.4 推送数据到远程仓库</h2><p>项目进行到一个阶段，要同别人分享目前的成果，可以将本地仓库中的数据推送到远程仓库。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [remote-name] [branch-name]</span><br></pre></td></tr></tbody></table></figure>
 <p>把本地的branch分支推送到远程 remote 服务器上</p>
 <h2 id="5-5-查看远程仓库信息"><a href="#5-5-查看远程仓库信息" class="headerlink" title="5.5 查看远程仓库信息"></a>5.5 查看远程仓库信息</h2><p>命令:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote show [remote-name]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote show [remote-name]</span><br></pre></td></tr></tbody></table></figure>
 <p>查看某个远程仓库的信息</p>
 <p>它友善地告诉你如果是在 <strong>master 分支</strong>，就可以用 <code>git pull</code> 命令抓取数据合并到本地。</p>
 <p>另外还列出了所有<strong>处于跟踪状态中的远端分支</strong>。</p>
 <h2 id="5-6-远程仓库的删除与重命名"><a href="#5-6-远程仓库的删除与重命名" class="headerlink" title="5.6 远程仓库的删除与重命名"></a>5.6 远程仓库的删除与重命名</h2><p>修改某个远程仓库在本地的名称</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rename pb pbnewname</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rename pb pbnewname</span><br></pre></td></tr></tbody></table></figure>
 <p>对远程仓库的重命名，也会使对应的分支名称发生变化。</p>
 <p>删除对应的远程仓库：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm pbname</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm pbname</span><br></pre></td></tr></tbody></table></figure>
 <h1 id="6-打标签"><a href="#6-打标签" class="headerlink" title="6. 打标签"></a>6. 打标签</h1><p>在某一时间点上打上标签</p>
 <p>git的标签类型：</p>
 <ol>
 <li>轻量型标签：是个不会变化的标签，只指向某个特定对象的引用</li>
 <li>含附注的标签：存储在仓库中的一个独立对象，它有自身的校验和信息，包含着标签的名字，电子邮件地址和日期，以及标签说明。</li>
 </ol>
-<h2 id="6-1-显示所有标签"><a href="#6-1-显示所有标签" class="headerlink" title="6.1 显示所有标签"></a>6.1 显示所有标签</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
+<h2 id="6-1-显示所有标签"><a href="#6-1-显示所有标签" class="headerlink" title="6.1 显示所有标签"></a>6.1 显示所有标签</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></tbody></table></figure>
 <p>标签按字母顺序排列，所以<strong>标签的先后不表示重要程度的轻重</strong>.</p>
 <p>筛选标签</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -l &#x27;v1.4.2.*&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -l 'v1.4.2.*'</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="6-2-创建标签"><a href="#6-2-创建标签" class="headerlink" title="6.2 创建标签"></a>6.2 创建标签</h2><p>创建含附注的标签：<code>-a</code> 后附带<strong>标签的名字</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a v1.4 -m &#x27;my version 1.4&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a v1.4 -m 'my version 1.4'</span><br></pre></td></tr></tbody></table></figure>
 <p><code>-m</code>表示指定对应的标签说明，如果没有 -m后面的内容，则会跳转到vscode让你手动编写 <strong>标签说明</strong></p>
 <p>使用下面的命令来显示标签对应的信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show v1.4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show v1.4</span><br></pre></td></tr></tbody></table></figure>
 <p>列出了此标签的提交者和提交时间，以及相应的标签说明。</p>
 <p>创建个人的<strong>私钥</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -s v1.5 -m &#x27;my signed 1.5 tag&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -s v1.5 -m 'my signed 1.5 tag'</span><br></pre></td></tr></tbody></table></figure>
 <p>创建<strong>轻量级标签</strong>，直接给出标签的名字即可</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag v1.8</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag v1.8</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="6-3-加注标签"><a href="#6-3-加注标签" class="headerlink" title="6.3 加注标签"></a>6.3 加注标签</h2><p>已经提交的版本中<strong>补上标签信息</strong>：</p>
 <p>首先显示所有的版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=oneline</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=oneline</span><br></pre></td></tr></tbody></table></figure>
 <p>可以看到 没有标签，我们输入命令，让其中一个版本加上标签：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a v1.9 085bb3b</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a v1.9 085bb3b</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>注意：直需要加上校验和的前几位即可，git就会识别这是哪一个版本。</strong></p>
 <p>显示我们刚加的标签：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show v1.9</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show v1.9</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="6-4-分享标签"><a href="#6-4-分享标签" class="headerlink" title="6.4 分享标签"></a>6.4 分享标签</h2><p>通过显式命令才能分享标签到远端仓库。其命令格式如同推送分支，运行 <code>git push origin [tagname]</code> 即可：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin v1.5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin v1.5</span><br></pre></td></tr></tbody></table></figure>
 <p>一次性推送所有的本地标签上去：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --tags</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --tags</span><br></pre></td></tr></tbody></table></figure>
 <h1 id="7-Git使用技巧"><a href="#7-Git使用技巧" class="headerlink" title="7. Git使用技巧"></a>7. Git使用技巧</h1><h2 id="7-1-自动补全"><a href="#7-1-自动补全" class="headerlink" title="7.1 自动补全"></a>7.1 自动补全</h2><p>首先可以查看自己的 Git 有没有自动补全的功能，如下操作所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git con&lt;tab&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git con&lt;tab&gt;</span><br></pre></td></tr></tbody></table></figure>
 <p>输入git co 然后 按<strong>两次tab键</strong>，会出现提示的命令： config 和commit</p>
 <p><img data-src="https://great.wzznft.com/i/2023/03/04/m5tqml.png" alt=""></p>
 <p><strong>如果上述办法不可以</strong>，则需要进行如下操作：</p>
 <blockquote>
 <p>如果你用的是 Bash shell，可以试试看 Git 提供的自动补全脚本。下载 Git 的源代码，进入 <code>contrib/completion</code> 目录，会看到一个 <code>git-completion.bash</code> 文件。将此文件复制到你自己的用户主目录中（译注：按照下面的示例，还应改名加上点：<code>cp git-completion.bash ~/.git-completion.bash</code>），并把下面一行内容添加到你的 <code>.bashrc</code> 文件中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.git-completion.bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.git-completion.bash</span><br></pre></td></tr></tbody></table></figure>
 <p>也可以为系统上所有用户都设置默认使用此脚本。Mac 上将此脚本复制到 <code>/opt/local/etc/bash_completion.d</code> 目录中，Linux 上则复制到 <code>/etc/bash_completion.d/</code> 目录中。这两处目录中的脚本，都会在 Bash 启动时自动加载。</p>
 </blockquote>
 <h2 id="7-2-使用别名"><a href="#7-2-使用别名" class="headerlink" title="7.2 使用别名"></a>7.2 使用别名</h2><p>为命令起一个别名： <code>git config</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.st status</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.st status</span><br></pre></td></tr></tbody></table></figure>
 <p>接下来输入 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git st</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git st</span><br></pre></td></tr></tbody></table></figure>
 <p>其实就是 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status </span><br></pre></td></tr></tbody></table></figure>
 <p><strong>取消在暂存区的文件</strong>：<strong>完整命令如下：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD file</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD file</span><br></pre></td></tr></tbody></table></figure>
 <p>可以使用别名：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.unstage &#x27;reset HEAD --&#x27;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git unstage file</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.unstage 'reset HEAD --'</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git unstage file</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>显示最后一次提交的文件，完整命令如下</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -1 HEAD</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -1 HEAD</span><br></pre></td></tr></tbody></table></figure>
 <p>可以使用别名，看起来会更清晰</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.last &#x27;log -1 HEAD&#x27;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git last</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.last 'log -1 HEAD'</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git last</span><br></pre></td></tr></tbody></table></figure>
 <p> Git 只是简单地在命令中替换了你设置的别名</p>
 <p><strong>输入Git外部命令</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.visual &#x27;!gitk&#x27;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git visual </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.visual '!gitk'</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git visual </span><br></pre></td></tr></tbody></table></figure>
 
     </div>
 
@@ -728,27 +724,7 @@
           
     <div class="comments" id="valine-comments"></div>
 
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
+
 
         </div>
           
@@ -778,9 +754,8 @@
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="ylh"
-      src="/images/avatar.jpg">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ylh" src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">ylh</p>
   <div class="site-description" itemprop="description">大二学生一枚，热爱代码与写作，希望我的分享能给大家带来知识的收获。</div>
 </div>
@@ -809,25 +784,25 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2x1dW1vZA==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luumod"><i class="fab fa-github-alt fa-fw"></i>GitHub</span>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2x1dW1vZA==" title="GitHub → https://github.com/luumod"><i class="fa fa-github-alt fa-fw"></i>GitHub</span>
       </span>
       <span class="links-of-author-item">
         <span class="exturl" data-url="bWFpbHRvOjExNzMwMTI5MDBAcXEuY29t" title="E-Mail → mailto:1173012900@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pqNjY2NmRqZGJiZD90eXBlPWJsb2c=" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;jj6666djdbbd?type&#x3D;blog"><i class="fa fa-crosshairs fa-fw"></i>CSDN</span>
+        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pqNjY2NmRqZGJiZD90eXBlPWJsb2c=" title="CSDN → https://blog.csdn.net/jj6666djdbbd?type=blog"><i class="fa fa-crosshairs fa-fw"></i>CSDN</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9xaWFuLXNoaS0yOS01NQ==" title="zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;qian-shi-29-55"><i class="fa fa-birthday-cake fa-fw"></i>zhihu</span>
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9xaWFuLXNoaS0yOS01NQ==" title="zhihu → https://www.zhihu.com/people/qian-shi-29-55"><i class="fa fa-birthday-cake fa-fw"></i>zhihu</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVsbG95bGgv" title="cnblogs → https:&#x2F;&#x2F;www.cnblogs.com&#x2F;helloylh&#x2F;"><i class="fa fa-road fa-fw"></i>cnblogs</span>
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVsbG95bGgv" title="cnblogs → https://www.cnblogs.com/helloylh/"><i class="fa fa-road fa-fw"></i>cnblogs</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vdXNlci8yNDQ3OTI5NTc0NzAyMTg5" title="juejin → https:&#x2F;&#x2F;juejin.cn&#x2F;user&#x2F;2447929574702189"><i class="fa fa-subway fa-fw"></i>juejin</span>
+        <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vdXNlci8yNDQ3OTI5NTc0NzAyMTg5" title="juejin → https://juejin.cn/user/2447929574702189"><i class="fa fa-subway fa-fw"></i>juejin</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9oZWxsb3lsaC8=" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;helloylh&#x2F;"><i class="fab fa-instagram fa-fw"></i>Instagram</span>
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9oZWxsb3lsaC8=" title="Instagram → https://www.instagram.com/helloylh/"><i class="fa fa-instagram fa-fw"></i>Instagram</span>
       </span>
   </div>
 
@@ -838,13 +813,13 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3VzZXIvOTE0MDc5" title="https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;user&#x2F;914079">Luogu</span>
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3VzZXIvOTE0MDc5" title="https://www.luogu.com.cn/user/914079">Luogu</span>
         </li>
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS91c2VyL215c3BhY2UvaW5kZXgvMjAzODEyLw==" title="https:&#x2F;&#x2F;www.acwing.com&#x2F;user&#x2F;myspace&#x2F;index&#x2F;203812&#x2F;">ACWing</span>
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS91c2VyL215c3BhY2UvaW5kZXgvMjAzODEyLw==" title="https://www.acwing.com/user/myspace/index/203812/">ACWing</span>
         </li>
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS5jbi91L3dvc2hpOTk5Lw==" title="https:&#x2F;&#x2F;leetcode.cn&#x2F;u&#x2F;woshi999&#x2F;">leetcode</span>
+          <span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS5jbi91L3dvc2hpOTk5Lw==" title="https://leetcode.cn/u/woshi999/">leetcode</span>
         </li>
     </ul>
   </div>
@@ -867,7 +842,7 @@
 
 <div class="copyright">
   
-  &copy; 
+  © 
   <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -892,22 +867,7 @@
 <!-- 网站运行时间的设置 -->
 <span id="timeDate">载入天数...</span>
 <span id="times">载入时分秒...</span>
-<script>
-    var now = new Date();
-    function createtime() {
-        var grt= new Date("03/05/2023 10:00:00"); //此处修改你的建站时间或者网站上线时间
-        now.setTime(now.getTime()+250);
-        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
-        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
-        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
-        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
-    }
-setInterval("createtime()",250);
-</script>
+
 
 
 
@@ -918,7 +878,7 @@ setInterval("createtime()",250);
 
         
 <div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async="" src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
@@ -955,27 +915,97 @@ setInterval("createtime()",250);
   
 
   
-  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
-  <script src="/lib/anime.min.js"></script>
+  
+  
   <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
+  
+  
 
 
-<script src="/js/schemes/muse.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+
+
+
+
+
+
 
 
 
 
   
-  <script>
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  
+
+
+
+
+
+
+<script src="/bundle.js"></script><script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+;
+
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/05/2023 10:00:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+;
+
     (function(){
       var canonicalURL, curProtocol;
       //Get the <link> tag
@@ -999,33 +1029,8 @@ setInterval("createtime()",250);
 	    if (!canonicalURL) canonicalURL = window.location.href;
 	    //Assign script content. Replace current URL with the canonical URL
       !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
-  </script>
+  ;
 
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
-  <script>
       window.addEventListener('load', () => {
       quicklink({
         timeout : 3000,
@@ -1033,10 +1038,8 @@ setInterval("createtime()",250);
         ignores : [uri => uri.includes('#'),uri => uri === 'https://helloylh.com/2023/03/03/git%E5%AD%A6%E4%B9%A0-2/',]
       });
       });
-  </script>
+  ;
 
-
-<script>
 NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
   NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
     var GUEST = ['nick', 'mail', 'link'];
@@ -1062,7 +1065,4 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
     });
   }, window.Valine);
 });
-</script>
-
-</body>
-</html>
+</script></body></html>

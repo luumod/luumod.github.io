@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<!DOCTYPE html><html lang="zh-CN"><head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -13,12 +11,12 @@
   <meta name="msvalidate.01" content="9E9D6F1DCF94B9B8F6D4119BDF696B11">
   <meta name="baidu-site-verification" content="codeva-wCeADXb2tW">
 
-<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-mac-osx.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
+
+
+  
+  
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -108,13 +106,13 @@
 </noscript>
 
 <link rel="alternate" href="/atom.xml" title="HugeYlh" type="application/atom+xml">
-</head>
+<script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css"></noscript></head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
+<body itemscope="" itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
     <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
@@ -197,9 +195,7 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -237,16 +233,16 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://helloylh.com/2023/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="ylh">
       <meta itemprop="description" content="大二学生一枚，热爱代码与写作，希望我的分享能给大家带来知识的收获。">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="HugeYlh">
     </span>
       <header class="post-header">
@@ -277,7 +273,7 @@
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">算法题解</span></a>
                 </span>
             </span>
@@ -315,7 +311,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                <span class="post-meta-item-text">阅读时长 ≈</span>
               <span>14 分钟</span>
             </span>
             <div class="post-description">本文主要讲解了并查集的相关应用，以及并查集的扩展（种类并查集，带权并查集等等）并且附带题目联系及完整代码</div>
@@ -343,27 +339,27 @@
 <li><strong>并查集的初始化</strong></li>
 </ol>
 <p><strong>每个元素的关系数组的关系只有其一个人：A默认为A，B默认为B</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">		parent[i]=i;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++){</span><br><span class="line">		parent[i]=i;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <ol>
 <li><strong>并查集的查找</strong>：（路径压缩）</li>
 </ol>
 <p>每个元素在确定关系的时候都需要<strong>一直往上寻找，直到到达它的最顶级关系</strong>：A的关系不是B，而是往上B的关系，直到到达C，C的关系为其本身，这就到到达了<strong>A的最顶级关系，就是C</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find_set</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x!=parent[x])&#123;</span><br><span class="line">		parent[x]=<span class="built_in">find_set</span>(parent[x]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> parend[x];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find_set</span><span class="params">()</span></span>{</span><br><span class="line">	<span class="keyword">if</span> (x!=parent[x]){</span><br><span class="line">		parent[x]=<span class="built_in">find_set</span>(parent[x]);</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> parend[x];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <ol>
 <li><strong>并查集的合并</strong></li>
 </ol>
 <p>合并是并查集最重要的功能，就如同上述的A和B或者B和C的确认关系的时候，<strong>把他们合并到同一个关系中</strong>，A的关系是B，B的关系为其本身</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_set</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;</span><br><span class="line">	x=<span class="built_in">find_set</span>(x);</span><br><span class="line">	y=<span class="built_in">find_set</span>(y);</span><br><span class="line">	<span class="keyword">if</span> (x!=y)&#123;</span><br><span class="line">		parent[x]=y;	<span class="comment">//X合并到Y上</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_set</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>{</span><br><span class="line">	x=<span class="built_in">find_set</span>(x);</span><br><span class="line">	y=<span class="built_in">find_set</span>(y);</span><br><span class="line">	<span class="keyword">if</span> (x!=y){</span><br><span class="line">		parent[x]=y;	<span class="comment">//X合并到Y上</span></span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>基础并查集便可以解决一系列的<strong>存在关系</strong>的问题</p>
 <h2 id="1-P1551-亲戚"><a href="#1-P1551-亲戚" class="headerlink" title="1. P1551 亲戚"></a>1. P1551 亲戚</h2><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDE1NTE=">P1551 亲戚<i class="fa fa-external-link-alt"></i></span></p>
 <p>这道题让我们判断两个人之间是否是<strong>亲戚</strong>，和我们上面的描述的基本是一致的，<strong>只需要判断他们两个是否属于同一个集合即可。</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m,p;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> parent[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init_set</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        parent[i]=i; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find_set</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x!=parent[x])&#123;</span><br><span class="line">        parent[x]=<span class="built_in">find_set</span>(parent[x]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> parent[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_set</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;</span><br><span class="line">    x=<span class="built_in">find_set</span>(x);</span><br><span class="line">    y=<span class="built_in">find_set</span>(y);</span><br><span class="line">    <span class="keyword">if</span> (x!=y)&#123;</span><br><span class="line">        parent[y]=x;<span class="comment">//y合并到x上</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m&gt;&gt;p;</span><br><span class="line">    <span class="built_in">init_set</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="type">int</span> a,b;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        <span class="built_in">merge_set</span>(a,b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (p--)&#123;</span><br><span class="line">        <span class="type">int</span> a,b;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">find_set</span>(a)==<span class="built_in">find_set</span>(b))&#123;</span><br><span class="line">            cout&lt;&lt;<span class="string">&quot;Yes\n&quot;</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            cout&lt;&lt;<span class="string">&quot;No\n&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m,p;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> parent[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init_set</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        parent[i]=i; </span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find_set</span><span class="params">(<span class="type">int</span> x)</span></span>{</span><br><span class="line">    <span class="keyword">if</span> (x!=parent[x]){</span><br><span class="line">        parent[x]=<span class="built_in">find_set</span>(parent[x]);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> parent[x];</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_set</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>{</span><br><span class="line">    x=<span class="built_in">find_set</span>(x);</span><br><span class="line">    y=<span class="built_in">find_set</span>(y);</span><br><span class="line">    <span class="keyword">if</span> (x!=y){</span><br><span class="line">        parent[y]=x;<span class="comment">//y合并到x上</span></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m&gt;&gt;p;</span><br><span class="line">    <span class="built_in">init_set</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++){</span><br><span class="line">        <span class="type">int</span> a,b;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        <span class="built_in">merge_set</span>(a,b);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">while</span> (p--){</span><br><span class="line">        <span class="type">int</span> a,b;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">find_set</span>(a)==<span class="built_in">find_set</span>(b)){</span><br><span class="line">            cout&lt;&lt;<span class="string">"Yes\n"</span>;</span><br><span class="line">        }<span class="keyword">else</span>{</span><br><span class="line">            cout&lt;&lt;<span class="string">"No\n"</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="2-P1536-村村通"><a href="#2-P1536-村村通" class="headerlink" title="2. P1536 村村通"></a>2. P1536 村村通</h2><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDE1MzY=">P1536 村村通<i class="fa fa-external-link-alt"></i></span></p>
 <p>这道题其实就是<strong>求有多少个集合的问题</strong>。</p>
 <p>如果一共有四个城市，有两条道路，分别为 1到3 和 3到4，则我们画图可以看出来 <strong>1 3 4 都属于同一个集合</strong>，<strong>2城市单独属于一个集合，总共有两个集合，因此如果要将两个集合合并，则需要添加的道路数量就是总集合数-1</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> parent[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find_set</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x!=parent[x])&#123;</span><br><span class="line">        parent[x]=<span class="built_in">find_set</span>(parent[x]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> parent[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_set</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;</span><br><span class="line">    x=<span class="built_in">find_set</span>(x);</span><br><span class="line">    y=<span class="built_in">find_set</span>(y);</span><br><span class="line">    <span class="keyword">if</span> (x!=y)&#123;</span><br><span class="line">        parent[y]=x;    <span class="comment">//y合并到x</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;i=%d,parent[%d]=%d\n&quot;</span>,i,i,parent[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (cin&gt;&gt;n&gt;&gt;m)&#123;</span><br><span class="line">        <span class="keyword">if</span> (n==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            parent[i]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (m--)&#123;</span><br><span class="line">            <span class="type">int</span> a,b;</span><br><span class="line">            cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">            <span class="built_in">merge_set</span>(a,b);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="comment">//查找有几个不同的find_set</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">find_set</span>(i)==i) ans++;<span class="comment">//统计总集合数</span></span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;ans<span class="number">-1</span>&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> parent[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find_set</span><span class="params">(<span class="type">int</span> x)</span></span>{</span><br><span class="line">    <span class="keyword">if</span> (x!=parent[x]){</span><br><span class="line">        parent[x]=<span class="built_in">find_set</span>(parent[x]);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> parent[x];</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_set</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>{</span><br><span class="line">    x=<span class="built_in">find_set</span>(x);</span><br><span class="line">    y=<span class="built_in">find_set</span>(y);</span><br><span class="line">    <span class="keyword">if</span> (x!=y){</span><br><span class="line">        parent[y]=x;    <span class="comment">//y合并到x</span></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"i=%d,parent[%d]=%d\n"</span>,i,i,parent[i]);</span><br><span class="line">    }</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	<span class="keyword">while</span> (cin&gt;&gt;n&gt;&gt;m){</span><br><span class="line">        <span class="keyword">if</span> (n==<span class="number">0</span>){</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">            parent[i]=i;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span> (m--){</span><br><span class="line">            <span class="type">int</span> a,b;</span><br><span class="line">            cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">            <span class="built_in">merge_set</span>(a,b);</span><br><span class="line">        }</span><br><span class="line">        <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">            <span class="comment">//查找有几个不同的find_set</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">find_set</span>(i)==i) ans++;<span class="comment">//统计总集合数</span></span><br><span class="line">        }</span><br><span class="line">        cout&lt;&lt;ans<span class="number">-1</span>&lt;&lt;endl;</span><br><span class="line">    }</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <h1 id="种类并查集"><a href="#种类并查集" class="headerlink" title="种类并查集"></a>种类并查集</h1><p>种类并查集属于扩展域并查集一类。</p>
 <p>不同的个体之间存在<strong>不同的关系</strong>，而每个<strong>相同个体</strong>之间都属于<strong>同一关系</strong>，不同的关系的个体的<strong>种类不同</strong>，因此就有了种类并查集。</p>
@@ -382,7 +378,7 @@
 <li><strong>如果A有敌人，则A的敌人是B的朋友</strong></li>
 <li>对于B同理</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a b是敌人</span></span><br><span class="line"><span class="keyword">if</span> (enemies[a]==<span class="number">0</span>)&#123;</span><br><span class="line">    <span class="comment">//如果a没有敌人，则a的敌人就包括b和b的朋友们</span></span><br><span class="line">    enemies[a]=<span class="built_in">find_set</span>(b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//如果a有敌人，则a的敌人们就是b的朋友</span></span><br><span class="line">    <span class="built_in">merge_set</span>(enemies[a],b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (enemies[b]==<span class="number">0</span>)&#123;</span><br><span class="line">    <span class="comment">//如果b没有敌人，则b的敌人就包括a和a的朋友们</span></span><br><span class="line">    enemies[b]=<span class="built_in">find_set</span>(a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//如果b有敌人，则b的敌人们就是a的朋友</span></span><br><span class="line">    <span class="built_in">merge_set</span>(enemies[b],a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a b是敌人</span></span><br><span class="line"><span class="keyword">if</span> (enemies[a]==<span class="number">0</span>){</span><br><span class="line">    <span class="comment">//如果a没有敌人，则a的敌人就包括b和b的朋友们</span></span><br><span class="line">    enemies[a]=<span class="built_in">find_set</span>(b);</span><br><span class="line">}</span><br><span class="line"><span class="keyword">else</span>{</span><br><span class="line">    <span class="comment">//如果a有敌人，则a的敌人们就是b的朋友</span></span><br><span class="line">    <span class="built_in">merge_set</span>(enemies[a],b);</span><br><span class="line">}</span><br><span class="line"><span class="keyword">if</span> (enemies[b]==<span class="number">0</span>){</span><br><span class="line">    <span class="comment">//如果b没有敌人，则b的敌人就包括a和a的朋友们</span></span><br><span class="line">    enemies[b]=<span class="built_in">find_set</span>(a);</span><br><span class="line">}</span><br><span class="line"><span class="keyword">else</span>{</span><br><span class="line">    <span class="comment">//如果b有敌人，则b的敌人们就是a的朋友</span></span><br><span class="line">    <span class="built_in">merge_set</span>(enemies[b],a);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>也可以使用这种<strong>并查集的做法</strong>：</p>
 <p>表达<strong>敌人与朋友两种关系</strong>，不妨将并查集的数组<strong>开大两倍</strong>，作为并查集的扩展域，于是可以表达朋友以及敌人两部分，<strong>朋友对应第一倍，敌人对应第二倍</strong>。于是我们可以得到如下合并公式</p>
 <ul>
@@ -393,7 +389,7 @@
 </li>
 <li>A和B是朋友： <strong>A和B</strong></li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (ch==<span class="string">&#x27;E&#x27;</span>)&#123;</span><br><span class="line">    <span class="comment">//ab是敌人 则a+n与b，b+n与a是朋友</span></span><br><span class="line">    <span class="built_in">merge_set</span>(a+n,b); </span><br><span class="line">    <span class="built_in">merge_set</span>(b+n,a); </span><br><span class="line">&#125;       </span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (ch==<span class="string">&#x27;F&#x27;</span>)&#123;</span><br><span class="line">    <span class="built_in">merge_set</span>(a,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (ch==<span class="string">'E'</span>){</span><br><span class="line">    <span class="comment">//ab是敌人 则a+n与b，b+n与a是朋友</span></span><br><span class="line">    <span class="built_in">merge_set</span>(a+n,b); </span><br><span class="line">    <span class="built_in">merge_set</span>(b+n,a); </span><br><span class="line">}       </span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (ch==<span class="string">'F'</span>){</span><br><span class="line">    <span class="built_in">merge_set</span>(a,b);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <h2 id="2-P1525-NOIP2010-提高组-关押罪犯"><a href="#2-P1525-NOIP2010-提高组-关押罪犯" class="headerlink" title="2. P1525 [NOIP2010 提高组] 关押罪犯"></a>2. P1525 [NOIP2010 提高组] 关押罪犯</h2><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDE1MjU=">P1525 [NOIP2010 提高组] 关押罪犯<i class="fa fa-external-link-alt"></i></span></p>
 <p>如题所示，我们需要把多个罪犯分成不同的种类，而<strong>每对</strong>罪犯之间又存在着不同的<strong>仇恨值</strong>。</p>
@@ -404,7 +400,7 @@
 <p>因此寻找B仇人们，让他们和A是一伙的；同理寻找A的仇人们，让他们和B是一伙的。因为是按照仇恨值从大到小排序的，<strong>因此A和B的仇人们一伙，如果存在敌对关系的话，仇恨值一定是比B要小的</strong>（A和B仇恨值大，先判断，越往后肯定仇恨值越小）；同理对于B和A的仇人们也是一样的。</p>
 <p>一直把A和B的仇人们合并，B和A的仇人们合并。</p>
 <p>在对A合并，寻找B的仇人的时候，直到B的仇人们的仇人的仇人…. 又回到了A，则<strong>A和B不可避免的又碰到了一起</strong>，即这个时候已经无法在分了，A和B不管找谁的仇人他们都是有仇的，则此时我们直接输出这个组合，此时这个组合关系的仇恨值一定是一个理论最小值<strong>，因为是按照从大到小排序的，既然不存在其他组合了，则这种一定是最小的。</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> parent[N],enemies[N];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a,b,c;</span><br><span class="line">&#125;node[N];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">comp</span><span class="params">(Node a,Node b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.c&gt;b.c;</span><br><span class="line">&#125;   </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find_set</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x!=parent[x])&#123;</span><br><span class="line">        parent[x]=<span class="built_in">find_set</span>(parent[x]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> parent[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_set</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;</span><br><span class="line">    x=<span class="built_in">find_set</span>(x);</span><br><span class="line">    y=<span class="built_in">find_set</span>(y);</span><br><span class="line">    <span class="keyword">if</span> (x!=y)&#123;</span><br><span class="line">        parent[x]=y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;</span><br><span class="line">    x=<span class="built_in">find_set</span>(x);</span><br><span class="line">    y=<span class="built_in">find_set</span>(y);</span><br><span class="line">    <span class="keyword">if</span> (x==y)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        parent[i]=i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;i=%d,parent[%d]=%d\n&quot;</span>,i,i,parent[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        cin&gt;&gt;node[i].a&gt;&gt;node[i].b&gt;&gt;node[i].c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(node+<span class="number">1</span>,node+<span class="number">1</span>+m,comp);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m+<span class="number">1</span>;i++)&#123;</span><br><span class="line">        <span class="type">int</span> a=node[i].a,b=node[i].b;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(a,b))&#123;</span><br><span class="line">            cout&lt;&lt;node[i].c&lt;&lt;endl;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (enemies[a]==<span class="number">0</span>)&#123;</span><br><span class="line">            enemies[a]=b;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">merge_set</span>(enemies[a],b);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (enemies[b]==<span class="number">0</span>)&#123;</span><br><span class="line">            enemies[b]=a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">merge_set</span>(enemies[b],a);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> parent[N],enemies[N];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">{</span><br><span class="line">    <span class="type">int</span> a,b,c;</span><br><span class="line">}node[N];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">comp</span><span class="params">(Node a,Node b)</span></span>{</span><br><span class="line">    <span class="keyword">return</span> a.c&gt;b.c;</span><br><span class="line">}   </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find_set</span><span class="params">(<span class="type">int</span> x)</span></span>{</span><br><span class="line">    <span class="keyword">if</span> (x!=parent[x]){</span><br><span class="line">        parent[x]=<span class="built_in">find_set</span>(parent[x]);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> parent[x];</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_set</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>{</span><br><span class="line">    x=<span class="built_in">find_set</span>(x);</span><br><span class="line">    y=<span class="built_in">find_set</span>(y);</span><br><span class="line">    <span class="keyword">if</span> (x!=y){</span><br><span class="line">        parent[x]=y;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>{</span><br><span class="line">    x=<span class="built_in">find_set</span>(x);</span><br><span class="line">    y=<span class="built_in">find_set</span>(y);</span><br><span class="line">    <span class="keyword">if</span> (x==y){</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        parent[i]=i;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"i=%d,parent[%d]=%d\n"</span>,i,i,parent[i]);</span><br><span class="line">    }</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++){</span><br><span class="line">        cin&gt;&gt;node[i].a&gt;&gt;node[i].b&gt;&gt;node[i].c;</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">sort</span>(node+<span class="number">1</span>,node+<span class="number">1</span>+m,comp);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m+<span class="number">1</span>;i++){</span><br><span class="line">        <span class="type">int</span> a=node[i].a,b=node[i].b;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(a,b)){</span><br><span class="line">            cout&lt;&lt;node[i].c&lt;&lt;endl;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (enemies[a]==<span class="number">0</span>){</span><br><span class="line">            enemies[a]=b;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span>{</span><br><span class="line">            <span class="built_in">merge_set</span>(enemies[a],b);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (enemies[b]==<span class="number">0</span>){</span><br><span class="line">            enemies[b]=a;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span>{</span><br><span class="line">            <span class="built_in">merge_set</span>(enemies[b],a);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <h2 id="3-P2024-NOI2001-食物链"><a href="#3-P2024-NOI2001-食物链" class="headerlink" title="3. P2024 [NOI2001] 食物链"></a>3. P2024 [NOI2001] 食物链</h2><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDIwMjQ=">P2024 [NOI2001] 食物链 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)<i class="fa fa-external-link-alt"></i></span></p>
 <p>我们在这个题中能得到三种关系：</p>
@@ -420,11 +416,11 @@
 <li>u+n和v+n是同类（第二群系B）</li>
 <li>u+n+n和v+n+n是同类（第三群系C）</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">merge_set</span>(u,v)</span><br><span class="line"><span class="built_in">merge_set</span>(u+n,v+n)</span><br><span class="line"><span class="built_in">merge_set</span>(u+n+n,v+n+n)</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">merge_set</span>(u,v)</span><br><span class="line"><span class="built_in">merge_set</span>(u+n,v+n)</span><br><span class="line"><span class="built_in">merge_set</span>(u+n+n,v+n+n)</span><br></pre></td></tr></tbody></table></figure>
 <p>如果它们<strong>两个是吃与被吃的关系： 输入 2 u v</strong> </p>
 <p>由于他们三个群系属于一个<strong>环形生物链</strong>，并且<strong>同一群系中生物不能互吃</strong></p>
 <p>因此只能是 <strong>A群系吃B群系 ， B群系吃C群系， C群系吃A群系</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">merge_set</span>(u,v+n+n);   <span class="comment">// A的u被C的v吃</span></span><br><span class="line"><span class="built_in">merge_set</span>(u+n,v);     <span class="comment">// B的u被A的v吃</span></span><br><span class="line"><span class="built_in">merge_set</span>(u+n+n,v+n); <span class="comment">// C的u被B的v吃</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">merge_set</span>(u,v+n+n);   <span class="comment">// A的u被C的v吃</span></span><br><span class="line"><span class="built_in">merge_set</span>(u+n,v);     <span class="comment">// B的u被A的v吃</span></span><br><span class="line"><span class="built_in">merge_set</span>(u+n+n,v+n); <span class="comment">// C的u被B的v吃</span></span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <p>我们如何判断话的真假？</p>
 <ul>
@@ -437,7 +433,7 @@
 </ol>
 <p>则这两种情况如下：</p>
 <p>分别表示 uv 是同一群系 或者 u被v吃</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">find_set</span>(u)==<span class="built_in">find_set</span>(v) || <span class="built_in">find_set</span>(u)==<span class="built_in">find_set</span>(v+n)) ans++;<span class="comment">//假话++</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">find_set</span>(u)==<span class="built_in">find_set</span>(v) || <span class="built_in">find_set</span>(u)==<span class="built_in">find_set</span>(v+n)) ans++;<span class="comment">//假话++</span></span><br></pre></td></tr></tbody></table></figure>
 <hr>
 <ul>
 <li>如果输入 1 uv，则uv属于同一群系。</li>
@@ -448,9 +444,9 @@
 <li>或者判断 存在 v吃u，则False</li>
 </ol>
 <p>则这两种情况如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">find_set</span>(v+n)==<span class="built_in">find_set</span>(u) || <span class="built_in">find_set</span>(u)==<span class="built_in">find_set</span>(v+n)) ans++<span class="comment">//假话</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">find_set</span>(v+n)==<span class="built_in">find_set</span>(u) || <span class="built_in">find_set</span>(u)==<span class="built_in">find_set</span>(v+n)) ans++<span class="comment">//假话</span></span><br></pre></td></tr></tbody></table></figure>
 <p>完整代码如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> parent[N*<span class="number">3</span>];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">3</span>*n;i++)&#123;</span><br><span class="line">        parent[i]=i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find_set</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x!=parent[x])&#123;</span><br><span class="line">        parent[x]=<span class="built_in">find_set</span>(parent[x]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> parent[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_set</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;</span><br><span class="line">    x=<span class="built_in">find_set</span>(x);</span><br><span class="line">    y=<span class="built_in">find_set</span>(y);</span><br><span class="line">    <span class="keyword">if</span> (x!=y)&#123;</span><br><span class="line">        parent[x]=y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="type">int</span> opt,a,b;</span><br><span class="line">        cin&gt;&gt;opt&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        <span class="keyword">if</span> (a&gt;n || b&gt;n)&#123;</span><br><span class="line">            ans++;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (opt==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="comment">//判断是不是假话: a与b是同类</span></span><br><span class="line">            <span class="comment">//如果a与b 存在 a吃b 或者 b吃a 的关系，则a和b是同类是假话</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">find_set</span>(a)==<span class="built_in">find_set</span>(b+n) ||  <span class="comment">// a被b吃</span></span><br><span class="line">                <span class="built_in">find_set</span>(b)==<span class="built_in">find_set</span>(a+n))&#123;   <span class="comment">// b被a吃</span></span><br><span class="line">                    ans++;</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//真话</span></span><br><span class="line">                <span class="built_in">merge_set</span>(a,b);</span><br><span class="line">                <span class="built_in">merge_set</span>(a+n,b+n);</span><br><span class="line">                <span class="built_in">merge_set</span>(a+<span class="number">2</span>*n,b+<span class="number">2</span>*n);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (opt==<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="comment">//判断是不是假话: a吃b</span></span><br><span class="line">            <span class="comment">//如果a与b同类；或者b吃a 成立，则a吃b是假话</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">find_set</span>(a)==<span class="built_in">find_set</span>(b) || 	<span class="comment">// a与b是同类</span></span><br><span class="line">                <span class="built_in">find_set</span>(a)==<span class="built_in">find_set</span>(b+n))&#123;	<span class="comment">// a被b吃</span></span><br><span class="line">                    ans++;</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//真话</span></span><br><span class="line">                <span class="built_in">merge_set</span>(a,b+n+n);   <span class="comment">// A的a被C的b吃</span></span><br><span class="line">                <span class="built_in">merge_set</span>(a+n,b);     <span class="comment">// B的a被A的b吃</span></span><br><span class="line">                <span class="built_in">merge_set</span>(a+n+n,b+n); <span class="comment">// C的a被B的b吃</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> parent[N*<span class="number">3</span>];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">3</span>*n;i++){</span><br><span class="line">        parent[i]=i;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find_set</span><span class="params">(<span class="type">int</span> x)</span></span>{</span><br><span class="line">    <span class="keyword">if</span> (x!=parent[x]){</span><br><span class="line">        parent[x]=<span class="built_in">find_set</span>(parent[x]);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> parent[x];</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_set</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>{</span><br><span class="line">    x=<span class="built_in">find_set</span>(x);</span><br><span class="line">    y=<span class="built_in">find_set</span>(y);</span><br><span class="line">    <span class="keyword">if</span> (x!=y){</span><br><span class="line">        parent[x]=y;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++){</span><br><span class="line">        <span class="type">int</span> opt,a,b;</span><br><span class="line">        cin&gt;&gt;opt&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        <span class="keyword">if</span> (a&gt;n || b&gt;n){</span><br><span class="line">            ans++;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (opt==<span class="number">1</span>){</span><br><span class="line">            <span class="comment">//判断是不是假话: a与b是同类</span></span><br><span class="line">            <span class="comment">//如果a与b 存在 a吃b 或者 b吃a 的关系，则a和b是同类是假话</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">find_set</span>(a)==<span class="built_in">find_set</span>(b+n) ||  <span class="comment">// a被b吃</span></span><br><span class="line">                <span class="built_in">find_set</span>(b)==<span class="built_in">find_set</span>(a+n)){   <span class="comment">// b被a吃</span></span><br><span class="line">                    ans++;</span><br><span class="line">                }</span><br><span class="line">            <span class="keyword">else</span>{</span><br><span class="line">                <span class="comment">//真话</span></span><br><span class="line">                <span class="built_in">merge_set</span>(a,b);</span><br><span class="line">                <span class="built_in">merge_set</span>(a+n,b+n);</span><br><span class="line">                <span class="built_in">merge_set</span>(a+<span class="number">2</span>*n,b+<span class="number">2</span>*n);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (opt==<span class="number">2</span>){</span><br><span class="line">            <span class="comment">//判断是不是假话: a吃b</span></span><br><span class="line">            <span class="comment">//如果a与b同类；或者b吃a 成立，则a吃b是假话</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">find_set</span>(a)==<span class="built_in">find_set</span>(b) || 	<span class="comment">// a与b是同类</span></span><br><span class="line">                <span class="built_in">find_set</span>(a)==<span class="built_in">find_set</span>(b+n)){	<span class="comment">// a被b吃</span></span><br><span class="line">                    ans++;</span><br><span class="line">                }</span><br><span class="line">            <span class="keyword">else</span>{</span><br><span class="line">                <span class="comment">//真话</span></span><br><span class="line">                <span class="built_in">merge_set</span>(a,b+n+n);   <span class="comment">// A的a被C的b吃</span></span><br><span class="line">                <span class="built_in">merge_set</span>(a+n,b);     <span class="comment">// B的a被A的b吃</span></span><br><span class="line">                <span class="built_in">merge_set</span>(a+n+n,b+n); <span class="comment">// C的a被B的b吃</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h1 id="带权并查集"><a href="#带权并查集" class="headerlink" title="带权并查集"></a>带权并查集</h1><p>就是在维护集合关系的树中添加边权的并查集，这样做可以维护更多的信息。</p>
 <p>不难发现所谓的并查集本质上也是一种树，由于路径压缩的存在，使得一个并查集树中，其被压缩过的子节点总是直接指向根节点，于是我们可以给根节点与子节点之间的边进行赋权。</p>
 <p><strong>这个权值可以表示该节点与根节点之间的距离</strong></p>
@@ -543,27 +539,7 @@
           
     <div class="comments" id="valine-comments"></div>
 
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
+
 
         </div>
           
@@ -593,9 +569,8 @@
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="ylh"
-      src="/images/avatar.jpg">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ylh" src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">ylh</p>
   <div class="site-description" itemprop="description">大二学生一枚，热爱代码与写作，希望我的分享能给大家带来知识的收获。</div>
 </div>
@@ -624,25 +599,25 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2x1dW1vZA==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luumod"><i class="fab fa-github-alt fa-fw"></i>GitHub</span>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2x1dW1vZA==" title="GitHub → https://github.com/luumod"><i class="fa fa-github-alt fa-fw"></i>GitHub</span>
       </span>
       <span class="links-of-author-item">
         <span class="exturl" data-url="bWFpbHRvOjExNzMwMTI5MDBAcXEuY29t" title="E-Mail → mailto:1173012900@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pqNjY2NmRqZGJiZD90eXBlPWJsb2c=" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;jj6666djdbbd?type&#x3D;blog"><i class="fa fa-crosshairs fa-fw"></i>CSDN</span>
+        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pqNjY2NmRqZGJiZD90eXBlPWJsb2c=" title="CSDN → https://blog.csdn.net/jj6666djdbbd?type=blog"><i class="fa fa-crosshairs fa-fw"></i>CSDN</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9xaWFuLXNoaS0yOS01NQ==" title="zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;qian-shi-29-55"><i class="fa fa-birthday-cake fa-fw"></i>zhihu</span>
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9xaWFuLXNoaS0yOS01NQ==" title="zhihu → https://www.zhihu.com/people/qian-shi-29-55"><i class="fa fa-birthday-cake fa-fw"></i>zhihu</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVsbG95bGgv" title="cnblogs → https:&#x2F;&#x2F;www.cnblogs.com&#x2F;helloylh&#x2F;"><i class="fa fa-road fa-fw"></i>cnblogs</span>
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVsbG95bGgv" title="cnblogs → https://www.cnblogs.com/helloylh/"><i class="fa fa-road fa-fw"></i>cnblogs</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vdXNlci8yNDQ3OTI5NTc0NzAyMTg5" title="juejin → https:&#x2F;&#x2F;juejin.cn&#x2F;user&#x2F;2447929574702189"><i class="fa fa-subway fa-fw"></i>juejin</span>
+        <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vdXNlci8yNDQ3OTI5NTc0NzAyMTg5" title="juejin → https://juejin.cn/user/2447929574702189"><i class="fa fa-subway fa-fw"></i>juejin</span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9oZWxsb3lsaC8=" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;helloylh&#x2F;"><i class="fab fa-instagram fa-fw"></i>Instagram</span>
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9oZWxsb3lsaC8=" title="Instagram → https://www.instagram.com/helloylh/"><i class="fa fa-instagram fa-fw"></i>Instagram</span>
       </span>
   </div>
 
@@ -653,13 +628,13 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3VzZXIvOTE0MDc5" title="https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;user&#x2F;914079">Luogu</span>
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3VzZXIvOTE0MDc5" title="https://www.luogu.com.cn/user/914079">Luogu</span>
         </li>
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS91c2VyL215c3BhY2UvaW5kZXgvMjAzODEyLw==" title="https:&#x2F;&#x2F;www.acwing.com&#x2F;user&#x2F;myspace&#x2F;index&#x2F;203812&#x2F;">ACWing</span>
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS91c2VyL215c3BhY2UvaW5kZXgvMjAzODEyLw==" title="https://www.acwing.com/user/myspace/index/203812/">ACWing</span>
         </li>
         <li class="links-of-blogroll-item">
-          <span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS5jbi91L3dvc2hpOTk5Lw==" title="https:&#x2F;&#x2F;leetcode.cn&#x2F;u&#x2F;woshi999&#x2F;">leetcode</span>
+          <span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS5jbi91L3dvc2hpOTk5Lw==" title="https://leetcode.cn/u/woshi999/">leetcode</span>
         </li>
     </ul>
   </div>
@@ -682,7 +657,7 @@
 
 <div class="copyright">
   
-  &copy; 
+  © 
   <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -707,22 +682,7 @@
 <!-- 网站运行时间的设置 -->
 <span id="timeDate">载入天数...</span>
 <span id="times">载入时分秒...</span>
-<script>
-    var now = new Date();
-    function createtime() {
-        var grt= new Date("03/05/2023 10:00:00"); //此处修改你的建站时间或者网站上线时间
-        now.setTime(now.getTime()+250);
-        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
-        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
-        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
-        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
-    }
-setInterval("createtime()",250);
-</script>
+
 
 
 
@@ -733,7 +693,7 @@ setInterval("createtime()",250);
 
         
 <div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async="" src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
@@ -770,27 +730,102 @@ setInterval("createtime()",250);
   
 
   
-  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
-  <script src="/lib/anime.min.js"></script>
+  
+  
   <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
+  
+  
 
 
-<script src="/js/schemes/muse.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+
+
+
+
+
+
 
 
 
 
   
-  <script>
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+
+
+    
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  
+
+
+
+
+
+
+<script src="/bundle.js"></script><script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+;
+
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/05/2023 10:00:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+;
+
     (function(){
       var canonicalURL, curProtocol;
       //Get the <link> tag
@@ -814,32 +849,8 @@ setInterval("createtime()",250);
 	    if (!canonicalURL) canonicalURL = window.location.href;
 	    //Assign script content. Replace current URL with the canonical URL
       !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
-  </script>
+  ;
 
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-      
-
-<script>
   if (typeof MathJax === 'undefined') {
     window.MathJax = {
       loader: {
@@ -889,13 +900,8 @@ setInterval("createtime()",250);
     MathJax.texReset();
     MathJax.typeset();
   }
-</script>
+;
 
-    
-
-  
-  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
-  <script>
       window.addEventListener('load', () => {
       quicklink({
         timeout : 3000,
@@ -903,10 +909,8 @@ setInterval("createtime()",250);
         ignores : [uri => uri.includes('#'),uri => uri === 'https://helloylh.com/2023/03/16/%E5%B9%B6%E6%9F%A5%E9%9B%86%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95/',]
       });
       });
-  </script>
+  ;
 
-
-<script>
 NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
   NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
     var GUEST = ['nick', 'mail', 'link'];
@@ -932,7 +936,4 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
     });
   }, window.Valine);
 });
-</script>
-
-</body>
-</html>
+</script></body></html>
