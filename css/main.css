@@ -221,7 +221,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'ZCOOL KuaiLe', 'Noto Serif Simplified Chinese', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Noto Sans Hong Kong', 'Noto Serif Simplified Chinese', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 20px 0 15px;
@@ -1038,7 +1038,7 @@ pre .javascript .function {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: 'ZCOOL QingKe HuangYou', 'Noto Serif Simplified Chinese', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Inter', 'Noto Serif Simplified Chinese', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.5em;
   font-weight: normal;
   margin: 0;
@@ -1302,7 +1302,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #f9ff28;
+  background: #ff83f4;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1880,12 +1880,6 @@ pre .javascript .function {
   position: absolute;
   top: 0;
   width: 100%;
-}
-img {
-  box-sizing: border-box;
-  margin: 0 auto 25px;
-  padding: 3px;
-  border: none;
 }
 .post-gallery {
   align-items: center;
@@ -2775,11 +2769,4 @@ body {
 .main-inner {
   background-color: rgba(255,255,255,0);
   padding: 0px 40px 40px 40px;
-}
-.post {
-  margin-top: 60px;
-  padding: 20px;
-  margin-bottom: 60px;
-  -webkit-box-shadow: 0 0 5px #788072;
-  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }

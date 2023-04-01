@@ -6,7 +6,7 @@
   <link href="https://helloylh.com/atom.xml" rel="self"/>
   
   <link href="https://helloylh.com/"/>
-  <updated>2023-04-01T14:22:01.663Z</updated>
+  <updated>2023-04-01T16:04:35.576Z</updated>
   <id>https://helloylh.com/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo+Next博客配置字体</title>
+    <link href="https://helloylh.com/2023/04/01/Hexo-Next%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E5%AD%97%E4%BD%93/"/>
+    <id>https://helloylh.com/2023/04/01/Hexo-Next%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E5%AD%97%E4%BD%93/</id>
+    <published>2023-04-01T15:39:45.000Z</published>
+    <updated>2023-04-01T16:04:35.576Z</updated>
+    
+    
+    <summary type="html">hexo博客优化，字体样式的配置</summary>
+    
+    
+    
+    <category term="实用技术" scheme="https://helloylh.com/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="hexo博客配置" scheme="https://helloylh.com/tags/hexo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+Next博客设置背景图片+界面优化</title>
+    <link href="https://helloylh.com/2023/04/01/Hexo-Next%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87-%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/"/>
+    <id>https://helloylh.com/2023/04/01/Hexo-Next%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87-%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</id>
+    <published>2023-04-01T15:14:35.000Z</published>
+    <updated>2023-04-01T16:04:58.402Z</updated>
+    
+    
+    <summary type="html">博客优化记录：背景与页面的优化，添加背景图片，设置背景透明度，边框圆角，页面宽度的设置</summary>
+    
+    
+    
+    <category term="实用技术" scheme="https://helloylh.com/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="hexo博客配置" scheme="https://helloylh.com/tags/hexo%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>图的最短路问题（spfa+Dijkstra+floyd 模板代码c++）</title>
@@ -40,7 +78,7 @@
     <link href="https://helloylh.com/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/"/>
     <id>https://helloylh.com/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/</id>
     <published>2023-04-01T10:14:04.000Z</published>
-    <updated>2023-04-01T14:22:01.660Z</updated>
+    <updated>2023-04-01T15:37:15.640Z</updated>
     
     
     <summary type="html">蓝桥杯算法复习：bfs与dfs详解，附带例题+模板代码，DFS（深度优先搜索）和BFS（广度优先搜索）是图论中两个重要的算法。</summary>
@@ -355,44 +393,6 @@
     
     
     <category term="STL" scheme="https://helloylh.com/tags/STL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>STL源码学习（1）- 空间配置器</title>
-    <link href="https://helloylh.com/2023/03/07/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89-%E7%A9%BA%E9%97%B4%E9%85%8D%E7%BD%AE%E5%99%A8/"/>
-    <id>https://helloylh.com/2023/03/07/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%881%EF%BC%89-%E7%A9%BA%E9%97%B4%E9%85%8D%E7%BD%AE%E5%99%A8/</id>
-    <published>2023-03-07T04:48:47.000Z</published>
-    <updated>2023-03-11T10:06:23.170Z</updated>
-    
-    
-    <summary type="html">本文主要剖析了SGI STL的一二级空间配置器，内存基本操作函数</summary>
-    
-    
-    
-    <category term="STL源码剖析" scheme="https://helloylh.com/categories/STL%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/"/>
-    
-    
-    <category term="STL" scheme="https://helloylh.com/tags/STL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>贪心算法例题与讲解（2）</title>
-    <link href="https://helloylh.com/2023/03/06/%E8%B4%AA%E5%BF%83%EF%BC%882%EF%BC%89/"/>
-    <id>https://helloylh.com/2023/03/06/%E8%B4%AA%E5%BF%83%EF%BC%882%EF%BC%89/</id>
-    <published>2023-03-06T14:45:05.000Z</published>
-    <updated>2023-03-06T15:13:15.628Z</updated>
-    
-    
-    <summary type="html">贪心算法的刷题训练与题目讲解，附带完整AC代码，题目来源于洛谷（第二弹）</summary>
-    
-    
-    
-    <category term="刷题训练" scheme="https://helloylh.com/categories/%E5%88%B7%E9%A2%98%E8%AE%AD%E7%BB%83/"/>
-    
-    
-    <category term="贪心算法" scheme="https://helloylh.com/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
