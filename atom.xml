@@ -6,7 +6,7 @@
   <link href="https://helloylh.com/atom.xml" rel="self"/>
   
   <link href="https://helloylh.com/"/>
-  <updated>2023-03-30T07:55:56.650Z</updated>
+  <updated>2023-04-01T14:22:01.663Z</updated>
   <id>https://helloylh.com/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图的最短路问题（spfa+Dijkstra+floyd 模板代码c++）</title>
+    <link href="https://helloylh.com/2023/04/01/%E5%9B%BE%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98%EF%BC%88spfa-Dijkstra-floyd-%E6%A8%A1%E6%9D%BF%E4%BB%A3%E7%A0%81c-%EF%BC%89/"/>
+    <id>https://helloylh.com/2023/04/01/%E5%9B%BE%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98%EF%BC%88spfa-Dijkstra-floyd-%E6%A8%A1%E6%9D%BF%E4%BB%A3%E7%A0%81c-%EF%BC%89/</id>
+    <published>2023-04-01T12:51:26.000Z</published>
+    <updated>2023-04-01T14:22:01.663Z</updated>
+    
+    
+    <summary type="html">图论：图的最短路径问题，三种最短路 spfa+Dijkstra+floyd算法例题：反向建边；最短路计数；最短距离；作物杂交；铁路与公路。</summary>
+    
+    
+    
+    <category term="算法世界" scheme="https://helloylh.com/categories/%E7%AE%97%E6%B3%95%E4%B8%96%E7%95%8C/"/>
+    
+    
+    <category term="最短路问题" scheme="https://helloylh.com/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>bfs与dfs详解（例题+模板c++代码）</title>
+    <link href="https://helloylh.com/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/"/>
+    <id>https://helloylh.com/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/</id>
+    <published>2023-04-01T10:14:04.000Z</published>
+    <updated>2023-04-01T14:22:01.660Z</updated>
+    
+    
+    <summary type="html">蓝桥杯算法复习：bfs与dfs详解，附带例题+模板代码，DFS（深度优先搜索）和BFS（广度优先搜索）是图论中两个重要的算法。</summary>
+    
+    
+    
+    <category term="算法世界" scheme="https://helloylh.com/categories/%E7%AE%97%E6%B3%95%E4%B8%96%E7%95%8C/"/>
+    
+    
+    <category term="bfs与dfs" scheme="https://helloylh.com/tags/bfs%E4%B8%8Edfs/"/>
+    
+  </entry>
   
   <entry>
     <title>windows编程（1）-第一个窗口程序</title>
@@ -32,25 +70,6 @@
     
     
     <category term="windows编程" scheme="https://helloylh.com/tags/windows%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>dfs详解与例题</title>
-    <link href="https://helloylh.com/2023/03/28/dfs%E8%AF%A6%E8%A7%A3%E4%B8%8E%E4%BE%8B%E9%A2%98/"/>
-    <id>https://helloylh.com/2023/03/28/dfs%E8%AF%A6%E8%A7%A3%E4%B8%8E%E4%BE%8B%E9%A2%98/</id>
-    <published>2023-03-28T07:59:45.000Z</published>
-    <updated>2023-03-30T07:55:56.648Z</updated>
-    
-    
-    <summary type="html">文章描述</summary>
-    
-    
-    
-    <category term="分类" scheme="https://helloylh.com/categories/%E5%88%86%E7%B1%BB/"/>
-    
-    
-    <category term="标签" scheme="https://helloylh.com/tags/%E6%A0%87%E7%AD%BE/"/>
     
   </entry>
   
@@ -367,25 +386,6 @@
     
     
     <summary type="html">贪心算法的刷题训练与题目讲解，附带完整AC代码，题目来源于洛谷（第二弹）</summary>
-    
-    
-    
-    <category term="刷题训练" scheme="https://helloylh.com/categories/%E5%88%B7%E9%A2%98%E8%AE%AD%E7%BB%83/"/>
-    
-    
-    <category term="贪心算法" scheme="https://helloylh.com/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>贪心算法例题与讲解（1）</title>
-    <link href="https://helloylh.com/2023/03/05/%E8%B4%AA%E5%BF%83%EF%BC%881%EF%BC%89/"/>
-    <id>https://helloylh.com/2023/03/05/%E8%B4%AA%E5%BF%83%EF%BC%881%EF%BC%89/</id>
-    <published>2023-03-05T11:34:28.000Z</published>
-    <updated>2023-03-06T15:12:42.681Z</updated>
-    
-    
-    <summary type="html">贪心算法的刷题训练与题目讲解，附带完整AC代码，题目来源于洛谷（第一弹）</summary>
     
     
     

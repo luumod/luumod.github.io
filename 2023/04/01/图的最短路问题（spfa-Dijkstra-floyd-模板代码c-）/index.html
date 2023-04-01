@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/images3.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/images2.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/images1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="_3JRGj020zsk4apxOkqowNm9FPqF9N9S7hMwSJii6_Q">
+  <meta name="msvalidate.01" content="9E9D6F1DCF94B9B8F6D4119BDF696B11">
+  <meta name="baidu-site-verification" content="codeva-wCeADXb2tW">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Noto Serif Simplified Chinese:300,300italic,400,400italic,700,700italic|ZCOOL QingKe HuangYou:300,300italic,400,400italic,700,700italic|ZCOOL KuaiLe:300,300italic,400,400italic,700,700italic|Console:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-mac-osx.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"helloylh.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="图论：图的最短路径问题，三种最短路 spfa+Dijkstra+floyd算法例题：反向建边；最短路计数；最短距离；作物杂交；铁路与公路。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图的最短路问题（spfa+Dijkstra+floyd 模板代码c++）">
+<meta property="og:url" content="https://helloylh.com/2023/04/01/%E5%9B%BE%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98%EF%BC%88spfa-Dijkstra-floyd-%E6%A8%A1%E6%9D%BF%E4%BB%A3%E7%A0%81c-%EF%BC%89/index.html">
+<meta property="og:site_name" content="HugeYlh">
+<meta property="og:description" content="图论：图的最短路径问题，三种最短路 spfa+Dijkstra+floyd算法例题：反向建边；最短路计数；最短距离；作物杂交；铁路与公路。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdnjson.com/images/2023/04/01/ULQD97EYXWFNL43JS5Y0.png">
+<meta property="og:image" content="https://cdnjson.com/images/2023/04/01/CE6NJ3MOP_HP_K9NW_6VY.png">
+<meta property="og:image" content="https://cdnjson.com/images/2023/04/01/QBOS2NLNNFV80R3Y9O.md.png">
+<meta property="article:published_time" content="2023-04-01T12:51:26.000Z">
+<meta property="article:modified_time" content="2023-04-01T14:22:01.663Z">
+<meta property="article:author" content="ylh">
+<meta property="article:tag" content="最短路问题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdnjson.com/images/2023/04/01/ULQD97EYXWFNL43JS5Y0.png">
+
+<link rel="canonical" href="https://helloylh.com/2023/04/01/%E5%9B%BE%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98%EF%BC%88spfa-Dijkstra-floyd-%E6%A8%A1%E6%9D%BF%E4%BB%A3%E7%A0%81c-%EF%BC%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>图的最短路问题（spfa+Dijkstra+floyd 模板代码c++） | HugeYlh</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'G-D6W7BP90D4',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?706b35dfc7a527ae7bcc1ac086b5a00e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="HugeYlh" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">HugeYlh</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">奔赴山海，保持热爱</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-photos">
+
+    <a href="/photos" rel="section"><i class="fa fa-file-photo-o fa-fw"></i>照片</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL2x1dW1vZA==" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://helloylh.com/2023/04/01/%E5%9B%BE%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98%EF%BC%88spfa-Dijkstra-floyd-%E6%A8%A1%E6%9D%BF%E4%BB%A3%E7%A0%81c-%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="ylh">
+      <meta itemprop="description" content="大二学生一枚，热爱代码与写作，希望我的分享能给大家带来知识的收获。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HugeYlh">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          图的最短路问题（spfa+Dijkstra+floyd 模板代码c++）
+        </h1>
+
+        <div class="post-meta">
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-04-01 20:51:26 / 修改时间：22:22:01" itemprop="dateCreated datePublished" datetime="2023-04-01T20:51:26+08:00">2023-04-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%96%E7%95%8C/" itemprop="url" rel="index"><span itemprop="name">算法世界</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/04/01/%E5%9B%BE%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98%EF%BC%88spfa-Dijkstra-floyd-%E6%A8%A1%E6%9D%BF%E4%BB%A3%E7%A0%81c-%EF%BC%89/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/04/01/%E5%9B%BE%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98%EF%BC%88spfa-Dijkstra-floyd-%E6%A8%A1%E6%9D%BF%E4%BB%A3%E7%A0%81c-%EF%BC%89/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>12k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>22 分钟</span>
+            </span>
+            <div class="post-description">图论：图的最短路径问题，三种最短路 spfa+Dijkstra+floyd算法例题：反向建边；最短路计数；最短距离；作物杂交；铁路与公路。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>文章首发于：<a href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
+<h1 id="图论：三种最短路及模板"><a href="#图论：三种最短路及模板" class="headerlink" title="图论：三种最短路及模板"></a>图论：三种最短路及模板</h1><p>注意：在这三种算法 中我均使用的 <strong>链式前向星存图</strong>，具体方式请看我这篇博客：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pqNjY2NmRqZGJiZC9hcnRpY2xlL2RldGFpbHMvMTI4OTIzNDU5P3NwbT0xMDAxLjIwMTQuMzAwMS41NTAy">链式前向星存图详解<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><h3 id="SPFA算法"><a href="#SPFA算法" class="headerlink" title="SPFA算法"></a>SPFA算法</h3><p>spfa是优化后的Bellmax-ford算法，采用了 <strong>队列进行优化</strong></p>
+<p>SPFA可以用来处理负权边的情况，通常用于求带<strong>负边权的单源最短路径问题</strong></p>
+<ol>
+<li>首先进行<strong>链式前向星存图</strong>。</li>
+<li>然后对于起点s到各个点i的最短距离 <strong>dis[i] 我们初始化为一个极大值</strong>，以便之后可以更新到最短路径</li>
+<li>把起点放入队列中，然后取出队头，用u来记录此时<strong>需要松弛的点（就是队头元素）</strong>，遍历起点u能够到达的所有的终点v，进行<strong>u到v的最短距离的更新</strong>，如果某一个v点没有被松弛过，则把这个v点放入队列中，等待之后松弛v点，更新最短距离。</li>
+<li>直到所有的点都被松弛过了，则这些点都是True状态，队列中元素为空，退出循环。</li>
+<li>因此最后dis存储的就是s到所有点的最短路径</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m,s;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> nums[N];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Edge</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> to,w,next;</span><br><span class="line">&#125;edge[N];</span><br><span class="line"><span class="type">int</span> dis[N];</span><br><span class="line"><span class="type">bool</span> vis[N];</span><br><span class="line"><span class="type">int</span> head[N],cnt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add_edge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v,<span class="type">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    edge[++cnt].next=head[u];</span><br><span class="line">    edge[cnt].to=v;</span><br><span class="line">    edge[cnt].w=w;</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        dis[i]=INF;   <span class="comment">//起点到i点的距离为一个极大值</span></span><br><span class="line">        vis[i]=<span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">    <span class="comment">//起点入队，标记起点，起点距离为0</span></span><br><span class="line">    q.<span class="built_in">push</span>(s);</span><br><span class="line">    vis[s]=<span class="literal">true</span>;</span><br><span class="line">    dis[s]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (!q.<span class="built_in">empty</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">auto</span> p=q.<span class="built_in">front</span>();   <span class="comment">//取出这个待优化的点</span></span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        vis[p]=<span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=head[p];i;i=edge[i].next)</span><br><span class="line">        &#123;<span class="comment">//寻找与p队头元素相连的边</span></span><br><span class="line">            <span class="type">int</span> v=edge[i].to;</span><br><span class="line">            <span class="keyword">if</span> (dis[v]&gt;dis[p]+edge[i].w)<span class="comment">//对 p-&gt;v 的每条边寻找一个最短路径的边</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//松弛操作</span></span><br><span class="line">                dis[v]=dis[p]+edge[i].w;</span><br><span class="line">                <span class="keyword">if</span> (!vis[v])</span><br><span class="line">                &#123;</span><br><span class="line">                    q.<span class="built_in">push</span>(v);</span><br><span class="line">                    vis[v]=<span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m&gt;&gt;s;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> u,v,w;</span><br><span class="line">        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;</span><br><span class="line">        <span class="built_in">add_edge</span>(u,v,w);</span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="built_in">spfa</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;dis[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h3><p>弗洛伊德算法使用三重循环，时间复杂度较高</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pqNjY2NmRqZGJiZC9hcnRpY2xlL2RldGFpbHMvMTI4OTY1MjU5P3NwbT0xMDAxLjIwMTQuMzAwMS41NTAy">floyd算法详解<i class="fa fa-external-link-alt"></i></span></p>
+<p><strong>floyd算法的核心：从i点到j点经过k个点的情况下所能经过的最短距离。</strong></p>
+<p>floyd算法可以求得<strong>任意两点之间的最短路径</strong>。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m,s;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e4</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> dis[N];</span><br><span class="line"><span class="type">int</span> G[N][N];</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m&gt;&gt;s;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            G[i][j]=INF; <span class="comment">//初始化i到j点的最短路径为一个极大值</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> u,v,w;</span><br><span class="line">        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;</span><br><span class="line">        G[u][v]=<span class="built_in">min</span>(G[u][v],w);  <span class="comment">//u到v点的距离存储，要注意输入可能会重复</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                G[i][j]=<span class="built_in">min</span>(G[i][j],G[i][k]+G[k][j]); <span class="comment">//三重循环求i到j的最短距离</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    G[s][s]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;G[s][i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><p>迪杰斯特拉算法采用<strong>堆优化</strong>的方法，是求最短路三种方法中的<strong>较优的方法</strong></p>
+<p>获取每一个点的顶点编号，然后对这个顶点<strong>相连的所有边进行遍历求最短路径</strong>，并且处理完成之后把每个点入队，然后接下来继续对队列中的点弹出并且继续求最短路径，直到队列为空。</p>
+<p>另外，如果我们的<strong>起点到 一个点有多条路径</strong>，则dis会记录当前一条路径的最短路径，而 pair的first记录的则不一定是最短路径，则如果 <strong>我们发现  dis[u] &lt; p.first 则直接跳转下一个点即可</strong>，表示的是当前到该点的路径已经是最短的了，无需再次进行松弛操作。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m,s;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Edge</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> to,val,next;</span><br><span class="line">&#125;edge[N];</span><br><span class="line"><span class="type">int</span> head[N],cnt,dis[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add_edge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v,<span class="type">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    edge[++cnt].next=head[u];</span><br><span class="line">    edge[cnt].to=v;</span><br><span class="line">    edge[cnt].val=w;</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dijsktra</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        dis[i]=INF;</span><br><span class="line">    &#125;</span><br><span class="line">    priority_queue&lt;PI,v&lt;PI&gt;,greater&lt;PI&gt;&gt; q;</span><br><span class="line">    dis[s]=<span class="number">0</span>;</span><br><span class="line">    q.<span class="built_in">push</span>(&#123;<span class="number">0</span>,s&#125;);  <span class="comment">//起点入堆</span></span><br><span class="line">    <span class="keyword">while</span> (!q.<span class="built_in">empty</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        PI p=q.<span class="built_in">top</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> u=p.second;<span class="comment">//获取以u为起点的顶点编号</span></span><br><span class="line">        <span class="keyword">if</span> (dis[u]&lt;p.first) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=head[u];i;i=edge[i].next)<span class="comment">//遍历与u相连的所有点，寻找最短路径</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> v=edge[i].to;</span><br><span class="line">            <span class="keyword">if</span> (dis[v]&gt;dis[u]+edge[i].val)</span><br><span class="line">            &#123;</span><br><span class="line">                dis[v]=dis[u]+edge[i].val;</span><br><span class="line">                q.<span class="built_in">push</span>(&#123;dis[v],v&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m&gt;&gt;s;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> u,v,w;</span><br><span class="line">        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;</span><br><span class="line">        <span class="built_in">add_edge</span>(u,v,w);    <span class="comment">//单向边</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dijsktra</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;dis[i]&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="例题与应用"><a href="#例题与应用" class="headerlink" title="例题与应用"></a>例题与应用</h2><h3 id="反向建边"><a href="#反向建边" class="headerlink" title="反向建边"></a>反向建边</h3><p>例题：<span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDE2Mjk=">邮递员送信<i class="fa fa-external-link-alt"></i></span></p>
+<blockquote>
+<p>有一个邮递员要送东西，邮局在节点 1。他总共要送 <em>n</em>−1 样东西，其目的地分别是节点 2 到节点 <em>n</em>。由于这个城市的交通比较繁忙，因此所有的道路都是<strong>单行</strong>的，共有 m条道路。这个邮递员每次只能带一样东西，并且<strong>运送每件物品过后必须返回邮局</strong>。求送完这<em>n</em>−1 样东西并且<strong>最终回到邮局</strong>最少需要的时间。</p>
+</blockquote>
+<hr>
+<p>分两步求得结果：<strong>正向送出和反向回来的最短时间</strong></p>
+<ul>
+<li>正向送出：直接使用一次 <strong>dijktra算法计算单源最短路径即可</strong>。</li>
+</ul>
+<p>但是我们发现还需要求从<strong>每个点再回到起点</strong>的最短路径。</p>
+<p>我们能否求出起点到终点的<strong>距离乘2</strong> ？？这不就是往返两趟的路程吗？？？</p>
+<p>请注意： <strong>道路是单向边，过去有道路可走，回来不一定有路！</strong></p>
+<p>因此，本题核心：</p>
+<ul>
+<li>反向回来：<strong>反向建边，再进行一次反向的 disktra</strong> </li>
+</ul>
+<p>起点到每个点：<strong>一对多的关系</strong>；每个点到起点：<strong>多对一的关系，我们要把它转换为一对多的关系</strong></p>
+<hr>
+<p>如何<strong>反向建边</strong>？？</p>
+<ol>
+<li><p>使用邻接矩阵：邻接矩阵存边，是采用数组的形式，记录的 u 到 v 的边用 edge[u] [v]表示，正向的时候，我直接用即可；<strong>反向的时候：我们采用 swap，交换每一个 u 与 v ，这就成了反向的图了</strong></p>
+</li>
+<li><p>使用链式前向星存图： add_edge添加 u 到 v，权值为 w的边，则<strong>我们把 u 加上 n，v 加上 n，确保点之间不会出现冲突，然后 add_edge添加 v+n 到 u+n，权值为 w 的边</strong>，这样既不会产生冲突，我们也建了<strong>n条反向的边</strong></p>
+</li>
+</ol>
+<p>然后分别进行 dijkstra算法即可，我们传入每个的起点，<strong>分别为  1 和 1+n，同时注意dis 的清除</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">5e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> nums[N];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Edge</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> to,w,next;</span><br><span class="line">&#125;edge[N];</span><br><span class="line"><span class="type">int</span> head[N],cnt,dis[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add_edge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v,<span class="type">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    edge[++cnt].next=head[u];</span><br><span class="line">    edge[cnt].to=v;</span><br><span class="line">    edge[cnt].w=w;</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dijktra</span><span class="params">(<span class="type">int</span> s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dis,<span class="number">0x3F</span>,<span class="built_in">sizeof</span>(dis));</span><br><span class="line">    dis[s]=<span class="number">0</span>;</span><br><span class="line">    priority_queue&lt;PI,v&lt;PI&gt;,greater&lt;PI&gt;&gt; q;</span><br><span class="line">    q.<span class="built_in">push</span>(&#123;<span class="number">0</span>,s&#125;);</span><br><span class="line">    <span class="keyword">while</span> (!q.<span class="built_in">empty</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">auto</span> p=q.<span class="built_in">top</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> u=p.second;</span><br><span class="line">        <span class="keyword">if</span> (dis[u]!=p.first) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=head[u];i;i=edge[i].next)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> v=edge[i].to;</span><br><span class="line">            <span class="keyword">if</span> (dis[v]&gt;dis[u]+edge[i].w)</span><br><span class="line">            &#123;</span><br><span class="line">                dis[v]=dis[u]+edge[i].w;</span><br><span class="line">                q.<span class="built_in">push</span>(&#123;dis[v],v&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> u,v,w;</span><br><span class="line">        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;</span><br><span class="line">        <span class="built_in">add_edge</span>(u,v,w);</span><br><span class="line">        <span class="built_in">add_edge</span>(v+n,u+n,w); <span class="comment">//建反向边</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">dijktra</span>(<span class="number">1</span>); <span class="comment">//正向的送出</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        ans+=dis[i];    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dijktra</span>(<span class="number">1</span>+n); <span class="comment">//反向的回来</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">2</span>+n;i&lt;=(n&lt;&lt;<span class="number">1</span>);i++)</span><br><span class="line">    &#123;</span><br><span class="line">        ans+=dis[i];    </span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="最短路计数"><a href="#最短路计数" class="headerlink" title="最短路计数"></a>最短路计数</h3><p><span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3Byb2JsZW0vUDExNDQ=">题目传送门<i class="fa fa-external-link-alt"></i></span></p>
+<blockquote>
+<p>给出一个 <em>N</em> 个顶点 <em>M</em> 条边的<strong>无向无权图</strong>，顶点编号为 1∼N。问从顶点 1 开始，到其他每个点的最短路有几条。</p>
+</blockquote>
+<p>题目让我们对最短路径条数进行<strong>计数</strong></p>
+<p>并且这个图是一个<strong>无向无权图</strong>，因此我们假设每一条边的<strong>权值为 1</strong>，进行<strong>正常的求最短路径的过程</strong></p>
+<p>只不过我们需要一个ans数组，<strong>ans[i] 表示从 1 到 i 点的最短路径的条数</strong>。</p>
+<p><strong>我们在利用dijsktra求出 从 u到 v 点的路径长度的时候，需要初始化 ans[v] 为 ans[u]条路径  ；当有多条路径的时候，则此条路径的最短路径长度应该和我们之前记录的最短的长度是相等的，因此需要加上之前的最短路径的条数即 ans[v]+=ans[u]。</strong></p>
+<p>通俗来说：<br>到达 u 的时候有三条路径都是最短的，则ans[u]=3，则接着从 u到达v 的时候，则我们到达v的路径条数是 ans[v]=3</p>
+<p>注意ans[1] 初始化为1，1到1默认有一条路径</p>
+<p>过程如下：</p>
+<ol>
+<li>点1到点2有一条路径，ans[2] =1</li>
+<li>点1到点3有一条路径，ans[3] =1</li>
+<li>点1到点4有<strong>两条</strong>路径，1-&gt;2-&gt;4 和 1-&gt; 3-&gt;4 ，ans[4] =2</li>
+<li>点1到点5有<strong>四条</strong>路径，1-&gt;2-&gt;4-&gt;5（两条）,1-&gt;3-&gt;4-&gt;5（两条）ans[5] =4</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//<span class="doctag">TODO:</span> Write code here</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">5e6</span>+<span class="number">10</span>,mod=<span class="number">100003</span>;</span><br><span class="line"><span class="type">int</span> nums[N],ans[N];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Edge</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> to,next;</span><br><span class="line">&#125;edge[N];</span><br><span class="line"><span class="type">int</span> head[N],cnt,dis[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add_edge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    edge[++cnt].next=head[u];</span><br><span class="line">    edge[cnt].to=v;</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dijktra</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dis,INF,<span class="built_in">sizeof</span>(dis));</span><br><span class="line">    priority_queue&lt;PI,v&lt;PI&gt;,greater&lt;PI&gt;&gt; q;</span><br><span class="line">    dis[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    ans[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    q.<span class="built_in">push</span>(&#123;<span class="number">0</span>,<span class="number">1</span>&#125;);</span><br><span class="line">    <span class="keyword">while</span> (!q.<span class="built_in">empty</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">auto</span> p=q.<span class="built_in">top</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> u=p.second;</span><br><span class="line">        <span class="keyword">if</span> (dis[u]&lt;p.first) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=head[u];i;i=edge[i].next)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> v=edge[i].to;</span><br><span class="line">            <span class="keyword">if</span> (dis[v]&gt;dis[u]+<span class="number">1</span>) <span class="comment">//边权为1</span></span><br><span class="line">            &#123;</span><br><span class="line">                dis[v]=dis[u]+<span class="number">1</span>;</span><br><span class="line">                ans[v]=ans[u];</span><br><span class="line">                q.<span class="built_in">push</span>(&#123;dis[v],v&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (dis[v]==dis[u]+<span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                ans[v]+=ans[u];</span><br><span class="line">                ans[v]%=mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> u,v;</span><br><span class="line">        cin&gt;&gt;u&gt;&gt;v;</span><br><span class="line">        <span class="built_in">add_edge</span>(u,v);</span><br><span class="line">        <span class="built_in">add_edge</span>(v,u);<span class="comment">//双向边</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dijktra</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;ans[i]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> one 1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="1488-最短距离"><a href="#1488-最短距离" class="headerlink" title="1488. 最短距离"></a>1488. 最短距离</h3><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS9wcm9ibGVtL2NvbnRlbnQvMTQ5MC8=">1488. 最短距离<i class="fa fa-external-link-alt"></i></span></p>
+<p>题目要求：给出一些城市（节点），每个城市到另一城市可能具有一条<strong>双向道路</strong>，道路存在长度，并且某个城市可能存在<strong>商店</strong>，求出每一个城市到<strong>最近的商店</strong>的距离是多少。</p>
+<hr>
+<p>这道题貌似就是一个简单的最短路的问题：</p>
+<p>直接建图，然后dijkstra求就好了，对于<strong>每一个询问 i 我们都进行一次dijkstra，寻找i到每一个点的距离最小值</strong>，然后再统计到商店的最短的距离。</p>
+<p>但是题目的数据范围是点数：10^5；询问：10^5。</p>
+<p>如果每一次询问都进行一次求最短路的过程，则这远远的超过了时间的限制。</p>
+<p>则我们考虑一下：<strong>如果不能对于每次询问都求最短的距离，那么很显然我们只需要进行一次求最短路就可以了。</strong></p>
+<p>我们思考<code>如何只进行一次求最短路，就可以得到所有点到最近商店的距离。</code></p>
+<p>不妨创建一个<strong>超级源点</strong>，只对这个超级原点求一次最短路。</p>
+<p>设超级原点为 0 点，我们所有的正确的点都是从1开始的，并且<strong>把超级原点与所有的商店点相连，边权为0</strong></p>
+<p>这样我们从超级原点开始<code>只进行一次最短路</code></p>
+<p><img data-src="https://cdnjson.com/images/2023/04/01/ULQD97EYXWFNL43JS5Y0.png" alt=""></p>
+<p>寻找的距离结果如下：</p>
+<p>则其实就是可以看作从 <strong>商店的节点2处往 其他的所有点做了一次最短路的搜索</strong></p>
+<p><img data-src="https://cdnjson.com/images/2023/04/01/CE6NJ3MOP_HP_K9NW_6VY.png" alt="1"></p>
+<p>由于从超级原点到商店的点的边权为0，由于我们让<strong>超级原点把所有的商店点都相连了</strong>，所以从超级原点开始只需要做一次最短路的搜索就等于从所有的商店点分别做最短路的搜索。</p>
+<p>超级原点的引入就解决了 <code>多源最短路问题转换为单源最短路问题</code>。</p>
+<p>而这个问题的转换关键就是：</p>
+<ul>
+<li><strong>超级原点的引入，连接所有的商店点，对超级原点做一次最短路，就等于对所有商店点都做一次最短路，他们两者答案是等价的，因为 超级原点到所有商店点的距离为0</strong></li>
+</ul>
+<hr>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;limits.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Edge</span>&#123;</span><br><span class="line">    <span class="type">int</span> next,to,w;</span><br><span class="line">&#125;edge[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="type">int</span> head[N],cnt;</span><br><span class="line"><span class="type">int</span> n,m,k,q,dis[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add_edge</span><span class="params">(<span class="type">int</span> u,<span class="type">int</span> v,<span class="type">int</span> w)</span></span>&#123;</span><br><span class="line">    edge[++cnt].next=head[u];</span><br><span class="line">    edge[cnt].to=v;</span><br><span class="line">    edge[cnt].w=w;</span><br><span class="line">    head[u]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dijkstra</span><span class="params">()</span></span>&#123;</span><br><span class="line">    priority_queue&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;,vector&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt;,greater&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt;&gt; q;</span><br><span class="line">    q.<span class="built_in">push</span>(&#123;<span class="number">0</span>,<span class="number">0</span>&#125;); <span class="comment">//从超级原点开始做一次最短路即可</span></span><br><span class="line">    dis[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">        <span class="keyword">auto</span> p=q.<span class="built_in">top</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> u=p.second;</span><br><span class="line">        <span class="keyword">if</span> (dis[u]&lt;p.first) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=head[u];j;j=edge[j].next)&#123;</span><br><span class="line">            <span class="type">int</span> v=edge[j].to;</span><br><span class="line">            <span class="keyword">if</span> (dis[v]&gt;dis[u]+edge[j].w)&#123;  <span class="comment">// dis[v]&gt;dis[u]+edge[j].w</span></span><br><span class="line">                dis[v]=dis[u]+edge[j].w;</span><br><span class="line">                q.<span class="built_in">push</span>(&#123;dis[v],v&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="built_in">memset</span>(dis,<span class="number">0x3f</span>,<span class="built_in">sizeof</span>(dis));</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="type">int</span> u,v,w;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;u,&amp;v,&amp;w);</span><br><span class="line">        <span class="built_in">add_edge</span>(u,v,w);</span><br><span class="line">        <span class="built_in">add_edge</span>(v,u,w);</span><br><span class="line">    &#125;</span><br><span class="line">    cin&gt;&gt;k;</span><br><span class="line">    <span class="keyword">while</span> (k--)&#123;</span><br><span class="line">        <span class="type">int</span> x;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">        <span class="built_in">add_edge</span>(<span class="number">0</span>,x,<span class="number">0</span>); <span class="comment">// 增加一条超级原点到目标点(商店)的边，单向边，w=0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dijkstra</span>(); </span><br><span class="line">    cin&gt;&gt;q;</span><br><span class="line">    <span class="keyword">while</span> (q--)&#123;</span><br><span class="line">        <span class="comment">//询问编号为x的村庄与其距离最近的商店之间的距离。</span></span><br><span class="line">        <span class="type">int</span> x;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,dis[x]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="3305-作物杂交"><a href="#3305-作物杂交" class="headerlink" title="3305. 作物杂交"></a>3305. 作物杂交</h3><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS9wcm9ibGVtL2NvbnRlbnQvMzMwOC8=">3305. 作物杂交<i class="fa fa-external-link-alt"></i></span></p>
+<p>题目要求：给出n种作物的成熟时间，并且规定某些作物两两之间可以进行杂交，即A和B生成C，杂交的时间为A和B两种作物的<strong>时间的最大值</strong>，给定一些起始种子，求出最后得到目标种子的<strong>最短时间</strong>。</p>
+<p>N：N种子各自的成熟时间</p>
+<p>M：已经拥有的初始种子</p>
+<p>K： 杂交过程：A和B生成C</p>
+<p>T： 目标种子</p>
+<hr>
+<p>每一次两个作物的杂交生成另一个种子，我们看作<strong>一次操作</strong>。</p>
+<p>不妨假设 F（i，C） 表示经过了 i 次操作，生成C种子的<strong>最短时间</strong></p>
+<p>注意L：这个F本身就表示一个<strong>最短的时间</strong>。</p>
+<p>由于最后我们一定会得到目标种子T，因此思考在总共进行 i 次操作的情况下：</p>
+<ul>
+<li>最后的一次操作一定是第 i 次，并且这最后一次操作的时间一定是两者的时间的最大值：<strong>max（nums[A],nums[B]）</strong></li>
+<li>对于前 i-1 次操作，即 F（i-1，A）和 F（i-1，B）我们一定要取得一个最大值，即 <strong>max（ F[i-1，A]， F[i-1，B]）</strong></li>
+</ul>
+<p>不妨把 F（i，C）表示的最短时间看作是最短路径。</p>
+<p>即寻找一条使得从起始点到目标点的最短路径：</p>
+<ul>
+<li><strong>dis[C]=max(dis[A],dis[B])+max(w[A],w[B])</strong></li>
+</ul>
+<p><strong>对于任意的C点我们都可以表示为第 i 次操作A和B的杂交时间 + 前i-1次生成A和B的杂交时间</strong></p>
+<p><img data-src="https://cdnjson.com/images/2023/04/01/QBOS2NLNNFV80R3Y9O.md.png" alt=""></p>
+<p>那么这一个总的过程我们就可以看作是：<strong>寻找从起始点到最终点的最短路径，只不过这个最短路径是由他们的杂交时间维护的。</strong></p>
+<hr>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> nums[N];  <span class="comment">//每个作物的时间</span></span><br><span class="line"><span class="type">int</span> n,m,k,t;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Edge</span>&#123;</span><br><span class="line">    <span class="type">int</span> to,next,B;</span><br><span class="line">&#125;edge[N];</span><br><span class="line"><span class="type">int</span> head[N],cnt;</span><br><span class="line">queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line"><span class="type">bool</span> vis[N];</span><br><span class="line"><span class="type">int</span> dis[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add_edge</span><span class="params">(<span class="type">int</span> A,<span class="type">int</span> B,<span class="type">int</span> C)</span></span>&#123;</span><br><span class="line">    edge[++cnt].to=C;</span><br><span class="line">    edge[cnt].B=B;</span><br><span class="line">    edge[cnt].next=head[A];</span><br><span class="line">    head[A]=cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">spfa</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">        <span class="type">int</span> A=q.<span class="built_in">front</span>();</span><br><span class="line">        <span class="comment">//对于A点来说</span></span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        vis[A]=<span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=head[A];j;j=edge[j].next)&#123;</span><br><span class="line">            <span class="comment">//寻找A的相邻的点，即寻找B点与C点：A+B-&gt;C</span></span><br><span class="line">            <span class="type">int</span> B=edge[j].B,C=edge[j].to;</span><br><span class="line">            <span class="comment">//当前生成C的最短路径就是前i-1次操作和第i次操作的时间</span></span><br><span class="line">            <span class="keyword">if</span> (dis[C]&gt;<span class="built_in">max</span>(dis[A],dis[B])+<span class="built_in">max</span>(nums[A],nums[B]))&#123;</span><br><span class="line">                dis[C]=<span class="built_in">max</span>(dis[A],dis[B])+<span class="built_in">max</span>(nums[A],nums[B]);</span><br><span class="line">                <span class="comment">//spfa松弛</span></span><br><span class="line">                <span class="keyword">if</span> (!vis[C])&#123;</span><br><span class="line">                    vis[C]=<span class="literal">true</span>;</span><br><span class="line">                    q.<span class="built_in">push</span>(C);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;k&gt;&gt;t;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="comment">//每个作物的种植时间</span></span><br><span class="line">        cin&gt;&gt;nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memset</span>(dis,<span class="number">0x3f</span>,<span class="built_in">sizeof</span>(dis));</span><br><span class="line">    <span class="keyword">while</span> (m--)&#123;</span><br><span class="line">        <span class="comment">//初始的作物</span></span><br><span class="line">        <span class="type">int</span> x;</span><br><span class="line">        cin&gt;&gt;x;</span><br><span class="line">        <span class="comment">//记录源点（多源）</span></span><br><span class="line">        q.<span class="built_in">push</span>(x);</span><br><span class="line">        dis[x]=<span class="number">0</span>;</span><br><span class="line">        vis[x]=<span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (k--)&#123;</span><br><span class="line">        <span class="comment">//a和b生成c</span></span><br><span class="line">        <span class="type">int</span> a,b,c;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">        <span class="built_in">add_edge</span>(a,b,c);</span><br><span class="line">        <span class="built_in">add_edge</span>(b,a,c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">spfa</span>();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,dis[t]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="4074-铁路与公路"><a href="#4074-铁路与公路" class="headerlink" title="4074. 铁路与公路"></a>4074. 铁路与公路</h3><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS9wcm9ibGVtL2NvbnRlbnQvNDA3Ny8=">4074. 铁路与公路<i class="fa fa-external-link-alt"></i></span></p>
+<p>题目要求：对于n个城市两两之间：<strong>如果有铁路则一定没有公路，如果有公路则一定没有铁路。</strong>他们<strong>都是双向的</strong>，一列火车和汽车同时从起点出发，两者最后到达目标地点的时间是多少（为两者之间最后到达者的时间），求得最小值。</p>
+<hr>
+<p>这道题目给出的点数较少，只有最多 400个，可以考虑使用 floyd算法，时间复杂度为 O（N^3）</p>
+<p>考虑如果求得铁路和公路的到达时间最大值？</p>
+<p>由于规定了<strong>经过每条铁路或公路都需要花费 1 小时的时间</strong>。</p>
+<p>因为两个道路不一样，并且不重复，并且火车和汽车不能混走道路。</p>
+<p>则一定存在：</p>
+<ul>
+<li>铁路从1到n得时间为 t=1，则公路一定 t&gt;1，最终时间为<code>t公路</code></li>
+<li>铁路从1到n得时间为 t&gt;1，则公路一定 t=1，最终时间为<code>t铁路</code></li>
+</ul>
+<p>因此我们只需要分别计算<strong>两次最短路求他们两者的时间最大值即可</strong>。</p>
+<p>对于 i 到 j 是铁路的道路，我们标记 i 到 j 为true，则下面我们便可以使得 i 到 j 为公路。</p>
+<p><strong>因为两个城市不是公路就是铁路</strong></p>
+<p>同时需要注意<strong>双向道路</strong>。</p>
+<p>另外 spfa和dijkstra也可以做这道题目：</p>
+<p>floyd算法运行 5344ms</p>
+<p>dijkstra算法运行 264 ms</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INF 999999999</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> V=<span class="number">410</span>; <span class="comment">//点数</span></span><br><span class="line"><span class="type">bool</span> fg[V][V];</span><br><span class="line"><span class="type">int</span> dis[V][V];</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            dis[i][j]=INF;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">floyd</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">1</span>;k&lt;=n;k++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">                dis[i][j]=<span class="built_in">min</span>(dis[i][j],dis[i][k]+dis[k][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;dis[i][i]=<span class="number">0</span>;&#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="type">int</span> u,v;</span><br><span class="line">        cin&gt;&gt;u&gt;&gt;v;</span><br><span class="line">        fg[u][v]=fg[v][u]=<span class="literal">true</span>;</span><br><span class="line">        dis[u][v]=dis[v][u]=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">floyd</span>();</span><br><span class="line">    <span class="type">int</span> ans1=dis[<span class="number">1</span>][n]; <span class="comment">//铁路</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//重置</span></span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;dis[i][i]=<span class="number">0</span>;&#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=i+<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!fg[i][j])&#123;</span><br><span class="line">                fg[i][j]=fg[j][i]=<span class="literal">true</span>;</span><br><span class="line">                dis[i][j]=dis[j][i]=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">floyd</span>();</span><br><span class="line">    <span class="type">int</span> ans2=dis[<span class="number">1</span>][n];<span class="comment">//公路</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (ans1==INF || ans2==INF)&#123;</span><br><span class="line">        cout&lt;&lt;<span class="number">-1</span>&lt;&lt;endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">max</span>(ans1,ans2);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+      
+
+        <div class="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="ylh 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/zhifubao.jpg" alt="ylh 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/me.jpg">
+            <span class="icon">
+              <i class="fa fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98/" rel="tag"><i class="fa fa-tag"></i> 最短路问题</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/" rel="prev" title="bfs与dfs详解（例题+模板c++代码）">
+      <i class="fa fa-chevron-left"></i> bfs与dfs详解（例题+模板c++代码）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E8%AE%BA%EF%BC%9A%E4%B8%89%E7%A7%8D%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%8F%8A%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">图论：三种最短路及模板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.1.</span> <span class="nav-text">模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SPFA%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.1.</span> <span class="nav-text">SPFA算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Floyd%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.2.</span> <span class="nav-text">Floyd算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dijkstra%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.3.</span> <span class="nav-text">Dijkstra算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">例题与应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E5%BB%BA%E8%BE%B9"><span class="nav-number">1.2.1.</span> <span class="nav-text">反向建边</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E8%AE%A1%E6%95%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">最短路计数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1488-%E6%9C%80%E7%9F%AD%E8%B7%9D%E7%A6%BB"><span class="nav-number">1.2.3.</span> <span class="nav-text">1488. 最短距离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3305-%E4%BD%9C%E7%89%A9%E6%9D%82%E4%BA%A4"><span class="nav-number">1.2.4.</span> <span class="nav-text">3305. 作物杂交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4074-%E9%93%81%E8%B7%AF%E4%B8%8E%E5%85%AC%E8%B7%AF"><span class="nav-number">1.2.5.</span> <span class="nav-text">4074. 铁路与公路</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="ylh"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">ylh</p>
+  <div class="site-description" itemprop="description">大二学生一枚，热爱代码与写作，希望我的分享能给大家带来知识的收获。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2x1dW1vZA==" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luumod"><i class="fa fa-github-alt fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOjExNzMwMTI5MDBAcXEuY29t" title="E-Mail → mailto:1173012900@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pqNjY2NmRqZGJiZD90eXBlPWJsb2c=" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;jj6666djdbbd?type&#x3D;blog"><i class="fa fa-crosshairs fa-fw"></i>CSDN</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS9xaWFuLXNoaS0yOS01NQ==" title="zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;qian-shi-29-55"><i class="fa fa-birthday-cake fa-fw"></i>zhihu</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaGVsbG95bGgv" title="cnblogs → https:&#x2F;&#x2F;www.cnblogs.com&#x2F;helloylh&#x2F;"><i class="fa fa-road fa-fw"></i>cnblogs</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vdXNlci8yNDQ3OTI5NTc0NzAyMTg5" title="juejin → https:&#x2F;&#x2F;juejin.cn&#x2F;user&#x2F;2447929574702189"><i class="fa fa-subway fa-fw"></i>juejin</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9oZWxsb3lsaC8=" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;helloylh&#x2F;"><i class="fa fa-instagram fa-fw"></i>Instagram</span>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cubHVvZ3UuY29tLmNuL3VzZXIvOTE0MDc5" title="https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;user&#x2F;914079">Luogu</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS91c2VyL215c3BhY2UvaW5kZXgvMjAzODEyLw==" title="https:&#x2F;&#x2F;www.acwing.com&#x2F;user&#x2F;myspace&#x2F;index&#x2F;203812&#x2F;">ACWing</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS5jbi91L3dvc2hpOTk5Lw==" title="https:&#x2F;&#x2F;leetcode.cn&#x2F;u&#x2F;woshi999&#x2F;">leetcode</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ylh</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">196k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5:57</span>
+</div>
+  <div class="powered-by">
+    <!--由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9waXNjZXMudGhlbWUtbmV4dC5vcmc=">NexT.Pisces</span> 强力驱动 -->
+  </div>
+
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/05/2023 10:00:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共86.8k字</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://helloylh.com/2023/04/01/%E5%9B%BE%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98%EF%BC%88spfa-Dijkstra-floyd-%E6%A8%A1%E6%9D%BF%E4%BB%A3%E7%A0%81c-%EF%BC%89/',]
+      });
+      });
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : '0O4opVqvli9kFej8pkOutR5k-gzGzoHsz',
+      appKey     : 'tiwXzzY2nCzf2u5aPUdfMpa6',
+      placeholder: "ヾﾉ≧∀≦)o来啊, 快活啊!",
+      avatar     : '/images/images3.png',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
