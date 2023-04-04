@@ -6,7 +6,7 @@
   <link href="https://helloylh.com/atom.xml" rel="self"/>
   
   <link href="https://helloylh.com/"/>
-  <updated>2023-04-04T09:38:11.272Z</updated>
+  <updated>2023-04-04T09:38:50.536Z</updated>
   <id>https://helloylh.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://helloylh.com/2023/04/04/%E6%95%B0%E8%AE%BA%E5%8F%8A%E6%A8%A1%E6%9D%BF/"/>
     <id>https://helloylh.com/2023/04/04/%E6%95%B0%E8%AE%BA%E5%8F%8A%E6%A8%A1%E6%9D%BF/</id>
     <published>2023-04-04T09:36:55.000Z</published>
-    <updated>2023-04-04T09:38:11.272Z</updated>
+    <updated>2023-04-04T09:38:50.536Z</updated>
     
     
     <summary type="html">算法复习：常见数论题目及数论模板代码</summary>
@@ -40,7 +40,7 @@
     <link href="https://helloylh.com/2023/04/04/%E6%95%B0%E6%8D%AE%E5%AF%B9%E6%8B%8D%E5%99%A8/"/>
     <id>https://helloylh.com/2023/04/04/%E6%95%B0%E6%8D%AE%E5%AF%B9%E6%8B%8D%E5%99%A8/</id>
     <published>2023-04-04T06:01:32.000Z</published>
-    <updated>2023-04-04T06:32:23.629Z</updated>
+    <updated>2023-04-04T09:38:50.534Z</updated>
     
     
     <summary type="html">通过手写两种解法（优化 and 暴力）并且通过数据对拍的功能来实现降低我们程序出错的可能性，数据对拍在蓝桥杯等竞赛中是一个不错的技巧。</summary>
@@ -93,14 +93,14 @@
   </entry>
   
   <entry>
-    <title>Hexo+Next博客设置背景图片+界面优化</title>
+    <title>Hexo+Next博客背景图片+界面优化</title>
     <link href="https://helloylh.com/2023/04/01/Hexo-Next%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87-%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/"/>
     <id>https://helloylh.com/2023/04/01/Hexo-Next%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87-%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</id>
     <published>2023-04-01T15:14:35.000Z</published>
-    <updated>2023-04-01T16:04:58.402Z</updated>
+    <updated>2023-04-04T14:32:05.941Z</updated>
     
     
-    <summary type="html">博客优化记录：背景与页面的优化，添加背景图片，设置背景透明度，边框圆角，页面宽度的设置</summary>
+    <summary type="html">博客优化记录：背景与页面的优化，添加背景图片，设置背景透明度，边框圆角，页面宽度的设置，添加live2D模型，文字的样式等等配置</summary>
     
     
     

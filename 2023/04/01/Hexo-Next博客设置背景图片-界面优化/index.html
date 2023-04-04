@@ -25,16 +25,18 @@
     var CONFIG = {"hostname":"helloylh.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="博客优化记录：背景与页面的优化，添加背景图片，设置背景透明度，边框圆角，页面宽度的设置">
+  <meta name="description" content="博客优化记录：背景与页面的优化，添加背景图片，设置背景透明度，边框圆角，页面宽度的设置，添加live2D模型，文字的样式等等配置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo+Next博客设置背景图片+界面优化">
+<meta property="og:title" content="Hexo+Next博客背景图片+界面优化">
 <meta property="og:url" content="https://helloylh.com/2023/04/01/Hexo-Next%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87-%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="HugeYlh">
-<meta property="og:description" content="博客优化记录：背景与页面的优化，添加背景图片，设置背景透明度，边框圆角，页面宽度的设置">
+<meta property="og:description" content="博客优化记录：背景与页面的优化，添加背景图片，设置背景透明度，边框圆角，页面宽度的设置，添加live2D模型，文字的样式等等配置">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdnjson.com/images/2023/04/01/HE_RBSPRHXLQT_WTX.png">
+<meta property="og:image" content="https://cdnjson.com/images/2023/04/04/5UIXS_VCEPGH8RR.png">
+<meta property="og:image" content="https://cdnjson.com/images/2023/04/04/AH0JB8SFJY06WZCH_N0PPCQ.png">
 <meta property="article:published_time" content="2023-04-01T15:14:35.000Z">
-<meta property="article:modified_time" content="2023-04-01T16:04:58.402Z">
+<meta property="article:modified_time" content="2023-04-04T14:32:05.941Z">
 <meta property="article:author" content="ylh">
 <meta property="article:tag" content="hexo博客配置">
 <meta name="twitter:card" content="summary">
@@ -53,7 +55,7 @@
   };
 </script>
 
-  <title>Hexo+Next博客设置背景图片+界面优化 | HugeYlh</title>
+  <title>Hexo+Next博客背景图片+界面优化 | HugeYlh</title>
   
     <script>
       function sendPageView() {
@@ -258,7 +260,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hexo+Next博客设置背景图片+界面优化
+          Hexo+Next博客背景图片+界面优化
         </h1>
 
         <div class="post-meta">
@@ -277,7 +279,7 @@
                   <i class="fa fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-02 00:04:58" itemprop="dateModified" datetime="2023-04-02T00:04:58+08:00">2023-04-02</time>
+                <time title="修改时间：2023-04-04 22:32:05" itemprop="dateModified" datetime="2023-04-04T22:32:05+08:00">2023-04-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -316,16 +318,16 @@
                 <i class="fa fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.7k</span>
+              <span>3.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>7 分钟</span>
             </span>
-            <div class="post-description">博客优化记录：背景与页面的优化，添加背景图片，设置背景透明度，边框圆角，页面宽度的设置</div>
+            <div class="post-description">博客优化记录：背景与页面的优化，添加背景图片，设置背景透明度，边框圆角，页面宽度的设置，添加live2D模型，文字的样式等等配置</div>
 
         </div>
       </header>
@@ -367,6 +369,34 @@
 <p>即注释掉第二三行，然后添加下面的两条语句：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$<span class="attribute">content</span>-desktop-large   = <span class="number">70em</span></span><br><span class="line">$<span class="attribute">content</span>-desktop-largest = <span class="number">85%</span></span><br></pre></td></tr></table></figure>
 <p>其中的参数同样可以自己修改。</p>
+<hr>
+<h2 id="侧边栏颜色更改"><a href="#侧边栏颜色更改" class="headerlink" title="侧边栏颜色更改"></a>侧边栏颜色更改</h2><p>打开配置文件：<code>\themes\next\source\css\_schemes\Pisces\_header.styl</code></p>
+<p>修改<code>background</code>属性即可 ，可以直接输入 16色代码，附上RGB颜色参照表：<span class="exturl" data-url="aHR0cHM6Ly90b29sLm9zY2hpbmEubmV0L2NvbW1vbnM/dHlwZT0z">RGB调色表<i class="fa fa-external-link-alt"></i></span></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">site</span>-brand-container &#123;</span><br><span class="line">  <span class="attr">background</span>: 	#<span class="variable constant_">FFFAFA</span> <span class="comment">// $black-deep; 在此修改颜色</span></span><br><span class="line"></span><br><span class="line">  +tablet-<span class="title function_">mobile</span>(<span class="params"></span>) &#123;</span><br><span class="line">    box-<span class="attr">shadow</span>: <span class="number">0</span> <span class="number">0</span> 16px <span class="title function_">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">.5</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就可以看到菜单栏的黑色变成了你想要的颜色。</p>
+<p>接着修改<code>Title</code>和<code>Subtitle</code>的颜色</p>
+<p>打开这个文件夹：<code>\themes\next\source\css\_common\outline\header\site-meta.styl</code></p>
+<p>然后找到</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.site-title</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#000000</span>                      //自己加的，修改主标题字体颜色</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="variable">$font</span>-family-logo;   </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="variable">$font</span>-size-title;        </span><br><span class="line">  <span class="attribute">font-weight</span>: normal;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.site-subtitle</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>:  <span class="number">#000000</span> // <span class="variable">$subtitle</span>-color;  <span class="comment">//修改副标题的字体颜色</span></span><br><span class="line">  <span class="attribute">font-size</span>: <span class="variable">$font</span>-size-subtitle;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改的效果如下：</p>
+<p><img data-src="https://cdnjson.com/images/2023/04/04/5UIXS_VCEPGH8RR.png" alt=""></p>
+<h2 id="按钮颜色更改"><a href="#按钮颜色更改" class="headerlink" title="按钮颜色更改"></a>按钮颜色更改</h2><p>打开以下文件：<code>\themes\next\source\css\_common\scaffolding\buttons.styl</code></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.btn</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#FFE1FF</span> // <span class="built_in">var</span>(--btn-default-bg);    <span class="comment">// 按钮颜色</span></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改成你想要的颜色即可。</p>
+<h2 id="鼠标选中文字的颜色"><a href="#鼠标选中文字的颜色" class="headerlink" title="鼠标选中文字的颜色"></a>鼠标选中文字的颜色</h2><p>文件夹：<code>\themes\next\source\css\_common\scaffolding\base.styl</code></p>
+<p>修改背景与选中时的文字颜色即可。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">::selection</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: 	<span class="number">#FFB5C5</span> // <span class="variable">$selection</span>-bg;</span><br><span class="line">  <span class="attribute">color</span>: 	<span class="number">#000000</span> // <span class="variable">$selection</span>-color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="添加live-2D宠物"><a href="#添加live-2D宠物" class="headerlink" title="添加live 2D宠物"></a>添加live 2D宠物</h2><p>下载插件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall -save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
+<p>然后下载一个你喜欢的样式宠物，这里我选择<code>live2d-widget-model-wanko</code>，然后下载模型：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save live2d-widget-model-wanko</span><br></pre></td></tr></table></figure>
+<p>可以下载你喜欢的：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dhbmdfMTIzX3p5L2FydGljbGUvZGV0YWlscy84NzE4MTg5Mg==">在这里可以看到预览图<i class="fa fa-external-link-alt"></i></span></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">live2d-widget-model-chitose</span><br><span class="line">live2d-widget-model-epsilon2_1</span><br><span class="line">live2d-widget-model-gf</span><br><span class="line">live2d-widget-model-haru/<span class="number">01</span> (use npm install --save live2d-widget-model-haru)</span><br><span class="line">live2d-widget-model-haru/<span class="number">02</span> (use npm install --save live2d-widget-model-haru)</span><br><span class="line">live2d-widget-model-haruto</span><br><span class="line">live2d-widget-model-hibiki</span><br><span class="line">live2d-widget-model-hijiki</span><br><span class="line">live2d-widget-model-izumi</span><br><span class="line">live2d-widget-model-koharu</span><br><span class="line">live2d-widget-model-miku</span><br><span class="line">live2d-widget-model-ni-j</span><br><span class="line">live2d-widget-model-nico</span><br><span class="line">live2d-widget-model-nietzsche</span><br><span class="line">live2d-widget-model-nipsilon</span><br><span class="line">live2d-widget-model-nito</span><br><span class="line">live2d-widget-model-shizuku</span><br><span class="line">live2d-widget-model-tororo</span><br><span class="line">live2d-widget-model-tsumiki</span><br><span class="line">live2d-widget-model-unitychan</span><br><span class="line">live2d-widget-model-wanko</span><br><span class="line">live2d-widget-model-z16</span><br></pre></td></tr></table></figure>
+<p>然后在Hexo的<code>根目录配置文件</code>中添加以下内容：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">  enable: true</span><br><span class="line">  scriptFrom: local</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-wanko  <span class="comment">//使用的样式</span></span><br><span class="line">  <span class="attribute">display</span>:</span><br><span class="line">    <span class="attribute">position</span>: right</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">180</span></span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300</span></span><br><span class="line">  mobile:</span><br><span class="line">    show: true</span><br></pre></td></tr></table></figure>
+<p>我们的宠物就出来了：</p>
+<p><img data-src="https://cdnjson.com/images/2023/04/04/AH0JB8SFJY06WZCH_N0PPCQ.png" alt="AH0JB8SFJY06WZCH_N0PPCQ.png"></p>
 <hr>
 
     </div>
@@ -414,7 +444,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://helloylh.com/2023/04/01/Hexo-Next%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87-%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/" title="Hexo+Next博客设置背景图片+界面优化">https://helloylh.com/2023/04/01/Hexo-Next博客设置背景图片-界面优化/</a>
+    <a href="https://helloylh.com/2023/04/01/Hexo-Next%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87-%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/" title="Hexo+Next博客背景图片+界面优化">https://helloylh.com/2023/04/01/Hexo-Next博客设置背景图片-界面优化/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LXNhLzQuMC96aC1DTg=="><i class="fab fa-fw fa-creative-commons"></i>BY-SA</span> 许可协议。转载请注明出处！
@@ -529,7 +559,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87"><span class="nav-number">1.</span> <span class="nav-text">添加背景图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E9%80%8F%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">设置背景透明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E6%A1%86%E5%9C%86%E8%A7%92%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">边框圆角设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2%E5%AE%BD%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">设置页面宽度</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87"><span class="nav-number">1.</span> <span class="nav-text">添加背景图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E9%80%8F%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">设置背景透明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E6%A1%86%E5%9C%86%E8%A7%92%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">边框圆角设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2%E5%AE%BD%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">设置页面宽度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%A7%E8%BE%B9%E6%A0%8F%E9%A2%9C%E8%89%B2%E6%9B%B4%E6%94%B9"><span class="nav-number">5.</span> <span class="nav-text">侧边栏颜色更改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%92%AE%E9%A2%9C%E8%89%B2%E6%9B%B4%E6%94%B9"><span class="nav-number">6.</span> <span class="nav-text">按钮颜色更改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BC%A0%E6%A0%87%E9%80%89%E4%B8%AD%E6%96%87%E5%AD%97%E7%9A%84%E9%A2%9C%E8%89%B2"><span class="nav-number">7.</span> <span class="nav-text">鼠标选中文字的颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0live-2D%E5%AE%A0%E7%89%A9"><span class="nav-number">8.</span> <span class="nav-text">添加live 2D宠物</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -638,12 +668,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">214k</span>
+    <span title="站点总字数">216k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:30</span>
+    <span title="站点阅读时长">6:34</span>
 </div>
   <div class="powered-by">
     <!--由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly9waXNjZXMudGhlbWUtbmV4dC5vcmc=">NexT.Pisces</span> 强力驱动 -->
@@ -674,7 +704,7 @@ setInterval("createtime()",250);
 <!-- 全站字数
   <div class="theme-info">
     <div class="powered-by"></div>
-    <span class="post-count">博客全站共93.9k字</span>
+    <span class="post-count">博客全站共94.4k字</span>
   </div>
 -->
 
@@ -826,5 +856,5 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
 });
 </script>
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/ Relative)","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":260},"mobile":{"show":false},"react":{"opacityDefault":0.7}});</script></body>
 </html>

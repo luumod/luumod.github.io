@@ -195,8 +195,8 @@ template {
   display: none;
 }
 ::selection {
-  background: #262a30;
-  color: #eee;
+  background: #ffb5c5;
+  color: #000;
 }
 html,
 body {
@@ -340,7 +340,7 @@ td {
   border-bottom-width: 1px;
 }
 .btn {
-  background: var(--btn-default-bg);
+  background: #fffafa;
   border: 2px solid var(--btn-default-border-color);
   border-radius: 2px;
   color: var(--btn-default-color);
@@ -1038,13 +1038,14 @@ pre .javascript .function {
   color: var(--brand-hover-color);
 }
 .site-title {
+  color: #000;
   font-family: 'Inter', '微软雅黑', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.5em;
   font-weight: normal;
   margin: 0;
 }
 .site-subtitle {
-  color: #ddd;
+  color: #000;
   font-size: 0.8125em;
   margin: 10px 0;
 }
@@ -1054,7 +1055,7 @@ pre .javascript .function {
 .use-motion .site-title,
 .use-motion .site-subtitle,
 .use-motion .custom-logo-image {
-  opacity: 0;
+  opacity: 0.5;
   position: relative;
   top: -10px;
 }
@@ -1302,7 +1303,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #0e9fff;
+  background: #ffb0ad;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2531,7 +2532,7 @@ mjx-container + br {
   }
 }
 .site-brand-container {
-  background: #222;
+  background: #eed2ee;
 }
 @media (max-width: 991px) {
   .site-brand-container {
@@ -2659,7 +2660,7 @@ mjx-container + br {
   border-radius: 30px;
   box-shadow: initial;
   box-sizing: border-box;
-  color: var(--text-color);
+  color: #f00;
   width: 240px;
   opacity: 0;
 }
@@ -2729,7 +2730,7 @@ mjx-container + br {
 }
 .links-of-author-item a:hover,
 .links-of-author-item span.exturl:hover {
-  background: var(--body-bg-color);
+  background: url("/images/backgroundsite.png");
   border-radius: 4px;
 }
 .links-of-author-item .fa,

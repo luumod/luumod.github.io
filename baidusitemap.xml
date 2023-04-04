@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://helloylh.com/2023/04/01/Hexo-Next%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87-%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</loc>
+    <lastmod>2023-04-04</lastmod>
+  </url>
+  <url>
+    <loc>https://helloylh.com/2023/03/01/hello-world/</loc>
+    <lastmod>2023-04-04</lastmod>
+  </url>
+  <url>
     <loc>https://helloylh.com/2023/04/04/%E6%95%B0%E8%AE%BA%E5%8F%8A%E6%A8%A1%E6%9D%BF/</loc>
     <lastmod>2023-04-04</lastmod>
   </url>
@@ -15,10 +23,6 @@
   <url>
     <loc>https://helloylh.com/2023/03/02/hexo%E4%B8%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2023-04-02</lastmod>
-  </url>
-  <url>
-    <loc>https://helloylh.com/2023/04/01/Hexo-Next%E5%8D%9A%E5%AE%A2%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87-%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</loc>
-    <lastmod>2023-04-01</lastmod>
   </url>
   <url>
     <loc>https://helloylh.com/2023/04/01/Hexo-Next%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E5%AD%97%E4%BD%93/</loc>
@@ -130,10 +134,6 @@
   </url>
   <url>
     <loc>https://helloylh.com/2023/03/03/git%E5%AD%A6%E4%B9%A0-1/</loc>
-    <lastmod>2023-03-04</lastmod>
-  </url>
-  <url>
-    <loc>https://helloylh.com/2023/03/01/hello-world/</loc>
     <lastmod>2023-03-04</lastmod>
   </url>
 </urlset> 
