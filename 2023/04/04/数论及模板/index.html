@@ -33,7 +33,7 @@
 <meta property="og:description" content="算法复习：常见数论题目及数论模板代码">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-04T09:36:55.000Z">
-<meta property="article:modified_time" content="2023-04-04T09:38:50.536Z">
+<meta property="article:modified_time" content="2023-04-05T05:49:33.229Z">
 <meta property="article:author" content="ylh">
 <meta property="article:tag" content="数论">
 <meta name="twitter:card" content="summary">
@@ -267,10 +267,16 @@
                 <i class="fa fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-04-04 17:36:55 / 修改时间：17:38:50" itemprop="dateCreated datePublished" datetime="2023-04-04T17:36:55+08:00">2023-04-04</time>
+              <time title="创建时间：2023-04-04 17:36:55" itemprop="dateCreated datePublished" datetime="2023-04-04T17:36:55+08:00">2023-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-04-05 13:49:33" itemprop="dateModified" datetime="2023-04-05T13:49:33+08:00">2023-04-05</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder"></i>
@@ -308,7 +314,7 @@
                 <i class="fa fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.2k</span>
+              <span>3.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -337,24 +343,32 @@
 <h3 id="196-质数距离"><a href="#196-质数距离" class="headerlink" title="196. 质数距离"></a>196. 质数距离</h3><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS9wcm9ibGVtL2NvbnRlbnQvZGVzY3JpcHRpb24vMTk4Lw==">196. 质数距离<i class="fa fa-external-link-alt"></i></span></p>
 <hr>
 <p>求出在【L，R】区间内某两个质数分别是距离最小的和距离最大的。</p>
-<p><font color=red> 性质一 ：</font> 数字N如果是一个合数，则N一定存在一个小于等于sqrt(N)的质因子。</p>
-<p>假设a和b是N的两个质因子，则a<em>b=N，假设 a&lt;=b，则 **a </em> a &lt;= a <em> b = N*</em>，则可以得出：<code>a&lt;=sqrt(N)</code></p>
-<p><font color=red> 性质二：</font> 如果x属于【L，R】的区间中<strong>合数</strong>，则一定存在 p&lt;=sqrt(N) 内的一个p值，即 <strong>p&lt;= 50000</strong>，使得 某一个p值 是 x的一个质因子，则便可以通过 p 值来筛选出在【L，R】区间中的每一个合数。</p>
+<p><font color=red> 性质一 ：</font> 数字N如果是一个合数，则N一定存在一个小于等于sqrt(N)的<strong>质因子</strong>。</p>
+<p>假设a和b是N的两个质因子，则a<em>b=N，假设 a&lt;=b，则 a </em> a &lt;= a * b = N，则可以得出：<code>a&lt;=sqrt(N)</code></p>
+<p><font color=red> 性质二：</font> 如果x属于【L，R】的区间中<strong>合数</strong>，则一定存在一个p值，满足p&lt;=sqrt(N)，并且这个p值 是x的一个质因子，则便可以<strong>通过 p 值来筛选出在【L，R】区间中的每一个合数。</strong></p>
 <hr>
 <p>步骤：</p>
 <ol>
-<li>首先由于数据都是小于 2^31-1 的，因此最大的质因子为 sqrt(2^31 -1 )，粗略计算大概是50000，则我们只需要预处理出 [1,50000] 的质数即可。</li>
-<li>然后根据 [1,50000]之间的质数 p，通过遍历<strong>p的倍数</strong>，来筛出 [L,R]区间中所有的合数，则<strong>剩下的就一定全部都是质数</strong>。</li>
-<li>然后在剩下的质数数组中寻找相邻的两个数字的距离最小和最大的。</li>
+<li><code>预处理质数</code>：首先由于数据都是小于 2^31-1 的，因此最大的质因子为 sqrt(2^31 -1 )，粗略计算大概是50000，则我们只需要预处理出[1,50000] 的质数即可。</li>
+<li><code>筛出合数</code>：然后根据 [1,50000]之间的质数 p，通过遍历<strong>p的倍数</strong>，来筛出 [L,R]区间中所有的合数，则<strong>剩下的就一定全部都是质数</strong>。</li>
+<li><code>寻找距离</code>：然后在剩下的质数数组中寻找相邻的两个数字的距离最小和最大的。</li>
 </ol>
 <hr>
-<p>细节：</p>
+<p>细节：<font color=red>【x】</font>表示上取整x</p>
 <ol>
-<li>在筛出合数的过程中，我们需要找到[L,R]区间中所有的合数，因此对于每一个枚举的p，都需要首先找到大于等于L的第一个初始的p（至少为2<em>p，因为p是需要循环的第一个质数，**2 </em>p是第一个合数**），然后在<code>i&lt;=r</code>的条件下每次<code>+=p</code>。</li>
+<li>在筛出合数的过程中，我们需要找到[L,R]区间中所有的合数，因此对于每一个枚举的p，都需要首先找到大于等于L的<strong>第一个初始的位置</strong>，然后在<code>i&lt;=r</code>的条件下每次<code>+=p</code>，这样这些位置标记的都是合数。</li>
+<li>对于这个初始的位置，我们应该取得[L,R]的第一个合数，具体的做法为：<ul>
+<li>如果初始的p不在[L,R]的区间内：初始的位置应该是<code>【L/p】*p</code>.</li>
+<li>如果初始的p在[L,R]的区间内：初始的位置至少为<code>2*p</code>，因为p是需要循环的第一个质数，2*p是第一个合数</li>
+</ul>
+</li>
 </ol>
-<p>如果找到第一个需要筛出的合数？</p>
-<p><strong>max((L+p-1)/p<em>p，2 </em> p)</strong> </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;limits.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="type">int</span> l,r;</span><br><span class="line"><span class="type">int</span> nums[N],cnt;</span><br><span class="line"><span class="type">bool</span> temps[N];</span><br><span class="line"><span class="comment">//线氏筛求质数: O(N)</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">get_num</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(temps,<span class="number">0</span>,<span class="built_in">sizeof</span>(temps));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (!temps[i])&#123;</span><br><span class="line">            nums[cnt++]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>;nums[j]*i&lt;=n;j++)&#123;</span><br><span class="line">            temps[nums[j]*i]=<span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (i%nums[j]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//预处理质数</span></span><br><span class="line">    <span class="keyword">while</span> (cin&gt;&gt;l&gt;&gt;r)&#123;</span><br><span class="line">        <span class="built_in">get_num</span>(<span class="number">50000</span>);</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        如果N是一个合数，则N一定存在一个小于等于sqrt(N)的质数：</span></span><br><span class="line"><span class="comment">            假设a和b是N的两个质数，并且假设a&lt;=b，则 a*a &lt;= a*b = N， 则 a&lt;=sqrt(N)，a就是N的一个小于等于sqrt(N)的质数</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="comment">//1. 首先筛出[1,50000]之间所有的素数</span></span><br><span class="line">        <span class="comment">//2. 把 [L,R]范围内的所有的合数“删除”掉，则剩下的就是目标范围内的质数</span></span><br><span class="line">        <span class="built_in">memset</span>(temps,<span class="number">0</span>,<span class="built_in">sizeof</span>(temps));</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)&#123;</span><br><span class="line">            <span class="type">int</span> p=nums[i];<span class="comment">//取得每一个[1,50000]之间的质数，对这个数字取倍数，则生成的数字一定是合数</span></span><br><span class="line">  </span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=<span class="built_in">max</span>((l+p<span class="number">-1</span>)/p*p,<span class="number">2</span>*p);j&lt;=r;j+=p)&#123;</span><br><span class="line">                <span class="comment">//cout&lt;&lt;(l+p-1)/p*p&lt;&lt;&quot; : &quot;&lt;&lt;2*p&lt;&lt;endl;</span></span><br><span class="line">                cout&lt;&lt;j&lt;&lt;endl;</span><br><span class="line">                temps[j-l]=<span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            cout&lt;&lt;<span class="string">&quot;-----&quot;</span>&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">        cnt=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;=r-l;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!temps[i] &amp;&amp; i+l&gt;<span class="number">1</span>)&#123;</span><br><span class="line">                nums[cnt++]=i+l;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (cnt&lt;<span class="number">2</span>)&#123;</span><br><span class="line">            cout&lt;&lt;<span class="string">&quot;There are no adjacent primes.\n&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//获得答案</span></span><br><span class="line">            <span class="type">int</span> minp=<span class="number">0</span>,maxp=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i+<span class="number">1</span> &lt; cnt; i ++ )&#123;</span><br><span class="line">                <span class="type">int</span> d=nums[i+<span class="number">1</span>]-nums[i];</span><br><span class="line">                <span class="keyword">if</span> (d&lt;nums[minp+<span class="number">1</span>]-nums[minp])&#123;</span><br><span class="line">                    minp=i;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (d&gt;nums[maxp+<span class="number">1</span>]-nums[maxp])&#123;</span><br><span class="line">                    maxp=i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d,%d are closest, %d,%d are most distant.\n&quot;</span>,nums[minp],nums[minp+<span class="number">1</span>],nums[maxp],nums[maxp+<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如何表示 2 过程的上取整呢？公式如下：</p>
+<script type="math/tex; mode=display">
+\left \lceil \frac{L}{P}  \right \rceil\times P  => (\frac{L-1}{P}+1) \times P</script><p>因此对于上面的描述过程，我们可以这样描述：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++)&#123;</span><br><span class="line">	<span class="type">int</span> p=nums[i];<span class="comment">//取得这个初始的p值</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> j=<span class="built_in">max</span>((L<span class="number">-1</span>)/p+<span class="number">1</span>)*p,<span class="number">2</span>*p);j&lt;=r;j+=p)&#123;<span class="comment">//在[L,R]内寻找p的倍数，他们都是合数</span></span><br><span class="line">		<span class="comment">//标记合数</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完整代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;limits.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="type">int</span> l,r;</span><br><span class="line"><span class="type">int</span> nums[N],cnt;</span><br><span class="line"><span class="type">bool</span> temps[N];</span><br><span class="line"><span class="comment">//线氏筛求质数: O(N)</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">get_num</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(temps,<span class="number">0</span>,<span class="built_in">sizeof</span>(temps));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (!temps[i])&#123;</span><br><span class="line">            nums[cnt++]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>;nums[j]*i&lt;=n;j++)&#123;</span><br><span class="line">            temps[nums[j]*i]=<span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (i%nums[j]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//预处理质数</span></span><br><span class="line">    <span class="keyword">while</span> (cin&gt;&gt;l&gt;&gt;r)&#123;</span><br><span class="line">        <span class="built_in">get_num</span>(<span class="number">50000</span>);</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        如果N是一个合数，则N一定存在一个小于等于sqrt(N)的质数：</span></span><br><span class="line"><span class="comment">            假设a和b是N的两个质数，并且假设a&lt;=b，则 a*a &lt;= a*b = N， 则 a&lt;=sqrt(N)，a就是N的一个小于等于sqrt(N)的质数</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="comment">//1. 首先筛出[1,50000]之间所有的素数</span></span><br><span class="line">        <span class="comment">//2. 把 [L,R]范围内的所有的合数“删除”掉，则剩下的就是目标范围内的质数</span></span><br><span class="line">        <span class="built_in">memset</span>(temps,<span class="number">0</span>,<span class="built_in">sizeof</span>(temps));</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)&#123;</span><br><span class="line">            <span class="type">int</span> p=nums[i];<span class="comment">//取得每一个[1,50000]之间的质数，对这个数字取倍数，则生成的数字一定是合数</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=<span class="built_in">max</span>((l<span class="number">-1</span>)/p+<span class="number">1</span>)*p,<span class="number">2</span>*p);j&lt;=r;j+=p)&#123;</span><br><span class="line">                temps[j-l]=<span class="literal">true</span>; <span class="comment">//相当于离散化，防止数组下标过大，减去左边界</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cnt=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;=r-l;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!temps[i] &amp;&amp; i+l&gt;<span class="number">1</span>)&#123;</span><br><span class="line">                nums[cnt++]=i+l;<span class="comment">//再加上l，就变成了原数</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (cnt&lt;<span class="number">2</span>)&#123;</span><br><span class="line">            cout&lt;&lt;<span class="string">&quot;There are no adjacent primes.\n&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//获得答案</span></span><br><span class="line">            <span class="type">int</span> minp=<span class="number">0</span>,maxp=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i+<span class="number">1</span> &lt; cnt; i ++ )&#123;</span><br><span class="line">                <span class="type">int</span> d=nums[i+<span class="number">1</span>]-nums[i];</span><br><span class="line">                <span class="keyword">if</span> (d&lt;nums[minp+<span class="number">1</span>]-nums[minp])&#123;</span><br><span class="line">                    minp=i;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (d&gt;nums[maxp+<span class="number">1</span>]-nums[maxp])&#123;</span><br><span class="line">                    maxp=i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d,%d are closest, %d,%d are most distant.\n&quot;</span>,nums[minp],nums[minp+<span class="number">1</span>],nums[maxp],nums[maxp+<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="求组合数"><a href="#求组合数" class="headerlink" title="求组合数"></a>求组合数</h2><p>求组合数：<code>C(n,k)</code>，即在 n个数字中选择k个数字。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> C[N][N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>;j&lt;=i &amp;&amp; j&lt;=k;j++)&#123; <span class="comment">//小于等于k为一个小优化</span></span><br><span class="line">			<span class="keyword">if</span> (!j) C[i][j]=<span class="number">1</span>; <span class="comment">//j为零的时候初始化，即C(i,0)=1</span></span><br><span class="line">			<span class="keyword">else</span> C[i][j]=C[i<span class="number">-1</span>][j<span class="number">-1</span>]+C[i<span class="number">-1</span>][j]; <span class="comment">//类似于杨辉三角</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -623,7 +637,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">216k</span>
+    <span title="站点总字数">217k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -659,13 +673,13 @@ setInterval("createtime()",250);
 <!-- 全站字数
   <div class="theme-info">
     <div class="powered-by"></div>
-    <span class="post-count">博客全站共94.4k字</span>
+    <span class="post-count">博客全站共94.6k字</span>
   </div>
 -->
 
         
 <div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="lib/busuanzi.pure.min.js"></script>
     <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
@@ -769,6 +783,61 @@ setInterval("createtime()",250);
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
   <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
@@ -811,5 +880,5 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
 });
 </script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/ Relative)","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":260},"mobile":{"show":false},"react":{"opacityDefault":0.7}});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/Relative","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":260},"mobile":{"show":false},"react":{"opacityDefault":0.7}});</script></body>
 </html>
