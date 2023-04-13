@@ -22,13 +22,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"helloylh.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"luumod.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="蓝桥杯算法复习：bfs与dfs详解，附带例题+模板代码，DFS（深度优先搜索）和BFS（广度优先搜索）是图论中两个重要的算法。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bfs与dfs详解（例题+模板c++代码）">
-<meta property="og:url" content="https://helloylh.com/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/index.html">
+<meta property="og:url" content="https://luumod.github.io/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/index.html">
 <meta property="og:site_name" content="HugeYlh">
 <meta property="og:description" content="蓝桥杯算法复习：bfs与dfs详解，附带例题+模板代码，DFS（深度优先搜索）和BFS（广度优先搜索）是图论中两个重要的算法。">
 <meta property="og:locale" content="zh_CN">
@@ -41,7 +41,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdnjson.com/images/2023/04/01/70NMH34UTUXW0.png">
 
-<link rel="canonical" href="https://helloylh.com/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/">
+<link rel="canonical" href="https://luumod.github.io/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -246,7 +246,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://helloylh.com/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://luumod.github.io/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -331,7 +331,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>文章首发于：<a href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
+        <p>文章首发于：<a target="_blank" rel="noopener" href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
 <h2 id="模板-解析"><a href="#模板-解析" class="headerlink" title="模板+解析"></a>模板+解析</h2><p>DFS（深度优先搜索）和BFS（广度优先搜索）是图论中两个重要的算法。</p>
 <h3 id="dfs"><a href="#dfs" class="headerlink" title="dfs"></a>dfs</h3><p>其中DFS是一种用于遍历或搜索树或图的算法，BFS则是一种用于搜索或遍历树或图的算法。两种算法都有其自身的优点和缺点，应用于不同的场景中。 DFS（深度优先搜索） 深度优先搜索是一种用于<strong>遍历</strong>或<strong>搜索树或图</strong>的算法，其基本思路是从起始节点开始，沿着一条路径一直走到底，直到无法再走下去为止，然后回溯到上一个节点，继续走到另外一个路径，重复上述过程，直到遍历完所有节点。</p>
 <p> DFS的实现方式可以采用<strong>递归</strong>或者<strong>栈</strong>来实现。下面是一个采用<strong>递归方式</strong>实现的DFS代码示例（C++）：</p>
@@ -419,7 +419,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://helloylh.com/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/" title="bfs与dfs详解（例题+模板c++代码）">https://helloylh.com/2023/04/01/bfs与dfs详解（例题-模板c-代码）/</a>
+    <a href="https://luumod.github.io/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/" title="bfs与dfs详解（例题+模板c++代码）">https://luumod.github.io/2023/04/01/bfs与dfs详解（例题-模板c-代码）/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LXNhLzQuMC96aC1DTg=="><i class="fab fa-fw fa-creative-commons"></i>BY-SA</span> 许可协议。转载请注明出处！
@@ -788,7 +788,7 @@ setInterval("createtime()",250);
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://helloylh.com/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://luumod.github.io/2023/04/01/bfs%E4%B8%8Edfs%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%BE%8B%E9%A2%98-%E6%A8%A1%E6%9D%BFc-%E4%BB%A3%E7%A0%81%EF%BC%89/',]
       });
       });
   </script>

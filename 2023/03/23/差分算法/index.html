@@ -22,13 +22,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"helloylh.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"luumod.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="蓝桥杯算法复习：数组的差分，差分算法例题与讲解。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="差分算法">
-<meta property="og:url" content="https://helloylh.com/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:url" content="https://luumod.github.io/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="HugeYlh">
 <meta property="og:description" content="蓝桥杯算法复习：数组的差分，差分算法例题与讲解。">
 <meta property="og:locale" content="zh_CN">
@@ -38,7 +38,7 @@
 <meta property="article:tag" content="差分">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://helloylh.com/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/">
+<link rel="canonical" href="https://luumod.github.io/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -243,7 +243,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://helloylh.com/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://luumod.github.io/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -334,7 +334,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>文章首发于：<a href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
+        <p>文章首发于：<a target="_blank" rel="noopener" href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
 <h2 id="差分介绍"><a href="#差分介绍" class="headerlink" title="差分介绍"></a>差分介绍</h2><p>差分是一种常见的算法，用于<strong>快速修改数组中某一段区间的值</strong>。</p>
 <p>差分的思想就是预处理出数组的差分数组，<strong>然后修改区间时，只需要修改两个位置的值</strong>，即可快速完成区间修改。最后再通过差分数组求出原数组。 差分数组 $d_i$ 表示原数组中相邻两个元素之间的差值，即 $d_i=a_i-a_{i-1}$，其中 $a_i$ 表示原数组中第 $i$ 个元素的值。则对于区间 $[l,r]$ 的加上 $k$ 的操作，可以表示为： <script type="math/tex">d_l=d_l+k,\quad d_{r+1}=d_{r+1}-k</script> 这样就完成了区间加 $k$ 的操作。最后只需要用差分数组求出原数组即可。 <script type="math/tex">a_i=\sum_{j=1}^{i} d_j</script></p>
 <h2 id="差分应用"><a href="#差分应用" class="headerlink" title="差分应用"></a>差分应用</h2><h3 id="区间加"><a href="#区间加" class="headerlink" title="区间加"></a>区间加</h3><p>以区间加为例，设 $a_i$ 表示原数组中第 $i$ 个元素的值，$d_i$ 表示差分数组中第 $i$ 个元素的值，则对于区间 $[l,r]$ 的加上 $k$ 的操作，可以表示为： <script type="math/tex">d_l=d_l+k,\quad d_{r+1}=d_{r+1}-k</script> 最后只需要用差分数组求出原数组即可： <script type="math/tex">a_i=\sum_{j=1}^{i} d_j</script> 以下是区间加的代码实现：</p>
@@ -446,7 +446,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://helloylh.com/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/" title="差分算法">https://helloylh.com/2023/03/23/差分算法/</a>
+    <a href="https://luumod.github.io/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/" title="差分算法">https://luumod.github.io/2023/03/23/差分算法/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LXNhLzQuMC96aC1DTg=="><i class="fab fa-fw fa-creative-commons"></i>BY-SA</span> 许可协议。转载请注明出处！
@@ -870,7 +870,7 @@ setInterval("createtime()",250);
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://helloylh.com/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://luumod.github.io/2023/03/23/%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95/',]
       });
       });
   </script>

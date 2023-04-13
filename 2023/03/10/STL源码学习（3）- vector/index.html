@@ -22,13 +22,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"helloylh.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"luumod.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="本文通过剖析STL vector的源码，主要讲述了vector容器的实现原理与技术手段">
 <meta property="og:type" content="article">
 <meta property="og:title" content="STL源码学习（3）- vector">
-<meta property="og:url" content="https://helloylh.com/2023/03/10/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%883%EF%BC%89-%20vector/index.html">
+<meta property="og:url" content="https://luumod.github.io/2023/03/10/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%883%EF%BC%89-%20vector/index.html">
 <meta property="og:site_name" content="HugeYlh">
 <meta property="og:description" content="本文通过剖析STL vector的源码，主要讲述了vector容器的实现原理与技术手段">
 <meta property="og:locale" content="zh_CN">
@@ -44,7 +44,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://img.helloylh.com/S1FEH~%29OSC1MDJH0%29DJ%5BZQV.png">
 
-<link rel="canonical" href="https://helloylh.com/2023/03/10/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%883%EF%BC%89-%20vector/">
+<link rel="canonical" href="https://luumod.github.io/2023/03/10/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%883%EF%BC%89-%20vector/">
 
 
 <script id="page-configurations">
@@ -249,7 +249,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://helloylh.com/2023/03/10/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%883%EF%BC%89-%20vector/">
+    <link itemprop="mainEntityOfPage" href="https://luumod.github.io/2023/03/10/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%883%EF%BC%89-%20vector/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -340,7 +340,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>文章首发于：<a href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
+        <p>文章首发于：<a target="_blank" rel="noopener" href="https://helloylh.com">My Blog</a>  欢迎大佬们前来逛逛</p>
 <h1 id="1-vector的迭代器"><a href="#1-vector的迭代器" class="headerlink" title="1. vector的迭代器"></a>1. vector的迭代器</h1><p>vector维护的是一个连续线性空间。所以无论元素的类型是什么，<strong>普通指针</strong>都可以满足条件而作为vector的迭代器。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Alloc=alloc&gt;</span><br><span class="line"><span class="keyword">class</span> vector</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">using</span> value_type = T;</span><br><span class="line">	<span class="keyword">using</span> iterator = value_type*;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>基于此，vector就可以写出这样的操作：</p>
@@ -539,7 +539,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://helloylh.com/2023/03/10/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%883%EF%BC%89-%20vector/" title="STL源码学习（3）- vector">https://helloylh.com/2023/03/10/STL源码学习（3）- vector/</a>
+    <a href="https://luumod.github.io/2023/03/10/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%883%EF%BC%89-%20vector/" title="STL源码学习（3）- vector">https://luumod.github.io/2023/03/10/STL源码学习（3）- vector/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LXNhLzQuMC96aC1DTg=="><i class="fab fa-fw fa-creative-commons"></i>BY-SA</span> 许可协议。转载请注明出处！
@@ -908,7 +908,7 @@ setInterval("createtime()",250);
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://helloylh.com/2023/03/10/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%883%EF%BC%89-%20vector/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://luumod.github.io/2023/03/10/STL%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%883%EF%BC%89-%20vector/',]
       });
       });
   </script>
