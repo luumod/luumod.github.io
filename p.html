@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <body>
+        <h2>常规文本输入</h2>
+        <form>
+            First name: <br/>
+            <input type="text" name="First name">
+            <br/>
+            Last name: <br/>
+            <input type="text" name="Last name">
+            <br/>
+        </form>
+        <h2>单选输入</h2>
+        <form>
+            <input type="radio" name="sex" value="male" checked>Male
+            <br/>
+            <input type="radio" name="sex" value="female">Female
+        </form>
+        <h2>表单提交</h2>
+        <form action="https://helloylh.com" method="get">
+            <input type="text" name="account" value="账号">
+            <br/>
+            <input type="text" name="password" value="密码">
+            <br/>
+            <input type="submit" value="Submit">
+        </form>
+        <br/><br/>
+        <form action="https://www.w3school.com.cn/demo/demo_form.asp" method="post" target="_blank" autocomplete="on" 
+            novalidate>
+            <fieldset style="width: 200px;">
+                <legend>请输入信息</legend>
+                Account: <br/>
+                <input type="text" name="account">
+                <br/>
+                Password: <br/>
+                <input type="password" name="password">
+                <br/>
+                <input type="submit" value="提交">
+            </fieldset>
+        </form>
+        <br/><br/>
+        <select name="age">
+            <option value="18">18</option>
+            <option value="19" selected>19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+        </select>
+        <br/><br/>
+        <h2>文本域</h2>
+        <p>续写故事: </p>
+        <textarea name="message" cols="30" rows="10">一条狗走在漆黑的小巷里……</textarea>
+        <br/>
+        <input type="submit" value="发表">
+        <br/><br/>
+        <button type="button" onclick="alert('helloylh!')">点击我！</button>
+        <input type="button" onclick="alert('你好，于良浩！')">点击我！ 
+        <br/><br/>
+        <form action="">
+            请输入成绩:
+            <input type="number" name="quantity" min="1" max="100" step="10" size="2">
+            <input type="submit" name="Submit">
+        </form>
+        <br/><br/>
+        <form>
+            请输入日期:
+            <input type="date">
+        </form>
+        <form>
+            请选择颜色: <br/>
+            <input type="color" name="Color">
+        </form>
+        <form>
+            <p>选择范围:</p><br/>
+            <input type="range">
+        </form>
+        <br/><br/><br/>
+        <form action="">
+            First name: <br/>
+            <input type="text" name="First name" value="默认值">
+        </form>
+        <br/><br/>
+        <textarea name="TextArea" id="" cols="30" rows="10" readonly>我是只读的哦，你不能修改！
+        </textarea>
+        <br/><br/>
+        <form action="">
+            <p>不可点击这个子段:</p>
+            <input type="text" value="我是不可点击的！" disabled>
+        </form>
+        <br/><br/>
+        <!-- input元素所处的表单 -->
+        <form action="https://helloylh.com" id="form1" method="get">
+            <label for="Fname">First name: </label><input type="text" id="fname">
+            <input type="submit" value="提交">
+        </form><br>
+        <p>下面的Last name仍然是表单的一部分: </p><br/>
+        <label for="Lname">Last name: </label><input type="text" form="form1" id="lname">
+
+        <br/><br/>
+
+
+        <br/><br/>
+
+
+        <br/><br/>
+        <form action="https://helloylh.com">
+            <label for="Fname">First name: </label><input type="text" name="First_name" id=""><br/>
+            <label for="Lname">Last name: </label><input type="text" name="Last name" id=""><br/><br/>
+            <input type="submit" name="Submit" value="提交">
+            <input type="submit" name="super_Submit" formaction="https://github.com//luumod" value="root提交">
+        </form>
+    </body>
+</html> 
